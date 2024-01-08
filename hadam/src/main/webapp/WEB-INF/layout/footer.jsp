@@ -259,11 +259,11 @@
                                         <h3>Sign Up <span>Easy<strong>Book</strong></span></h3>
                                         <div class="custom-form">
                                             <form method="post"   name="registerform" class="main-register-form" id="main-register-form2">
-                                                <label >Full Name <span>*</span> </label>
-                                                <input name="name" type="text"   onClick="this.select()" value="">
-                                                <label>Email Address <span>*</span></label>
+                                                <!-- <label >Full Name <span>*</span> </label> -->
+                                                <a href="/signup/signup" ><input name="name" type="button" value="hadam 회원가입"></a>
+                                                <!-- <label>Email Address <span>*</span></label> -->
                                                 <input name="email" type="text"  onClick="this.select()" value="">
-                                                <label >Password <span>*</span></label>
+                                                <!-- <label >Password <span>*</span></label> -->
                                                 <input name="password" type="password"   onClick="this.select()" value="" >
                                                 <button type="submit"     class="log-submit-btn color-bg"  ><span>Register</span></button>
                                             </form>
@@ -273,10 +273,10 @@
                                 <!--tab end -->
                             </div>
                             <!--tabs end -->
-                            <div class="log-separator fl-wrap"><span>or</span></div>
+                            <div class="log-separator fl-wrap"><!-- <span>or</span> --></div>
                             <div class="soc-log fl-wrap">
-                                <p>For faster login or register use your social account.</p>
-                                <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a>
+<!--                                 <p>For faster login or register use your social account.</p>
+                                <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a> -->
                             </div>
                         </div>
                     </div>

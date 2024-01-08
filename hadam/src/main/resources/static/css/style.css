@@ -16,6 +16,7 @@ html{
 body{
 	font-weight: 600;
 	font-size: 13px;
+	
 	height: 100%;
   	width: 100%;
   	margin: 0px;
@@ -215,7 +216,7 @@ transform: rotate(360deg);
 }
 .box-item:before {
 	content:'';
-	position:absolute;l
+	position:absolute;
 	top:0;
 	left:0;
 	width:100%;
@@ -3044,7 +3045,7 @@ input[type=number]
 }
 #singleMap    {
 	width:100%;
-	position: ;
+	position: absolute;
 	height:300px;
 	float:left;
 	margin-bottom:30px;
@@ -3052,7 +3053,7 @@ input[type=number]
 .box-widget #singleMap {
 	margin-bottom:10px;
 }
-.mapzoom-in  , .mapzoom-out{
+.mapzoom-in  , .mapzoom-out{ 
 	position: absolute;
 	z-index:100;
 	top:50%;
