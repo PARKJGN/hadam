@@ -40,7 +40,7 @@
                         <a href="dashboard-add-listing.html" class="add-hotel">Add Your Hotel <span><i class="far fa-plus"></i></span></a>                     
                         <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="lang-wrap">
-                            <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
+                            <div class="show-lang"><img src="/images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
                             <ul class="lang-tooltip green-bg">
                                 <li><a href="#"><img src="/images/lan/4.png" alt=""> De</a></li>
                                 <li><a href="#"><img src="/images/lan/5.png" alt=""> It</a></li>
