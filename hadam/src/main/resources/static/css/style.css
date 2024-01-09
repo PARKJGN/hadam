@@ -215,7 +215,7 @@ transform: rotate(360deg);
 }
 .box-item:before {
 	content:'';
-	position:absolute;l
+	position:absolute;
 	top:0;
 	left:0;
 	width:100%;
@@ -3044,7 +3044,7 @@ input[type=number]
 }
 #singleMap    {
 	width:100%;
-	position: ;
+	position:absolute;
 	height:300px;
 	float:left;
 	margin-bottom:30px;
