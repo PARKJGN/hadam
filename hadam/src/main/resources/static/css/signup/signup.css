@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/* 
+	적용파일명 	signup.jsp 
+	페이지명	이용약관 페이지 
+	용도		css
+	작성자 	최성익 
+*/
+.row .hadam_rule{
+	max-height : 300px;					/* 높이 제한 */
+	overflow-y : auto;					/* 스크롤 옵션 */
+	width :	100%;						/* 기본 50%인거 100%으로 변경 */
+	
+}
+
+.hadam_rule_check{
+	margin-top : 20px;					/* 바닥 마진 넣기 */
+	float : right;						/* 이용약관 체크 하는거 오른쪽 정렬 */
+}
+
+.col-sm-6 > input.confirm_password {
+	margin-bottom :	16px;				/* 비밀번호 확인 칸 바텀마진 제거 */
+}
+
+.col-sm-6 > input[type=button].check_button {
+	padding : 14px 20px 14px 20px;		/* 중복확인버튼 2개 패딩 조절 */
+	cursor : pointer;					/* 버튼 포인터 설정 */
+}
+.col-sm-6  .confirm_password_comment {
+	float : right;						/* 비밀번호 안내 문구 오른쪽 정렬 */
+	color : #f14e4e;					/* 색깔 설정 */ 
+}
+
+#rule_agree {
+	float : right;
+}
+
+/* 나중에 js에 아이콘 fa-bounce 클래스 넣기 */
