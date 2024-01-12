@@ -285,8 +285,10 @@
             <!--register form end -->
             <a class="to-top"><i class="fas fa-caret-up"></i></a>
         </div>
+        
         <!-- Main end -->
         <!--=============== scripts  ===============-->
+        
         <script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/js/plugins.js"></script>
         <script type="text/javascript" src="/js/scripts.js"></script>
