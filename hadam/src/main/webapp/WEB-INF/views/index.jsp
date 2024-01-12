@@ -3,7 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	
             <!-- header-->
-           <jsp:include page="../layout/header.jsp"></jsp:include>
+           	<jsp:include page="../layout/header.jsp"></jsp:include>
+            <!-- 헤더 css 임포트 -정건일-->
+        	<link type="text/css" rel="stylesheet" href="/css/index.css">
+            <!-- 헤더 css 임포트 end-정건일-->    
             <!--  header end -->
             <!--  wrapper  -->
             <div id="wrapper">
@@ -13,47 +16,59 @@
                     <!--section -->
                     <section class="hero-section" data-scrollax-parent="true" id="sec1">
                         <div class="hero-parallax">
-                            <div class="bg"  data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '200px' }"></div>
+                            <div class="bg"  data-bg="images/bg/2.jpg" data-scrollax="properties: { translateY: '200px' }"></div>
                             <div class="overlay op7"></div>
                         </div>
                         <div class="hero-section-wrap fl-wrap">
                             <div class="container">
                                 <div class="home-intro">
-                                    <div class="section-title-separator"><span></span></div>
-                                    <h2>EasyBook Hotel Booking System</h2>
+                                    <div class="section-title-separator"></div>
+                                    <h2>당신의 완벽한 하루를 디자인하세요!</h2>
                                     <span class="section-separator"></span>                                    
-                                    <h3>Let's start exploring the world together with EasyBook</h3>
+                                    <h3>Let's Design your perfect day!</h3>
                                 </div>
                                 <div class="main-search-input-wrap">
                                     <div class="main-search-input fl-wrap">
+                                    <!-- 장소정하기 -->
                                         <div class="main-search-input-item location" id="autocomplete-container">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
                                             <input type="text" placeholder="Hotel , City..." class="autocomplete-input" id="autocompleteid2"  value=""/>
                                             <a href="#"><i class="fal fa-dot-circle"></i></a>
                                         </div>
+                                    <!-- 장소정하기 -->
+                                    <!-- 날짜정하기 -->
                                         <div class="main-search-input-item main-date-parent main-search-input-item_small">
                                             <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> <input type="text" placeholder="When" name="main-input-search"   value=""/>
                                         </div>
+                            		<!-- 날짜정하기 -->
+
+                                    <!-- 코스 카테고리 선택하기-->
                                         <div class="main-search-input-item">
                                             <div class="qty-dropdown fl-wrap">
-                                                <div class="qty-dropdown-header fl-wrap"><i class="fal fa-users"></i> Persons</div>
-                                                <div class="qty-dropdown-content fl-wrap">
-                                                    <div class="quantity-item">
-                                                        <label><i class="fas fa-male"></i> Adults</label>
-                                                        <div class="quantity">
-                                                            <input type="number" min="1" max="3" step="1" value="1">
-                                                        </div>
+                                                <div class="qty-dropdown-header fl-wrap"><i class="fal fa-users"></i> 코스의 종류를 선택해주세요.</div>
+                                                <div class="qty-dropdown-content fl-wrap" id="courseContainer">
+                                                <!-- 코스 div 묶음 -정건일 -->
+                                                    <div class="quantity-item quantity-item-label" >
+                                                        <label><i class="fas fa-icons highlightable"></i></label>
+                                                        <label><i class="fas fa-shoe-prints highlightable"></i></label>
+                                                        <label><i class="fas fa-ticket highlightable"></i></label>
+                                                        <label><i class="fas fa-bowl-food highlightable"></i></label>
+                                                        <label><i class="fas fa-wine-glass highlightable"></i></label>
+													    <div class="quantity1">
+												         	<input>
+ 												         		<div class="quantity1-nav">
+													         	<div class="quantity1-button quantity-up">+</div>
+													         	<div class="quantity1-button quantity-down">-</div>
+												         	</div>
+													    </div>
                                                     </div>
-                                                    <div class="quantity-item">
-                                                        <label><i class="fas fa-child"></i> Children</label>
-                                                        <div class="quantity">
-                                                            <input type="number" min="0" max="3" step="1" value="0">
-                                                        </div>
-                                                    </div>
+                                                <!-- 코스 div 묶음 -정건일 -->
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="main-search-button color2-bg" onclick="window.location.href='listing.html'">Search <i class="fal fa-search"></i></button>
+                                    <!-- 코스 카테고리 선택하기-->
+
+                                        <button class="main-search-button color2-bg" onclick="window.location.href='listing.html'">AI스케줄 생성하러가기</button>
                                     </div>
                                 </div>
                             </div>
@@ -873,6 +888,7 @@
             <!--wrapper end -->
             <!--footer -->
             <jsp:include page="../layout/footer.jsp"></jsp:include>
+            <script src="/js/index.js"></script>
             
           
             <!--footer end -->

@@ -16,9 +16,14 @@
         <link type="text/css" rel="stylesheet" href="/css/plugins.css">
         <link type="text/css" rel="stylesheet" href="/css/style.css">
         <link type="text/css" rel="stylesheet" href="/css/color.css">
+        <!-- 헤더 css 임포트 -정건일-->
+        <link type="text/css" rel="stylesheet" href="/css/layout/header.css">
+        <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
+		<script src="https://kit.fontawesome.com/b2960bc7d5.js" crossorigin="anonymous"></script>
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="/images/favicon.ico">
     </head>
+
     <body>
         <!--loader-->
         <div class="loader-wrap">
@@ -35,27 +40,12 @@
                 <div class="header-top fl-wrap">
                     <div class="container">
                         <div class="logo-holder">
-                            <a href="index.html"><img src="/images/logo.png" alt=""></a>
+                        <!-- 로고 이미지 변경했습니다 01.11 -정건일 -->
+                            <a href="index.html"><img src="/images/main_logo.png" alt=""></a>
+                        <!-- 로고 이미지 변경했습니다 01.11 -정건일 -->
                         </div>
                         <a href="dashboard-add-listing.html" class="add-hotel">Add Your Hotel <span><i class="far fa-plus"></i></span></a>                     
                         <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
-                        <div class="lang-wrap">
-                            <div class="show-lang"><img src="/images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
-                            <ul class="lang-tooltip green-bg">
-                                <li><a href="#"><img src="/images/lan/4.png" alt=""> De</a></li>
-                                <li><a href="#"><img src="/images/lan/5.png" alt=""> It</a></li>
-                                <li><a href="#"><img src="/images/lan/2.png" alt=""> Fr</a></li>
-                                <li><a href="#"><img src="/images/lan/3.png" alt=""> Es</a></li>
-                            </ul>
-                        </div>
-                        <div class="currency-wrap">
-                            <div class="show-currency-tooltip"><i class="fas fa-dollar-sign"></i> <span>USD <i class="fa fa-caret-down"></i> </span></div>
-                            <ul class="currency-tooltip">
-                                <li><a href="#"><i class="far fa-euro-sign"></i> EUR</a></li>
-                                <li><a href="#"><i class="far fa-pound-sign"></i> GBP</a></li>
-                                <li><a href="#"><i class="far fa-ruble-sign"></i>RUR</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
                 <!-- header-top end-->
@@ -63,21 +53,50 @@
                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                        <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter">3</span></div>
+
+                        <!--1.12 알림표시 자리입니다. click_evt.js에 #alarmLink로 연결되어있습니다. -정건일-->
+                        <div class="alarm-link" id="alarmLink">
+	                        <i class="fal fa-bell "></i>
+	                        <span class="wl_counter">3<!-- 알림갯수로 들어오는 데이터 --></span>
+                                        <!--second level -->
+                                        <ul class="alram-user-menu">
+                                            <li><a href="index.html">새로운 메세지가 도착했습니다.</a></li>
+                                            <li><a href="index2.html">1:1 문의 답변이 완료되었습니다.</a></li>
+                                            <li><a href="index3.html">스케줄에 참가신청이 들어왔습니다.</a></li>
+                                            <li><a href="index4.html">텐서플로우</a></li>
+                                        </ul>
+                        </div>
+                		<!--1.12 알림표시 자리입니다.  -정건일-->
+                		                        
+                        		 <!--1.12 채팅창아이콘 자리입니다. -정건일-->
+                        <div class="alarm-link" id="alarmLink">
+                        <i class="fa-regular fa-comment-dots"></i>
+	                      <span class="wl_counter">8<!-- 알림갯수로 들어오는 데이터 --></span>
+                                        <!--second level -->
+                              <!--           <ul class="alram-user-menu">
+                                            <li><a href="index.html">새로운 메세지가 도착했습니다.</a></li>
+                                            <li><a href="index2.html">1:1 문의 답변이 완료되었습니다.</a></li>
+                                            <li><a href="index3.html">스케줄에 참가신청이 들어왔습니다.</a></li>
+                                            <li><a href="index4.html">텐서플로우</a></li>
+                                        </ul> -->
+                        </div>
+                		<!--1.12 채팅창아이콘 자리입니다. -정건일-->
+             
+
+                		<!--1.11 마이페이지 토글버튼 입니다. -정건일-->
                         <div class="header-user-menu">
                             <div class="header-user-name">
                                 <span><img src="/images/avatar/1.jpg" alt=""></span>
-                                My account
+                                user_Id
                             </div>
                             <ul>
-                                <li><a href="dashboard-myprofile.html"> Edit profile</a></li>
-                                <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
-                                <li><a href="dashboard-bookings.html">  Bookings  </a></li>
-                                <li><a href="dashboard-review.html"> Reviews </a></li>
-                                <li><a href="#">Log Out</a></li>
+                                <li><a href="dashboard-myprofile.html"> 마이페이지 </a></li>
+                                <li><a href="dashboard-add-listing.html"> 즐겨찾기 </a></li>
+                                <li><a href="dashboard-bookings.html">  스케줄관리  </a></li>
+                                <li><a href="dashboard-review.html"> 게시글관리 </a></li>
                             </ul>
                         </div>
-                        <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
+                		<!--1.11 마이페이지 토글버튼 입니다.end -정건일-->
                         <!-- nav-button-wrap-->
                         <div class="nav-button-wrap color-bg">
                             <div class="nav-button">
@@ -89,20 +108,21 @@
                         <div class="nav-holder main-menu">
                             <nav>
                                 <ul>
-                                    <li>
-                                        <a href="#" class="act-link">Home <i class="fas fa-caret-down"></i></a>
-                                        <!--second level -->
+                                    <li>                        
+                                    <!-- 메뉴탭 이름 변경했습니다. 01.11 -정건일 -->                           
+                                        <a href="#">A.I스케줄<i class="fas "></i></a>
+<!--                                         second level
                                         <ul>
                                             <li><a href="index.html">Parallax Image</a></li>
                                             <li><a href="index2.html">Slider</a></li>
                                             <li><a href="index3.html">Video</a></li>
                                             <li><a href="index4.html">Slideshow</a></li>
                                         </ul>
-                                        <!--second level end-->
+                                        second level end -->
                                     </li>
                                     <li>
-                                        <a href="#">Listings <i class="fas fa-caret-down"></i></a>
-                                        <!--second level -->
+                                        <a href="#">스케줄만들기 <i class="fas "></i></a>
+<!--                                         second level
                                         <ul>
                                             <li><a href="listing.html">Column map</a></li>
                                             <li><a href="listing6.html">Column map 2</a></li>
@@ -112,44 +132,35 @@
                                             <li><a href="listing5.html">Without Map 2</a></li>
                                             <li>
                                                 <a href="#">Single <i class="fas fa-caret-down"></i></a>
-                                                <!--third  level  -->
+                                                third  level 
                                                 <ul>
                                                     <li><a href="listing-single.html">Style 1</a></li>
                                                     <li><a href="listing-single2.html">Style 2</a></li>
                                                     <li><a href="listing-single3.html">Style 3</a></li>
                                                     <li><a href="listing-single4.html">Style 4</a></li>
                                                 </ul>
-                                                <!--third  level end-->
+                                                third  level end
                                             </li>
                                         </ul>
-                                        <!--second level end-->
+                                        second level end -->
                                     </li>
+                                 
                                     <li>
-                                        <a href="blog.html">News</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Pages <i class="fas fa-caret-down"></i></a>
+                                        <a href="#">커뮤니티 <i class="fas fa-caret-down"></i></a>
                                         <!--second level -->
                                         <ul>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contacts.html">Contacts</a></li>
-                                            <li><a href="author-single.html">User single</a></li>
-                                            <li><a href="help.html">Help FAQ</a></li>
-                                            <li><a href="pricing-tables.html">Pricing</a></li>
-                                            <li><a href="booking-single.html">Booking</a></li>
-                                            <li><a href="dashboard.html">User Dashboard</a></li>
-                                            <li><a href="blog2.html">Blog Classik</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="dashboard-add-listing.html">Add Listing</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="invoice.html">Invoice</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon</a></li>
+                                            <li><a href="about.html">자유게시판</a></li>
+                                            <li><a href="contacts.html">스케줄공유 게시판</a></li>
                                         </ul>
                                         <!--second level end-->
+                                    </li>
+                                    <li>
+                                        <a href="#">장소찾기 <i class="fas "></i></a>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
+						 	<!-- endof 메뉴탭 이름 변경했습니다. 01.11 -정건일 -->                           
                         <!-- navigation  end -->
                         <!-- wishlist-wrap-->            
                         <div class="wishlist-wrap scrollbar-inner novis_wishlist">
@@ -196,26 +207,26 @@
                     <div class="container">
                         <div class="row">
                             <!-- header-search-input-item -->
-                            <div class="col-sm-4">
+                            <div class="col-sm-10">
                                 <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Destination or Hotel Name</label>
+                                    <label>location search</label>
                                     <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
-                                    <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
+                                    <input type="text" placeholder="장소를 입력하세요." class="autocomplete-input" id="autocompleteid" value=""/>
                                     <a href="#"><i class="fal fa-dot-circle"></i></a>
                                 </div>
                             </div>
                             <!-- header-search-input-item end -->
                             <!-- header-search-input-item -->
-                            <div class="col-sm-3">
+<!--                             <div class="col-sm-3">
                                 <div class="header-search-input-item fl-wrap date-parent">
                                     <label>Date In-Out </label>
                                     <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
                                     <input type="text" placeholder="When" name="header-search"   value=""/>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- header-search-input-item end -->                             
                             <!-- header-search-input-item -->
-                            <div class="col-sm-3">
+                  <!--           <div class="col-sm-3">
                                 <div class="header-search-input-item fl-wrap">
                                     <div class="quantity-item">
                                         <label>Rooms</label>
@@ -236,7 +247,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- header-search-input-item end -->                             
                             <!-- header-search-input-item -->
                             <div class="col-sm-2">
@@ -251,6 +262,7 @@
                 </div>
                 <!-- header-search  end -->
             </header>
-
+            <!-- 클릭이벤트 js -정건일 -->
+	<script src="/js/layout/click_evt.js"></script>
 </body>
 </html>

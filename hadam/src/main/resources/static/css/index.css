@@ -1,0 +1,78 @@
+@charset "EUC-KR";
+
+.quantity-item-label {
+    display: flex;
+    justify-content: space-between; /* 일정한 간격으로 배치하는 스타일 */
+  width: 300px; /* 적절한 가로 길이를 지정하세요 */
+}
+
+.quantity-item-label label {
+    margin: 0 10px; /* 좌우 간격을 조절하세요 */
+}
+
+
+.qty-dropdown-content .quantity-item .quantity{
+	float:right;
+}
+
+.highlight {
+    background-color: yellow; /* Adjust the highlighting style as needed */
+}
+
+.quantity1 {
+	float:left;
+ 	width: 65px;
+	height: 42px;
+	position:relative;
+}
+.quantity1 input {
+	width: 100%;
+	height: 42px;
+	line-height: 1.65;
+	float: left;
+	padding: 0;
+	margin: 0;
+	padding-left:10px;
+	border: 1px solid #eee;
+	border-radius:4px 0 0 4px;
+	margin-bottom:0;
+}
+.quantity1 input:focus {
+	outline: 0;
+}
+.quantity1-nav {
+	position: absolute;
+	height: 42px;
+	right:0;
+	width: 20px;
+	border-right: 1px solid #eee;
+}
+.quantity1-button {
+ 	background: #F7F9FB;
+	position: absolute;
+	right:0;
+	cursor: pointer;
+	border-left: 1px solid #eee;
+	width: 20px;
+	text-align: center;
+	color: #333;
+	font-size: 13px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+	line-height: 1.7;
+	box-sizing:border-box;
+	-webkit-user-select: none;
+	user-select: none;
+}
+.quantity1-button.quantity-up {
+	position: absolute;
+	height: 50%;
+	top: 0;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+}
+.quantity1-button.quantity-down {
+	position: absolute;
+	bottom: -1px;
+	height: 50%;
+	border-bottom: 1px solid #eee;
+}
