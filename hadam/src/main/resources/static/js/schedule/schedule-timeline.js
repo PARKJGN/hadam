@@ -188,7 +188,7 @@ $(() => {
   
 /*var summaryAdd = function(){
 	
-	
+	ㅁㄴㅇ
 }  
   */
  
