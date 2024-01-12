@@ -119,7 +119,7 @@
                                           
                                                <c:forEach items="${boardList}" var="board">
                                           
-                                                <!-- 자유게시판 목록출력 -->
+                                           <!-- 자유게시판 목록출력 -->
                                         	<table border="1">
                                       			
                                                 	<tr>
@@ -139,7 +139,7 @@
                               
                      
                             
-                                    <!-- pagination-->
+                                    <!-- 페이징 처리-->
                                     <div class="pagination" id="page">
                                         <a href="boardList?page=1" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
                                         <a href="boardList?page=${prevMax}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>

@@ -4,7 +4,7 @@
 
 <mapper namespace="com.example.domain.board.dao.CommunityBoardDAO">
 	
-	<!-- 자유게시판 목록 출력 -->
+	<!-- 자유게시판 목록 출력 memberNickname-->
 	<select id="getBoardList" resultType="BoardVO" parameterType="BoardVO">
 		
 		SELECT b.BOARD_ID, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_REGISTER_DATE, b.BOARD_VIEWS
@@ -20,7 +20,7 @@
 		values(#{boardTitle}, #{boardContent},DATE_FORMAT(NOW(), '%Y-%m-%d'), 0, 2, now())
 	</insert>
 	
-	<!-- 자유게시판 상세 페이지 사진과 글정보 중복없이-->
+	<!-- 자유게시판 상세 페이지 사진과 글정보-->
 	<select id="getBoard" parameterType="BoardVO" resultType="BoardVO">
 		SELECT b.BOARD_UPDATE_DATE, b.BOARD_ID, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_REGISTER_DATE, b.BOARD_VIEWS
 			   , b.MEMBER_INDEX, m.MEMBER_NICKNAME, i.MEMBER_UPLOAD_IMAGE_PATH, i.MEMBER_UPLOAD_IMAGE_NAME
