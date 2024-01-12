@@ -17,7 +17,7 @@
 
 <!-- header-->
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-<!--  header end -->
+<!--  header end -->	
 
 <!--  wrapper  -->
 <div id="wrapper">
@@ -177,47 +177,57 @@
 												<div class="list-single-main-item-title fl-wrap">
 													<h3>회원정보를 입력해주세요</h3>
 												</div>
-												
+
 												<div class="row">
 													<div class="col-sm-6">
-														
-														<label>아이디<span class="confirm_id_comment"></span> <i class="far fa-user"></i>
-														</label> 
-														<input type="text" id="member_id"placeholder="Your Id" value="" class="check_input" />
-														<input type="button" id="member_id_check" class="check_button" value="중복확인" />
-														
+
+														<label>아이디<span class="confirm_id_comment"></span>
+															<i class="far fa-user"></i>
+														</label> <input type="text" id="member_id" placeholder="Your Id"
+															value="" class="check_input" /> <input type="button"
+															id="member_id_check" class="check_button" value="중복확인" />
+
 													</div>
 													<div class="col-sm-6">
-														<label>Phone<i class="far fa-phone" ></i>
-														</label> <input type="text" id="member_phone" placeholder="010-0000-0000" value="" class="check_input"/>
-														<input type="button" id="member_phone_check" class="check_button" value="인증하기" />
+														<label>Phone<i class="far fa-phone"></i>
+														</label> <input type="number" id="member_phone"
+															placeholder="Only Number" value="" class="check_input" />
+														<input type="button" id="member_phone_check"
+															class="check_button" value="인증하기" />
+															<!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
 													</div>
 												</div>
 												<div class="row">
 													<div class="col-sm-6">
-														<label>비밀번호<i class="fal fa-key"></i>
-														</label> <input type="text" id="member_password" placeholder="Password" value="" />
+														<label>비밀번호<i class="fal fa-key"></i><span
+															class="password_comment"></span>
+														</label> <input type="password" id="member_password"
+															placeholder="Password" value="" />
 
 													</div>
 													<div class="col-sm-6">
-														<label>닉네임 <i class="far fa-user"></i></label> <input
-															type="text" placeholder="Your NickName" value="" class="check_input" />
-															<input type="button" class="check_button" value="중복확인" />
+														<label>닉네임 <i class="far fa-user"></i><span
+															class="nickname_comment"></span></label> <input type="text"
+															id="member_nickname" placeholder="Your NickName" value=""
+															class="check_input" /> <input type="button"
+															id="member_nickname_check" class="check_button"
+															value="중복확인" />
 													</div>
 												</div>
 												<div class="row">
 													<div class="col-sm-6">
-														<label>비밀번호 확인 <i class="fal fa-key"></i> <span
-															class="confirm_password_comment"></span></label> <input
-															type="text" id="confirm_member_password" placeholder="Confirm Password"
-															class="confirm_password" value="" />
-
+														<label>비밀번호 확인 <i class="fal fa-key"></i><span
+															class="confirm_password_comment"></span>
+														</label> <input type="password" id="confirm_member_password"
+															placeholder="Confirm Password" class="confirm_password"
+															value="" />
 													</div>
 
 													<div class="col-sm-6">
-														<label>생년월일<i class="fal fa-calendar"></i></label> <input
-															type="text" placeholder="2002-02-02" />
-
+														<label>생년월일<i class="fal fa-calendar"max></i></label> <input
+															type="number" id="member_birth"
+															placeholder="YYYYMMDD" />
+															<!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
 													</div>
 												</div>
 
@@ -230,9 +240,9 @@
 													설정<i class="fal fa-angle-right"></i>
 												</a>
 											</fieldset>
-											
-											
-											
+
+
+
 											<!-- 개인정보 입력 끝 -->
 											<!-- 카테고리 설정 시작 -->
 											<fieldset class="fl-wrap book_mdf">
@@ -240,7 +250,7 @@
 													<h3>당신의 취향을 선택해주세요</h3>
 												</div>
 												<div class="row">
-													<div class="col-sm-6">
+													<div class="col-sm-6 hadam_category">
 														<label>Cardholder's Name<i class="far fa-user"></i></label>
 														<input type="text" placeholder="" value="Adam Kowalsky" />
 													</div>

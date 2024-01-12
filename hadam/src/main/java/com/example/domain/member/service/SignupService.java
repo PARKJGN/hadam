@@ -1,12 +1,9 @@
 package com.example.domain.member.service;
 
-public class SignupService implements SignupServiceImpl{
+import org.springframework.web.bind.annotation.RequestParam;
 
-	@Override
-	public boolean memberIdCheck(String id) {
-	
-		
-		return false;
-	}
+public interface SignupService {
 
+	String memberIdCheck(String id);
+	String memberNicknameCheck(String nickname);
 }

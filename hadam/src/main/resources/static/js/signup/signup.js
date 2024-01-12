@@ -7,6 +7,7 @@
  */
 
 $(function(){
+	
 	/* 약관동의 하고 다음 버튼 누르는지 확인하는 로직  */
 	$('.custom-form').on('click','#check-a', function(){
 		/* 동의 체크 되어있으면 */
@@ -29,21 +30,23 @@ $(function(){
 		var member_id = $('#member_id').val()
 		// alert(member_id)
 		
-		/* 아이디 정규식 검사 영문 숫자 조합으로 5~13 글자 */
-		const pattern = /^[a-zA-Z][0-9a-zA-Z]{4,12}$/g
+		/* 아이디 정규식 검사 영문 숫자 조합으로 5~13자 */
+		const idPattern = /^[a-zA-Z][0-9a-zA-Z]{4,12}$/g
 		
 		/* 아이디 정규식에 맞으면 */
-		if(pattern.test(member_id)){
+		if(idPattern.test(member_id)){
 			/* 정규식에 포함되는 아이디 중복확인 진행 */
 			$.ajax({
 				url : "/signup/memberIdCheck",
 				type : 'post',
 				data : {"id" : member_id},
 				success : function(result){
+					/* true면 중복되는 아이디가 없음 */
 					if(result){
-						$('.confirm_id_comment').text("사용중인 아이디 입니다");
-					}else{
 						$('.confirm_id_comment').text("사용가능한 아이디 입니다");
+					/* false면 중복되는 아이디 있음 */
+					}else{
+						$('.confirm_id_comment').text("사용중인 아이디 입니다");
 					}
 				},
 				error : function(err){
@@ -54,15 +57,15 @@ $(function(){
 		/* 아이디 정규식에 맞지 않으면 */
 		}else{
 			/* 아이디 생성규칙 표기 */
-			$('.confirm_id_comment').text("아이디는 영문 숫자 조합에 5~13자리로 가능합니다");
+			$('.confirm_id_comment').text("영문 숫자 조합에 5~13자리");
 		}
 		
 	})
 	
 	/* 핸드폰 문자 인증 */
-	$('#member_phone_check').on("click",function(){
+	/*$('#member_phone_check').on("click",function(){
 		var member_phone = $('#member_phone').val()
-		/*alert(member_phone)*/
+		alert(member_phone)
 		
 		$.ajax({
 			url : "/signup/memberPhoneCheck",
@@ -81,11 +84,93 @@ $(function(){
 			}
 		})
 		
+	})*/
+	
+	/* 비밀번호 정규식 및 일치 확인 */
+	$('#member_password').on('focus keyup', function(){
+		var member_password = $('#member_password').val();
+		
+		/* 비밀번호 정규식 검사 문자, 숫자, 특수 문자 포함 8~15자 */
+		const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/g;
+		
+		/* 입력한 비밀번호가 정규식에 맞으면 */
+		if(passwordPattern.test(member_password)){
+		
+			$('.password_comment').text("사용가능한 비밀번호 입니다")
+		/* 입력한 비밀번호가 정규식에 맞지 않으면 */
+		}else{
+			$('.password_comment').text("문자 숫자 특수문자 조합에 8~15자리")
+		}
+		
 	})
 	
+	/* 비밀번호 확인이 비밀번호와 일치하는지 확인 */
+	$('#confirm_member_password').on('foucs keyup', function(){
+		var confirm_member_password = $('#confirm_member_password').val();
+		
+		/* 일치할때 */
+		if(confirm_member_password==$('#member_password').val()){
+			$('.confirm_password_comment').text('');
+		/* 일치하지 않을 때 */
+		}else{
+			$('.confirm_password_comment').text('비밀번호가 일치하지 않습니다');
+		}		
+	})
 	
-	$('#member_password').on('')
+	/* 닉네임 글자 수 안내  */
+	$('#member_nickname').on('foucs keyup', function(){
+		var member_nickname = $('#member_nickname').val();
+		
+		if(member_nickname.length < 3){
+			$('.nickname_comment').text('2글자 이상이여야 합니다');
+		}else{
+			$('.nickname_comment').text('');
+		}
+	})
 	
+	/* 닉네임 중복검사 */
+	$('#member_nickname_check').on('click',function(){
+		var member_nickname = $('#member_nickname').val();
+		$.ajax({
+			url : '/signup/memberNicknameCheck',
+			type : 'post',
+			data : { "nickname" : member_nickname },
+			success : function(result){
+				/* true면 중복되는 닉네임 없음 */
+				if(result){
+					$('.nickname_comment').text("사용가능한 닉네임 입니다");
+				/* false면 중복되는 닉네임 있음 */
+				}else{
+					$('.nickname_comment').text("사용중인 닉네임 입니다");
+				}
+			},
+			error : function(err){
+				console.log('닉네임 오류')
+			}
+		})
+	})
 	
+	/* 전화번호 - 추가해주기 */
+	$('#member_phone').on('foucs keyup', function(){
+		var member_phone = $('#member_phone').val();
+		//this.value = this.value.replace(/[^0-9.]{,11}/g, '').replace(/(\..*)\./g, '$1');
+		/*$('#member_phone').val(member_phone.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));*/
+		/*if(member_phone.length==11){
+			format_phone = member_phone.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+			
+			$('#member_phone').val(format_phone);
+		}*/
+		
+	})
+	
+	/* 생년월일 - 추가해주기 */
+	$('#member_birth').on('foucs keyup',function(){
+		/*var member_birth = $('#member_birth').val();*/
+		/*$('#member_birth').val(member_birth.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'));
+		if(member_birth.length == 8){
+			format_birth = member_birth.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+			$('#member_birth').val(format_birth)
+		}*/
+	})
 	
 })

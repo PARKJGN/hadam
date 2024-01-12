@@ -17,7 +17,7 @@ import com.example.domain.member.service.SignupService;
 public class SignupController {
 
 	@Autowired
-	private SignupService signupservice;
+	private SignupService signupService;
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
@@ -31,19 +31,29 @@ public class SignupController {
 	@ResponseBody
 	public boolean memberIdCheck(@RequestParam("id") String id) {
 //		System.out.println(id);
-		
-		
-		
-		return false;
+		String result = signupService.memberIdCheck(id);
+		if (result!=null) return false;
+		else return true;
 	}
 	
-	/* 핸드폰 인증 */
-	@RequestMapping(value = "/memberPhoneCheck", method = RequestMethod.POST)
+	/* 닉네임 중복확인 */
+	@RequestMapping(value="/memberNicknameCheck", method=RequestMethod.POST)
 	@ResponseBody
-	public boolean memberNickNameCheck(@RequestParam("phone") String phone) {
-		System.out.println(phone);
-		return false;
+	public boolean memberNicknameCheck(@RequestParam("nickname") String nickname) {
+//		System.out.println(nickname);
+		String result = signupService.memberNicknameCheck(nickname);
+		if (result!=null) return false;
+		else return true;
 	}
+	
+	
+	/* 핸드폰 인증 */
+//	@RequestMapping(value = "/memberPhoneCheck", method = RequestMethod.POST)
+//	@ResponseBody
+//	public boolean memberNickNameCheck(@RequestParam("phone") String phone) {
+//		System.out.println(phone);
+//		return false;
+//	}
 	
 	
 }

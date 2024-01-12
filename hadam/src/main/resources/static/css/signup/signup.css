@@ -32,8 +32,18 @@
 	color : #f14e4e;					/* 색깔 설정 */ 
 }
 
-.col-sm-6  .confirm_password_comment {
+.col-sm-6  .password_comment {
 	float : right;						/* 비밀번호 안내 문구 오른쪽 정렬 */
+	color : #f14e4e;					/* 색깔 설정 */ 
+}
+
+.col-sm-6  .confirm_password_comment {
+	float : right;						/* 비밀번호확인 안내 문구 오른쪽 정렬 */
+	color : #f14e4e;					/* 색깔 설정 */ 
+}
+
+.col-sm-6  .nickname_comment {
+	float : right;						/* 닉네임 안내 문구 오른쪽 정렬 */
 	color : #f14e4e;					/* 색깔 설정 */ 
 }
 
@@ -55,9 +65,25 @@
 	float : right;						/* 위치조절 */
 
 }
+.custom-form input[type="number"] {		/* input 태그 type number는 템플릿 적용안되서 복사해옴 */
+    float: left;
+    border: 1px solid #eee;
+    background:#F7F9FB;
+    width: 100%;
+    padding: 14px 20px 14px 45px;
+    border-radius: 6px;
+	color: #666;
+	font-size:13px;
+	-webkit-appearance: none;	
+}
+.custom-form input[type="number"]:focus{/* input 태그 type number는 템플릿 적용안되서 복사해옴 */
+	background:#fff;
+}
 
-
-
+.row .hadam_category {
+	width :	100%;
+	
+}
 
 
 
