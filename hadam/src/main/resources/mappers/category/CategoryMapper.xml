@@ -5,8 +5,8 @@
 	
 	<!-- 카테고리 페이지 출력하는 쿼리 -->
 	<select id="locationList" parameterType="LocationVO" >
-		SELECT LOCATION_NAME locationName, LOCATION_ID locationId, LOCATION_RATING locationRating
-		, LOCATION_PLACE locationPlace
+		SELECT LOCATION_NAME, LOCATION_ID, LOCATION_RATING
+		, LOCATION_PLACE
 		FROM location
 		<!-- JOIN category c 
 		ON l.CATEGORY_ID = c.CATEGORY_ID
@@ -16,8 +16,8 @@
 
 	<!-- 클릭된 분류별 카테고리 출력하는 쿼리 -->
 	<select id="getCategoryLocList" parameterType="CategoryVO" resultType="com.example.domain.location.vo.LocationVO">
-		SELECT l.LOCATION_NAME locationName, l.LOCATION_ID locationId, l.LOCATION_RATING locationRating
-		, l.LOCATION_PLACE locationPlace
+		SELECT l.LOCATION_NAME, l.LOCATION_ID, l.LOCATION_RATING
+		, l.LOCATION_PLACE
 		FROM category c
 		JOIN location l ON c.CATEGORY_ID = l.CATEGORY_ID
 		WHERE c.MIDDLE_CATEGORY = #{middleCategory}

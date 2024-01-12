@@ -1,6 +1,5 @@
 package com.example.domain.board.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;

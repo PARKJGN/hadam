@@ -5,10 +5,10 @@
 <mapper namespace="com.example.domain.board.dao.CommunityBoardDAO">
 	
 	<!-- 자유게시판 목록 출력 -->
-	<select id="getBoardList" resultType="BoardVO" parameterType="hashmap">
+	<select id="getBoardList" resultType="BoardVO" parameterType="BoardVO">
 		
-		SELECT b.BOARD_ID as boardId, b.BOARD_TITLE as boardTitle, b.BOARD_CONTENT as boardContent, b.BOARD_REGISTER_DATE as boardRegisterDate, b.BOARD_VIEWS as boardViews
-			   , b.MEMBER_INDEX as memberIndex, m.MEMBER_NICKNAME as memberNickname
+		SELECT b.BOARD_ID, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_REGISTER_DATE, b.BOARD_VIEWS
+			   , b.MEMBER_INDEX, m.MEMBER_NICKNAME
 		FROM board b INNER JOIN member m 
 		ON b.MEMBER_INDEX = m.MEMBER_INDEX
 		
@@ -22,8 +22,8 @@
 	
 	<!-- 자유게시판 상세 페이지 사진과 글정보 중복없이-->
 	<select id="getBoard" parameterType="BoardVO" resultType="BoardVO">
-		SELECT b.BOARD_UPDATE_DATE as boardUpdateDate, b.BOARD_ID as boardId, b.BOARD_TITLE as boardTitle, b.BOARD_CONTENT as boardContent, b.BOARD_REGISTER_DATE as boardRegisterDate, b.BOARD_VIEWS as boardViews
-			   , b.MEMBER_INDEX as memberIndex, m.MEMBER_NICKNAME as memberNickname, i.MEMBER_UPLOAD_IMAGE_PATH as memberUploadImagePath, i.MEMBER_UPLOAD_IMAGE_NAME as memberUploadImageName
+		SELECT b.BOARD_UPDATE_DATE, b.BOARD_ID, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_REGISTER_DATE, b.BOARD_VIEWS
+			   , b.MEMBER_INDEX, m.MEMBER_NICKNAME, i.MEMBER_UPLOAD_IMAGE_PATH, i.MEMBER_UPLOAD_IMAGE_NAME
 		FROM board b INNER JOIN member m
 		ON b.MEMBER_INDEX = m.MEMBER_INDEX
 		INNER JOIN MEMBER_UPLOAD_IMAGE i
@@ -34,7 +34,7 @@
 	
 	<!-- boardId select -->
 	<select id="selectId" resultType="int">
-		SELECT BOARD_ID as boardId FROM board order by BOARD_ID desc limit 1
+		SELECT BOARD_ID FROM board order by BOARD_ID desc limit 1
 	</select>
 	
 	<!-- 글 수정하기 -->
