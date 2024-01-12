@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.catedir-category-content {
+	padding:20px;
+	z-index:2;
+}
+
+.catedir-category-content p {
+	text-align:left;
+	font-size:12px;
+	color:#999;
+	
+}
+
+.catedir-category-content h3 , .cart-details_text .geodir-category-content-title-item h3 {
+	float:left;
+	text-align:left;
+	font-weight:600;
+	font-size:16px;
+	margin-bottom:10px;
+}
+
+.catedir-category-content h3 a{
+	color: #46A5DC;
+}
+
+.catedir-category-content-tags {
+	margin-top:10px;
+}
+
+.catedir-category-content-title {
+	padding-bottom:20px;
+	margin-bottom:10px;
+	border-bottom:1px dotted #ccc;
+}
+
+.catedir-category-content-title-item {
+	float:left;
+	width:100%;
+	position:relative;
+	z-index:1;
+}

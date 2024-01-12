@@ -15,8 +15,6 @@ public class LocationVO {
 	
 	private String averageTime;
 	
-	private String averageCost;
-	
 	private String locationPlace;
 	
 	private Float locationRating;
