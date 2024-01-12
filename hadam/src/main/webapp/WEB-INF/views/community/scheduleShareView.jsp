@@ -1,13 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
-     <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-     	<head>
-     	<link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+  
+   <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
+            <!--  header end -->
+            <!--  wrapper  -->
+            <head>
+            <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-     		<style>
-     		    #listBox {
+            
+            <style>
+            	#box{
+            		margin-left:300px;
+            	}
+            	
+            	#updateBtn {
+            		width:60px;
+            		height:25px;
+            		font-size:14px;            
+            		text-align : center;
+	 				padding : 0 0;
+            	}
+            	
+            	#backBtn {
+            		width:60px;
+            		height:25px;
+            		font-size:14px;            
+            		text-align : center;
+	 				padding : 0 0;
+            	}
+            	#listBox {
      				 display: flex;
                      justify-content: space-between;
                      background-color: white;
@@ -17,7 +39,6 @@
             		 position:relative;
             		 right:-200px;
      			}
-     			
      			#listItem {
      				margin-right:30px;
      				width: 280px;
@@ -25,19 +46,16 @@
      				bottom:-40px;
      				right:-30px;
      			}
-     			
      			#box {
      				width:1600px;
      				position:relative;
-     				left:-300px;
+     				right:-100px;
      			}
-     			
      			#information {
      				position: relative;
      				bottom:-130px;
      				width:300px;
      			}
-     			
      			#shareBtn {
      				width:120px;
             		height:25px;
@@ -101,50 +119,114 @@
 				 position:relative;
 				 left:-90px;
 				}
-     		</style>
-     	</head>
-            <!--  header end -->
-            <!--  wrapper  -->
+				
+				#writeForm{
+					width:1600px;
+					position:relative;
+					top:-500px;
+					left:-25px;
+				}
+				
+				#replyBox{
+					width: 1600px;
+					position:relative;
+					top: -500px;
+					right:-600px;
+					height:250px;
+				}
+				
+				#replyBox h4 {
+					position:relative;
+					top:-20px;
+				}
+				
+				#replyBox p {
+					position:relative;
+					left:-40px;
+				}
+				
+				#replyinnerBox {
+					width:1550px;
+					position:relative;
+					left:-20px;
+					top:-50px;
+				}
+				#replyinnerBox span {
+					position:relative;
+					top:-100px;
+				}
+				
+				#danger{
+            		width:50px;
+            		height:20px;
+            		font-size:12px;
+            		margin-left:610px;
+            		text-align : center;
+	 				padding : 0 0;
+	 				position:relative;
+	 			
+	 				right:-370px;
+	 				top:-70px;
+            	}
+            	
+            	#replydateBox {
+            		position:relative;
+            		bottom:-50px;
+            	}
+            	
+            	#replyWriteBox {
+            		width:1600px;
+            		position:relative;
+            		right:-600px;
+            		top:-500px;
+            		height:220px;
+            	}
+            	
+            	#COMMENT_CONTENT {
+            		height:80px;
+            	}
+            	
+            	#comment {
+          			height:30px;
+            		position:relative;
+            		bottom:-40px;
+            		right:-770px;
+            		font-size:14px;
+            	}
+            	
+            	#chatBox {
+            		position:relative;
+            		top:-50px;
+            		height:100px;
+            	}
+            	
+            	#replyImage {
+            		position:relative;
+            		bottom:-10px;
+            		left:-10px;
+            	}
+            </style>
+            </head>
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
-                    <!--  section  -->
-                    <section class="parallax-section single-par" data-scrollax-parent="true">
-                        <div class="bg par-elem "  data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
-                        <div class="overlay"></div>
+                    <!-- map-view-wrap --> 
+                    <div class="map-view-wrap">
                         <div class="container">
-                            <div class="section-title center-align big-title">
-                                <div class="section-title-separator"><span></span></div>
-                                <h2><span>스케줄 공유 게시판</span></h2>
-                                <span class="section-separator"></span>
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt arcu, sit amet fermentum sem.</h4>
-                            </div>
-                             
-                        </div>
-                        <div class="header-sec-link">
-                            <div class="container"><a href="#sec1" class="custom-scroll-link color-bg"><i class="fal fa-angle-double-down"></i></a></div>
-                        </div>
-                    </section>
-                    <!--  section  end-->
-                    <div class="breadcrumbs-fs fl-wrap">
-                        <div class="container" id="moveTab">
-                            <div class="breadcrumbs fl-wrap"><a href="#">커뮤니티</a><span>스케줄 공유 게시판</span></div>
+                           
                         </div>
                     </div>
-                    <!--section -->
-                    <section class="grey-blue-bg small-padding" id="sec1">
-                      
+                    <!--map-view-wrap end --> 
+                    <!-- Map -->
+                  
+                    <!-- Map end --> 
+                    <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
-                        
-                            <div class="row">
-                                <!--listing -->
-                                <div class="col-md-12">
-                                    <div class="mobile-list-controls fl-wrap mar-bot-cont">
-                                        <div class="mlc show-list-wrap-search fl-wrap"><i class="fal fa-filter"></i> Filter</div>
-                                    </div>
-                                    
-                                    <!--col-list-wrap -->
-                                    <div class="col-list-wrap fw-col-list-wrap">
+                            <div class="breadcrumbs fl-wrap"><a href="#">Home</a><a href="#">Pages</a><span>Contacts</span></div>
+                        </div>
+                    </div>
+                    <section  id="sec1" class="grey-b lue-bg middle-padding">
+                    	<div class="col-list-wrap fw-col-list-wrap">
                                         <!-- list-main-wrap-->
                                         <div class="list-main-wrap fl-wrap card-listing" id="box">
                                          
@@ -346,30 +428,99 @@
                                             </div>
 
                                             </div>
-                                            <div class="pagination">
-                                                <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                                <a href="#" >1</a>
-                                                <a href="#" class="current-page">2</a>
-                                                <a href="#">3</a>
-                                                <a href="#">4</a>
-                                                <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-                                        </div>
+                                           
                                         <!-- list-main-wrap end-->
                                     </div>
-                                    <!--col-list-wrap end -->
+                        <div class="container">
+                            <div class="row">
+                                
+                                <div class="col-md-8">
+                                    <div class="list-single-main-item fl-wrap" id="writeForm">
+                                        <div class="list-single-main-item-title fl-wrap">
+                                            <h3>글 내용</h3>
+                                        </div>
+                                        <div id="contact-form">
+                                            <div id="message"></div>
+                                            <form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">
+                                                <fieldset>
+                                                	
+                                                	
+                                                    <div class="clearfix"></div>
+                                                    
+                                                    <label for="validationTextarea" class="form-label">글 내용</label>
+                                                    <textarea name="BOARD_CONTENT"  id="BOARD_CONTENT" cols="40" rows="3" placeholder="Your Message:" required></textarea>
+                               
+                                                	
+                                                
+                                                </fieldset>
+                                                <!-- <button class="btn float-btn color2-bg" style="margin-top:15px;" id="submit">Send Message<i class="fal fa-angle-right"></i></button> -->
+                                            	 
+ 												
+ 												 
+                                            </form>
+                                        </div>
+                                        <!-- contact form  end--> 
+                                    </div>
                                 </div>
-                                <!--listing  end-->
                             </div>
-                            <!--row end-->
                         </div>
+                        <div class="list-single-main-item fl-wrap" id="replyBox">
+                                                <div class="list-single-main-item-title fl-wrap">
+                                                    <h3> 댓글  <span> 댓글 개수 </span></h3>
+                                                </div>
+                                                <div class="reviews-comments-wrap">
+                                                    <div class="review-comments-avatar" id="replyImage">
+                                                            <img src="../images/avatar/1.jpg" alt=""> 
+                                                        </div>
+                                                    <div class="reviews-comments-item" id="replyinnerBox">
+                                                       
+                                                        <div class="reviews-comments-item-text" id="chatBox">
+                                                            <h4 style=font-size:13px;><a href="#">작성자</a></h4>
+                                                            
+                                                            <p style=font-size:11px;>댓글 내용</p>
+                                                            <div class="reviews-comments-item-date" id="replydateBox"><span><i class="far fa-calendar-check"></i>작성일</span> </div>
+                                                       		<button type="button" id="danger"class="btn btn-danger" >신고</button>
+          
+                                                        </div>
+                                                    </div>
+                                                                                                                
+                                                </div>
+                                            </div>
+                        <div class="list-single-main-item fl-wrap" id="replyWriteBox">
+                                                <div class="list-single-main-item-title fl-wrap">
+                                                    <h3>댓글 등록</h3>
+                                                </div>
+                                                <!-- Add Review Box -->
+                                                <div id="add-review" class="add-review-box">
+                                                    <!-- Review Comment -->
+                                                    <form id="add-comment" class="add-comment  custom-form" name="rangeCalc" >
+                                                        <fieldset>
+                                                            <div class="row">
+                                                                <!-- <div class="col-md-6">
+                                                                    <label><i class="fal fa-user"></i></label>
+                                                                    <input type="text" placeholder="Your Name *" value=""/>
+                                                                </div> -->
+                                                                <div class="col-md-6">
+                                                                    <!-- <label><i class="fal fa-envelope"></i>  </label>
+                                                                    <input type="text" placeholder="Email Address*" value=""/> -->
+                                                                </div>
+                                                            </div>
+                                                            <textarea cols="40" rows="3" id="COMMENT_CONTENT" name="COMMENT_CONTENT" placeholder="댓글을 입력해주세요"></textarea>
+                                                        </fieldset>
+                                                       <button class="btn btn-primary" id="comment"type="submit">등록</button>
+                                                    </form>
+                                                </div>
+                                                <!-- Add Review Box / End -->
+                                            </div>
+                        <div class="section-decor"></div>
                     </section>
-                    <!--section end -->
+                    <!-- section end -->
                 </div>
                 <!-- content end-->
             </div>
             <!--wrapper end -->
             <!--footer -->
-           <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
-           <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
-           <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
-            
+             <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
+             
+             <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
+             <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>

@@ -106,37 +106,6 @@
             		position:relative;
             		bottom:-30px;
             	}
-            	
-            	#writeButton {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				right:-260px;
-	 				top:-8px;
-            	}
-            	#updateBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-            		top:-1291px;
-            		right:-360px;
-            	}
-            	#deleteBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				top:-1291px;
-	 				right:-360px;
-            	}
             </style>
             
             
@@ -159,7 +128,7 @@
                     <!--  section  end-->
                     <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
-                            <div class="breadcrumbs fl-wrap"><a href="boardList">커뮤니티</a><a href="boardList">자유게시판</a><span>자유게시판 상세보기</span></div>
+                            <div class="breadcrumbs fl-wrap"><a href="#">커뮤니티</a><a href="#">자유게시판</a><span>자유게시판 상세보기</span></div>
                         </div>
                     </div>
                     <!-- section-->
@@ -173,11 +142,12 @@
                                         <!-- article> -->
                                          <div class="list-single-main-item-title fl-wrap" >
                                                     <h3 style=font-size:25px;>자유게시판</h3>
-                                         			<h3 style=font-size:20px; id="largeTitleTab">${board.boardTitle}</h3>
+                                         			<h3 style=font-size:20px; id="largeTitleTab">글 제목</h3>
                                          </div>
                                   
-                                                     <a class="btn btn-primary" href="boardWrite" role="button" id="writeButton">글 작성</a>
+                                                    <button type="button" class="btn btn-primary" id="writepage">글 작성</button>
                                                     
+                                             
                                         <article class="post-article">
                                            
                                             <div class="list-single-main-item fl-wrap" >
@@ -185,13 +155,13 @@
                                              <input name="BOARD_ID" type="hidden" value=""/>
                                               <div class="list-single-main-item-title fl-wrap" >
                                                     
-                                                      <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>${board.memberNickname}</span></a></div>
+                                                      <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>사용자 ID</span></a></div>
                                                     <div class="post-opt" id="inforTab">
                                                     
                                                     <ul>
-                                                        <li><i class="fal fa-calendar"></i> <span>${board.boardRegisterDate}</span></li>
-                                                        <li><i class="fal fa-calendar"></i> <span>${board.boardId}</span></li>
-                                                        <li><i class="fal fa-eye"></i> <span>${board.boardViews}</span></li>
+                                                        <li><i class="fal fa-calendar"></i> <span>작성일</span></li>
+                                                        <li><i class="fal fa-calendar"></i> <span>수정일</span></li>
+                                                        <li><i class="fal fa-eye"></i> <span>조회수</span></li>
                                                         	
                                                     </ul>
                                                   
@@ -200,18 +170,17 @@
                                              	 <div class="list-single-main-media fl-wrap">
                                                 <div class="single-slider-wrapper fl-wrap">
                                                     <div class="single-slider fl-wrap"  >
-                                                        <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}" alt="게시판 이미지"></div>
-                                                     
+                                                        <div class="slick-slide-item"><img src="../images/all/1.jpg" alt=""></div>
+                                                       
                                                     </div>
                                                    
                                                 </div>
                                             </div>
-                                                <p>${board.boardContent}</p>
+                                                <p>글 내용</p>
                                                 
-                                                <c:if test="${board.memberIndex eq member.memberIndex}"> 
-                                                 <a href="boardUpdate?boardId=${board.boardId}"><input type="button" class="btn btn-primary" id="updateBtn" value="수정"/></a>                
-                                             	 <a class="btn btn-primary" role="button" id="deleteBtn" href="<c:url value='/boardView/${board.boardId}/delete' />" >삭제</a>
-                                                </c:if> 
+                                                
+                                                
+                                               
                                                 </form>
                                             </div>
                                             <!-- list-single-main-item -->   
@@ -278,8 +247,7 @@
                             </div>
                         </div>
                         <div class="limit-box fl-wrap"></div>
-            
-                    	<a class="btn btn-primary" href="boardList" role="button" id="boardlistpage">자유게시판으로</a>
+                         <button type="button" class="btn btn-primary" id="boardlistpage">자유게시판으로</button>
                     </section>
                     <!-- section end -->
                 </div>
