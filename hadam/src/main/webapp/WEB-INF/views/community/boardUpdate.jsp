@@ -11,9 +11,27 @@
             
             <style>
             	#box {
-            		margin-left:300px;
+            		width:1000px;
+      				position:relative;
+      				right:-200px;
+
             	}
-            		
+            	
+            	#updateBtn {
+            		width:60px;
+            		height:25px;
+            		font-size:14px;            
+            		text-align : center;
+	 				padding : 0 0;
+            	}
+            	
+            	#backBtn {
+            		width:60px;
+            		height:25px;
+            		font-size:14px;            
+            		text-align : center;
+	 				padding : 0 0;
+            	}
             </style>
             
             </head>
@@ -32,7 +50,7 @@
                     <!-- Map end --> 
                     <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
-                            <div class="breadcrumbs fl-wrap"><a href="#">Home</a><a href="#">Pages</a><span>Contacts</span></div>
+                            <div class="breadcrumbs fl-wrap"><a href="boardList">커뮤니티</a><a href="boardList">자유게시판</a><span>게시글 수정</span></div>
                         </div>
                     </div>
                     <section  id="sec1" class="grey-b lue-bg middle-padding">
@@ -42,33 +60,38 @@
                                 <div class="col-md-8">
                                     <div class="list-single-main-item fl-wrap" id="box">
                                         <div class="list-single-main-item-title fl-wrap">
-                                            <h3>게시글 작성</h3>
+                                            <h3>게시글 수정</h3>
                                         </div>
                                         <div id="contact-form">
                                             <div id="message"></div>
-                                            <form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">
+                                            <form  class="custom-form" action="updateBoard" name="contactform" id="contactform" method="post">
                                                 <fieldset>
-                                                	
-                                                	<input name="BOARD_ID" type="hidden" value=""/>
+                                                	                                              	
+                                                	<input name="boardId" type="hidden" value="${board.boardId}"/>
                                                 	
                                                 	<label for="validationCustom01" class="form-label">제목</label>
-                                                    <input type="text" name="BOARD_TITLE" id="BOARD_TITLE" placeholder="Your Title *" value="" required/>
+                                                    <input type="text" name="boardTitle" id="BOARD_TITLE" placeholder="Your Title *" value="${board.boardTitle }" />
                                                 	
                                                 	<label for="validationCustom02" class="form-label">작성자</label>                                               
-                                                    <input type="text" name="name" id="name" placeholder="Your Name *" value="" required/>
+                                                    <input type="text" name="memberNickname" id="name" placeholder="Your Name *" value="${board.memberNickname }" disabled/>
                                                     <div class="clearfix"></div>
                                                     
                                                     <label for="validationTextarea" class="form-label">글 내용</label>
-                                                    <textarea name="BOARD_CONTENT"  id="BOARD_CONTENT" cols="40" rows="3" placeholder="Your Message:" required></textarea>
-                               
-                                                	<input type="file" class="form-control" aria-label="file example" required>
-                                                	<div class="invalid-feedback">선택된 파일이 없습니다.</div>
-                                                
+                                                    <textarea name="boardContent"  id="BOARD_CONTENT" cols="40" rows="3" placeholder="Your Message:" >${board.boardContent }</textarea>
+                               						
+                              						 <div class="single-slider fl-wrap"  >
+                                                        <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}"></div>
+                                                     
+                                                    </div>
+                                                                        						
+                                                	<input type="file" class="form-control" aria-label="file example" >
+                                                   
+                                              
                                                 </fieldset>
                                                 <!-- <button class="btn float-btn color2-bg" style="margin-top:15px;" id="submit">Send Message<i class="fal fa-angle-right"></i></button> -->
                                             	 <div class="col-12">
-    												<button class="btn btn-primary" type="submit">수정</button>
-    												 <a class="btn btn-primary" href="#" role="button">이전</a>
+    												<button class="btn btn-primary" type="submit" id="updateBtn">수정</button>
+    												 <a class="btn btn-primary" href="boardView?boardId=${board.boardId}" role="button" id="backBtn">이전</a>
  												 </div>
  												
  												 

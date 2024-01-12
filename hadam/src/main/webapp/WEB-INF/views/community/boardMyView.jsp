@@ -17,6 +17,9 @@
             		margin-left:610px;
             		text-align : center;
 	 				padding : 0 0;
+	 				position:relative;
+	 				top:-70px;
+	 				right:-15px;
             	}
             	#comment{
             		width:50px;
@@ -29,20 +32,21 @@
             	}
             	
             	#box {
-            		margin-left:300px;
+            		margin-left:200px;
             	}
             	
             	#writepage {
             		width:60px;
             		height:25px;
-            		font-size:14px;
-            		margin-left:650px;
+            		font-size:14px;            
             		text-align : center;
 	 				padding : 0 0;
+	 				position:relative;
+	 			
             	}
             	
             	#boardlistpage {
-            		margin-left:150px;
+            
             		font-size:13px;
             		width:120px;
             		height:30px;
@@ -63,6 +67,83 @@
             		text-align:center;
             		padding : 0 0;
             	}
+            	
+            	#inforTab {
+            		position:relative;
+            		right:-390px;
+            	}
+            	#userInfo {
+            		position:relative;
+            	
+            	}
+            	
+            	#sec5 {
+            		height:250px;
+            	}
+            	
+            	#chatBox {
+            		height:100px;
+            		postion:relative;
+            		left:-40px;
+            		top: -30px;
+            	}
+            	
+            	#chatBox h4{
+            		position:relative;
+            		top:-20px;
+            	}
+            	
+            	#chatBox p {
+            		position:relative;
+            		left:-40px;
+            	}
+            	
+            	#replyImage img{
+            		width:50px;
+            		height:50px;
+            		position:relative;
+            		top:-30px;
+            	}
+            	
+            	#replydateBox {
+            		position:relative;
+            		top:-60px;
+            	
+            	}
+            	#COMMENT_CONTENT{
+            		height:80px;
+            	}
+            	
+            	#largeTitleTab{
+            		
+            		position:relative;
+            		bottom:-30px;
+            	}
+            	
+            	#updateBtn {
+            		width:60px;
+            		height:25px;
+            		font-size:14px;            
+            		text-align : center;
+	 				padding : 0 0;
+	 				position:relative;
+            		
+            	}
+            	
+            	#deleteBtn {
+            		width:60px;
+            		height:25px;
+            		font-size:14px;            
+            		text-align : center;
+	 				padding : 0 0;
+	 				position:relative;
+            	}
+            	
+            	#buttons {
+            		position:relative;
+            		right:-330px;
+            		top:-10px;
+            	}
             </style>
             
             
@@ -76,7 +157,7 @@
                         <div class="wave-bg wave-bg2"></div>
                         <div class="container">
                             <div class="flat-title-wrap">
-                                <h2><span>자유 게시판</span></h2>
+                                <h2><span>글 수정</span></h2>
                                 <span class="section-separator"></span>
                                 <h4>hadam</h4>
                             </div>
@@ -85,7 +166,7 @@
                     <!--  section  end-->
                     <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
-                            <div class="breadcrumbs fl-wrap"><a href="#">커뮤니티</a><a href="#">자유게시판</a><span>자유게시판 상세보기</span></div>
+                            <div class="breadcrumbs fl-wrap"><a href="#">커뮤니티</a><a href="#">자유게시판</a><span>게시글 수정하기</span></div>
                         </div>
                     </div>
                     <!-- section-->
@@ -98,17 +179,34 @@
                                     <div class="post-container fl-wrap" id="box">
                                         <!-- article> -->
                                         
-                                  
-                                                    <a class="btn btn-primary" href="#" role="button" id="writepage">글 작성</a>
-                                                    <a class="btn btn-primary" href="#" role="button" id="updatepage">수정</a>
-                                                    <a class="btn btn-primary" href="#" role="button" id="deletepage">삭제</a>
-                                             
+                                         <div class="list-single-main-item-title fl-wrap" >
+                                                    <h3 style=font-size:25px;>자유게시판</h3>
+                                         			<h3 style=font-size:20px; id="largeTitleTab">글 제목</h3>
+                                         </div>
+                                  					<div id="buttons">
+                                                    <button type="button" class="btn btn-primary" id="writepage">글 작성</button>
+                                                    <button type="button" class="btn btn-primary" id="updateBtn">수정</button>
+                                                    <button type="button" class="btn btn-warning" id="deleteBtn">삭제</button>
+                                             		</div>
                                         <article class="post-article">
                                            
-                                            <div class="list-single-main-item fl-wrap">
+                                            <div class="list-single-main-item fl-wrap" >
                                              <form action="" >
                                              <input name="BOARD_ID" type="hidden" value=""/>
-                                              <h4>글 제목</h4>
+                                              <div class="list-single-main-item-title fl-wrap" >
+                                                    
+                                                      <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>사용자 ID</span></a></div>
+                                                    <div class="post-opt" id="inforTab">
+                                                    
+                                                    <ul>
+                                                        <li><i class="fal fa-calendar"></i> <span>작성일</span></li>
+                                                        <li><i class="fal fa-calendar"></i> <span>수정일</span></li>
+                                                        <li><i class="fal fa-eye"></i> <span>조회수</span></li>
+                                                        	
+                                                    </ul>
+                                                  
+                                                </div>
+                                                </div>
                                              	 <div class="list-single-main-media fl-wrap">
                                                 <div class="single-slider-wrapper fl-wrap">
                                                     <div class="single-slider fl-wrap"  >
@@ -120,15 +218,8 @@
                                             </div>
                                                 <p>글 내용</p>
                                                 
-                                                <div class="post-author"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>사용자 ID</span></a></div>
-                                                <div class="post-opt">
-                                                    <ul>
-                                                        <li><i class="fal fa-calendar"></i> <span>작성일</span></li>
-                                                        <li><i class="fal fa-calendar"></i> <span>수정일</span></li>
-                                                        <li><i class="fal fa-eye"></i> <span>조회수</span></li>
-                                                        
-                                                    </ul>
-                                                </div>
+                                                
+                                                
                                                
                                                 </form>
                                             </div>
@@ -140,33 +231,19 @@
                                                 <div class="reviews-comments-wrap">
                                                     <!-- reviews-comments-item -->  
                                                     <div class="reviews-comments-item">
-                                                        <div class="review-comments-avatar">
+                                                        <div class="review-comments-avatar" id="replyImage">
                                                             <img src="../images/avatar/1.jpg" alt=""> 
                                                         </div>
-                                                        <div class="reviews-comments-item-text">
-                                                            <h4><a href="#">작성자</a></h4>
-                                                            <div class="clearfix"></div>
-                                                            <p>댓글 내용</p>
-                                                            <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>작성일</span><a href="#"><i class="fal fa-reply"></i> Reply</a> </div>
+                                                        <div class="reviews-comments-item-text" id="chatBox">
+                                                            <h4 style=font-size:13px;><a href="#">작성자</a></h4>
+                                                            
+                                                            <p style=font-size:11px;>댓글 내용</p>
+                                                            <div class="reviews-comments-item-date" id="replydateBox"><span><i class="far fa-calendar-check"></i>작성일</span> </div>
                                                        		<button type="button" id="danger"class="btn btn-danger">신고</button>
-                                                       	
-                                                       		<!-- <button type="button" class="btn btn-danger">Danger</button> -->
+          
                                                         </div>
                                                     </div>
-                                                    <!--reviews-comments-item end--> 
-                                                    <!-- reviews-comments-item -->  
-                                                  <!--   <div class="reviews-comments-item">
-                                                        <div class="review-comments-avatar">
-                                                            <img src="../images/avatar/1.jpg" alt=""> 
-                                                        </div>
-                                                        <div class="reviews-comments-item-text">
-                                                            <h4><a href="#">작성자</a></h4>
-                                                            <div class="clearfix"></div>
-                                                            <p>ㅁ</p>
-                                                            <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>03 December 2017</span><a href="#"><i class="fal fa-reply"></i> Reply</a> </div> 
-                                                        </div>
-                                                    </div> -->
-                                                    <!--reviews-comments-item end-->                                                                  
+                                                                                                                
                                                 </div>
                                             </div>
                                             <!-- list-single-main-item end -->   
@@ -210,7 +287,7 @@
                             </div>
                         </div>
                         <div class="limit-box fl-wrap"></div>
-                        <a class="btn btn-primary" href="#" role="button" id="boardlistpage">자유게시판으로</a>
+                         <button type="button" class="btn btn-primary" id="boardlistpage">자유게시판으로</button>
                     </section>
                     <!-- section end -->
                 </div>

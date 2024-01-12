@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.domain.board.dao.CommunityUserDAO">
+
+	
+	<!-- memberIndex로 정보 가져오기 -->
+	<select id="getMemberByMemberIndex" parameterType="MemberVO" resultType="MemberVO">
+		SELECT MEMBER_INDEX as memberIndex, MEMBER_ID as memberId, MEMBER_PASSWORD as memberPassword, MEMBER_NICKNAME as memberNickname
+		FROM member
+		WHERE MEMBER_INDEX= 1
+		
+	
+	</select>
+</mapper>

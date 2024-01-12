@@ -170,7 +170,7 @@ function  initEasybook() {
 			location		: datacityw,
 		});
     //   Contact form------------------
-    $(document).on('submit', '#contactform', function () {
+    /*$(document).on('submit', '#contactform', function () {
         var a = $(this).attr("action");
         $("#message").slideUp(750, function () {
             $("#message").hide();
@@ -187,7 +187,7 @@ function  initEasybook() {
             });
         });
         return false;
-    });
+    });*/
     $(document).on('keyup', '#contactform input, #contactform textarea', function () {
         $("#message").slideUp(1500);
     });

@@ -26,4 +26,16 @@ public class BoardVO {
 	private  Date boardUpdateDate;
 	
 	private  Integer boardViews;
+	
+	// 자유게시판목록에 작성자칸에 회원 닉네임 뜨게 할라고 추가
+	private String memberNickname;
+	
+	// 자유게시판 상세페이지에 이미지 띄울라고 추가
+	private String memberUploadImagePath;
+	
+	// 자유게시판 상세페이지에 이미지 띄울라고 추가
+	private String memberUploadImageName;
+	
+	// 자유게시판 상세페이지에서 회원아이디랑 게시판 아이디랑 같은지 확인할라고 추가함
+	private String memberId;
 }

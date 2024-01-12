@@ -13,10 +13,45 @@
             			padding:0 0 30px 0px;
             		}
             		#page {
-            			margin-left:330px;
+            			position:relative;
+            			right:-300px;
             		}
             		#box {
-            			margin-left:-50px;
+            			
+            			width:1400px;
+            			position:relative;
+            			left:-300px;
+            			height:100px;
+            		}
+            		
+            	
+            		
+            		#boardTap {
+            			position:relative;
+            			left:-300px;
+            		}
+            		#boardTh {
+            			height:50px;
+            			border-radius:10px;
+            		}
+            		
+            		#boardTd td{
+            			position:relative;
+            			top:-20px;
+            		}
+            		
+            		#writeButton {
+            			text-align : center;
+	 					padding : 0 0;
+            			position:relative;
+            			font-size:13px;
+            			right:-500px;
+            			width:60px;
+            			height:20px;
+            		}
+            		#table {
+            			position:relative;
+            			left:-100px;
             		}
             	</style>
             </head>
@@ -26,18 +61,18 @@
                     <!-- section-->
                     <section class="flat-header color-bg adm-header">
                         <div class="wave-bg wave-bg2"></div>
-                        <div class="container">
+                        <div class="container" id="full">
                             <div class="dasboard-wrap fl-wrap">
-                                <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a href="#">Dashboard</a><span>Profile page</span></div>
+                                <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">커뮤니티</a><span><a href="boardList">자유게시판</a></span></div>
                                 <!--dasboard-sidebar-->
                                 
                                 <!--dasboard-sidebar end--> 
                                 <!-- dasboard-menu-->
                                 <div class="dasboard-menu">
                                     <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i></div>
-                                    <ul class="dasboard-menu-wrap">
+                                    <ul class="dasboard-menu-wrap" >
                                         
-                                        <li><a href="dashboard-review.html" class="user-profile-act"><i class="far fa-comments"></i> 자유게시판 </a></li>
+                                        <li><a href="dashboard-review.html" class="user-profile-act" id="boardTap"><i class="far fa-comments"></i> 자유게시판 </a></li>
                                     </ul>
                                 </div>
                                 <!--dasboard-menu end-->
@@ -54,7 +89,7 @@
                     <!-- section end-->
                     <!-- section-->
                     <section class="middle-padding">
-              <button type="button" class="btn btn-outline-primary" style=margin-left:1100px;>글 작성</button>
+              <a class="btn btn-primary" href="boardWrite" role="button" id="writeButton">글 작성</a>
                         <div class="container">
          
                             <!--dasboard-wrap-->
@@ -62,113 +97,62 @@
                                         
                                 <!-- dashboard-content--> 
                                 <div class="dashboard-content fl-wrap">
-                                    <div class="dashboard-list-box fl-wrap" id="box">
-                                     	
-                                       
+                              
+                                     <div id="table">
                                         <!--자유게시판 컬럼명  -->
-                                             <div class="dashboard-header fl-wrap">
-                                                   <table>
+                                       <div class="dashboard-header fl-wrap" id="boardTh">
+                                          <table border="1">
                                                <tr>
-                                         	<th width="100"><h3 style=text-align:center>글 번호</h3></th>
-                                         	<th width="430"><h3 style=text-align:center>글 제목</h3></th>
-                                         	<th width="230"><h3 style=text-align:center>작성자</h3></th>
-                                         	<th width="180"><h3 style=text-align:center>작성일</h3></th>
-                                         	<th width="80"><h3 style=text-align:center>조회수</h3></th>
+                                         	<th width="200"><h3 style=text-align:center>글 번호</h3></th>
+                                         	<th width="530"><h3 style=text-align:center>글 제목</h3></th>
+                                         	<th width="330"><h3 style=text-align:center>작성자</h3></th>
+                                         	<th width="280"><h3 style=text-align:center>작성일</h3></th>
+                                         	<th width="180"><h3 style=text-align:center>조회수</h3></th>
                                          </tr>
                                          </table>
                                               </div>
                                    		
                                  
-                                     
-                                        <div class="reviews-comments-wrap">
-                                            <!-- reviews-comments-item -->  
-                                            <div class="reviews-comments-item">
-                                               
+                                  
+                                        <div class="reviews-comments-wrap" id="boardTd">
+                                            
+                                          
+                                               <c:forEach items="${boardList}" var="board">
                                           
                                                 <!-- 자유게시판 목록출력 -->
-                                        	<table>
-                                      
+                                        	<table border="1">
+                                      			
                                                 	<tr>
-                                                	<td width="100">1</td>
-                                                    <td width=430 style=text-align:center>안녕하세요asdsaasad</td>
-                                             		<td width=230>asdassasadda</td>
-                                                    <td width=180><i class="far fa-calendar-check"></i>12 April 2018</td>
-                                                    <td width=80 style=text-align:center>0</td>
+                                                	<td width="200">${board.boardId} </td>
+                                                    <td width=530 style=text-align:center><a href="boardView?boardId=${board.boardId}">${board.boardTitle}</a></td>
+                                             		<td width=330>${board.memberNickname}</td>
+                                                    <td width=280><i class="far fa-calendar-check"></i>${board.boardRegisterDate}</td>
+                                                    <td width=180 style=text-align:center>${board.boardViews}</td>
                                                     </tr>
+                                             
                                                     </table>
-                                        
-                                            </div>
+                                         </c:forEach>     
+                          
                                             
-                                            <!--reviews-comments-item end--> 
-                                            <!-- reviews-comments-item -->  
-                           <!--                  <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="../images/avatar/1.jpg" alt=""> 
-                                                </div>
-                                               
-                                                <div class="reviews-comments-item-text">
-                                                  <div class="review-score-user">
-                                                        <span>4.7</span>
-                                                        <strong>Very Good</strong>
-                                                    </div>
-                                                    <h4><a href="#">Adam Koncy</a> on <a href="listing-single.html" class="reviews-comments-item-link">Premium Plaza Hotel </a></h4>
-                                                   
-                                                    <div class="clearfix"></div>
-                                                    <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. "</p>
-                                                    <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>03 December 2017</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
-                                                </div>
-                                            </div>
-                                            reviews-comments-item end  
-                                            reviews-comments-item  
-                                            <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="../images/avatar/1.jpg" alt=""> 
-                                                </div>
-                                                <div class="reviews-comments-item-text">
-                                                    <h4><a href="#">Liza Rose </a>on  <a href="listing-single.html" class="reviews-comments-item-link">Park Central </a></h4>
-                                                    <div class="review-score-user">
-                                                        <span>4.4</span>
-                                                        <strong>Good</strong>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <p>" Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>
-                                                    <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>12 April 2018</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
-                                                </div>
-                                            </div>
-                                            reviews-comments-item end 
-                                            reviews-comments-item  
-                                            <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="../images/avatar/1.jpg" alt=""> 
-                                                </div>
-                                                <div class="reviews-comments-item-text">
-                                                    <h4><a href="#">Adam Koncy</a> on  <a href="listing-single.html" class="reviews-comments-item-link">Grand Hero Palace </a></h4>
-                                                    <div class="review-score-user">
-                                                        <span>4.7</span>
-                                                        <strong>Very Good</strong>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. "</p>
-                                                    <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>03 December 2017</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
-                                                </div>
-                                            </div> -->
-                                            <!--reviews-comments-item end-->                                                                                                                    
+                                                                                                                                                          
                                         </div>
-                                      
-                                    </div>
+                              
+                     
                             
                                     <!-- pagination-->
                                     <div class="pagination" id="page">
-                                        <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                        <a href="#">1</a>
-                                        <a href="#" class="current-page">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                                        <a href="boardList?page=1" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                                        <a href="boardList?page=${prevMax}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+                                        <c:forEach items="${numList}" var="num">
+                                        <a href="boardList?page=${num}">${num}</a>
+                                       
+                                        </c:forEach>
+                                        <a href="boardList?page=${nextMin}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+                                        <a href="boardList?page=${lastPage}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
                                     </div>
                                 </div>
                                 <!-- dashboard-list-box end--> 
-                                            
+                                 </div>           
                             </div>
                             <!-- dasboard-wrap end-->
             
