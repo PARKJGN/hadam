@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -98,7 +97,25 @@ public class CommunityBoardController {
 		
 		// 자유게시판 5개씩 페이징 처리
 		int pagingSize = 5;
+		
+		// 5개의 블럭만 보여준다.
         int sectorSize = 5;
+        
+        // 현재 블럭이 몇번 블럭인지
+        int currentBlock = page % sectorSize == 0 ? page/sectorSize : page/sectorSize +1 ;
+        
+        // 총 페이지 수
+        int totalpage = list.size() % pagingSize == 0 ? list.size()/pagingSize : (list.size()/pagingSize)+1;
+        
+        // 현재 블럭의 시작 페이지수
+        int startpage = (currentBlock -1) * sectorSize +1;
+        
+        // 현재 블럭의 끝나는 페이지 수
+        int endpage = startpage + sectorSize - 1;
+        
+        // 현재 블럭의 끝나는 페이지 수가 전체 페이지수보다 클때 끝나는 페이지 수 전체 페이지 수로 바꾸기
+        if(endpage > totalpage) endpage = totalpage;
+        
         List<Integer> numList = new ArrayList<Integer>();
         List<BoardVO> pagingList = new ArrayList<BoardVO>();
         int length = (page*pagingSize > list.size()) ? list.size() : page*pagingSize ;
@@ -111,18 +128,17 @@ public class CommunityBoardController {
 
         }
         
-        int prevMax = ((page-1)/pagingSize)*pagingSize;
-        int nextMin = ((page-1)/pagingSize+1)*pagingSize+1;
         int lastPage = list.size()%pagingSize > 0 ?  list.size()/pagingSize + 1 : list.size()/pagingSize;
-        for(int i=prevMax+1;i<=prevMax+sectorSize;i++) {
+       
+        for(int i=startpage;i<=endpage;i++) {
            numList.add(i);
         }
         
         
         m.addAttribute("boardList",pagingList);
         m.addAttribute("numList", numList);
-        m.addAttribute("prevMax", prevMax < 1 ? 1 : prevMax);
-        m.addAttribute("nextMin", nextMin > lastPage ? lastPage : nextMin);
+        m.addAttribute("prevMax", page-1 < 1 ? 1 : page-1);
+        m.addAttribute("nextMin", page+1 > lastPage ? lastPage : page+1);
         m.addAttribute("lastPage", lastPage);
 	}
 	
