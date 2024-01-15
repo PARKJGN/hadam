@@ -16,4 +16,6 @@ public interface SignupDAO {
 
 	/* 닉네임 중복체크 */
 	String memberNicknameCheck(String nickname);
+	
+	String memberCheckSMS(String phone);
 }

@@ -15,9 +15,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
 
+
+
+
 <!-- header-->
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-<!--  header end -->	
+<!--  header end -->
 
 <!--  wrapper  -->
 <div id="wrapper">
@@ -189,14 +192,20 @@
 
 													</div>
 													<div class="col-sm-6">
-														<label>Phone<i class="far fa-phone"></i>
-														</label> <input type="number" id="member_phone"
-															placeholder="Only Number" value="" class="check_input" />
-														<input type="button" id="member_phone_check"
-															class="check_button" value="인증하기" />
-															<!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
+														<label>Phone<span class="phone_comment"></span> <i
+															class="far fa-phone"></i></label> <input type="number"
+															id="member_phone" placeholder="Only Number" value=""
+															class="check_input" /> <input type="button"
+															id="member_phone_check" class="check_button" value="인증하기" />
+														<!-- oninput="this.value = 
+														this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
+
+
+
+
 													</div>
 												</div>
+
 												<div class="row">
 													<div class="col-sm-6">
 														<label>비밀번호<i class="fal fa-key"></i><span
@@ -224,10 +233,16 @@
 													</div>
 
 													<div class="col-sm-6">
-														<label>생년월일<i class="fal fa-calendar"max></i></label> <input
-															type="number" id="member_birth"
+														<label>생년월일/성별<i class="fal fa-calendar"></i></label> <input
+															type="number" id="member_birth" maxlength='8'
 															placeholder="YYYYMMDD" />
-															<!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
+														<!-- oninput="this.value = 
+																this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
+														<div class="select">
+															<input type="radio" id="select" name="shop"><label
+																for="select">남자</label> <input type="radio" id="select2"
+																name="shop"><label for="select2">여자</label>
+														</div>
 													</div>
 												</div>
 
@@ -236,8 +251,12 @@
 												<span class="fw-separator"></span> <a href="#"
 													class="previous-form action-button back-form   color-bg"><i
 													class="fal fa-angle-left"></i> Back</a> <a href="#"
+													id="signup_basicform"
 													class="next-form back-form action-button btn no-shdow-btn color-bg">취향
 													설정<i class="fal fa-angle-right"></i>
+												</a> <a href="#" id="hide_signup_basicform"
+													class="action-button btn no-shdow-btn color-bg">취향 설정<i
+													class="fal fa-angle-right"></i>
 												</a>
 											</fieldset>
 
@@ -281,6 +300,7 @@
 												<span class="fw-separator"></span> <a href="#"
 													class="previous-form  back-form action-button    color-bg"><i
 													class="fal fa-angle-left"></i> Back</a> <a href="#"
+													id="signup_completion"
 													class="next-form  action-button btn color2-bg no-shdow-btn">눌러야
 													완료!<i class="fal fa-angle-right"></i>
 												</a>
@@ -299,9 +319,9 @@
 															페이지로 이동</a>
 													</div>
 												</div>
-												<span class="fw-separator"></span> <a href="#"
+												<!-- 												<span class="fw-separator"></span> <a href="#"
 													class="previous-form action-button  back-form   color-bg"><i
-													class="fal fa-angle-left"></i> Back</a>
+													class="fal fa-angle-left"></i> Back</a> -->
 											</fieldset>
 										</form>
 									</div>
@@ -322,5 +342,35 @@
 <!--footer -->
 <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
 <!--footer end -->
+
+<!-- 인증번호 받는 모달 -->
+<div class="main-register-wrap reg-modal">
+	<!-- main-register-wrap -->
+	<div class="reg-overlay2"></div>
+	<div class="main-register-holder">
+		<div class="main-register fl-wrap auth">
+			<!--tabs -->
+			<div id="tabs-container">
+				<div class="tab">
+					<!--tab -->
+					<div id="tab-1" class="tab-content">
+						<h3 id="check_phone_coment">인증번호를 입력해주세요</h3>
+						<div class="custom-form">
+							<span id="check_phone_count"></span> <input type="text"
+								id="input_check_phone"> <input type="button"
+								id="btn_check_phone" value="확인" /> <input type="button"
+								id="btn_cancel_check_phone" value="취소" />
+						</div>
+					</div>
+				</div>
+				<!--tabs end -->
+				<div class="log-separator fl-wrap">
+					<!-- <span>or</span> -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
 <!--=============== 개인 js  ===============-->
 <script type="text/javascript" src="/js/signup/signup.js"></script>

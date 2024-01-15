@@ -4,13 +4,16 @@
 <mapper namespace="com.example.domain.member.dao.SignupDAO">
 
 	
-	<select id="memberIdCheck" parameterType="com.example.domain.member.vo.MemberVO" resultType="String">
-		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId}
+	<select id="memberIdCheck" parameterType="String" resultType="String">
+		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{id}
 	</select>
 
-	<select id="memberNicknameCheck" parameterType="com.example.domain.member.vo.MemberVO" resultType="String">
-		SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NICKNAME = #{memberNickname}
+	<select id="memberNicknameCheck" parameterType="String" resultType="String">
+		SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NICKNAME = #{nickname}
 	</select>
 
+	<select id="memberCheckSMS" parameterType="String" resultType="String">
+		SELECT MEMBER_PHONENUMBER FROM MEMBER WHERE MEMBER_NICKNAME = #{phone}
+	</select>
 
 </mapper>
