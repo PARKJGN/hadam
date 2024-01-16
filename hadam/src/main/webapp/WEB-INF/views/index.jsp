@@ -6,10 +6,8 @@
             <!-- index css 임포트 end-정건일-->    	
             <!-- header-->
            	<jsp:include page="../layout/header.jsp"></jsp:include>
- 			    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
- 			
-            <!--  header end -->
-            <!--  wrapper  -->
+            <!-- 헤더 css 임포트 -정건일-->
+        	<link type="text/css" rel="stylesheet" href="/css/index.css">
             <div id="wrapper">
 				<!-- kakao map -->
 				<!-- <div>
