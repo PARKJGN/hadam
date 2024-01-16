@@ -279,7 +279,7 @@ $(() => {
 			// 클릭한 td옆에 다른 스케줄이 있으면 추가되지않게 or 끝칸에서 추가하기 눌렀을때
 			if (td.next().children().length == 1 || td.index()==49) return false
 
-			$('#exampleModal').modal("show");
+			$('#schedulemodal').modal("show");
 		}
 		// 리사이즈중에 클릭함수 막는 조건
 		else if (clickprevent == 1) {
@@ -309,7 +309,7 @@ $(() => {
 
 		e.preventDefault();
 
-		$('#exampleModal').modal("hide");
+		$('#schedulemodal').modal("hide");
 
 		td.append("<img style=width : 180px src=/images/schedule/bg/graybasic.png>")
 

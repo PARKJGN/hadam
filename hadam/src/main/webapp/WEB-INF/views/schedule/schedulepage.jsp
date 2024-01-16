@@ -95,12 +95,12 @@
 <!--footer -->
 <jsp:include page="../../layout/footer.jsp"></jsp:include>
 
-<div class="modal fade" id="exampleModal" tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" data-bs-backdrop="static" id="schedulemodal" tabindex="-1"
+	aria-labelledby="schedulemodalLabel" aria-hidden="true" data-bs-keyboard="false">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content scheduleaddform">
 			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="exampleModalLabel">장소검색</h1>
+				<h1 class="modal-title fs-5" id="schedulemodalLabel">장소검색</h1>
 				<select class="location">
 					<option>강남구</option>
 					<option>강동구</option>
@@ -127,8 +127,8 @@
 					<option>종로구</option>
 					<option>중구</option>
 					<option>중랑구</option>
-				</select> <select class=cate></select> <select class=eat></select>
-				<input class = "searchinput" type='text'/>
+				</select> <select class=cate></select> <select class=middlecate></select> <input
+					class="searchinput" type='text' placeholder="장소명"/>
 				<button class="searchbtn" type="button">
 					<i class="fas fa-search fa-lg" style="color: #0d6efd;"></i>
 				</button>
@@ -137,32 +137,37 @@
 
 			</div>
 			<div class="modal-body">
-				<div style="width: 50%; height: 100%; float: left" class="left-list"></div>
-				<div style="width: 50%; height: 100%; float: right"
-					class="right-list"></div>
+				<div style="width: 100%; height: 90%;" class="locationlist">
+					<span>검색을 시작하세요</span>
 
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary scheduleadd">Save
-					changes</button>
+				</div>
+				<div class="modal-footer">
+					<div class="page_wrap">
+						<div class="page_nation">
+							<a class="arrow pprev" href="#"></a> <a class="arrow prev"
+								href="#"></a> <a href="#" class="active">1</a> <a href="#">2</a>
+							<a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">6</a>
+							<a href="#">7</a> <a href="#">8</a> <a href="#">9</a> <a href="#">10</a>
+							<a class="arrow next" href="#"></a> <a class="arrow nnext"
+								href="#"></a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
 
-<!--footer end -->
-<script type="text/javascript" src="/js/schedule/schedulemodal.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script type="text/javascript" src="/js/schedule/Tmap.js"></script>
-<script type="text/javascript" src="/js/schedule/schedule-timeline.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-	crossorigin="anonymous"></script>
-<script
-	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=bTzxg9y1S91QlJO5guOD39akE04QLCba8oakDcja"></script>
+	<!--footer end -->
+	<script type="text/javascript" src="/js/schedule/schedulemodal.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script type="text/javascript" src="/js/schedule/Tmap.js"></script>
+	<script type="text/javascript" src="/js/schedule/schedule-timeline.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=bTzxg9y1S91QlJO5guOD39akE04QLCba8oakDcja"></script>
