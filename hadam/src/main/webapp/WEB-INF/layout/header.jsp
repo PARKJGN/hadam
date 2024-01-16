@@ -19,7 +19,7 @@
         <!-- 헤더 css 임포트 -정건일-->
         <link type="text/css" rel="stylesheet" href="/css/layout/header.css">
         <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
-		<script src="https://kit.fontawesome.com/b2960bc7d5.js" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/b2960bc7d5.js" crossorigin="anonymous"></script>	
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="/images/favicon.ico">
     </head>
@@ -32,6 +32,7 @@
             </div>
         </div>
         <!--loader end-->
+        
         <!-- Main  -->
         <div id="main">
         
@@ -41,7 +42,7 @@
                     <div class="container">
                         <div class="logo-holder">
                         <!-- 로고 이미지 변경했습니다 01.11 -정건일 -->
-                            <a href="index.html"><img src="/images/main_logo.png" alt=""></a>
+                            <a href="/index"><img src="/images/main_logo.png" alt=""></a>
                         <!-- 로고 이미지 변경했습니다 01.11 -정건일 -->
                         </div>
                         <a href="dashboard-add-listing.html" class="add-hotel">Add Your Hotel <span><i class="far fa-plus"></i></span></a>                     
@@ -57,10 +58,10 @@
                         <!--1.12 알림표시 자리입니다. click_evt.js에 #alarmLink로 연결되어있습니다. -정건일-->
                         <div class="alarm-link" id="alarmLink">
 	                        <i class="fal fa-bell "></i>
-	                        <span class="wl_counter">3<!-- 알림갯수로 들어오는 데이터 --></span>
+	                        <span class="wl_counter">3<!-- 알림갯수로 들어오는 데이터 그냥 빨간불빛으로 전환할 예정입니다.--></span>
                                         <!--second level -->
                                         <ul class="alram-user-menu">
-                                            <li><a href="index.html">새로운 메세지가 도착했습니다.</a></li>
+                                            <li><a id="sseOutput" href="index.html">새로운 메세지가 도착했습니다.</a></li>
                                             <li><a href="index2.html">1:1 문의 답변이 완료되었습니다.</a></li>
                                             <li><a href="index3.html">스케줄에 참가신청이 들어왔습니다.</a></li>
                                             <li><a href="index4.html">텐서플로우</a></li>
@@ -121,7 +122,7 @@
                                         second level end -->
                                     </li>
                                     <li>
-                                        <a href="#">스케줄만들기 <i class="fas "></i></a>
+                                        <a href="schedulepage">스케줄만들기 <i class="fas "></i></a>
 <!--                                         second level
                                         <ul>
                                             <li><a href="listing.html">Column map</a></li>
@@ -149,13 +150,13 @@
                                         <a href="#">커뮤니티 <i class="fas fa-caret-down"></i></a>
                                         <!--second level -->
                                         <ul>
-                                            <li><a href="about.html">자유게시판</a></li>
-                                            <li><a href="contacts.html">스케줄공유 게시판</a></li>
+                                            <li><a href="/community/boardList">자유게시판</a></li>
+                                            <li><a href="scheduleShareList">스케줄공유 게시판</a></li>
                                         </ul>
                                         <!--second level end-->
                                     </li>
                                     <li>
-                                        <a href="#">장소찾기 <i class="fas "></i></a>
+                                        <a href="/category/category">장소찾기 <i class="fas "></i></a>
                                     </li>
                                 </ul>
                             </nav>

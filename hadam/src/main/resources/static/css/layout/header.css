@@ -25,6 +25,11 @@
 	border-left:1px solid rgba(0,0,0,0.21);
 	box-sizing:border-box;
 }
+
+.alarm-link i{
+	  margin-top: 12px;
+	
+}
 .alarm-link:hover i {
 	font-weight:800;
 }
