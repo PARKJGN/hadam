@@ -6,9 +6,6 @@
            	<jsp:include page="../layout/header.jsp"></jsp:include>
             <!-- 헤더 css 임포트 -정건일-->
         	<link type="text/css" rel="stylesheet" href="/css/index.css">
-            <!-- 헤더 css 임포트 end-정건일-->    
-            <!--  header end -->
-            <!--  wrapper  -->
             <div id="wrapper">
            
                 <!-- content-->

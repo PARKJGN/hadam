@@ -3,13 +3,17 @@ package com.example.domain.board.service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.domain.board.vo.BoardVO;
+import com.example.domain.comment.vo.CommentVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
+import com.example.domain.report.vo.BoardAndCommentReportVO;
 
 public interface CommunityBoardService {
 	
-	// 파일과 같이 insert
-	void saveBoard(BoardVO vo, MemberUploadImagesVO fvo);
+	// 첨부파일과 게시글 정보 저장
+	void saveBoard(BoardVO vo,  MemberUploadImagesVO fvo);
 	
 	// 자유게시판 목록 출력
 	List<BoardVO> getBoardList();
@@ -20,12 +24,38 @@ public interface CommunityBoardService {
 	// file저장할때 담을 boardId
 	public int seletId();
 	
+	// boardUpdate 페이지 boardId에 해당하는 정보 가져오기
+	BoardVO findByboardId(int boardId);
 	
-	// 게시글 수정
+	// 조회수 처리
+	void boardHits(int boardId);
+	
+	// board와 파일 둘다 수정
+	void updateBoardAndFile(BoardVO vo, MemberUploadImagesVO fvo);
+	
+	// 파일이 업로드 되지않는경우 게시글 수정
 	void updateBoard(BoardVO vo);
-
 	
+	// 게시글, 파일 삭제
+	void deleteBoard(int boardId);
 
+	// 댓글 저장
+	void commentSave(CommentVO vo);
+	
+	// 해당 게시글에 작성한 댓글 리스트
+	List<CommentVO> commentList(Integer boardId);
+	
+	// 신고 정보 저장
+	void commentReportSave(BoardAndCommentReportVO vo);
+	
+	// 해당게시글의 댓글 id 가져오기
+	CommentVO selectCommentId(int boardId);
+	
+	// 해당 게시글에 작성한 댓글 신고 리스트 가져오기
+	List<BoardAndCommentReportVO> reportList(Integer boardId);
+	
+	// 게시판 삭제시 댓글도 삭제
+	void deleteComment(int boardId);
 	
 	
 }

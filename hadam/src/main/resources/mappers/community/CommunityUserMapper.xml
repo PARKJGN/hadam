@@ -6,10 +6,9 @@
 	
 	<!-- memberIndex로 정보 가져오기 -->
 	<select id="getMemberByMemberIndex" parameterType="MemberVO" resultType="MemberVO">
-		SELECT MEMBER_INDEX, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NICKNAME
+		SELECT *
 		FROM member
 		WHERE MEMBER_INDEX= 1
-		
-	
+
 	</select>
 </mapper>

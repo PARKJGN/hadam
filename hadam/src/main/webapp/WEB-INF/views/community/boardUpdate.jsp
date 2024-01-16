@@ -3,53 +3,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   
    <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-            <!--  header end -->
-            <!--  wrapper  -->
-            <head>
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-            
-            <style>
-            	#box {
-            		width:1000px;
-      				position:relative;
-      				right:-200px;
+            <link type="text/css" rel="stylesheet" href="/css/board/boardUpdate.css">
+       
 
-            	}
-            	
-            	#updateBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-            	}
-            	
-            	#backBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-            	}
-            </style>
-            
-            </head>
             <div id="wrapper">
-                <!-- content-->
-                <div class="content">
-                    <!-- map-view-wrap --> 
+                <div class="content">  
                     <div class="map-view-wrap">
-                        <div class="container">
-                           
+                        <div class="container">                           
                         </div>
-                    </div>
-                    <!--map-view-wrap end --> 
-                    <!-- Map -->
-                  
-                    <!-- Map end --> 
+                    </div>               
                     <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
+                        	<!-- 게시글 수정 페이지 -->
                             <div class="breadcrumbs fl-wrap"><a href="boardList">커뮤니티</a><a href="boardList">자유게시판</a><span>게시글 수정</span></div>
                         </div>
                     </div>
@@ -64,53 +31,58 @@
                                         </div>
                                         <div id="contact-form">
                                             <div id="message"></div>
-                                            <form  class="custom-form" action="updateBoard" name="contactform" id="contactform" method="post">
+                                            <form  class="custom-form" action="updateBoard" name="contactform" id="contactform" method="post" enctype="multipart/form-data">
                                                 <fieldset>
-                                                	                                              	
-                                                	<input name="boardId" type="hidden" value="${board.boardId}"/>
+                                                	<!-- 글 번호 -->                                              				
+                                                	<input name="boardId" type="hidden" value="${board.boardId}" readonly/>
+                                                	<input type="hidden" name="memberIndex" value="${board.memberIndex}" />
                                                 	
                                                 	<label for="validationCustom01" class="form-label">제목</label>
-                                                    <input type="text" name="boardTitle" id="BOARD_TITLE" placeholder="Your Title *" value="${board.boardTitle }" />
+                                                    <input type="text" name="boardTitle" id="BOARD_TITLE" placeholder="Your Title *" value="${board.boardTitle }" /> <!-- 글 제목 -->
                                                 	
                                                 	<label for="validationCustom02" class="form-label">작성자</label>                                               
-                                                    <input type="text" name="memberNickname" id="name" placeholder="Your Name *" value="${board.memberNickname }" disabled/>
+                                                    <input type="text" name="memberNickname" id="name" placeholder="Your Name *" value="${board.memberNickname }" disabled/><!-- 회원 별명 -->
                                                     <div class="clearfix"></div>
                                                     
                                                     <label for="validationTextarea" class="form-label">글 내용</label>
-                                                    <textarea name="boardContent"  id="BOARD_CONTENT" cols="40" rows="3" placeholder="Your Message:" >${board.boardContent }</textarea>
+                                                    <textarea name="boardContent"  id="BOARD_CONTENT" cols="40" rows="3" placeholder="Your Message:" >${board.boardContent }</textarea><!-- 게시판 내용 -->
                                						
                               						 <div class="single-slider fl-wrap"  >
-                                                        <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}"></div>
+                                                        <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}"></div><!-- 파일첨부한 경로 및 이미지 이름-->
                                                      
                                                     </div>
                                                                         						
-                                                	<input type="file" class="form-control" aria-label="file example" >
+                                                	<div class="filebox">
+													    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+													    <label for="file">파일찾기</label> 
+													    <input type="file" id="file" name="file">
+													</div>
                                                    
                                               
                                                 </fieldset>
-                                                <!-- <button class="btn float-btn color2-bg" style="margin-top:15px;" id="submit">Send Message<i class="fal fa-angle-right"></i></button> -->
+                  
                                             	 <div class="col-12">
+                                            	 	<!-- 클릭 시 수정되며 지금페이지로 redirect  -->
     												<button class="btn btn-primary" type="submit" id="updateBtn">수정</button>
+    												<!-- 이전 페이지인 상세 페이지로 이동 -->
     												 <a class="btn btn-primary" href="boardView?boardId=${board.boardId}" role="button" id="backBtn">이전</a>
  												 </div>
  												
  												 
                                             </form>
                                         </div>
-                                        <!-- contact form  end--> 
+                                  
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="section-decor"></div>
                     </section>
-                    <!-- section end -->
                 </div>
-                <!-- content end-->
             </div>
-            <!--wrapper end -->
-            <!--footer -->
              <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
              
+             <script  src="https://code.jquery.com/jquery-3.7.1.js"	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+             <script type="text/javascript" src="/js/board/boardUpdate.js"></script>
              <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
              <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>

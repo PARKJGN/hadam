@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+.reviews-comments-item {
+            			padding:0 0 30px 0px;
+            		}
+            		#page {
+            			position:relative;
+            			right:-520px;
+            		}
+            		#box {
+            			
+            			width:1400px;
+            			position:relative;
+            			left:-300px;
+            			height:100px;
+            		}
+            			
+            		#boardTap {
+            			position:relative;
+            			left:-320px;
+            		}
+            		#boardTh {
+            			height:50px;
+            			border-radius:10px;
+            		}
+            		
+            		#boardTd td{
+            			position:relative;
+            			top:-20px;
+  						line-height:0.1px;
+            		}
+            		
+            		#writeButton {
+            			text-align : center;
+	 					padding : 0 0;
+            			position:relative;
+            			font-size:13px;
+            			right:-575px;
+            			width:60px;
+            			height:20px;
+            			margin: 0 auto;
+            		}
+            		
+            		#tdBoardId {
+            			color:#506EA5;
+            		}
+            		
+            		#tableTh th {
+            			opacity:0.8;
+            			font-size:14px;
+            		}
+            		
+            		#table {
+            			width: 1300px;
+            			position:relative;
+            			left:-300px;
+            		
+            		}
+            		
+            	
+            		#tableList td {
+						opacity:0.8;
+						font-size:13px;
+					}
+          
