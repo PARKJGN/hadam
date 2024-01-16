@@ -1,5 +1,12 @@
 @charset "EUC-KR";
 
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .quantity-item-label {
     display: flex;
     justify-content: space-between; /* 일정한 간격으로 배치하는 스타일 */
@@ -7,10 +14,49 @@
 }
 
 .quantity-item-label label {
-    margin: 0 10px; /* 좌우 간격을 조절하세요 */
+	 position: relative; /* 또는 position: absolute; */
+    display: inline-block;
+    margin-right: 25px; /* 원하는 간격으로 조정하세요 */
+    cursor: pointer;
+}
+.quantity-item-label label i.blink {
+  animation: blink 0.4s;
 }
 
+.quantity-item .cours-number{
+		float:left;
+	width:100%;
+	text-align:left;
+	margin-bottom:3px;
+	color: #878C9F;
+	font-size:12px;
+    font-weight: 600;
+	text-transform:uppercase;
+  position: relative; /* 또는 position: absolute; */
+    left: 0px; /* 좌우 간격을 조절하세요 */
+    }
+#headerDiv label {
+	 text-align: center; 	    	
+} 
+#headerDiv label i{
+	 text-align: center; 
+	 margin-top: 13px; /* 아이콘을 아래로 20px 내리기 */
+	    cursor: pointer;
+} 
 
+.icon-number {
+  display: none; /* 일련번호 숨김 */
+}
+.quantity-item .cours-name{
+	  position: relative; /* 또는 position: absolute; */
+	    white-space: nowrap;  /* 줄 바꿈 방지 */
+	
+	font-size:11px;
+	    left: 1px; /* 좌우 간격을 조절하세요 */
+	font-weight: bold;
+	cursor: pointer;
+    }
+    
 .qty-dropdown-content .quantity-item .quantity{
 	float:right;
 }
@@ -24,6 +70,7 @@
  	width: 65px;
 	height: 42px;
 	position:relative;
+	left: 10px;
 }
 .quantity1 input {
 	width: 100%;
@@ -76,3 +123,126 @@
 	height: 50%;
 	border-bottom: 1px solid #eee;
 }
+
+
+
+
+/*코스추가 박스 css*/
+/* .qty-dropdown-header1:before{
+	font-family: Font Awesome\ 5 Pro;
+	content: "\f0d7";
+	position:absolute;
+	color:#fff;
+	bottom:1px;
+	font-size:13px;
+	right:-26px;
+	font-weight:800;
+	transition: all .2s ease-in-out;
+	z-index:20;
+} */
+/* .qty-dropdown-header1{
+	bottom:16px;
+	right:20px;
+}
+.qty-dropdown-header1{
+	bottom:-0px;
+} */
+.qty-dropdown-header1 {
+	font-size:12px;
+	color:#666;
+	text-align:left;
+	font-weight:300;
+	padding-left:15px;
+	height:50px;
+	line-height:50px;
+	cursor:pointer;
+	position:relative;
+}
+.qty-dropdown-header1 i {
+	padding-right:10px;
+}
+
+.container333 {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.icon-container {
+	position:relative;
+  margin-left: 10px; /* 아이콘과 입력란 사이의 간격 조절 */
+  left:-7px;
+      cursor: pointer;
+  
+}
+
+/*메인 배너 스타일 css 모음 */
+/* .light-carousel .slick-slide-item {
+	padding:10px 20px;
+	-webkit-transform: translate3d(0,0,0);
+}
+.listing-item.has_one_column , .slick-slide-item .listing-item  {
+	width:100%;
+}
+.slick-slide-item .listing-item  {
+	padding:0 10px;
+	margin-bottom:0;
+}
+.fw-carousel .slick-slide-item {
+	width:auto;
+	height:500px !important;
+	float:left;
+	cursor: w-resize;
+}
+.fw-carousel .slick-slide-item img {
+	width:auto  ;
+	height:100%   !important;
+}
+.list-single-carousel-wrap    .slick-slide-item .box-item {
+	height:100%;
+	z-index:20;
+}
+.list-single-carousel-wrap    .slick-slide-item .box-item:before {
+	display:none;
+}
+.list-single-carousel-wrap    .slick-slide-item    .box-item a.gal-link {
+	top:-100px;
+	left:inherit;
+	right:50px;
+}
+.list-single-carousel-wrap    .slick-slide-item   .box-item:hover a.gal-link {
+	top:50px;
+}
+.single-slider-wrapper .slider-nav .slick-slide-item  {
+	cursor:pointer;
+	opacity:0.7;
+	-webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out
+}
+.single-slider-wrapper .slider-nav  .slick-current .slick-slide-item , .single-slider-wrapper .slider-nav  .slick-slide-item:hover {
+	opacity:1; 
+}
+.list-single-carousel-wrap , .fw-carousel .slick-slide-item {
+	height:400px !important;
+}
+.light-carousel .slick-slide-item {
+	padding:10px 0;
+}
+.light-carousel .slick-slide-item  .hotel-card {
+	padding:0 10px;
+}
+.list-single-carousel-wrap , .fw-carousel .slick-slide-item {
+	height:300px !important;
+} */
+/*메인 배너 스타일 css 모음 */
+/*지금 핫한 장소 높이 설정*/
+.slick-track {
+    height: 500px; /* 원하는 세로 크기로 조절 */
+}
+
+
+.main-search-input-container {
+    display: flex;
+    flex-wrap: wrap; /* 자식 요소들이 넘치면 다음 줄로 이동하도록 설정 */
+    justify-content: space-between; /* 요소들을 컨테이너 양 끝에 배치 */
+}
+

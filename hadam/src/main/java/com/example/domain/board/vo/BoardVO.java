@@ -33,9 +33,15 @@ public class BoardVO {
 	// 자유게시판 상세페이지에 이미지 띄울라고 추가
 	private String memberUploadImagePath;
 	
+	
+	private String memberUploadImageId;
+	
 	// 자유게시판 상세페이지에 이미지 띄울라고 추가
 	private String memberUploadImageName;
 	
 	// 자유게시판 상세페이지에서 회원아이디랑 게시판 아이디랑 같은지 확인할라고 추가함
 	private String memberId;
+	
+	// 자유게시판 수정페이지에서 파일첨부 수정 하려고 넣음
+	private String memberUploadImageOriginalname;
 }

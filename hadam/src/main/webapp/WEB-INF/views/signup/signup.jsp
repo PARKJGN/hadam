@@ -15,9 +15,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
 
+
+
+
 <!-- header-->
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-<!--  header end -->	
+<!--  header end -->
 
 <!--  wrapper  -->
 <div id="wrapper">
@@ -189,14 +192,20 @@
 
 													</div>
 													<div class="col-sm-6">
-														<label>Phone<i class="far fa-phone"></i>
-														</label> <input type="number" id="member_phone"
-															placeholder="Only Number" value="" class="check_input" />
-														<input type="button" id="member_phone_check"
-															class="check_button" value="인증하기" />
-															<!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
+														<label>전화번호<span class="phone_comment"></span> <i
+															class="far fa-phone"></i></label> <input type="number"
+															id="member_phone" placeholder="Only Number" value=""
+															class="check_input" /> <input type="button"
+															id="member_phone_check" class="check_button" value="인증하기" />
+														<!-- oninput="this.value = 
+														this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
+
+
+
+
 													</div>
 												</div>
+
 												<div class="row">
 													<div class="col-sm-6">
 														<label>비밀번호<i class="fal fa-key"></i><span
@@ -224,10 +233,17 @@
 													</div>
 
 													<div class="col-sm-6">
-														<label>생년월일<i class="fal fa-calendar"max></i></label> <input
-															type="number" id="member_birth"
+														<label>생년월일/성별<i class="fal fa-calendar"></i></label> <input
+															type="number" id="member_birth" maxlength='8'
 															placeholder="YYYYMMDD" />
-															<!-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
+														<!-- oninput="this.value = 
+																this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
+														<div class="select">
+															<input type="radio" name="member_sex" value="남자" id="select1">
+															<label for="select1">남자</label> 
+															<input type="radio" name="member_sex" value="여자" id="select2">
+															<label for="select2">여자</label>
+														</div>
 													</div>
 												</div>
 
@@ -235,9 +251,13 @@
 												<div class="filter-tags"></div>
 												<span class="fw-separator"></span> <a href="#"
 													class="previous-form action-button back-form   color-bg"><i
-													class="fal fa-angle-left"></i> Back</a> <a href="#"
+													class="fal fa-angle-left"></i> 뒤로</a> <a href="#"
+													id="signup_basicform"
 													class="next-form back-form action-button btn no-shdow-btn color-bg">취향
 													설정<i class="fal fa-angle-right"></i>
+												</a> <a href="#" id="hide_signup_basicform"
+													class="action-button btn no-shdow-btn color-bg">취향 설정<i
+													class="fal fa-angle-right"></i>
 												</a>
 											</fieldset>
 
@@ -250,40 +270,125 @@
 													<h3>당신의 취향을 선택해주세요</h3>
 												</div>
 												<div class="row">
-													<div class="col-sm-6 hadam_category">
-														<label>Cardholder's Name<i class="far fa-user"></i></label>
-														<input type="text" placeholder="" value="Adam Kowalsky" />
+													<div class="col-sm-6 hadam_category eating">
+														<label>먹기</label>
+														<input type="checkbox" class="middle" name="eating" value="한식" />
+														<input type="checkbox" class="middle" name="eating" value="중식" />
+														<input type="checkbox" class="middle" name="eating" value="양식" />
+														<input type="checkbox" class="middle" name="eating" value="일식" />
+														<input type="checkbox" class="middle" name="eating" value="패스스트푸드" />														
+														<input type="checkbox" class="middle" name="eating" value="세계음식" />	
 													</div>
-													<div class="col-sm-6">
-														<label>Card Number <i
-															class="fal fa-credit-card-front"></i></label> <input type="text"
-															placeholder="xxxx-xxxx-xxxx-xxxx" value="" />
+													<div class="col-sm-6 hadam_category eating">
+														<input type="button" class="small" name="eating_korea" value="족발,보쌈" />
+														<input type="button" class="small" name="eating_korea" value="칼국수,만두" />
+														<input type="button" class="small" name="eating_korea" value="국밥" />
+														<input type="button" class="small" name="eating_korea" value="육류,고기요리"/>
+														<input type="button" class="small" name="eating_korea" value="낙지요리"/>
+														<input type="button" class="small" name="eating_korea" value="닭요리"/>
+														<input type="button" class="small" name="eating_korea" value="국수"/>
+														<input type="button" class="small" name="eating_korea" value="두부요리"/>
+														<input type="button" class="small" name="eating_korea" value="한정식"/>
+														<input type="button" class="small" name="eating_korea" value="곱창,막창,양"/>
+														<input type="button" class="small" name="eating_korea" value="복어요리"/>
+														<input type="button" class="small" name="eating_korea" value="생선회"/>
+														<input type="button" class="small" name="eating_korea" value="찌개,전골"/>
+														<input type="button" class="small" name="eating_korea" value="전,빈대떡"/>
+														<input type="button" class="small" name="eating_korea" value="해물,생선요리"/>
 													</div>
+													<div class="col-sm-6 hadam_category eating">
+														<input type="button" class="small" name="eating_china" value="중식당"/>
+														<input type="button" class="small" name="eating_china" value="양꼬치"/>
+														<input type="button" class="small" name="eating_china" value="마라탕"/>
+														<input type="button" class="small" name="eating_china" value="딤섬"/>
+													</div>
+													<div class="col-sm-6 hadam_category eating">
+														<input type="button" class="small" name="eating_western" value="스파게티,파스타전문"/>
+														<input type="button" class="small" name="eating_western" value="이탈리아음식"/>
+														<input type="button" class="small" name="eating_western" value="스테이크,립"/>
+														<input type="button" class="small" name="eating_western" value="프랑스음식"/>
+														<input type="button" class="small" name="eating_western" value="샌드위치"/>
+													</div>
+													<div class="col-sm-6 hadam_category eating">
+														<input type="button" class="small" name="eating_japanese" value="일식당"/>
+														<input type="button" class="small" name="eating_japanese" value="돈가스"/>
+														<input type="button" class="small" name="eating_japanese" value="이자카야"/>
+														<input type="button" class="small" name="eating_japanese" value="초밥,롤"/>
+														<input type="button" class="small" name="eating_japanese" value="우동,소바"/>
+														<input type="button" class="small" name="eating_japanese" value="일본식라면"/>
+														<input type="button" class="small" name="eating_japanese" value="카레"/>
+													</div>
+													<div class="col-sm-6 hadam_category eating">
+														<input type="button" class="small" name="eating_fastfood" value="햄버거"/>
+														<input type="button" class="small" name="eating_fastfood" value="피자"/>
+														<input type="button" class="small" name="eating_fastfood" value="치킨"/>
+													</div>
+													<div class="col-sm-6 hadam_category eating">
+														<input type="button" class="small" name="eating_worldfood" value="베트남음식"/>
+														<input type="button" class="small" name="eating_worldfood" value="아시아음식"/>
+														<input type="button" class="small" name="eating_worldfood" value="태국음식"/>
+														<input type="button" class="small" name="eating_worldfood" value="인도음식"/>
+														<input type="button" class="small" name="eating_worldfood" value="멕시코,남미음식"/>
+													</div>
+													<div class="col-sm-6 hadam_category drinking">
+														<label>마시기</label>
+														<input type="button" class="middle" name="drinking" value="카페" />
+														<input type="button" class="middle" name="drinking" value="주류" />
+													</div>
+													<div class="col-sm-6 hadam_category eating ">														<input type="button" class="small" name="eating" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+														<input type="button" class="small" name="drinking" value=""/>
+													</div>
+													<div class="col-sm-6 hadam_category playing">
+														<label>놀기</label>
+														<input type="button" class="middle" name="playing" value="이색" />
+														<input type="button" class="middle" name="playing" value="실내활동" />
+														<input type="button" class="middle" name="playing" value="실외활동" />
+													</div>
+													
+													<div class="col-sm-6 hadam_category watching">
+														<label>보기</label>
+														<input type="button" class="middle" name="watching" value="영화" />
+														<input type="button" class="middle" name="watching" value="전시" />
+														<input type="button" class="middle" name="watching" value="공연" />
+														<input type="button" class="middle" name="watching" value="책방" />
+													</div>
+													
+													<div class="col-sm-6 hadam_category walking">
+														<label>걷기</label>
+														<input type="button" class="middle" name="walking" value="시장" />
+														<input type="button" class="middle" name="walking" value="공원" />
+														<input type="button" class="middle" name="walking" value="산책" />
+														<input type="button" class="middle" name="walking" value="명소" />
+													</div>
+													
 												</div>
-												<div class="row">
-													<div class="col-sm-3">
-														<label>Expiry Month<i class="fal fa-calendar"></i></label>
-														<input type="text" placeholder="MM" value="" />
-													</div>
-													<div class="col-sm-3">
-														<label>Expiry Year<i class="fal fa-calendar"></i></label>
-														<input type="text" placeholder="YY" value="" />
-													</div>
-													<div class="col-sm-2">
-														<label>CVV / CVC *<i class="fal fa-credit-card"></i></label>
-														<input type="password" placeholder="***" value="" />
-													</div>
-													<div class="col-sm-4">
-														<p style="padding-top: 20px;">*Three digits number on
-															the back of your card</p>
-													</div>
-												</div>
+
 												<span class="fw-separator"></span> <a href="#"
 													class="previous-form  back-form action-button    color-bg"><i
-													class="fal fa-angle-left"></i> Back</a> <a href="#"
+													class="fal fa-angle-left"></i> Back</a> 
+													
+													<a href="#" id="hide_signup_completion"
+													class="action-button btn color2-bg no-shdow-btn">눌러야
+													완료!<i class="fal fa-angle-right"></i></a>
+													
+													<a href="#"
+													id="signup_completion"
 													class="next-form  action-button btn color2-bg no-shdow-btn">눌러야
-													완료!<i class="fal fa-angle-right"></i>
-												</a>
+													완료!<i class="fal fa-angle-right"></i></a>
+													
 											</fieldset>
 											<fieldset class="fl-wrap book_mdf">
 												<div class="list-single-main-item-title fl-wrap">
@@ -299,9 +404,9 @@
 															페이지로 이동</a>
 													</div>
 												</div>
-												<span class="fw-separator"></span> <a href="#"
+												<!-- 												<span class="fw-separator"></span> <a href="#"
 													class="previous-form action-button  back-form   color-bg"><i
-													class="fal fa-angle-left"></i> Back</a>
+													class="fal fa-angle-left"></i> Back</a> -->
 											</fieldset>
 										</form>
 									</div>
@@ -322,5 +427,35 @@
 <!--footer -->
 <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
 <!--footer end -->
+
+<!-- 인증번호 받는 모달 -->
+<div class="main-register-wrap reg-modal">
+	<!-- main-register-wrap -->
+	<div class="reg-overlay2"></div>
+	<div class="main-register-holder">
+		<div class="main-register fl-wrap auth">
+			<!--tabs -->
+			<div id="tabs-container">
+				<div class="tab">
+					<!--tab -->
+					<div id="tab-1" class="tab-content">
+						<h3 id="check_phone_coment">인증번호를 입력해주세요</h3>
+						<div class="custom-form">
+							<span id="check_phone_count"></span> <input type="text"
+								id="input_check_phone"> <input type="button"
+								id="btn_check_phone" value="확인" /> <input type="button"
+								id="btn_cancel_check_phone" value="취소" />
+						</div>
+					</div>
+				</div>
+				<!--tabs end -->
+				<div class="log-separator fl-wrap">
+					<!-- <span>or</span> -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
 <!--=============== 개인 js  ===============-->
 <script type="text/javascript" src="/js/signup/signup.js"></script>

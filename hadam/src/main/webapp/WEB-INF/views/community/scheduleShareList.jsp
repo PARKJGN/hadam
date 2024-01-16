@@ -5,103 +5,8 @@
      <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
      	<head>
      	<link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
-            <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-     		<style>
-     		    #listBox {
-     				 display: flex;
-                     justify-content: space-between;
-                     background-color: white;
-            		 border-radius: 10px;
-            		 height:320px;
-            		 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
-            		 position:relative;
-            		 right:-200px;
-     			}
-     			
-     			#listItem {
-     				margin-right:30px;
-     				width: 280px;
-     				position:relative;
-     				bottom:-40px;
-     				right:-30px;
-     			}
-     			
-     			#box {
-     				width:1600px;
-     				position:relative;
-     				left:-300px;
-     			}
-     			
-     			#information {
-     				position: relative;
-     				bottom:-130px;
-     				width:300px;
-     			}
-     			
-     			#shareBtn {
-     				width:120px;
-            		height:25px;
-            		font-size:14px;     
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				bottom:-10px;
-	 				right:-930px;
-	 				
-     			}
-     			
-     			.pagination {
-     				position:relative;
-     				right:-550px;
-     			}
-     			
-				.arrowBox {
-				  display: flex;
-				  justify-content: center;
-				  align-items: center;
-				  height: 50vh;
-				  margin: 0;
-				}
-
-				.arrow {
-				  width: 0;
-				  height: 0;
-				  border-top: 10px solid transparent;
-				  border-bottom: 10px solid transparent;
-				  border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
-				  position:relative;
-				  right:-25px;
-				  top:-50px;
-				}
-
-				.timeTaken {
-					position:relative; 
-					bottom:-200px; 
-					white-space: nowrap;
-					
-				}
-				
-				.whatTime {
-					position:relative;
-					top:-30px;
-				}
-				
-				#scheduleTitle {
-					position:relative;
-					bottom:-20px;
-					right:-200px;
-				}
-				
-				#timeBox h3{
-					font-size:13px;
-					white-space: nowrap;
-				}
-				
-				#moveTab {
-				 position:relative;
-				 left:-90px;
-				}
-     		</style>
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+     	<link type="text/css" rel="stylesheet" href="/css/board/scheduleShareList.css">
      	</head>
             <!--  header end -->
             <!--  wrapper  -->
@@ -354,6 +259,7 @@
                                                 <a href="#">4</a>
                                                 <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
                                         </div>
+                                        
                                         <!-- list-main-wrap end-->
                                     </div>
                                     <!--col-list-wrap end -->

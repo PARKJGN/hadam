@@ -1,0 +1,65 @@
+@charset "UTF-8";
+#box{
+margin-left:300px;
+}
+            	
+#updateBtn {
+  		width:60px;
+  		height:25px;
+  		font-size:14px;            
+  		text-align : center;
+		padding : 0 0;
+		position:relative;
+		top:-4px;
+		right:-300px;
+}
+      	
+ #backBtn {
+      	width:60px;
+      	height:25px;
+      	font-size:14px;            
+      	text-align : center;
+		padding : 0 0;
+		position:relative;
+		right:-365px;
+		top:-50px;
+}
+
+.filebox {
+	
+	margin-top:350px;
+	
+}
+/* 인풋 스타일 변경 */
+.filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+/* label 스타일 변경 */
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+    width:100px;
+}
+
+/* 기존 디자인 없애기 */
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}

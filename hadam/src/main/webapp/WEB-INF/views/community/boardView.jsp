@@ -1,293 +1,299 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <!-- 작성일 문자형식으로 포맷팅하려고 import 했습니다 -->
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-            <!--  header end -->
-            <!--  wrapper  -->
-            <head>
-     
-            <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
-            <!-- <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css"> -->
-            
-            <style>
-            	#danger{
-            		width:50px;
-            		height:20px;
-            		font-size:12px;
-            		margin-left:610px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				top:-70px;
-	 				right:-15px;
-            	}
-            	#comment{
-            		width:50px;
-            		height:20px;
-            		font-size:13px;
-            		margin-left:730px;
-            		text-align : center;
-	 				padding : 0 0;
-            	
-            	}
-            	
-            	#box {
-            		margin-left:200px;
-            	}
-            	
-            	#writepage {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;
-            		margin-left:780px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				top:-10px;
-            	}
-            	
-            	#boardlistpage {
-            
-            		font-size:13px;
-            		width:120px;
-            		height:30px;
-            	}
-            	
-            	
-            	
-            	#inforTab {
-            		position:relative;
-            		right:-390px;
-            	}
-            	#userInfo {
-            		position:relative;
-            	
-            	}
-            	
-            	#sec5 {
-            		height:250px;
-            	}
-            	
-            	#chatBox {
-            		height:100px;
-            		postion:relative;
-            		left:-40px;
-            		top: -30px;
-            	}
-            	
-            	#chatBox h4{
-            		position:relative;
-            		top:-20px;
-            	}
-            	
-            	#chatBox p {
-            		position:relative;
-            		left:-40px;
-            	}
-            	
-            	#replyImage img{
-            		width:50px;
-            		height:50px;
-            		position:relative;
-            		top:-30px;
-            	}
-            	
-            	#replydateBox {
-            		position:relative;
-            		top:-60px;
-            	
-            	}
-            	#COMMENT_CONTENT{
-            		height:80px;
-            	}
-            	
-            	#largeTitleTab{
-            		
-            		position:relative;
-            		bottom:-30px;
-            	}
-            	
-            	#writeButton {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				right:-260px;
-	 				top:-8px;
-            	}
-            	#updateBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-            		top:-1291px;
-            		right:-360px;
-            	}
-            	#deleteBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				top:-1291px;
-	 				right:-360px;
-            	}
-            </style>
-            
-            
-            
-            </head>
+	
+    <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>     
+     <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+	 <link type="text/css" rel="stylesheet" href="/css/board/boardView.css">
+ 
             <div id="wrapper">
-                <!-- content-->
                 <div class="content">
-                    <!--  section  -->
-                    <section class="color-bg middle-padding ">
-                        <div class="wave-bg wave-bg2"></div>
+                    <section class="parallax-section single-par" data-scrollax-parent="true">
+                        <div class="bg par-elem "  data-bg="/images/board/park.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="overlay"></div>
                         <div class="container">
-                            <div class="flat-title-wrap">
+                            <div class="section-title center-align big-title">
+                                
                                 <h2><span>자유 게시판</span></h2>
                                 <span class="section-separator"></span>
                                 <h4>hadam</h4>
                             </div>
+                             
+                        </div>
+                        <div class="header-sec-link">
+                            <div class="container"><a href="#sec1" class="custom-scroll-link color-bg"><i class="fal fa-angle-double-down"></i></a></div>
                         </div>
                     </section>
-                    <!--  section  end-->
                     <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
+                        	<!-- 게시판 상세 페이지 -->
                             <div class="breadcrumbs fl-wrap"><a href="boardList">커뮤니티</a><a href="boardList">자유게시판</a><span>자유게시판 상세보기</span></div>
                         </div>
                     </div>
-                    <!-- section-->
                     <section  id="sec1" class="middle-padding grey-blue-bg">
                         <div class="container">
                             <div class="row">
-                                <!--blog content -->
                                 <div class="col-md-8">
-                                    <!--post-container -->
                                     <div class="post-container fl-wrap" id="box">
-                                        <!-- article> -->
-                                         <div class="list-single-main-item-title fl-wrap" >
-                                                    <h3 style=font-size:25px;>자유게시판</h3>
-                                         			<h3 style=font-size:20px; id="largeTitleTab">${board.boardTitle}</h3>
-                                         </div>
-                                  
-                                                     <a class="btn btn-primary" href="boardWrite" role="button" id="writeButton">글 작성</a>
-                                                    
+                      
+                                                     <a style="text-decoration:none; color:black;"  href="boardWrite"  id="writeButton"><i style="color:#64A0FF;" class="fa-solid fa-pen-to-square" >글 작성</i></a>
+                                               <c:if test="${board.memberIndex eq sessionScope.memberIndex}"> <!-- 내가 쓴 글의 게시판일경우에만 수정 삭제 버튼 보임-->
+                                                 <a style="text-decoration:none; color:black;"  href="boardUpdate?boardId=${board.boardId}"  id="updateBtn" ><i style="color:#28AEFF"class="fa-solid fa-pencil">수정</i></a><!--클릭 시 수정 페이지로 이동-->   
+                                                 <a style="text-decoration:none; color:black;" id="deleteBtn" href="boardDelete?boardId=${board.boardId}"><i  style="color:#DC6089"class="fa-solid fa-xmark">삭제</i></a>          
+                                             	 
+                                               </c:if> 
                                         <article class="post-article">
                                            
                                             <div class="list-single-main-item fl-wrap" >
                                              <form action="" >
                                              <input name="BOARD_ID" type="hidden" value=""/>
                                               <div class="list-single-main-item-title fl-wrap" >
-                                                    
-                                                      <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>${board.memberNickname}</span></a></div>
+                                                     <div class="list-single-main-item-title fl-wrap" >
+                                    
+                                         			<h3 style=font-size:20px; id="largeTitleTab">${board.boardTitle}</h3> <!-- 게시글 제목 -->
+                                         			</div>	
+                                                      <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>${board.memberNickname}</span></a></div> <!--회원 별명-->
                                                     <div class="post-opt" id="inforTab">
                                                     
-                                                    <ul>
-                                                        <li><i class="fal fa-calendar"></i> <span>${board.boardRegisterDate}</span></li>
-                                                        <li><i class="fal fa-calendar"></i> <span>${board.boardId}</span></li>
-                                                        <li><i class="fal fa-eye"></i> <span>${board.boardViews}</span></li>
+                                                    <ul>											<!--게시판 등록일-->
+                                                        <li><i class="fal fa-calendar"></i> <span><%// boardRegisterDate를 받아오는 부분, 예시로 현재 시간을 사용
+																									Date boardRegisterDate = new Date();
+																									// SimpleDateFormat을 사용하여 날짜를 원하는 형식으로 포맷
+																									SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+																									String formattedDate = sdf.format(boardRegisterDate);
+																								  %>
+																										    
+																								  <%= formattedDate %></td></span></li>
+																								  
+																								   <!--게시판 수정일-->
+                                                        
+                                                        <li><i class="fal fa-eye"></i> <span>${board.boardViews}</span></li><!-- 게시판 조회수-->
                                                         	
                                                     </ul>
                                                   
                                                 </div>
                                                 </div>
+                                                <div>
                                              	 <div class="list-single-main-media fl-wrap">
+                                             	 
                                                 <div class="single-slider-wrapper fl-wrap">
+                                                
                                                     <div class="single-slider fl-wrap"  >
-                                                        <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}" alt="게시판 이미지"></div>
-                                                     
+                                                    
+                                                        <div class="slick-slide-item">
+                                                        
+                                                        <img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}?" alt="파일첨부">
+                                                        </div><!--파일첨부한 이미지-->
+                                         
                                                     </div>
                                                    
                                                 </div>
+                                                       
                                             </div>
-                                                <p>${board.boardContent}</p>
+                                            <div class="list-single-main-item-title fl-wrap" >
+                                                                                       			
+                                         		</div>
+                                            </div>
+                                            
+                                            <div class="list-single-main-item fl-wrap">
                                                 
-                                                <c:if test="${board.memberIndex eq member.memberIndex}"> 
-                                                 <a href="boardUpdate?boardId=${board.boardId}"><input type="button" class="btn btn-primary" id="updateBtn" value="수정"/></a>                
-                                             	 <a class="btn btn-primary" role="button" id="deleteBtn" href="<c:url value='/boardView/${board.boardId}/delete' />" >삭제</a>
-                                                </c:if> 
+                                                <p>
+                                                   <!-- 게시글 내용 --> ${board.boardContent}
+                                                </p>
+
+                                            </div>
+                                             
+                                                
+                                                
                                                 </form>
                                             </div>
-                                            <!-- list-single-main-item -->   
-                                            <div class="list-single-main-item fl-wrap" id="sec5">
+                                            
+                                           
+                                            
+                                            <!-- 입력한 댓글 목록-->
+                                            
+                             				
+                      <%--${comment.commentRegisteDate} --%>
+                               			
+                               				 <div id="commentList">
+                                               
+                                               <div class="list-single-main-item fl-wrap" id="sec5">
                                                 <div class="list-single-main-item-title fl-wrap">
-                                                    <h3> 댓글  <span> 댓글 개수 </span></h3>
+                                                    <h3> 댓글 </h3>
                                                 </div>
-                                                <div class="reviews-comments-wrap">
-                                                    <!-- reviews-comments-item -->  
-                                                    <div class="reviews-comments-item">
-                                                        <div class="review-comments-avatar" id="replyImage">
-                                                            <img src="../images/avatar/1.jpg" alt=""> 
-                                                        </div>
-                                                        <div class="reviews-comments-item-text" id="chatBox">
-                                                            <h4 style=font-size:13px;><a href="#">작성자</a></h4>
-                                                            
-                                                            <p style=font-size:11px;>댓글 내용</p>
-                                                            <div class="reviews-comments-item-date" id="replydateBox"><span><i class="far fa-calendar-check"></i>작성일</span> </div>
-                                                       		<button type="button" id="danger"class="btn btn-danger">신고</button>
-          
-                                                        </div>
-                                                    </div>
-                                                                                                                
-                                                </div>
-                                            </div>
-                                            <!-- list-single-main-item end -->   
-                                            <!-- list-single-main-item -->   
-                                            <div class="list-single-main-item fl-wrap" id="sec6">
+                                                <c:forEach items="${commentList}" var="comment">
+											        <div class="reviews-comments-wrap"> 
+											            <div class="reviews-comments-item">
+											                <div class="review-comments-avatar" id="replyImage">
+											                    <img src="../images/avatar/1.jpg" alt=""> 
+											                </div>
+											                <div class="reviews-comments-item-text" id="chatBox">
+											                    <h4 style="font-size:13px;">${comment.memberNickname}</h4>                                                    
+											                    <p style="font-size:11px;">${comment.commentContent}</p>
+											                    <div class="reviews-comments-item-date" id="replydateBox">
+											                        <span id="replydate"><i class="far fa-calendar-check"></i> 
+											                        <% Date commentRegisteDate = new Date(); 
+											                        SimpleDateFormat saf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+											                        String formattDate = sdf.format(boardRegisterDate);
+											                        %> <%= formattedDate %> </span>
+											                    </div>
+											                    <c:if test="${comment.memberIndex ne sessionScope.memberIndex}">
+											                    <button type="button" id="danger" class="btn btn-danger" onclick="commentReport()">신고</button>
+											               		</c:if>
+											                </div>
+											            </div>
+											        </div>
+								
+													</c:forEach>
+                                            </div> 
+                                         			
+                              			          </div>  		
+                               	
+                                                              
+                                           <div class="list-single-main-item fl-wrap" id="sec6" style=height:300px;>
+                                               
                                                 <div class="list-single-main-item-title fl-wrap">
                                                     <h3>댓글 등록</h3>
                                                 </div>
                                                 <!-- Add Review Box -->
                                                 <div id="add-review" class="add-review-box">
                                                     <!-- Review Comment -->
-                                                    <form id="add-comment" class="add-comment  custom-form" name="rangeCalc" >
+              
                                                         <fieldset>
-                                                            <div class="row">
-                                                                <!-- <div class="col-md-6">
-                                                                    <label><i class="fal fa-user"></i></label>
-                                                                    <input type="text" placeholder="Your Name *" value=""/>
-                                                                </div> -->
-                                                                <div class="col-md-6">
-                                                                    <!-- <label><i class="fal fa-envelope"></i>  </label>
-                                                                    <input type="text" placeholder="Email Address*" value=""/> -->
-                                                                </div>
-                                                            </div>
-                                                            <textarea cols="40" rows="3" id="COMMENT_CONTENT" name="COMMENT_CONTENT" placeholder="댓글을 입력해주세요"></textarea>
+                                                            
+                                                            <textarea cols="40" id= "commentContent"rows="3" placeholder="내용을 입력해주세요" ></textarea>
                                                         </fieldset>
-                                                       <button class="btn btn-primary" id="comment"type="submit">등록</button>
-                                                    </form>
+                                                          
+                                                        <button class="btn btn-warning" id="commentBtn" onclick="commentWrite()">댓글 등록</button>
+                                                    
                                                 </div>
                                                 <!-- Add Review Box / End -->
                                             </div>
-                                            <!-- list-single-main-item end -->                                             
-                                        </article>
-                                        <!-- article end -->                                
-                                    </div>
-                                    <!--post-container end -->  
+                                    	
+                                            
+                                        </article>                                
+                                    </div> 
                                 </div>
-                                <!-- blog content end -->
-                                <!--   sidebar  -->
-                          
-                                <!--   sidebar end  -->
                             </div>
                         </div>
                         <div class="limit-box fl-wrap"></div>
             
-                    	<a class="btn btn-primary" href="boardList" role="button" id="boardlistpage">자유게시판으로</a>
+                    	<a class="btn btn-primary" href="boardList" role="button" id="boardlistpage">자유게시판으로</a> <!-- 클릭 시 자유게시판으로 이동 -->
                     </section>
-                    <!-- section end -->
                 </div>
-                <!-- content end-->
             </div>
-            <!--wrapper end -->
-            <!--footer -->
-              <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
+              <script>
+              // js 폴더 만들어서 했는데 템플릿에있는 js랑 겹쳐서 되지않아 일단 여기에 작성했습니둥
+              // 댓글 작성 ajax
+              const commentWrite = () => {
+      			const commentContent = document.getElementById("commentContent").value;
+      			const boardId = '${board.boardId}'
+      			
+      			$.ajax ({
+      				type: "post",
+      				url: "/community/commentSave",
+      				data : {
+      					commentContent : commentContent,
+      					boardId : boardId
+      				},
+      				dataType: "json",
+      				success : function(commentList){
+      					console.log("작성 성공");
+      					console.log(commentList);
+      					
+      					// 세션으로 담아온 memberIndex 값 변수에 저장
+      					var memberIndex = ${sessionScope.memberIndex};
+      					
+      					// 날짜 문자형으로 변환
+      					function formatDate(dateString) {
+      					    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      					    const formattedDate = new Date(dateString).toLocaleDateString('ko-KR', options);
+      					    return formattedDate;
+      					}
+      					
+      					let output = "<div/>";
+      					
+      					output += "<div class='list-single-main-item fl-wrap' id='sec5'>";
+      					output += "<div class='list-single-main-item-title fl-wrap'>";	
+      					output += "<h3> 댓글 <span></span></h3>";
+      					output += "</div>";
+      					output += "<div class='reviews-comments-wrap'>";
+      					for (let i in commentList){
+      					output += "<div class='reviews-comments-item'>";
+      					output += "<div class='review-comments-avatar' id='replyImage'>";
+      					output += "<img src='../images/avatar/1.jpg' alt=''> ";
+      					output += '</div>';
+      					output += '<div class="reviews-comments-item-text" id="chatBox">';
+      					output += '<h4 style=font-size:13px;>'+commentList[i].memberNickname+'</h4>';
+      					output += '<p style=font-size:11px;>'+commentList[i].commentContent+'</p>';
+      					output += '<div class="reviews-comments-item-date" id="replydateBox"><span id="replydate"><i class="far fa-calendar-check"></i>'+formatDate(commentList[i].commentRegisteDate)+'</span></div>';
+      					
+      					// 댓글작성자의 memberIndex와 로그인한 사용자의 memberIndex가 다르면 신고 버튼 보임
+      					if ( commentList[i].memberIndex !== memberIndex) {
+      						output += '<button type="button" id="danger"class="btn btn-danger">신고</button>';
+      					}   
+      					
+      					output += '</div>';
+      					output += '</div>';
+      				
+      					}
+      					
+      					output += '</div>';
+      					output += '</div>';
+      					document.getElementById('commentList').innerHTML = output;
+      					document.getElementById('commentContent').value='';
+      				},
+      				error : function() {
+      					console.log("실패");
+      				}
+      			})
+	
+      		}
+			
+			// 한 게시글에 신고 한번 밖에 못함 
+              // 신고된 정보 저장
+              const commentReport = () => {
+              	
+              	// 게시판 번호
+              	const boardId = '${board.boardId}';
+              	
+              	// 댓글 번호
+              	const commentId = '${commentId.commentId}'; 
+              	
+              	// 해당 게시글의 댓글 신고자
+              	const boardAndCommentReporter = '${sessionScope.memberIndex}';       	
+              	
+        			$.ajax ({
+  					  type:"post",
+  					  url:"/community/commentReportSave",
+  					  data : {
+  						  boardId : boardId,
+  						  commentId : commentId,
+  						  boardAndCommentReporter : boardAndCommentReporter
+  					  },
+  					  dataType : "json",
+  					  success : function(result){
+  						  console.log("신고되었습니다.")
+  						  alert("정말로 신고하시겠습니까?")
+  						  alert("신고가 접수되었습니다.")
+  						  
+  						  const button = document.getElementById('danger')
+  						  button.innerText = '접수';
+  						  button.disabled = true; 
+  					  },
+  					  error : function(xhr, status, error) {
+  						  console.log("실패", error);
+  					  }
+  				  })
+              }
               
-              <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
+              
+              </script>
+           	 
+              <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
+             <!-- <script type="text/javascript" src="/js/board/boardView.js"></script> -->
+             <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
              <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>

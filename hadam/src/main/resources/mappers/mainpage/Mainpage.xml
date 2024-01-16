@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.domain.mainpage.dao.MainpageDAO">
+	
+	<!-- 자유게시판 목록 출력 -->
+	<select id="getLocationList" resultType="com.example.domain.mainpage.vo.LocationInfoVO" >
+		
+	SELECT LOCATION_NAME,LOCATION_RATING,LOCATION_REVIEW_COUNT,LOCATION_PLACE,LOCATION_CONTENT,LOCATION_ID
+	FROM location LIMIT 10;
+		
+	</select>
+	
+</mapper>

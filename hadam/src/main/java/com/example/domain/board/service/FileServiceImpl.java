@@ -17,10 +17,23 @@ public class FileServiceImpl implements FileService{
 		fileDAO.saveFile(vo);
 		
 	}
-
+	
+	// file의 boardId 셀렉
 	public int selectId() {
 		
 		return fileDAO.selectId();
+	}
+
+	// file 수정
+	public void updateFile(MemberUploadImagesVO vo) {
+		
+		fileDAO.updateFile(vo);
+	}
+
+	// file 삭제
+	public void deleteFile(int boardId) {
+		fileDAO.deleteFile(boardId);
+		
 	}
 	
 	

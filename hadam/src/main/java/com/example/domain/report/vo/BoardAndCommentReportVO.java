@@ -22,4 +22,5 @@ public class BoardAndCommentReportVO {
 	private Date boardAndCommentReportRegisteDate;
 	
 	private Integer boardAndCommentReportStatus;
+	
 }
