@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 장소 나타내는 텍스트 부분 수정 */
 .catedir-category-content {
 	padding:20px;
 	z-index:2;
@@ -40,3 +41,390 @@
 	position:relative;
 	z-index:1;
 }
+
+/* 장소 이미지 사이즈 수정용 */
+
+.catedir-category-img {
+	display:flex;
+	flex-wrap:wrap;
+	float:left;
+	max-width:100%;
+	max-height:275px;
+	position:relative;
+	overflow:hidden;
+	z-index:1;
+ 	border-radius:10px 10px 0 0;
+}
+
+.catedir-category-img img  , .gallery-item img{
+	width:100%;
+	height:auto;
+	-webkit-transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms;
+	-webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  	transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms;
+}
+
+.catedir-category-img .listing-counter {
+	top:20px;
+	left:20px;
+}
+.catedir-category-img .listing-counter strong {
+	padding-left:4px;
+}
+
+.catedir-category-img img  , .gallery-item img{
+	width:100%;
+	height:auto;
+	-webkit-transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms;
+	-webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  	transition: all 2000ms cubic-bezier(.19,1,.22,1) 0ms;
+}
+
+.catedir-category-img:hover img , .gallery-item:hover img{
+	-webkit-transform: scale(1.15);
+	-moz-transform:scale(1.15);
+	transform: scale(1.15);
+}
+
+/* 리뷰 수정용 */
+.catereviews-comments-wrap {
+	display: inline-table  ;
+	margin-top:30px;
+}
+.catereviews-comments-item-text .review-score-user{
+	float:right;
+	position:relative;
+	top:-12px;
+}
+.catereviews-comments-item-text .review-score-user span  {
+    background: #18458B;
+    color: #fff;
+    float: right;
+    font-weight: 600;
+    border-radius: 3px 3px 0 3px;
+	width:40px;
+	height:40px;
+	line-height:40px;
+    font-size: 12px;
+    border: 1px solid rgba(0,0,0,0.21);
+    text-shadow: 0px 2px 5px rgba(0,0,0,0.21); 
+}
+.catereviews-comments-item-text .review-score-user strong {
+	margin-right:12px;
+	font-size:11px;
+	color:#666;
+	position:relative;
+	top:10px;
+}
+.catereviews-comments-item {
+	padding:0 0 30px 110px;
+	position:relative;
+	float:left;
+	margin-bottom:40px;
+	width:100%;
+	border-bottom:1px solid #eee;
+}
+.catereviews-comments-item.reply-comment-item {
+	width:90%;
+	margin-left:10%;
+	padding:30px 20px 30px 110px;
+	border-radius:6px;
+}
+.catereviews-comments-item.reply-comment-item .review-comments-avatar {
+	top:30px;
+}
+.catereviews-comments-item.reply-comment-item:before {
+	content:'';
+	position:absolute;
+	top:0;
+	left:-10%;
+	margin-left:30px;
+	width:40px;
+	height:40px;
+	border-left:1px solid #eee;
+	border-bottom:1px solid #eee;
+}
+.catereviews-comments-item:last-child {
+	border:none;
+	margin-bottom:0;
+}
+
+.catereview-comments-avatar {
+	position:absolute;
+	top:0;
+	left:10px;
+	width:80px;
+	height:80px;
+}
+
+/* 박스 수정용 */
+
+.catebox-widget-item {
+	margin-bottom:30px;
+}
+.catebox-widget-item-header {
+	padding: 0 0 20px;
+    margin: 0 0 25px;
+	float:left;
+	width:100%;
+    border-bottom: 1px solid #eee;
+	position:relative;
+}
+.catebox-widget-item-header h3 {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+	color: #183c7d;
+}
+.catebox-widget-item-header h3 i {
+	padding-right:12px;
+	font-size:16px;
+	color:#999;
+}
+.catebox-widget {
+	background:#fff;
+	border-radius:4px;
+ 	border:1px solid #eee;
+	float:left;
+	width:100%;
+}
+
+/* 리스트 수정용 */
+
+.catelist-single-main-item {
+	padding:30px 30px;
+	background:#fff;
+	margin-bottom:20px;
+	border-radius:4px;
+	border:1px solid #f2f2f2;
+}
+
+.catelist-single-main-item-title  h3{
+	color: #183c7d;
+	text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+}
+.catelist-single-main-item-title  h3 a{
+	color: #334e6f;
+}
+.catelist-single-main-item-title {
+	margin:0 0 25px 0;
+	padding-bottom:25px;
+	border-bottom:1px solid #eee;
+}
+
+.catelist-single-main-item-title .catelisting-rating {
+	float:left;
+	margin-top:10px;
+}
+
+.catelist-single-main-item-title.no-dec-title {
+	border:none;
+	margin-bottom:0;
+	padding-bottom:15px;
+}
+
+.catelist-single-main-item p {
+	text-align:left;
+	color:#878C9F;
+}
+
+.catelist-single-main-item {
+	padding:30px 30px;
+	background:#fff;
+	margin-bottom:20px;
+	border-radius:4px;
+	border:1px solid #f2f2f2;
+}
+
+/* 리스트 그림 삭제용 */
+
+.catelist-single-hero-price {
+	float:right;
+	font-size:11px;
+}
+
+.catelist-single-hero-price span{
+	color: #5ECFB1;
+	font-size:24px;
+	font-weight:600;
+	padding-left:20px;
+	position:relative;
+	top:2px;
+}
+
+.catelist-single-hero {
+	padding:250px 0 0;
+	overflow:hidden;
+}
+
+.catelist-single-hero-title {
+	z-index:2;
+	padding:40px 0 30px;
+}
+.catelist-single-hero-title  , .map-card-rainting , .geodir-category-opt , .listing-item-cat , .ajax-modal-title  {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(6,27,65,0)), color-stop(100%,rgba(6,27,65,0.95)));
+    background: -webkit-linear-gradient(top, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%);
+    background: -o-linear-gradient(top, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%);
+    background: -ms-linear-gradient(top, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%);
+    background: linear-gradient(to bottom, rgba(6,27,65,0) 0%,rgba(6,27,65,0.95) 100%);
+}
+.catelist-single-hero-title h2 {
+	text-align:left;
+	float:left;
+	width:100%;
+	z-index:2;
+	color:#fff;
+	font-size:44px;
+    font-weight: 600;
+	position:relative;
+	font-family: 'Montserrat', sans-serif;
+}
+.catelist-single-hero-title h2:before {
+	content:'';
+	position:absolute;
+	left:0;
+	bottom:-20px;
+	width:40px;
+	height:4px;
+	border-radius:4px;
+}
+
+.catelist-single-hero-title .listing-rating i {
+    font-size: 15px;
+    margin-right: 4px;
+}
+
+.catelist-single-hero-details {
+	margin-top:6px;
+}
+.catelist-single-hero-rating {
+	float:right;
+	position:relative;
+	z-index:1;
+}
+.catelist-single-hero-rating .rate-class-name {
+	float:right;
+	cursor:pointer;
+}
+.catelist-single-hero-rating .rate-class-name span {
+	background: #18458B;
+    color: #fff;
+    float: left;
+    font-weight: 600;
+    border-radius: 7px 7px 7px 0;
+    padding: 22px;
+	font-size:24px;
+	border: 1px solid rgba(0,0,0,0.21);
+	text-shadow: 0px 2px 5px  rgba(0,0,0,0.21);
+}
+.catelist-single-hero-rating .score {
+	float:left;
+	color:#fff;
+	text-align:right;
+	padding-right:15px;
+	margin-top:20px;
+}
+.catelist-single-hero-rating .score strong {
+	width:100%;
+	float:left;
+	padding-bottom:4px;
+}
+.catelist-single-hero-rating-list {
+	position:absolute;
+	bottom:100%;
+	margin-bottom:20px;
+	right:0;
+	z-index:10;
+	background:rgba(6,27,65,0.45);
+	padding:15px;
+	overflow:hidden;
+	border-radius:4px;
+	transition: all .2s ease-in-out;
+	visibility:hidden;
+	opacity:0;
+}
+.catelist-single-hero-rating:hover .catelist-single-hero-rating-list {
+	visibility: visible;
+	opacity:1;
+	margin-bottom:10px;
+}
+.catelist-single-hero-rating-list .rate-item {
+	margin-bottom:10px;
+}
+
+.catelist-single-hero-header .catelist-single-hero-price {
+	padding:25px 30px;
+	margin-bottom:0;
+	border:none;
+    background: #ECF6F8;
+ 	color: #999;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+.catelist-single-hero-header .catelist-single-hero-price span {
+	padding-left:50px;
+}
+.flat-hero-container .catelist-single-hero-price  , .catelist-single-hero-header .catelist-single-hero-price{
+	color:#666;
+	font-size:14px;
+	margin-top:0;
+	margin-bottom:15px;
+	border-bottom:1px solid #eee;
+	padding:5px 0 20px;
+	text-align:left;
+}
+
+.catelist-single-hero-header  .catelist-single-hero-price:before {
+    top: 1px;
+    font-size: 55px;
+}
+.catelist-single-hero-header .geodir-category-location{
+	margin-top:15px;
+}
+.catelist-single-hero-links {
+	float:right;
+	position:relative;
+	top:20px;
+}
+.catelist-single-hero-header .list-single-main-item-title {
+	border-bottom:0;
+	margin-bottom:0;
+	padding-bottom:0;
+}
+
+.catelist-single-hero-header .list-single-main-item-title  h3 {
+	font-size:24px;
+}
+.catelist-single-hero-header .list-single-main-item-title:before {
+	display:none;
+}
+.catelist-single-hero-header .reviews-score-wrap  {
+	padding:0;
+	border-bottom:none;
+	margin-bottom:0;
+}
+.catelist-single-hero-rating  {
+	float:left;
+	margin-top:20px;
+}
+.catelist-single-hero-rating .score {
+	float:right;
+	text-align: left;
+    padding-right:0;
+	padding-left:15px;
+}
+.catelist-single-hero {
+    padding: 100px 0 0;
+}
+.catelist-single-hero-header .catelist-single-hero-price  , .rooms-details{
+	margin-top:15px;
+}
+
+/* 상단 섹터 이동 수정용 (우선순위 낮음 추후 작업)*/
+
+

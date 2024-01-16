@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.domain.location.dao.LocationDAO">
+	
+	<!-- 카테고리 페이지 출력하는 쿼리 -->
+	<select id="locationList" parameterType="LocationVO" >
+		SELECT l.*, li.*
+		FROM location l
+		JOIN location_image li
+		ON l.LOCATION_ID = li.LOCATION_ID
+		ORDER BY l.LOCATION_ID DESC
+	</select>
+	
+	<!-- 클릭된 장소 id 받아서 상세 정보 출력하는 쿼리 -->
+	<select id="getLocationDetail" parameterType="LocationVO" resultType="com.example.domain.location.vo.LocationVO">
+		SELECT l.*, li.*, lr.*
+		FROM location l
+		JOIN location_image li ON l.LOCATION_ID = li.LOCATION_ID
+		JOIN location_review lr ON l.LOCATION_ID = lr.LOCATION_ID
+		WHERE l.LOCATION_ID = #{locationId}
+	</select>
+	
+</mapper>

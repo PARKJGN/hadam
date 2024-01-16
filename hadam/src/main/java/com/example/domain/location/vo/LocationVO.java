@@ -36,4 +36,20 @@ public class LocationVO {
 	private Integer locationReviewCount;
 	
 	private Integer categoryId;
+	
+	// 장소 이미지 띄우기
+	private String locationImageOriginalname;
+		
+	// 장소 이미지 띄우기
+	private String locationImagePath;
+
+	// 장소 이미지 띄우기
+	private String locationImageName;
+	
+	// 장소 리뷰 띄우기
+	private Integer locationReviewId;
+	
+	// 장소 리뷰 띄우기
+	private String locationReviewContent;
+	
 }
