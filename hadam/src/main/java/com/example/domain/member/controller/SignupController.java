@@ -1,5 +1,7 @@
 package com.example.domain.member.controller;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.member.service.SignupService;
+import com.example.domain.member.vo.MemberVO;
 
 
 
@@ -48,12 +51,37 @@ public class SignupController {
 	
 	
 	/* 핸드폰 인증 */
-//	@RequestMapping(value = "/memberPhoneCheck", method = RequestMethod.POST)
-//	@ResponseBody
-//	public boolean memberNickNameCheck(@RequestParam("phone") String phone) {
+	@RequestMapping(value = "/memberPhoneCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberPhoneCheck(@RequestParam("phone") String phone) {
 //		System.out.println(phone);
-//		return false;
-//	}
+		
+//		6자리 인증번호 생성 
+		Random random = new Random();
+		int randomNum = 0;
+		String randomSum = "";
+		for(int i=0; i<5; i++) {
+			randomNum = random.nextInt(9);
+			randomSum += Integer.toString(randomNum);
+		}
+//		String result = signupService.phoneCheckSMS(phone, randomSum);
+		
+//		return result;
+		return "1234";
+	}
 	
 	
+	/*회원가입 정보입력*/
+	@RequestMapping(value="/signupCompletion", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean signupCompletion(MemberVO vo) {
+		Integer result = signupService.signupCompletion(vo);
+//		회원가입 성공하면 
+		if(result==1) {
+			return true;
+//		회원가입 실패하면
+		}else {
+			return false;
+		}
+	}
 }

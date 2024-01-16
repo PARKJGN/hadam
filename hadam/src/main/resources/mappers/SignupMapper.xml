@@ -4,13 +4,23 @@
 <mapper namespace="com.example.domain.member.dao.SignupDAO">
 
 	
-	<select id="memberIdCheck" parameterType="com.example.domain.member.vo.MemberVO" resultType="String">
-		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId}
+	<select id="memberIdCheck" parameterType="String" resultType="String">
+		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{id}
 	</select>
 
-	<select id="memberNicknameCheck" parameterType="com.example.domain.member.vo.MemberVO" resultType="String">
-		SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NICKNAME = #{memberNickname}
+	<select id="memberNicknameCheck" parameterType="String" resultType="String">
+		SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NICKNAME = #{nickname}
 	</select>
 
+	<select id="memberCheckSMS" parameterType="String" resultType="String">
+		SELECT MEMBER_PHONENUMBER FROM MEMBER WHERE MEMBER_NICKNAME = #{phone}
+	</select>
+	
+	<insert id="signupCompletion" parameterType="com.example.domain.member.vo.MemberVO">
+		INSERT INTO MEMBER(MEMBER_ID, MEMBER_PASSWORD, MEMBER_PHONENUMBER
+							, MEMBER_NICKNAME, MEMBER_SEX, MEMBER_BIRTH, MEMBER_REGISTE_DATE) 
+		VALUES(#{memberId}, #{memberPassword}, #{memberPhoneNumber}
+							, #{memberNickname}, #{memberSex}, #{memberBirth}, NOW())
+	</insert>
 
 </mapper>
