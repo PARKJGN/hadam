@@ -826,13 +826,13 @@ function  initEasybook() {
     });
     $('.listing-carousel').slick({
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 5,
         dots: true,
         arrows: false,
         centerMode: true,
         centerPadding: '60px',
         responsive: [{
-                breakpoint: 1224,
+                breakpoint: 1724,
                 settings: {
                     slidesToShow: 3,
                 }
@@ -861,6 +861,7 @@ function  initEasybook() {
         ]
 
     });
+  
     sbp.on("click", function () {
         $(this).closest(".list-carousel").find('.listing-carousel').slick('slickPrev');
     });
