@@ -19,7 +19,7 @@ public class EmitterRepository {
      */
     public void save(Long id, SseEmitter emitter) {
         emitters.put(id, emitter);
-		 System.out.println("emitter맵에 등록 성공");
+//		 System.out.println("emitter맵에 등록 성공");
 
     }
     
@@ -30,7 +30,7 @@ public class EmitterRepository {
      */
     public void deleteById(Long id) {
          emitters.remove(id);
-     	System.out.println("emitter가 삭제되었습니다.");
+//     	System.out.println("emitter가 삭제되었습니다.");
 
     }
     
