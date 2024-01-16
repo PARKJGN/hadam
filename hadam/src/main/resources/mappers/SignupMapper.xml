@@ -15,5 +15,12 @@
 	<select id="memberCheckSMS" parameterType="String" resultType="String">
 		SELECT MEMBER_PHONENUMBER FROM MEMBER WHERE MEMBER_NICKNAME = #{phone}
 	</select>
+	
+	<insert id="signupCompletion" parameterType="com.example.domain.member.vo.MemberVO">
+		INSERT INTO MEMBER(MEMBER_ID, MEMBER_PASSWORD, MEMBER_PHONENUMBER
+							, MEMBER_NICKNAME, MEMBER_SEX, MEMBER_BIRTH, MEMBER_REGISTE_DATE) 
+		VALUES(#{memberId}, #{memberPassword}, #{memberPhoneNumber}
+							, #{memberNickname}, #{memberSex}, #{memberBirth}, NOW())
+	</insert>
 
 </mapper>

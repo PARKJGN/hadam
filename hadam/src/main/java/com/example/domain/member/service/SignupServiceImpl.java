@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.member.dao.SignupDAO;
+import com.example.domain.member.vo.MemberVO;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -76,5 +77,9 @@ public class SignupServiceImpl implements SignupService{
 		}else {
 			return "1";
 		}
+	}
+	
+	public Integer signupCompletion(MemberVO vo) {
+		return signupDAO.signupCompletion(vo);
 	}
 }

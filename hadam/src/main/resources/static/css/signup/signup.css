@@ -5,6 +5,8 @@
 	용도		css
 	작성자 	최성익 
 */
+
+/* 약관동의 */
 .row .hadam_rule { /* 약관동의 글 div */
 	max-height: 300px; /* 높이 제한 */
 	overflow-y: auto; /* 스크롤 옵션 */
@@ -16,6 +18,7 @@
 	float: right; /* 이용약관 체크 하는거 오른쪽 정렬 */
 }
 
+/* 개인정보입력 */
 .col-sm-6>input.confirm_password { /* qlalf */
 	margin-bottom: 16px; /* 비밀번호 확인 칸 바텀마진 제거 */
 }
@@ -86,39 +89,33 @@
 	background: #fff;
 }
 
-.row .hadam_category {
-	width: 100%;		/* 카테고리 부분 화면 채우기 */
-}
 
+/* 개인정보 입력 핸드폰 인증 모달창 */
 .auth{
-	top:100px;			/* 모달 제일 위로 */
+	top:100px;			/* 핸드폰 인증 모달 제일 위로 */
 }
 
-.tab-content .custom-form input[type="button"]:hover {
+.tab-content .custom-form input[type="button"]:hover {	/* 핸드폰 인증 모달창 확인, 취소 버튼 색 변경 */
 	background: #3aaced;
 	color : #fff
 }
 
-.tab-content .custom-form input[type="button"] {
+.tab-content .custom-form input[type="button"] {	/* 핸드폰 인증 모달창 확인, 취소 버튼 모양 조절 */
 	width : 45%;
 	margin : 8px;
 	padding : 10px 
 }
-#check_phone_count {
+#check_phone_count {								/* 핸드폰 인증 모달창 카운트다운 위치 */
 	float : left;
 }
 
-#hide_signup_basicform {
-	float : right;
-}
-
-#member_birth {
+#member_birth {										/* 생년월일 칸 크기 조절 */					
 	width : 55%;
 }
 
 /* 성별 라디오 박스 */
 .select {
-    padding: 15px 10px;
+    width : 100%;
 }
 .select input[type=radio]{
     display: none;
@@ -146,7 +143,67 @@
     color: #fff;
 }
 
+#select2+label {
+	float : right;
+}
+/* 성별 라디오 박스 끝 */
 
 
+#hide_signup_basicform, #hide_signup_completion {	/* 개인정보 입력 완료 버튼 위치조절 */
+	float : right;
+}
+
+/* 카테고리 */
+.row .hadam_category {
+	width: 100%;		/* 카테고리 중분류 한줄에 넣기 */
+}
+
+.row > .hadam_category > input[type="button"] {
+	width : 110px;
+	height : 40px;
+	text-align: center;
+	padding : 5 10 5 10px; 
+	margin : 0 10 20 0px;
+}
+
+.row > .hadam_category > input[type="button"]:hover {
+	background: #3aaced;
+	color : #fff;
+	cursor: pointer;
+	
+}
+
+/* .row > .hadam_category > input[name="drinking"] {
+	width : 110px;
+	height : 40px;
+	text-align: center;
+	padding : 5 10 5 10px; 
+	margin : 0 10 20 0px;
+}
+
+.row > .hadam_category > input[name="playing"] {
+	width : 110px;
+	height : 40px;
+	text-align: center;
+	padding : 5 10 5 10px; 
+	margin : 0 10 20 0px;
+}
+
+.row > .hadam_category > input[name="watching"] {
+	width : 110px;
+	height : 40px;
+	text-align: center;
+	padding : 5 10 5 10px; 
+	margin : 0 10 20 0px;
+}
+
+.row > .hadam_category > input[name="walking"] {
+	width : 110px;
+	height : 40px;
+	text-align: center;
+	padding : 5 10 5 10px; 
+	margin : 0 10 20 0px;
+}
+ */
 
 /* 나중에 js에 아이콘 fa-bounce 클래스 넣기 */

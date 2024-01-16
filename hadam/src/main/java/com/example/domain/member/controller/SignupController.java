@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.member.service.SignupService;
+import com.example.domain.member.vo.MemberVO;
 
 
 
@@ -70,4 +71,17 @@ public class SignupController {
 	}
 	
 	
+	/*회원가입 정보입력*/
+	@RequestMapping(value="/signupCompletion", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean signupCompletion(MemberVO vo) {
+		Integer result = signupService.signupCompletion(vo);
+//		회원가입 성공하면 
+		if(result==1) {
+			return true;
+//		회원가입 실패하면
+		}else {
+			return false;
+		}
+	}
 }

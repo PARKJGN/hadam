@@ -29,7 +29,7 @@ $(function() {
 	let form_phone = null;
 	let form_nickname = null;
 	let form_birth = null;
-	let form_sex = null;
+
 
 
 
@@ -93,13 +93,13 @@ $(function() {
 						/*인증번호 받는 모달 창 띄우기*/
 						$('.reg-modal , .reg-overlay2').fadeIn(200);
 						$("html, body").addClass("hid-body");
-
+						$('#input_check_phone').focus();
 						clearInterval(countdown);
 						seconds = 180; // 3분(180초)
 						updateCountdown();
 						// 1초마다 카운트다운 업데이트
 						countdown = setInterval(updateCountdown, 1000);
-
+						
 						$('#btn_check_phone').on('click', function() {
 							if ($('#input_check_phone').val() == result) {
 								$('.reg-modal , .reg-overlay2').fadeOut(200);
@@ -264,10 +264,10 @@ $(function() {
 	
 	form_sex = $('input[name=select]:checked').val();
 
-	$('#signup_basicform').hide();
+	$('#signup_basicform').hide();							/* 개인정보 입력완료 진짜 버튼 숨기기 */
 	$('#hide_signup_basicform').on('click', function() {
 
-		if ($('#member_id').val() != form_id) {
+		/*if ($('#member_id').val() != form_id) {
 			alert('아이디를 확인해주세요');
 			return false;
 		}
@@ -279,10 +279,10 @@ $(function() {
 			alert('비밀번호 확인칸을 확인해주세요');
 			return false;
 		}
-/*		if (form_password != form_password) {
+		if (form_password != form_password) {
 			alert('비밀번호와 비밀번호 확인이 동일하지 않습니다');
 			return false;
-		}*/
+		}
 		if ($('#member_phone').val() != form_phone) {
 			alert('핸드폰 인증을 확인해주세요');
 			return false;
@@ -295,34 +295,52 @@ $(function() {
 			alert('생년월일를 확인해주세요');
 			return false;
 		}
-		if ($('input[name=select]:checked').val() != null){
-			
-		}
+		if ($('input[name=member_sex]:checked').val() != '여자' && $('input[name=member_sex]:checked').val() != '남자'){
+			alert('성별을 선택해주세요');
+			return false;			
+		}*/
 		
 		$('#signup_basicform').trigger("click");
 		
 	})
 
-	$('#signup_completion').on('click', function(){
-		
+	$('#signup_completion').hide();
+	$('#hide_signup_completion').on('click', function(){
 		$.ajax({
-			url : '/signup/signup_completion',
+			url : '/signup/signupCompletion',
 			type : 'post',
 			data : { 'memberId' : form_id ,
 					'memberPassword' : form_password,
 					'memberPhoneNumber' : form_phone,
 					'memberNickname' : form_nickname,
-					'memberSex' : form_sex,
-					'memberBirth' : form_birth }
-			
-			
-			
+					'memberSex' : $('input[name=member_sex]:checked').val(),
+					'memberBirth' : form_birth },
+			success : function(result){
+				if(result==1){
+					$('#signup_completion').trigger("click");				
+				}else{
+					alert('네트워크에 문제가 있습니다. 잠심 후 시도해주세요');
+				}
+				
+			},
+			error : function(err){
+				alert('네트워크에 문제가 있습니다. 잠심 후 시도해주세요');
+			}
+
 			
 		})
 		
 		
 	})
 
+	
+	/*카테고리 탭에서 중분류 눌렀을때 소분류 동적 태그 만들기*/
+/*	$('.hadam_category').on('click', '.category:input[button]', )*/
+	
+	
+	
+	
 
+	
 
 })
