@@ -13,4 +13,13 @@
 		ORDER BY l.LOCATION_ID DESC
 	</select>
 	
+	<!-- 회원가입시 입력한 카테고리리스트로 해당 categoryId 가져오기  [최성익] -->
+	<select id="getCategoryId" parameterType='java.util.List' resultType='integer'>
+		SELECT CATEGORY_ID FROM CATEGORY WHERE SMALL_CATEGORY IN
+		<foreach collection='list' item='smallCategory' open="(" separator="," close=")">
+			#{smallCategory}
+		</foreach>
+	</select>
+
+	
 </mapper>

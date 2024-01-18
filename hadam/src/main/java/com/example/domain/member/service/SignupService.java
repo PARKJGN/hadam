@@ -10,4 +10,5 @@ public interface SignupService {
 	String memberNicknameCheck(String nickname);							// 닉네임 중복확인
 	String phoneCheckSMS(String phone, String randomSum);					// 핸드폰 인증번호 보내기
 	Integer signupCompletion(MemberVO vo);
+	Integer getMemberIndex(String memberId);
 }

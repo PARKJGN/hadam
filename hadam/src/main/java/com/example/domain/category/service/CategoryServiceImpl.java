@@ -1,6 +1,7 @@
 package com.example.domain.category.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class CategoryServiceImpl implements CategoryService {
 		// LocationVO 리스트 값을 리턴
 		return LocList;
 		
+	}
+//	회원가입시 입력한 카테고리리스트로 해당 categoryId 가져오기  [최성익]	
+	public List<Integer> getCategoryId(List<String> checkedCategory){
+//		System.out.println("카테고리 mapper 직전");
+		return categoryDAO.getCategoryId(checkedCategory);
 	}
 	
 }

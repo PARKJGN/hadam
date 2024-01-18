@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.domain.member.dao.SignupDAO;
+import com.example.domain.member.dao.SignDAO;
 import com.example.domain.member.vo.MemberVO;
 
 import net.nurigo.java_sdk.api.Message;
@@ -17,7 +17,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SignupServiceImpl implements SignupService{
 
 	@Autowired
-	private SignupDAO signupDAO;
+	private SignDAO signupDAO;
 	
 //	아이디 중복확인
 	public String memberIdCheck(String id) {
@@ -82,4 +82,9 @@ public class SignupServiceImpl implements SignupService{
 	public Integer signupCompletion(MemberVO vo) {
 		return signupDAO.signupCompletion(vo);
 	}
+	
+	public Integer getMemberIndex(String memberId) {
+		return signupDAO.getMemberIndex(memberId);
+	}
+	
 }

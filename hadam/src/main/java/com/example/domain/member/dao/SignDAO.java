@@ -11,7 +11,9 @@ import com.example.domain.member.vo.MemberVO;
 */
 
 @Mapper
-public interface SignupDAO {
+public interface SignDAO {
+
+//	==================== 회원가입 =====================
 
 //	아이디 중복체크
 	String memberIdCheck(String id);
@@ -21,6 +23,12 @@ public interface SignupDAO {
 	String memberCheckSMS(String phone);
 //	회원가입정보 입력
 	Integer signupCompletion(MemberVO vo);
+//	취향정보 입력을 위한 memberIndex 검색
+	Integer getMemberIndex(String memberId);
 	
+//	==================== 로그인 =======================
+	
+//	로그인 정보 확인 후 로그인 페이지 이동 
+	MemberVO loginCheck(String memberId, String memberPassword);
 	
 }

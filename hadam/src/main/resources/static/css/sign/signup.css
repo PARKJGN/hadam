@@ -163,15 +163,11 @@
 	width: 100%; /* 카테고리 중분류 한줄에 넣기 */
 }
 
-/* .row > .hadam_category > input[type="button"] {
-	width : 110px;
-	height : 40px;
-	text-align: center;
-	padding : 5 10 5 10px; 
-	margin : 0 10 20 0px;	
+label.midlelabel{
+	/* background-color : #61bdf121; */ /* 구려.. */	
+
 }
 
-*/
 ul.ks-cboxtags {
 	list-style: none;
 	padding: 20px;
@@ -234,6 +230,13 @@ ul.ks-cboxtags li input[type="checkbox"]:checked+label {
 	transition: all .2s;
 }
 
+ul.ks-cboxtags li input[type="checkbox"][class='middle']:checked+label {
+	border: 3px solid #1bdbf8;
+	background-color: #fff;
+	color: #878C9F;
+	transition: all .2s;
+}
+
 ul.ks-cboxtags li input[type="checkbox"] {
 	display: absolute;
 }
@@ -246,5 +249,9 @@ ul.ks-cboxtags li input[type="checkbox"] {
 ul.ks-cboxtags li input[type="checkbox"]:focus+label {
 	border: 2px solid #e9a1ff;
 }
+
+
+
+
 
 /* 나중에 js에 아이콘 fa-bounce 클래스 넣기 */

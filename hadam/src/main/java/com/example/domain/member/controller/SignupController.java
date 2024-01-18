@@ -1,5 +1,7 @@
 package com.example.domain.member.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.domain.category.service.CategoryService;
 import com.example.domain.member.service.SignupService;
 import com.example.domain.member.vo.MemberVO;
+import com.example.domain.preference.service.PreferenceService;
 
 
 
@@ -21,6 +25,10 @@ public class SignupController {
 
 	@Autowired
 	private SignupService signupService;
+	@Autowired
+	private CategoryService categoryService;
+	@Autowired
+	private PreferenceService preferenceService;
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
@@ -74,8 +82,19 @@ public class SignupController {
 	/*회원가입 정보입력*/
 	@RequestMapping(value="/signupCompletion", method=RequestMethod.POST)
 	@ResponseBody
-	public boolean signupCompletion(MemberVO vo) {
+	public boolean signupCompletion(MemberVO vo, @RequestParam("checkedCategory[]" )List<String> checkedCategory) {
+//		개인정보 입력 
 		Integer result = signupService.signupCompletion(vo);
+
+//		memberIndex 가져오기
+		Integer memberIndex = signupService.getMemberIndex(vo.getMemberId());
+
+//		checkedCategory로 categoryId 가져오기
+		List<Integer> categoryIdlist = categoryService.getCategoryId(checkedCategory);
+
+//		취향tb에 memberId랑 categoryId 넣기
+		preferenceService.SignupPreference(memberIndex, categoryIdlist);
+		
 //		회원가입 성공하면 
 		if(result==1) {
 			return true;
@@ -83,5 +102,6 @@ public class SignupController {
 		}else {
 			return false;
 		}
-	}
+	}	
+	
 }
