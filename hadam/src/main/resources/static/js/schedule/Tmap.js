@@ -40,6 +40,7 @@ function searchPubTransPathAJAX() {
 			} else if(resultJsonData.result.status == 31){
 				// 일정 시간 응답이 없음
 			}
+			
 			drawNaverPolyLine(resultJsonData)
 			
 			
@@ -60,6 +61,7 @@ function drawNaverMarker(x,y){
 			map: map //Marker가 표시될 Map 설정..
 		});
 	}
+	
 	
 // 경로찍는 함수
 // 종류에 따라 선 커스텀
@@ -107,3 +109,108 @@ function drawNaverPolyLine(data){
 			
 			}
 	}
+	
+	// 스케줄이 바뀔때마다 맵을 바꿔주는 함수
+let changemap = () => {
+	
+	var imgcount = $(".scheduleTable").find('img')
+	console.log(imgcount)
+	console.log(imgcount.attr('name').split(",")[0])
+	console.log(imgcount.attr('name').split(",")[1])
+	
+	if(imgcount.length==1){
+		console.log(imgcount.attr('id'))
+		var content= "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px; box-shadow: 5px 5px 5px #00000040; border-radius: 10px; width : 400px; height:100px; background-color: #FFFFFF; align-items: center; padding: 5px;'>"+
+					   `<div class='img-box' style='width: 110px; height: 90px;'><img src=${imgcount.attr('src')} style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";></div>`+
+					   "<div class='info-box' style='margin-left : 10px'>"+
+					   "<p style='margin-bottom: 7px;'>"+
+					   `<span class='tit' style=' font-size: 16px; font-weight: bold;'>${imgcount.attr('alt')}</span>`+
+					   "<p>"+
+					   `<span class='new-addr'>${imgcount.attr('id')}</span>`+
+					   "</p>"+
+					   "</div>"+
+					   "<a href='javascript:void(0)' onclick= infoWindow.setVisible(false); class='btn-close' style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'></a>"+
+					   "</div>";
+		map = new Tmapv2.Map("map-main", { // 지도가 생성될 div
+			center : new Tmapv2.LatLng(imgcount.attr('name').split(",")[0], imgcount.attr('name').split(",")[1]),
+			zoom : 17
+			})
+			
+		infoWindow = new Tmapv2.InfoWindow({
+			position: new Tmapv2.LatLng(imgcount.attr('name').split(",")[0], imgcount.attr('name').split(",")[1]), //Popup 이 표출될 맵 좌표
+			content: content, //Popup 표시될 text
+			border :'0px solid #FF0000', //Popup의 테두리 border 설정.
+			type: 2, //Popup의 type 설정.
+			map: map //Popup이 표시될 맵 객체
+		});	
+		
+		var marker = new Tmapv2.Marker({
+			position: new Tmapv2.LatLng(imgcount.attr('name').split(",")[0], imgcount.attr('name').split(",")[1]), //Marker의 중심좌표 설정.
+			map: map //Marker가 표시될 Map 설정..
+		});
+		
+		marker.addListener("click", function(evt) {
+			infoWindow.setVisible(true)
+		});
+	} 
+	// 스케줄이 2개 이상일때
+	else{
+		$('#map-main').empty()
+		
+		var imgcount = $(".scheduleTable").find('img')
+		console.log($(imgcount[0]).attr('name').split(",")[0])
+		var map = new Tmapv2.Map("map-main", { // 지도가 생성될 div
+			center : new Tmapv2.LatLng($(imgcount[0]).attr('name').split(",")[0], $(imgcount[0]).attr('name').split(",")[1]),
+			zoom : 17
+			})
+		
+		$.each(imgcount, function(idx, element){
+			
+			console.log($(element))
+			
+			var marker = new Tmapv2.Marker({
+				position: new Tmapv2.LatLng($(element).attr('name').split(",")[0], $(element).attr('name').split(",")[1]), //Marker의 중심좌표 설정.
+				map: map, //Marker가 표시될 Map 설정..
+			});
+			
+		
+			var infoWindow = new Tmapv2.InfoWindow({
+				position: new Tmapv2.LatLng($(element).attr('name').split(",")[0], $(element).attr('name').split(",")[1]), //Popup 이 표출될 맵 좌표
+				content: content, //Popup 표시될 text
+				border :'0px solid #FF0000', //Popup의 테두리 border 설정.
+				type: 2, //Popup의 type 설정.
+				map: map //Popup이 표시될 맵 객체
+			});	
+			
+			marker.addListener("click", function(evt) {
+			infoWindow.setVisible(true)
+		});
+			
+			
+		})
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	/*$.each(imgcount, function(idx, element){
+		
+		
+		
+		Latitude = $(element).attr('name').split(",")[0]
+		Longitude = $(element).attr('name').split(",")[1]
+		
+		console.log(Latitude)
+		console.log(Longitude)
+		
+	})*/
+	
+}
+	
+

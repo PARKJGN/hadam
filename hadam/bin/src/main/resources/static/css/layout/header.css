@@ -1,0 +1,259 @@
+@charset "EUC-KR";
+/*======================================
+ [ -Main Stylesheet-
+  Theme: EasyBook
+  Version: 2.2
+  Last change: 14/10/2022 ]
+ 
+/*-------------Fonts---------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900|Nunito:400,600,700,800,900&subset=cyrillic,cyrillic-ext,latin-ext,vietnamese');
+
+/*-------------General Style---------------------------------------*/
+
+
+.alarm-link {
+	color:#fff;
+	float:right;
+	position:relative;
+	width:60px;
+	top:0;
+	height:50px;
+	line-height:50px;
+	cursor:pointer;
+	font-size:16px;
+	color:#fff;
+	border-left:1px solid rgba(0,0,0,0.21);
+	box-sizing:border-box;
+}
+.alarm-link:hover i {
+	font-weight:800;
+}
+.alarm-link span.wl_counter{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	width:15px;
+	height:15px;
+	line-height:15px;
+	background: rgba(0,0,0,0.11);
+	border-radius:100%;
+	z-index:2;
+	font-size:10px;
+	color:#fff;
+}
+.alarm-link.scwllink i:before {
+	font-family: Font Awesome\ 5 Pro;
+	content: "\f00d";
+}
+.alarm-link:hover i{
+    animation: bounce 1s;
+}
+.alarm-link {
+	color:#fff;
+	float:right;
+	position:relative;
+	width:60px;
+	top:0;
+	height:50px;
+	line-height:50px;
+	cursor:pointer;
+	font-size:16px;
+	color:#fff;
+	border-left:1px solid rgba(0,0,0,0.21);
+	box-sizing:border-box;
+}
+.alarm-link:hover i {
+	font-weight:800;
+}
+.alarm-link span.wl_counter{
+	position:absolute;
+	bottom:10px;
+	left:10px;
+	width:15px;
+	height:15px;
+	line-height:15px;
+	background: rgba(0,0,0,0.11);
+	border-radius:100%;
+	z-index:2;
+	font-size:10px;
+	color:#fff;
+}
+.alarm-link.scwllink i:before {
+	font-family: Font Awesome\ 5 Pro;
+	content: "\f00d";
+}
+.alarm-link:hover i{
+    animation: bounce 1s;
+}
+
+.alrm-box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  margin: 20px;
+}
+
+
+
+.gunil-drop-box {
+	position:relative;
+	float:left;
+	cursor:pointer;
+	color:#fff;
+	transition: 0.2s;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	padding-top:10px;
+	font-weight:700;
+	font-size:12px;
+}
+.gunil-drop-box:before {
+	font-family: Font Awesome\ 5 Pro;
+	content: "\f0d7";
+	position:absolute;
+	color:#fff;
+	bottom:1px;
+	font-size:13px;
+	right:-26px;
+	font-weight:800;
+	transition: all .2s ease-in-out;
+	z-index:20;
+}
+.gunil-drop-box span {
+	position:absolute;
+	width:32px;
+	height:32px;
+	border-radius:100%;
+	overflow:hidden;
+	top:0;
+	left:-50px;
+}
+.gunil-drop-box span img {
+	width:100%;
+	height:100%;
+}
+.gunil-drop-box.hu-menu-visdec:before {
+    transform: rotateX(180deg);
+}
+.gunil-drop-box {
+    font-size: 11px;
+}
+.gunil-drop-box:before{
+	bottom:-1px;
+	right:-20px
+}
+
+/*벨을 눌렀을 때 드롭박스  */
+.gunil-drop-menu {
+	float:right;
+	position:relative;
+	top:8px;
+	margin-right:50px;
+}
+.gunil-drop-menu ul {
+	margin: 10px 0 0 0;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    min-width: 150px;
+    top: 60px;
+    left: -50px;
+    z-index: 1;
+    padding: 10px 0;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    transition: all .2s ease-in-out;
+}
+.gunil-drop-menu ul.hu-menu-vis {
+	opacity: 1;
+    visibility: visible;
+	 top: 40px;
+}
+.gunil-drop-menu ul li {
+	float:left;
+	width:100%;
+	padding:4px 0;
+}
+.gunil-drop-menu ul li a {
+    color: #50596E;
+    float: left;
+    width: 100%;
+    font-weight: 600;
+	font-size:12px;
+    text-align: left;
+    padding: 6px 15px;
+}
+.gunil-drop-menu {
+    margin-right: 30px;
+}
+/*벨을 눌렀을 때 드롭박스   */
+
+.gunil-alram-menu nav ul{
+	display:none;
+}
+.gunil-alram-menu{
+	position: absolute  ;
+	top:50px;
+	left:-20px;
+	width:300px;
+	z-index:50;
+ 	padding:15px 10px ;
+ 	background:#fff;
+	border-bottom-right-radius:6px;
+	border-right:1px solid #eee;
+	border-bottom:1px solid #eee;
+	visibility:hidden;
+	opacity:0;
+	-webkit-transition: all 0.4s  ease-in-out;
+	transition: all 0.4s  ease-in-out;
+}
+.gunil-alram-menu .menusb ul  {
+	display:block;
+	float:left;
+	position:relative;
+	width:100%;
+}
+
+
+/* ㅇㅁㄴㅇ */
+
+.alram-user-menu{
+	margin: 10px 0 0 0;
+     opacity: 0;
+    visibility: hidden; 
+    position: absolute;
+    min-width: 250px;
+    top: 60px;
+    left: 0px;
+    z-index: 1;
+    padding: 10px 0;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    transition: all .2s ease-in-out;
+}
+.alram-user-menu.hu-menu-vis {
+	opacity: 1;
+    visibility: visible;
+	 top: 40px;
+}
+
+.alram-user-menu li {
+	float:left;
+	width:100%;
+	padding:4px 0;
+}
+.alram-user-menu li a {
+    color: #50596E;
+    float: left;
+    width: 100%;
+    font-weight: 600;
+	font-size:12px;
+    text-align: left;
+    padding: 6px 25px;
+}
+
+
+/* 검색창 css 입니다. */
+

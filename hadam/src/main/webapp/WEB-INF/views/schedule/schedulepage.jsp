@@ -43,99 +43,6 @@
 						<div
 			class="listing-item-container init-grid-items three-columns-grid"
 			id="listBox">
-			<div class="listing-item" id="listItem">
-				<article class="geodir-category-listing fl-wrap">
-					<div class="geodir-category-img">
-						<a href="listing-single.html"><img src="../images/gal/1.jpg"
-							alt=""></a>
-
-
-						<div class="geodir-category-opt"></div>
-					</div>
-					<div class="geodir-category-content fl-wrap title-sin_item">
-						<div class="geodir-category-content-title fl-wrap">
-							<div class="geodir-category-content-title-item">
-								<h3 class="title-sin_map">12:00 ~ 13:00</h3>
-								<div class="geodir-category-location fl-wrap">
-									<a href="#" class="map-item"><i
-										class="fas fa-map-marker-alt"></i>장소명</a>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</article>
-			</div>
-
-			<div class="arrowBox">
-				<div class="arrow"></div>
-			</div>
-			<div class="timeTaken">
-				<span>대중교통</span>
-				<p>몇분</p>
-				<span>자차</span>
-				<p>몇분</p>
-			</div>
-			<!-- listing-item end -->
-			<!-- listing-item  -->
-			<div class="listing-item" id="listItem">
-				<article class="geodir-category-listing fl-wrap">
-					<div class="geodir-category-img">
-						<a href="listing-single.html"><img src="../images/gal/1.jpg"
-							alt=""></a>
-
-
-						<div class="geodir-category-opt"></div>
-					</div>
-					<div class="geodir-category-content fl-wrap title-sin_item">
-						<div class="geodir-category-content-title fl-wrap">
-							<div class="geodir-category-content-title-item">
-								<h3 class="title-sin_map">12:00 ~ 13:00</h3>
-								<div class="geodir-category-location fl-wrap">
-									<a href="#" class="map-item"><i
-										class="fas fa-map-marker-alt"></i>장소명</a>
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-				</article>
-			</div>
-
-			<div class="arrowBox">
-				<div class="arrow"></div>
-			</div>
-			<div class="timeTaken">
-				<p>소요시간</p>
-				<p class="whatTime">몇분</p>
-			</div>
-			<!-- listing-item end -->
-			<!-- listing-item  -->
-			<div class="listing-item" id="listItem">
-				<article class="geodir-category-listing fl-wrap">
-					<div class="geodir-category-img">
-						<a href="listing-single.html"><img src="../images/gal/1.jpg"
-							alt=""></a>
-
-
-						<div class="geodir-category-opt"></div>
-					</div>
-					<div class="geodir-category-content fl-wrap title-sin_item">
-						<div class="geodir-category-content-title fl-wrap">
-							<div class="geodir-category-content-title-item">
-								<h3 class="title-sin_map">12:00 ~ 13:00</h3>
-								<div class="geodir-category-location fl-wrap">
-									<a href="#" class="map-item"><i
-										class="fas fa-map-marker-alt"></i>장소명</a>
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-				</article>
-			</div>
 
 		</div>
 						<!--list-wrap-search end -->
@@ -162,8 +69,6 @@
 							<div class="list-wrap-search lisfw fl-wrap lws_mobile">
 								<div class="container ">
 									<div class="scheduleinven">
-										<img src="/images/schedule/bg/red.jpg" alt=""> <img
-											src="/images/schedule/bg/red.jpg" alt="">
 									</div>
 								</div>
 							</div>

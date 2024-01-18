@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.domain.board.dao.CommunityBoardDAO">
+	
+	<!-- 자유게시판 목록 출력 -->
+	<select id="getBoardList" resultType="BoardVO" parameterType="BoardVO">
+		
+		SELECT b.BOARD_ID, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_REGISTER_DATE, b.BOARD_VIEWS
+			   , b.MEMBER_INDEX, m.MEMBER_NICKNAME
+		FROM board b INNER JOIN member m 
+		ON b.MEMBER_INDEX = m.MEMBER_INDEX
+		
+	</select>
+	
+	<!-- 제목,내용,등록일 insert -->
+	<insert id="saveBoard" parameterType="BoardVO">
+		INSERT INTO board( BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS, MEMBER_INDEX, BOARD_UPDATE_DATE)
+		values(#{boardTitle}, #{boardContent},DATE_FORMAT(NOW(), '%Y-%m-%d'), 0, 2, now())
+	</insert>
+	
+	<!-- 자유게시판 상세 페이지 사진과 글정보 중복없이-->
+	<select id="getBoard" parameterType="BoardVO" resultType="BoardVO">
+		SELECT b.BOARD_UPDATE_DATE, b.BOARD_ID, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_REGISTER_DATE, b.BOARD_VIEWS
+			   , b.MEMBER_INDEX, m.MEMBER_NICKNAME, i.MEMBER_UPLOAD_IMAGE_PATH, i.MEMBER_UPLOAD_IMAGE_NAME
+		FROM board b INNER JOIN member m
+		ON b.MEMBER_INDEX = m.MEMBER_INDEX
+		INNER JOIN MEMBER_UPLOAD_IMAGE i
+		ON b.BOARD_ID = i.BOARD_ID
+		WHERE b.BOARD_ID = #{boardId}
+		
+	</select>
+	
+	<!-- boardId select -->
+	<select id="selectId" resultType="int">
+		SELECT BOARD_ID FROM board order by BOARD_ID desc limit 1
+	</select>
+	
+	<!-- 글 수정하기 -->
+	<update id="updateBoard" parameterType="BoardVO">
+		UPDATE board SET
+		BOARD_TITLE = #{boardTitle},
+		BOARD_CONTENT = #{boardContent},
+		BOARD_UPDATE_DATE = now(),
+		BOARD_VIEWS = 0
+		WHERE BOARD_ID = #{boardId}
+	</update>
+</mapper>
