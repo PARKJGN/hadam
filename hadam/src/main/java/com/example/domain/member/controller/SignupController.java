@@ -104,4 +104,12 @@ public class SignupController {
 		}
 	}	
 	
+	/* 네이버 회원가입 */
+	@RequestMapping(value="/naverSignup", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer naverSignup(MemberVO vo) {
+		System.out.println("네이버 회원가입 시도"+vo);
+		return signupService.naverSignup(vo);
+	}
+	
 }

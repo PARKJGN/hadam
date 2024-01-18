@@ -40,4 +40,16 @@
 	</select>
 
 
+	<!-- 네이버 회원 확인 -->
+	<select id="naverMemberCheck" parameterType="String" resultType="String">
+		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId}
+	</select>
+
+	<insert id="naverSignup" parameterType="com.example.domain.member.vo.MemberVO">
+		INSERT INTO MEMBER(MEMBER_ID, MEMBER_PASSWORD, MEMBER_PHONENUMBER
+							, MEMBER_NICKNAME, MEMBER_SEX, MEMBER_BIRTH, MEMBER_REGISTE_DATE , MEMBER_API)
+					VALUES (#{memberId}, #{memberPassword}, #{memberPhoneNumber}
+							, #{memberNickname}, #{memberSex}, #{memberBirth}, NOW(), #{memberApi})
+	</insert>
+
 </mapper>

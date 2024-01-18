@@ -261,15 +261,7 @@
                                     <div id="tab-2" class="tab-content">
                                         <h3>Sign Up <span>HADAM <strong>:)</strong></span></h3>
                                         <div class="custom-form">
-                                            <form method="post"   name="registerform" class="main-register-form" id="main-register-form2">
-                                                <!-- <label >Full Name <span>*</span> </label> -->
-                                                <a href="/signup/signup" ><input name="name" type="button" value="hadam 회원가입"></a>
-                                                <!-- <label>Email Address <span>*</span></label> -->
-                                                <input name="email" type="text"  onClick="this.select()" value="">
-                                                <!-- <label >Password <span>*</span></label> -->
-                                                <input name="password" type="password"   onClick="this.select()" value="" >
-                                                <button type="submit"     class="log-submit-btn color-bg"  ><span>회원가입</span></button>
-                                            </form>
+                                        	<a href="/signup/signup" ><input type="button" class='hadamsignbtn' value="hadam 회원가입"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -278,7 +270,7 @@
                             <!--tabs end -->
                             <div class="log-separator fl-wrap"><!-- <span>or</span> --></div>
                             
-                            <button class='loginbtn'><img src="/images/sign/naverloginbtn.png" class='naverloginbtn'></button>
+                            <a id="naverIdLogin_loginButton" href="javascript:void(0)"><button class='loginbtn'><img src="/images/sign/naverloginbtn.png" class='naverloginbtn'></button></a>
                             <button class='loginbtn'><img src="/images/sign/kakaologinbtn.png" class='kakaologinbtn'></button>
                             
                             <div class="log-separator fl-wrap">
@@ -302,6 +294,7 @@
         <script type="text/javascript" src="/js/scripts.js"></script>
         <script type="text/javascript" src="/js/sign/signin.js"></script>
         <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+        <!-- <script type="text/javascript" src="/js/layout/logout.js"></script> -->
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOURAPIKEYHERE&libraries=places&callback=initAutocomplete"></script>  
         <script type="text/javascript" src="/js/map-single.js"></script> -->        
     </body>

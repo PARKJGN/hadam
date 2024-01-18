@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -51,12 +52,27 @@ public class SigninController {
 		}
 	}
 	
+//	로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/index";
+		 return "redirect:/index"; 
+		/* return "logout"; */
 	}
 	
-	
-	
+//	네이버 로그인
+	@RequestMapping(value="/naverLogin", method=RequestMethod.POST)
+	@ResponseBody
+	public void naverLogin(String memberId, String memberPassword, @RequestParam("accessToken") String accessToken,
+			HttpSession session, HttpServletRequest request ) {
+		MemberVO vo = signinService.loginCheck(memberId, memberPassword);
+		System.out.println("네이버 로그인 들어오기");
+		System.out.println(accessToken);
+		/* session.setAttribute("accessToken", accessToken); */
+		session.setAttribute("memberId", vo.getMemberId());
+		session.setAttribute("memberNickname", vo.getMemberNickname());
+//		세션 1시간 유지
+		session.setMaxInactiveInterval(60*60);
+		
+	}
 }

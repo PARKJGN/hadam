@@ -31,4 +31,13 @@ public interface SignDAO {
 //	로그인 정보 확인 후 로그인 페이지 이동 
 	MemberVO loginCheck(String memberId, String memberPassword);
 	
+//	==================== 네이버 ========================
+	
+//	네이버 회원 확인
+	String naverMemberCheck(String memberId);
+	
+//	네이버 회원정보 입력
+	Integer naverSignup(MemberVO vo);
+	
+	
 }

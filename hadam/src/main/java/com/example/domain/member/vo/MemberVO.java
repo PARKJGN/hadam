@@ -37,4 +37,5 @@ public class MemberVO {
 	
 	private Date memberLeaveDate;
 	
+	private Integer memberApi;
 }

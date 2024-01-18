@@ -51,7 +51,8 @@
                         	<div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>로그인</div>
                         </c:if>
                         <c:if test="${sessionScope.memberNickname != null}">
-                        	<a href="/signin/logout" class="signout"><div class="show-reg-form"><i class="fa fa-sign-in"></i>로그아웃</div></a>
+                        <!-- <div class="show-reg-form signout" id='signout' ><i class="fa fa-sign-in"></i>로그아웃</div> -->
+                        	 <a href="/signin/logout" class="signout"><div class="show-reg-form"><i class="fa fa-sign-in"></i>로그아웃</div></a>
                         </c:if>
                     </div>
                 </div>
