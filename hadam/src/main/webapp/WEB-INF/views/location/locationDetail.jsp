@@ -12,7 +12,7 @@
                 <div class="content">
                 	<div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
-                            <div class="breadcrumbs fl-wrap"><a href="#">메인 페이지</a><a href="#">분류 페이지</a><span>분류 상세 페이지</span></div>
+                            <div class="breadcrumbs fl-wrap"><a href="/">메인 페이지</a><a href="/location/locationList">장소 페이지</a><span>장소 상세 페이지</span></div>
                         </div>
                     </div>
                     <!--  section  -->
@@ -46,7 +46,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <div class="list-single-main-container ">
+                                    <div class="catelist-single-main-container ">
                                         <!-- fixed-scroll-column  -->
                                         <div class="fixed-scroll-column">
                                             <div class="fixed-scroll-column-item fl-wrap">
@@ -54,17 +54,17 @@
                                                 <div class="share-holder fixed-scroll-column-share-container">
                                                     <div class="share-container  isShare"></div>
                                                 </div>
-                                                <a class="fc-button" href="#"><i class="far fa-heart"></i> <span>Save</span></a>
-                                                
+                                                	<a class="fc-button" href="addFavorites?locationId=${locationDetail.locationId }&memberIndex='세션아이디 여기 넣으면 됨'">
+                                                	<i class="far fa-heart"></i> <span>찜하기</span></a>
                                             </div>
                                         </div>
                                         <!-- 장소 이미지 -->                                          
-                                        <div class="list-single-main-media fl-wrap" id="sec1">
-                                                    <div class="slick-slide-item">
-                                                    <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
-                                                    <img src="${pageContext.request.contextPath}/locationImages/${locationDetail.locationImageName }" 
-                                                    onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/1.jpg'"></div>
-                                        </div>
+                                        <div class="catelist-single-main-media fl-wrap" id="sec1">
+	                                        <div class="slick-slide-item">
+	                                        <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
+	                                        <img class="cateimg-good" style="text-align:center;" src="${pageContext.request.contextPath}/locationImages/${locationDetail.locationImageName }" 
+	                                        onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></div>
+                                        </div> 
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -121,8 +121,14 @@
                                             </div>
                                             <div class="listing-features fl-wrap">
                                                 <ul>
-                                                    <li> ${locationDetail.locationMenusName }  </li>
-                                                    <li> ${locationDetail.locationMenusPrice } </li>
+                                                    <c:forEach var="menuInfo" items="${menuList }" varStatus="loop">                                                    
+                                                    	<!-- 인덱스가 2의 배수인 경우 개행 추가 -->
+                                                    	<c:if test="${loop.index > 0 && loop.index % 2 == 0}">
+                                                    		</ul><ul style="clear: both;">
+                                                    	</c:if>
+                                                    	<li>${menuInfo.menuName} - ${menuInfo.menuPrice}</li>
+                                                    	
+                                                    </c:forEach>                                                    
                                                 </ul>
                                             </div>             
                                         </div>
@@ -134,20 +140,20 @@
                                             </div>
                                             <!--  rooms-container -->
                                             <div class="rooms-container fl-wrap">                                            		
-                                               	<div class="reviews-comments-item">
-                                                   	<div class="review-comments-avatar">
+                                               	<div class="catereviews-comments-item">
+                                                   	<div class="catereview-comments-avatar">
                                                        	<img src="${pageContext.request.contextPath}/images/avatar/1.jpg" alt=""> 
                                                    	</div>
-                                                   	<div class="reviews-comments-item-text">                                                        	                                                        	
+                                                   	<div class="catereviews-comments-item-text">                                                        	                                                        	
                                                        	<p>${locationDetail.locationReviewContent }</p>
                                                    	</div>
                                                	</div>
                                                		                                                	                                                                  		                                            		
-                                               	<div class="reviews-comments-item">
-                                                   	<div class="review-comments-avatar">
+                                               	<div class="catereviews-comments-item">
+                                                   	<div class="catereview-comments-avatar">
                                                        	<img src="${pageContext.request.contextPath}/images/avatar/1.jpg" alt=""> 
                                                    	</div>
-                                                   	<div class="reviews-comments-item-text">                                                        	                                                        	
+                                                   	<div class="catereviews-comments-item-text">                                                        	                                                        	
                                                        	<p>${locationDetail.locationReviewContent }</p>
                                                    	</div>
                                                	</div>	                                                	                                                                                                               	                             
@@ -160,7 +166,7 @@
                                         	<div class="catelist-single-main-item-title fl-wrap">
                                                 <h3>지도</h3>
                                             </div>
-                                        	<div id="map" style="width:630px;height:400px;">
+                                        	<div id="map" style="width:100%;height:400px;">
                                         	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=89a5d00a4b30ffdb0b3d0d587201ad3c"></script>
                                         	<script>
                                         		var container = document.getElementById("map");
@@ -188,3 +194,4 @@
             <!--footer -->
             <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>  
             <!--footer end -->
+            <script src="/js/favorites/favorites.js"></script>

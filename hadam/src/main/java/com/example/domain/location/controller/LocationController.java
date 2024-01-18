@@ -1,27 +1,30 @@
- package com.example.domain.category.controller;
+ package com.example.domain.location.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.category.service.CategoryService;
 import com.example.domain.category.vo.CategoryVO;
+import com.example.domain.favorites.service.FavoritesService;
 import com.example.domain.images.vo.LocationImagesVO;
 import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
 
-
 import edu.emory.mathcs.backport.java.util.Arrays;
 
 @Controller
-@RequestMapping("category")
-public class CategoryController {
+@RequestMapping("location")
+public class LocationController {
 	
 	@Autowired
 	private CategoryService categoryService;
@@ -29,9 +32,12 @@ public class CategoryController {
 	@Autowired
 	private LocationService locationService;
 	
+	@Autowired
+	private FavoritesService favoritesService;
+	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
-		return "/category/"+step;
+		return "/location/"+step;
 	}
 	
 	
@@ -88,16 +94,47 @@ public class CategoryController {
 	    m.addAttribute("nextMin", page+1 > lastPage ? lastPage : page+1);
 	    m.addAttribute("lastPage", lastPage);
 	      
-	    return "/category/locationList";
+	    return "/location/locationList";
 	 }
+	
+	// 장소 상세 조회
+	@RequestMapping(value = "/locationDetail", method = RequestMethod.GET)
+	public void locationDetail(Model m, LocationVO vo) {
+		
+		LocationVO locationDetail = locationService.getLocationDetail(vo);
+		
+		// 메뉴 정보를 파싱하여 리스트로 설정 List<String> menus =
+		List<String> menus 	= Arrays.asList(locationDetail.getLocationMenusName().split("/"));
+		System.out.println(locationDetail.getLocationMenusName());
+	    List<String> prices = Arrays.asList(locationDetail.getLocationMenusPrice().split("/"));
+	    System.out.println(locationDetail.getLocationMenusPrice());
+	    
+		// 메뉴와 가격을 짝 지어주기
+	    List<Map<String, String>> menuList = new ArrayList<>();
+	    for (int i = 0; i < Math.min(menus.size(), prices.size()); i++) {
+	        Map<String, String> menuInfo = new HashMap<>();
+	        menuInfo.put("menuName", menus.get(i));
+	        menuInfo.put("menuPrice", prices.get(i));
+	        menuList.add(menuInfo);
+	    }
+
+	    
+		m.addAttribute("locationDetail", locationDetail);
+		// 메뉴 정보를 모델에 추가
+		m.addAttribute("menuList", menuList);
+		
+	}
+	
 	
 	// 카테고리별 장소 목록 조회
 	@RequestMapping("/categoryLocList")
 	public void categoryLocList(Model m, CategoryVO vo, @RequestParam(
 			value = "page", required = false, defaultValue = "1") int page
-			, @RequestParam(name="middleCategory") String middleCategory) {
+			, @RequestParam(name="middleCategory", required = false) String middleCategory
+			, @RequestParam(name="largeCategory") String largeCategory) {
 		
 		List<LocationVO> list = categoryService.getCategoryLocList(vo);
+		
 		
 		// 자유게시판 5개씩 페이징 처리
 	    int pagingSize = 12;
@@ -138,26 +175,13 @@ public class CategoryController {
 	       numList.add(i);
 	    }
 	      
-	    m.addAttribute("middleCategory",middleCategory);
-	    m.addAttribute("categoryLocList",pagingList);
+	    m.addAttribute("largeCategory", largeCategory);
+	    m.addAttribute("middleCategory", middleCategory);
+	    m.addAttribute("categoryLocList", pagingList);
 	    m.addAttribute("numList", numList);
 	    m.addAttribute("prevMax", page-1 < 1 ? 1 : page-1);
 	    m.addAttribute("nextMin", page+1 > lastPage ? lastPage : page+1);
 	    m.addAttribute("lastPage", lastPage);
-		
-	}
-	
-	// 장소 상세 조회
-	@RequestMapping("/locationDetail")
-	public void locationDetail(Model m, LocationVO vo) {
-		
-		/*
-		 * // 메뉴 정보를 파싱하여 리스트로 설정 List<String> menus =
-		 * Arrays.asList(vo.getLocationMenusName().split("/")); List<String> prices =
-		 * Arrays.asList(vo.getLocationMenusPrice().split("/"));
-		 */
-		
-		m.addAttribute("locationDetail", locationService.getLocationDetail(vo));
 		
 	}
 	

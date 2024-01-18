@@ -33,7 +33,9 @@ public class LocationVO {
 	
 	private String locationLongitude;
 	
-	private Integer locationReviewCount;
+	// DB에 문자열이 들어옴
+//	private Integer locationReviewCount;
+	private String locationReviewCount;
 	
 	private Integer categoryId;
 	
@@ -51,5 +53,8 @@ public class LocationVO {
 	
 	// 장소 리뷰 띄우기
 	private String locationReviewContent;
+	
+	// 찜 여부 확인 위해 멤버 index 추가
+	private Integer memberIndex;
 	
 }
