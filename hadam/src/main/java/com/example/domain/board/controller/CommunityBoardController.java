@@ -23,6 +23,7 @@ import com.example.domain.board.util.MD5Generator;
 import com.example.domain.board.vo.BoardVO;
 import com.example.domain.comment.vo.CommentVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
+import com.example.domain.mainpage.service.NotificationService;
 import com.example.domain.member.vo.MemberVO;
 import com.example.domain.report.vo.BoardAndCommentReportVO;
 
@@ -40,6 +41,11 @@ public class CommunityBoardController {
 	
 	@Autowired 
 	private FileService fileService;
+	
+	/* 게시물 작성자에게 알림을 보내기위한 service -건일 */
+	@Autowired
+	private NotificationService notificationService;
+
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
@@ -69,7 +75,7 @@ public class CommunityBoardController {
 		// 회원의 memberIndex 조회에서 가져온후 session에 저장
 		MemberVO result = communityUserService.getMemberByMemberIndex(mvo);
 		session.setAttribute("memberIndex", result.getMemberIndex());
-	
+
 		// 회원의 memberIndex 조회에서 가져오기 현재는 memberIndex 1로 session 받아옴
 //		m.addAttribute("member", session.getAttribute(String.valueOf(result.getMemberIndex())));
 		
@@ -253,12 +259,20 @@ public class CommunityBoardController {
 	// 커뮤니티 상세페이지에서 댓글 작성 (ajax) save
 	@RequestMapping("/commentSave")
 	public @ResponseBody List<CommentVO> commentSave(CommentVO vo, Model m) {
-	
+		//알림기능 넣을려고 게시물등록자의 memberindex를 받아오기 위해 확인하려고 쓴코드입니다. - 건일 
+		System.out.println("작성자의 멤버인덱스"+ vo.getMemberIndex());
 		communityBoardService.commentSave(vo);
 		System.out.println("댓글 vo 정보" + vo.toString());
 		// 해당 게시글에 작성한 댓글 리스트 가져오기
 		List<CommentVO> list = communityBoardService.commentList(vo.getBoardId());
 		 
+		
+		//댓글을 달았을 때 댓글 주인memberindex를 Long으로 바꿔주는 코드. - 건일 
+		long id = (long)vo.getMemberIndex();
+
+		//댓글을 달았을 때 댓글 주인에게 알림이 가게하는 함수. - 건일 
+		notificationService.notify(id, "새로운 댓글이 달렸습니다.");
+		
 		System.out.println("commentvo" + list);
 		 return list;
 	}

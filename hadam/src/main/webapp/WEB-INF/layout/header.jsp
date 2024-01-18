@@ -19,9 +19,13 @@
         <!-- 헤더 css 임포트 -정건일-->
         <link type="text/css" rel="stylesheet" href="/css/layout/header.css">
         <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
-		<script src="https://kit.fontawesome.com/b2960bc7d5.js" crossorigin="anonymous"></script>	
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="/images/favicon.ico">
+		<!--=============== script ===============-->
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	    <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
+		<script src="https://kit.fontawesome.com/b2960bc7d5.js" crossorigin="anonymous"></script>	
+	
     </head>
 
     <body>
@@ -61,11 +65,8 @@
 	                        <span class="wl_counter">3<!-- 알림갯수로 들어오는 데이터 그냥 빨간불빛으로 전환할 예정입니다.--></span>
                                         <!--second level -->
                                         <ul class="alram-user-menu">
-                                            <li><a id="sseOutput" href="index.html">새로운 메세지가 도착했습니다.</a></li>
-                                            <li><a href="index2.html">1:1 문의 답변이 완료되었습니다.</a></li>
-                                            <li><a href="index3.html">스케줄에 참가신청이 들어왔습니다.</a></li>
-                                            <li><a href="index4.html">텐서플로우</a></li>
-                                        </ul>
+                                        <!-- 알림 메세지가 출력될 공간 -->
+                                       </ul>
                         </div>
                 		<!--1.12 알림표시 자리입니다.  -정건일-->
                 		                        
@@ -151,12 +152,12 @@
                                         <!--second level -->
                                         <ul>
                                             <li><a href="/community/boardList">자유게시판</a></li>
-                                            <li><a href="scheduleShareList">스케줄공유 게시판</a></li>
+                                            <li><a href="/community/scheduleShareList">스케줄공유 게시판</a></li>
                                         </ul>
                                         <!--second level end-->
                                     </li>
                                     <li>
-                                        <a href="/category/category">장소찾기 <i class="fas "></i></a>
+                                        <a href="/category/locationList">장소찾기 <i class="fas "></i></a>
                                     </li>
                                 </ul>
                             </nav>

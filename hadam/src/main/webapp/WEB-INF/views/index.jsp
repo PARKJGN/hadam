@@ -1,73 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-            <!-- index css 임포트 -정건일-->
-        	<link type="text/css" rel="stylesheet" href="/css/index.css">
-            <!-- index css 임포트 end-정건일-->    	
             <!-- header-->
+        <!--=============== import-header  ===============-->
            	<jsp:include page="../layout/header.jsp"></jsp:include>
-            <!-- 헤더 css 임포트 -정건일-->
+        <!--=============== css  ===============-->
+            <!-- index css -정건일-->
         	<link type="text/css" rel="stylesheet" href="/css/index.css">
-            <div id="wrapper">
-				<!-- kakao map -->
-				<!-- <div>
-					<input id="kakaomapsearch" value=""><button id="kakaomapbtn">찾기</button>
-					<div id="map" style="width:100%;height:350px;"></div>
-				</div>
-	
-					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5272676073cc971ef5a65eac1fa8919b&libraries=services"></script>
-					<script type="text/javascript">
-							$(document).ready(function () {
-					            // 변수를 전역으로 선언하여 클릭 이벤트 밖에서도 접근 가능하게 합니다.
-					            var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-					            var mapContainer = document.getElementById('map');
-					            var mapOption = {
-					                center: new kakao.maps.LatLng(37.566826, 126.9786567),
-					                level: 3
-					            };
-					            var map = new kakao.maps.Map(mapContainer, mapOption);
-					            var ps = new kakao.maps.services.Places();
-		
-					            $('#kakaomapbtn').click(function () {
-					                // 클릭 이벤트 핸들러 안에서 변수를 정의하고 사용합니다.
-					                var search_location = $('#kakaomapsearch').val();
-					                console.log(search_location);
-		
-					                // 키워드로 장소를 검색합니다
-					                ps.keywordSearch(search_location, placesSearchCB);
-		
-					                function placesSearchCB(data, status, pagination) {
-					                    if (status === kakao.maps.services.Status.OK) {
-					                        var bounds = new kakao.maps.LatLngBounds();
-		
-					                        for (var i = 0; i < data.length; i++) {
-					                            displayMarker(data[i]);
-					                            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-					                        }
-		
-					                        map.setBounds(bounds);
-					                    }
-					                }
-		
-					                function displayMarker(place) {
-					                    var marker = new kakao.maps.Marker({
-					                        map: map,
-					                        position: new kakao.maps.LatLng(place.y, place.x)
-					                    });
-		
-					                    kakao.maps.event.addListener(marker, 'click', function () {
-					                        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-					                        infowindow.open(map, marker);
-					                    });
-					                }
-					            });
-					        });
-					</script> -->
+		<!--=============== script ===============-->
+        	<!-- 카카오맵 api -->
+        	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5272676073cc971ef5a65eac1fa8919b&libraries=services"></script>
 
-           		<!-- kako map end -->
+
+
+            <div id="wrapper">
+						<!-- kakao map 출발장소 선택-->
+							  <div class="modal" id="myModal"> 					
+								<div class="map_wrap">
+									    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+									
+									    <div id="menu_wrap" class="bg_white">
+									        <div class="option">
+									            <div>
+													<form id="searchForm">
+													    키워드 : <input type="text" placeholder="장소를 입력하세요." value="" id="keyword" size="15"> 
+													    <button type="submit" >검색하기</button> 
+													</form>
+									            </div>
+									        </div>
+									        <hr>
+									        <ul id="placesList"></ul>
+									        <div id="pagination"></div>
+									    </div>
+									</div>
+						         <button  class="btn-two green rounded" id="closeModalBtn">창 닫기</button>
+						    </div>
+						       <div class="modal-overlay" id="modalOverlay"></div> 		
+		           		<!-- kakao map 출발장소 end -->
+		           		
+      					<!-- kakao map 스케줄 시작장소 선택-->
+							  <div class="modal" id="myModal2"> 					
+								<div class="map_wrap2">
+									    <div id="map2" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+									
+									    <div id="menu_wrap2" class="bg_white">
+									        <div class="option">
+									            <div>
+													<form id="searchForm2">
+													    키워드 : <input type="text" placeholder="장소를 입력하세요." value="" id="keyword2" size="15"> 
+													    <button type="submit" >검색하기</button> 
+													</form>
+									            </div>
+									        </div>
+									        <hr>
+									        <ul id="placesList2"></ul>
+									        <div id="pagination2"></div>
+									    </div>
+									</div>
+						         <button class="btn-two green rounded" id="closeModalBtn2">창 닫기</button>
+						    </div>
+						       <div class="modal-overlay" id="modalOverlay2"></div> 		
+		           		<!-- kakao map 스케줄 시작장소 선택 end -->
                 <!-- content-->
                 <div class="content">
-                    <!--section -->
+                    <!--main_header_section -->
+                    <!-- 메인 배너/ AI스케줄 정보 입력칸 등 -->
                     <section class="hero-section" data-scrollax-parent="true" id="sec1">
                         <div class="hero-parallax">
                             <div class="bg"  data-bg="images/bg/2.jpg" data-scrollax="properties: { translateY: '200px' }"></div>
@@ -77,9 +74,9 @@
                             <div class="container">
                                 <div class="home-intro">
                                     <div class="section-title-separator"></div>
-                                    <h2>어휴.. 하기싫어!</h2>
+                                    <h2>당신의 완벽한 하루를 디자인하세요!</h2>
                                     <span class="section-separator"></span>                                    
-                                    <h3>Ugh.. I don’t want to do it.!</h3>
+                                    <h3>Design your perfect day!</h3>
                                 </div>
                                <div class="main-search-input-container">
                                 <div class="main-search-input-wrap">
@@ -89,20 +86,22 @@
                                     <!-- 장소정하기 -->
                                         <div class="main-search-input-item location" id="autocomplete-container">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
-                                            <input type="text" placeholder="출발 장소 선택" class="autocomplete-input" id="autocompleteid2"  value=""/>
+                                            <input type="text" placeholder="출발 장소 선택" class="autocomplete-input" id="autocompleteid1"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기1"/>
                                            
                                         </div>
                                     <!-- 장소정하기 -->
                                     <!-- 장소정하기2 -->
                                         <div class="main-search-input-item main-search-input-item_small" id="autocomplete-container2">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
-                                            <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid2"  value=""/>
+                                            <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid2"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2"/>
                                             
                                         </div>
                                     <!-- 장소정하기2 -->
+                                    
                                     <!-- 날짜정하기 -->
                                         <div class="main-search-input-item main-date-parent main-search-input-item_small">
-                                            <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> <input type="text" placeholder="When" name="main-input-search"   value=""/>
+                                            <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> 
+                                            <input type="text" placeholder="When" name="main-input-search77"   value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2"/>
                                         </div>
                             		<!-- 날짜정하기 -->
 
@@ -145,10 +144,9 @@
                             </div>
                         </div>
                         <div class="header-sec-link">
-                            <div class="container"><a href="#sec2" class="custom-scroll-link color-bg"><i class="fal fa-angle-double-down"></i></a></div>
                         </div>
                     </section>
-                    <!-- section end -->                    
+                    <!-- main_header_section end -->                    
                    
                     <!-- section-->
                     <section class="grey-blue-bg">
@@ -172,7 +170,7 @@
                                     <div class="listing-item" style="width:400px;">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
-                                                <a href="listing-single.html"><img src="images/gal/마포식당.jpg" alt=""></a>
+                                                <a href="listing-single.html"><img src="images/location/${infoList.locationName}.jpg" alt="" style="width:100%;"></a>
 
                                                 <div class="geodir-category-opt">
                                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="${infoList.locationRating}"></div>
@@ -220,7 +218,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <!--slider-carousel-wrap -->
-                        <div class="slider-carousel-wrap text-carousel-wrap fl-wrap">
+                        <div class="slider-carousel-wrap text-carousel-wrap fl-wrap" style="height:250px">
                             <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left"></i></div>
                             <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right"></i></div>
                             <div class="text-carousel single-carousel fl-wrap">
@@ -234,8 +232,11 @@
                                         <a href="#" class="testim-link">Via Facebook</a>
                                     </div>
                                 </div>
+                                
+                                
                                 <!--slick-item end -->
                             </div>
+                            
                         </div>
                         <!--slider-carousel-wrap end-->
                     </section>
