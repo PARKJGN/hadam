@@ -56,8 +56,7 @@ $(() => {
 					$(ui.draggable[0]).resizable({
 						handles: "e",
 						grid: 90,
-						containment: ".schedulecontent",
-						ghost: true,
+						containment: ".scheduleTable",
 						maxHeight: 150,
 						minWidth: 180,
 						resize: function(event, ui) {
@@ -65,6 +64,8 @@ $(() => {
 						},
 						// 리사이즈를 멈췄을때
 						stop: function(event, ui) {
+							$(this).css("opacity", 1)
+							$(this).css("z-index", 0)
 							// 클릭막는 변수
 							clickprevent = 1
 							// div가 이상한 곳으로 가는걸 막아주는 css
@@ -129,6 +130,8 @@ $(() => {
 						},
 						// 리사이즈 시작했을때
 						start: function(event, ui) {
+							$(this).css("opacity", 0.7)
+							$(this).css("z-index", 1)
 							startresize = $(this).parent().index()
 
 							// 리사이즈 시작했을때 차지하고 있던 칸들 드랍되게 풀기
@@ -185,15 +188,15 @@ $(() => {
 					invendrop = $(event.target).index()
 
 					$(".scheduleTable").children().eq(invendrop).droppable("disable")
-					$(".scheduleTable").children().eq(invendrop+1).droppable("disable")
+					$(".scheduleTable").children().eq(invendrop + 1).droppable("disable")
 					//해당 칸에 자식이 없으면서 인벤토리가 아닌 스케줄표에 있는거 드랍했을때
 				} else {
 					enddragindex = $(event.target).index()
 					console.log(enddragindex)
-					console.log(startdragsize/90-1)
-					if(enddragindex + (startdragsize/90-1) >= 50){
+					console.log(startdragsize / 90 - 1)
+					if (enddragindex + (startdragsize / 90 - 1) >= 50) {
 						return false
-						}
+					}
 					// 드랍했을때 드랍한 img의 길이 안에 다른 img가 있을때 그 이미지 인벤토리로 보내기
 					// 자기 img면 안되게 만들어야함
 					for (var i = enddragindex; i <= enddragindex + startdragsize / 90 - 1; i++) {
@@ -237,7 +240,7 @@ $(() => {
 							// 옮긴 img 스케줄 테이블에서 제거
 							$(".scheduleTable").children().eq(i).empty();
 
-						} 
+						}
 					}
 					$(event.target).append($(ui.draggable[0]))
 					// 드랍한 img의 길이만큼 칸 드랍 묶기
@@ -277,7 +280,7 @@ $(() => {
 		//자식이 없으면 모달창을 띄워준다
 		if (!td.children().length && td.parent().find('img').length < 5) {
 			// 클릭한 td옆에 다른 스케줄이 있으면 추가되지않게 or 끝칸에서 추가하기 눌렀을때
-			if (td.next().children().length == 1 || td.index()==49) return false
+			if (td.next().children().length == 1 || td.index() == 49) return false
 
 			$('#schedulemodal').modal("show");
 		}
@@ -304,7 +307,7 @@ $(() => {
 	})
 
 	// 모달창의 추가하기 눌렀을때 스케줄표에 사진 추가하는 이벤트
-	$('.scheduleadd').click(function(e) {
+	$(document).on("click", '.scheduleadd', function(e) {
 
 
 		e.preventDefault();
@@ -317,8 +320,7 @@ $(() => {
 		td.children().resizable({
 			handles: "e",
 			grid: 90,
-			containment: ".schedulecontent",
-			ghost: true,
+			containment: ".scheduleTable",
 			maxHeight: 150,
 			minWidth: 180,
 			resize: function(event, ui) {
@@ -326,6 +328,9 @@ $(() => {
 			},
 			// 리사이즈를 멈췄을때
 			stop: function(event, ui) {
+				// 고스트 모드 해제
+				$(this).css("opacity", 1)
+				$(this).css("z-index", 0)
 				// 클릭막는 변수
 				clickprevent = 1
 				// div가 이상한 곳으로 가는걸 막아주는 css
@@ -336,15 +341,10 @@ $(() => {
 				for (var i = startresize + 2; i <= stopresize; i++) {
 
 					var img = $(".scheduleTable").children().eq(i).find('img')
-
+					// 인벤토리로 보내는 img의 길이만큼 묶여있던 드랍칸 풀기
 					if (!img.length == 0) {
-						console.log(img)
-						console.log($(".scheduleTable").children().eq(i).children().width() / 90)
-						console.log(i)
 						for (j = i + 1; j <= i + $(".scheduleTable").children().eq(i).children().width() / 90 - 1; j++) {
-
 							$(".scheduleTable").children().eq(j).droppable("enable")
-							console.log("aa")
 						}
 
 						// 걸어놨던 리사이즈 초기화
@@ -390,6 +390,9 @@ $(() => {
 			},
 			// 리사이즈 시작했을때
 			start: function(event, ui) {
+				// 고스트 옵션을 주면 화면에 조금 나와있는 상태에서 리사이즈하면 오류발행
+				$(this).css("opacity", 0.7)
+				$(this).css("z-index", 1)
 				startresize = $(this).parent().index()
 
 				// 리사이즈 시작했을때 차지하고 있던 칸들 드랍되게 풀기

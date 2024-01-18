@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.location.dao.LocationDAO;
 import com.example.domain.location.vo.LocationVO;
+import com.example.domain.schedule.vo.PagingVO;
 
 @Service
 public class LocationServiceImpl implements LocationService{
@@ -32,4 +33,18 @@ public class LocationServiceImpl implements LocationService{
 		return locationDAO.getLocationDetail(vo);
 	}
 
+	
+	// 장소 카테고리,지역별로 출력
+	@Override
+	public List<LocationVO> locationScheduleList(PagingVO pvo) {
+		
+		
+		pvo.setTotalCount(locationDAO.locationscheduleListSize(pvo));
+		System.out.println(pvo);
+		
+		return locationDAO.locationscheduleList(pvo);
+	}
+
+	
+	
 }

@@ -1,13 +1,10 @@
 package com.example.domain.board.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.board.dao.CommunityBoardDAO;
 import com.example.domain.board.dao.FileDAO;
@@ -34,7 +31,8 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 			communityBoardDAO.saveBoard(bvo);
 			fvo.setBoardId(communityBoardDAO.selectId()); 
 			fileDAO.saveFile(fvo);
-			System.out.println("boardServiceImpl -> ");
+			System.out.println("boardServiceImpl -> "+ fvo);
+			
 		} else {
 			communityBoardDAO.saveBoard(bvo);
 		}

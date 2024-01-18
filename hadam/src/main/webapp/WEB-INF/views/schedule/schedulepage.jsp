@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<!-- Map end -->
-
+		
 		<!--section -->
 		<section class="grey-blue-bg small-padding">
 			<div class="container">
@@ -40,13 +40,104 @@
 					<!--listing -->
 					<div class="col-md-12">
 						<!--list-wrap-search   -->
-						<div class="list-wrap-search lisfw fl-wrap lws_mobile">
-							<div class="container ">
-								<div class="scheduleSummary">
-									<img src="/images/schedule/bg/red.jpg" alt="">
+						<div
+			class="listing-item-container init-grid-items three-columns-grid"
+			id="listBox">
+			<div class="listing-item" id="listItem">
+				<article class="geodir-category-listing fl-wrap">
+					<div class="geodir-category-img">
+						<a href="listing-single.html"><img src="../images/gal/1.jpg"
+							alt=""></a>
+
+
+						<div class="geodir-category-opt"></div>
+					</div>
+					<div class="geodir-category-content fl-wrap title-sin_item">
+						<div class="geodir-category-content-title fl-wrap">
+							<div class="geodir-category-content-title-item">
+								<h3 class="title-sin_map">12:00 ~ 13:00</h3>
+								<div class="geodir-category-location fl-wrap">
+									<a href="#" class="map-item"><i
+										class="fas fa-map-marker-alt"></i>장소명</a>
 								</div>
 							</div>
 						</div>
+
+					</div>
+				</article>
+			</div>
+
+			<div class="arrowBox">
+				<div class="arrow"></div>
+			</div>
+			<div class="timeTaken">
+				<span>대중교통</span>
+				<p>몇분</p>
+				<span>자차</span>
+				<p>몇분</p>
+			</div>
+			<!-- listing-item end -->
+			<!-- listing-item  -->
+			<div class="listing-item" id="listItem">
+				<article class="geodir-category-listing fl-wrap">
+					<div class="geodir-category-img">
+						<a href="listing-single.html"><img src="../images/gal/1.jpg"
+							alt=""></a>
+
+
+						<div class="geodir-category-opt"></div>
+					</div>
+					<div class="geodir-category-content fl-wrap title-sin_item">
+						<div class="geodir-category-content-title fl-wrap">
+							<div class="geodir-category-content-title-item">
+								<h3 class="title-sin_map">12:00 ~ 13:00</h3>
+								<div class="geodir-category-location fl-wrap">
+									<a href="#" class="map-item"><i
+										class="fas fa-map-marker-alt"></i>장소명</a>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</article>
+			</div>
+
+			<div class="arrowBox">
+				<div class="arrow"></div>
+			</div>
+			<div class="timeTaken">
+				<p>소요시간</p>
+				<p class="whatTime">몇분</p>
+			</div>
+			<!-- listing-item end -->
+			<!-- listing-item  -->
+			<div class="listing-item" id="listItem">
+				<article class="geodir-category-listing fl-wrap">
+					<div class="geodir-category-img">
+						<a href="listing-single.html"><img src="../images/gal/1.jpg"
+							alt=""></a>
+
+
+						<div class="geodir-category-opt"></div>
+					</div>
+					<div class="geodir-category-content fl-wrap title-sin_item">
+						<div class="geodir-category-content-title fl-wrap">
+							<div class="geodir-category-content-title-item">
+								<h3 class="title-sin_map">12:00 ~ 13:00</h3>
+								<div class="geodir-category-location fl-wrap">
+									<a href="#" class="map-item"><i
+										class="fas fa-map-marker-alt"></i>장소명</a>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</article>
+			</div>
+
+		</div>
 						<!--list-wrap-search end -->
 						<!--col-list-wrap -->
 						<!-- list-main-wrap-->
@@ -95,13 +186,14 @@
 <!--footer -->
 <jsp:include page="../../layout/footer.jsp"></jsp:include>
 
-<div class="modal fade" data-bs-backdrop="static" id="schedulemodal" tabindex="-1"
-	aria-labelledby="schedulemodalLabel" aria-hidden="true" data-bs-keyboard="false">
+<div class="modal fade" data-bs-backdrop="static" id="schedulemodal"
+	tabindex="-1" aria-labelledby="schedulemodalLabel" aria-hidden="true"
+	data-bs-keyboard="false">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content scheduleaddform">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="schedulemodalLabel">장소검색</h1>
-				<select class="location">
+				<select class="addr">
 					<option>강남구</option>
 					<option>강동구</option>
 					<option>강북구</option>
@@ -128,8 +220,8 @@
 					<option>중구</option>
 					<option>중랑구</option>
 				</select> <select class=cate></select> <select class=middlecate></select> <input
-					class="searchinput" type='text' placeholder="장소명"/>
-				<button class="searchbtn" type="button">
+					class="searchinput" type='text' placeholder="장소명" />
+				<button class="searchbtn basic" type="button" id=1>
 					<i class="fas fa-search fa-lg" style="color: #0d6efd;"></i>
 				</button>
 				<button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -138,36 +230,25 @@
 			</div>
 			<div class="modal-body">
 				<div style="width: 100%; height: 90%;" class="locationlist">
-					<span>검색을 시작하세요</span>
+					<span class="baisc">검색을 시작하세요</span>
 
 				</div>
-				<div class="modal-footer">
-					<div class="page_wrap">
-						<div class="page_nation">
-							<a class="arrow pprev" href="#"></a> <a class="arrow prev"
-								href="#"></a> <a href="#" class="active">1</a> <a href="#">2</a>
-							<a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">6</a>
-							<a href="#">7</a> <a href="#">8</a> <a href="#">9</a> <a href="#">10</a>
-							<a class="arrow next" href="#"></a> <a class="arrow nnext"
-								href="#"></a>
-						</div>
-					</div>
-				</div>
+				<div class="modal-footer"></div>
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
 
-	<!--footer end -->
-	<script type="text/javascript" src="/js/schedule/schedulemodal.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-	<script type="text/javascript" src="/js/schedule/Tmap.js"></script>
-	<script type="text/javascript" src="/js/schedule/schedule-timeline.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=bTzxg9y1S91QlJO5guOD39akE04QLCba8oakDcja"></script>
+<!--footer end -->
+<script type="text/javascript" src="/js/schedule/schedulemodal.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script type="text/javascript" src="/js/schedule/Tmap.js"></script>
+<script type="text/javascript" src="/js/schedule/schedule-timeline.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+	crossorigin="anonymous"></script>
+<script
+	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=bTzxg9y1S91QlJO5guOD39akE04QLCba8oakDcja"></script>

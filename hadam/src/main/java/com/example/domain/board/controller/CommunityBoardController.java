@@ -71,19 +71,20 @@ public class CommunityBoardController {
 		session.setAttribute("memberIndex", result.getMemberIndex());
 	
 		// 회원의 memberIndex 조회에서 가져오기 현재는 memberIndex 1로 session 받아옴
-//		m.addAttribute("member", session.getAttribute(String.valueOf(result.getMemberIndex())));
+		// m.addAttribute("member", session.getAttribute(String.valueOf(result.getMemberIndex())));
 		
 		// 조회수 처리
 		communityBoardService.boardHits(boardId);
 		BoardVO data = communityBoardService.findByboardId(boardId);
 		System.out.println("data확인" + data);
+		
 		// 상세페이지에 댓글 목록 보이기
 		List<CommentVO> list = communityBoardService.commentList(boardId);
 		
 		// 해당게시글 댓글 신고 시 ajax 데이터에 commentId 추가하려고 넣음
 		CommentVO commentId = communityBoardService.selectCommentId(boardId);
-		
 		System.out.println("해당 게시글 commentId" + commentId);
+		
 		// 댓글 신고자 session으로 가져오기
 		session.setAttribute("memberIndex", result.getMemberIndex());
 		
@@ -115,7 +116,7 @@ public class CommunityBoardController {
 	        int totalpage = list.size() % pagingSize == 0 ? list.size()/pagingSize : (list.size()/pagingSize)+1;
 	        
 	        // 현재 블럭의 시작 페이지수
-	        int startpage = (currentBlock -1) * sectorSize +1;
+	        int startpage = (currentBlock -1) * sectorSize + 1;
 	        
 	        // 현재 블럭의 끝나는 페이지 수
 	        int endpage = startpage + sectorSize - 1;
@@ -235,7 +236,7 @@ public class CommunityBoardController {
 	            
 	            
 	            communityBoardService.saveBoard(vo, fvo);
-	            
+	            System.out.println("fvo 확인"+ fvo);
 	         }
 	         catch (Exception e) {
 	            System.out.println("파일 업로드 실패:" + e.getMessage());

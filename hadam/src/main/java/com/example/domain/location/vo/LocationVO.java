@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LocationVO {
+public class LocationVO{
 
 	private Integer locationId;
 	
@@ -51,5 +51,8 @@ public class LocationVO {
 	
 	// 장소 리뷰 띄우기
 	private String locationReviewContent;
+	
+	// 장소 소분류
+	private String smallCategory;
 	
 }
