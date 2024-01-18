@@ -22,4 +22,12 @@ public class ScheduleVO {
 	private Date scheduleStartTime;
 	
 	private Date scheduleEndTime;
+	
+	// 스케줄 목록 조회시 사용
+	private String averageTime;
+	
+	// 스케줄 목록 조회시 사용
+	private String locationName;
+	
+	private String scheduleTableName;
 }

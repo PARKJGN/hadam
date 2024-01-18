@@ -8,208 +8,27 @@
             <head>
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+            <link type="text/css" rel="stylesheet" href="/css/board/scheduleShareView.css">
             
-            <style>
-            	#box{
-            		margin-left:300px;
-            	}
-            	
-            	#updateBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-            	}
-            	
-            	#backBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-            	}
-            	#listBox {
-     				 display: flex;
-                     justify-content: space-between;
-                     background-color: white;
-            		 border-radius: 10px;
-            		 height:320px;
-            		 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
-            		 position:relative;
-            		 right:-200px;
-     			}
-     			#listItem {
-     				margin-right:30px;
-     				width: 280px;
-     				position:relative;
-     				bottom:-40px;
-     				right:-30px;
-     			}
-     			#box {
-     				width:1600px;
-     				position:relative;
-     				right:-100px;
-     			}
-     			#information {
-     				position: relative;
-     				bottom:-130px;
-     				width:300px;
-     			}
-     			#shareBtn {
-     				width:120px;
-            		height:25px;
-            		font-size:14px;     
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				bottom:-10px;
-	 				right:-930px;
-	 				
-     			}
-     			
-     			.pagination {
-     				position:relative;
-     				right:-550px;
-     			}
-     			
-				.arrowBox {
-				  display: flex;
-				  justify-content: center;
-				  align-items: center;
-				  height: 50vh;
-				  margin: 0;
-				}
-
-				.arrow {
-				  width: 0;
-				  height: 0;
-				  border-top: 10px solid transparent;
-				  border-bottom: 10px solid transparent;
-				  border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
-				  position:relative;
-				  right:-25px;
-				  top:-50px;
-				}
-
-				.timeTaken {
-					position:relative; 
-					bottom:-200px; 
-					white-space: nowrap;
-					
-				}
-				
-				.whatTime {
-					position:relative;
-					top:-30px;
-				}
-				
-				#scheduleTitle {
-					position:relative;
-					bottom:-20px;
-					right:-200px;
-				}
-				
-				#timeBox h3{
-					font-size:13px;
-					white-space: nowrap;
-				}
-				
-				#moveTab {
-				 position:relative;
-				 left:-90px;
-				}
-				
-				#writeForm{
-					width:1600px;
-					position:relative;
-					top:-500px;
-					left:-25px;
-				}
-				
-				#replyBox{
-					width: 1600px;
-					position:relative;
-					top: -500px;
-					right:-600px;
-					height:250px;
-				}
-				
-				#replyBox h4 {
-					position:relative;
-					top:-20px;
-				}
-				
-				#replyBox p {
-					position:relative;
-					left:-40px;
-				}
-				
-				#replyinnerBox {
-					width:1550px;
-					position:relative;
-					left:-20px;
-					top:-50px;
-				}
-				#replyinnerBox span {
-					position:relative;
-					top:-100px;
-				}
-				
-				#danger{
-            		width:50px;
-            		height:20px;
-            		font-size:12px;
-            		margin-left:610px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 			
-	 				right:-370px;
-	 				top:-70px;
-            	}
-            	
-            	#replydateBox {
-            		position:relative;
-            		bottom:-50px;
-            	}
-            	
-            	#replyWriteBox {
-            		width:1600px;
-            		position:relative;
-            		right:-600px;
-            		top:-500px;
-            		height:220px;
-            	}
-            	
-            	#COMMENT_CONTENT {
-            		height:80px;
-            	}
-            	
-            	#comment {
-          			height:30px;
-            		position:relative;
-            		bottom:-40px;
-            		right:-770px;
-            		font-size:14px;
-            	}
-            	
-            	#chatBox {
-            		position:relative;
-            		top:-50px;
-            		height:100px;
-            	}
-            	
-            	#replyImage {
-            		position:relative;
-            		bottom:-10px;
-            		left:-10px;
-            	}
-            </style>
             </head>
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
+                
+                 <section class="parallax-section single-par" data-scrollax-parent="true">
+                        <div class="bg par-elem "  data-bg="/images/board/park.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="section-title center-align big-title">
+                                
+                                <h2><span>스케줄 상세</span></h2>
+                                <span class="section-separator"></span>
+                                <h4>hadam</h4>
+                            </div>
+                             
+                        </div>
+                     
+                    </section>
                     <!-- map-view-wrap --> 
                     <div class="map-view-wrap">
                         <div class="container">
@@ -222,7 +41,7 @@
                     <!-- Map end --> 
                     <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
-                            <div class="breadcrumbs fl-wrap"><a href="#">Home</a><a href="#">Pages</a><span>Contacts</span></div>
+                            <div class="breadcrumbs fl-wrap"><a href="/community/scheduleShareList">커뮤니티</a><a href="/community/scheduleShareList">스케줄 공유 게시판</a><span>스케줄 상세</span></div>
                         </div>
                     </div>
                     <section  id="sec1" class="grey-b lue-bg middle-padding">
@@ -235,9 +54,9 @@
                                                 <div class="list-main-wrap-title fl-wrap col-title" id="scheduleTitle">
                                                     <h2>Schedule : <span> 스케줄명 </span></h2>
                                                 </div>
-                                                
+                                                <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>사용자명</span></a></div> <!--회원 별명-->
                                                 <!-- price-opt-->
-                                                 <a class="btn btn-primary" href="#" role="button" id="shareBtn">스케줄 공유하기</a> 
+                                                 <a class="btn btn-primary" href="#" role="button" id="shareBtn">스케줄 참가하기</a> 
                                                 <!-- price-opt end-->                               
                                             </div>
                                             <!-- list-main-wrap-opt end-->
@@ -248,6 +67,7 @@
                                                  
                                             
                                                 <div class="listing-item" id="listItem">
+                                                
                                                     <article class="geodir-category-listing fl-wrap">
                                                         <div class="geodir-category-img">
                                                             <a href="listing-single.html"><img src="../images/gal/1.jpg" alt=""></a>

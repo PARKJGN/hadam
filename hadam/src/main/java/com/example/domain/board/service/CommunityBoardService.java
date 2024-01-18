@@ -9,6 +9,7 @@ import com.example.domain.board.vo.BoardVO;
 import com.example.domain.comment.vo.CommentVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.report.vo.BoardAndCommentReportVO;
+import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 public interface CommunityBoardService {
 	
@@ -56,6 +57,9 @@ public interface CommunityBoardService {
 	
 	// 게시판 삭제시 댓글도 삭제
 	void deleteComment(int boardId);
+	
+	// 공유스케줄 저장
+	void scheduleTableSave(BoardVO vo);
 	
 	
 }

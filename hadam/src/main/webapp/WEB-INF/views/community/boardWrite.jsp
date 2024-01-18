@@ -33,7 +33,7 @@
                                         </div>
                                         <div id="asd">
                                             <form  class="custom-form" action="saveBoard"  id="contactform" method="post" enctype="multipart/form-data">
-                                      
+                                      				
                                                 	<label for="validationCustom01" class="form-label">제목</label>
                                                     <input type="text" name="boardTitle" id="boardTitle" placeholder="Your Title *" required/><!-- 게시글 제목 작성 -->                                              	
                                                     

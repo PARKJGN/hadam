@@ -26,9 +26,7 @@
                             </div>
                              
                         </div>
-                        <div class="header-sec-link">
-                            <div class="container"><a href="#sec1" class="custom-scroll-link color-bg"><i class="fal fa-angle-double-down"></i></a></div>
-                        </div>
+                        
                     </section>
                     <section class="flat-header color-bg adm-header" style="background-color:white">
                    

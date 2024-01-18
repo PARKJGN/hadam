@@ -15,6 +15,7 @@ import com.example.domain.board.vo.BoardVO;
 import com.example.domain.comment.vo.CommentVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.report.vo.BoardAndCommentReportVO;
+import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 @Service
 public class CommunityBoardServiceImpl implements CommunityBoardService {
@@ -141,6 +142,15 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 		
 		
 		communityBoardDAO.deleteComment(boardId);
+	}
+
+
+	// 스케줄 저장
+	public void scheduleTableSave(BoardVO vo) {
+		
+
+		communityBoardDAO.scheduleTableSave(vo);
+		
 	}
 
 
