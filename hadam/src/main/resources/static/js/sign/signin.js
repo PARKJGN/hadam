@@ -39,7 +39,7 @@ $(function() {
 	var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "sIGCFQ1qvJKFf37n_gIA", //내 애플리케이션 정보에 cliendId
-			callbackUrl: "http://localhost:8080/signup/callback", // 내 애플리케이션 API설정의 Callback URL
+			callbackUrl: "http://localhost:8080/signup/naverCallback", // 내 애플리케이션 API설정의 Callback URL
 			isPopup: false,
 			callbackHandle: true
 		}

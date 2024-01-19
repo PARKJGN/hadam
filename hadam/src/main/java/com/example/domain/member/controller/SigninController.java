@@ -75,4 +75,12 @@ public class SigninController {
 		session.setMaxInactiveInterval(60*60);
 		
 	}
+	
+//	카카오 로그인
+/*	@RequestMapping(value="/kakaoCallback", method=RequestMethod.GET)
+	public SomeData requestMethodName(@RequestParam String param) {
+		return new SomeData();
+	}
+	*/
+	
 }

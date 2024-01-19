@@ -583,7 +583,7 @@
 														<h4>회원가입이 완료되었습니다</h4>
 														<div class="clearfix"></div>
 														<p>Hadam은 당신의 하루가 궁금합니다 Hadam에서 행복한 하루를 만드세요</p>
-														<a href="/" target="_blank" class="color-bg">메인
+														<a href="/index" target="_blank" class="color-bg">메인
 															페이지로 이동</a>
 													</div>
 												</div>
