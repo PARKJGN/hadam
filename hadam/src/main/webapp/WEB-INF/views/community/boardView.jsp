@@ -191,13 +191,17 @@
               const commentWrite = () => {
       			const commentContent = document.getElementById("commentContent").value;
       			const boardId = '${board.boardId}'
+      			/* 게시물 작성자에게 알림을 보내기위해 작성자 Index를 보내야함 -건일 */
+      			const memberIndex = '${board.memberIndex}'
       			
       			$.ajax ({
       				type: "post",
       				url: "/community/commentSave",
       				data : {
       					commentContent : commentContent,
-      					boardId : boardId
+      					boardId : boardId,
+      	      			/* 게시물 작성자에게 알림을 보내기위해 작성자 Index를 보내야함 -건일 */
+      					memberIndex : memberIndex
       				},
       				dataType: "json",
       				success : function(commentList){

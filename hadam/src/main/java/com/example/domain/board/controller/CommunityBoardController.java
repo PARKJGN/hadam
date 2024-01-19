@@ -4,7 +4,6 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,7 @@ import com.example.domain.board.util.MD5Generator;
 import com.example.domain.board.vo.BoardVO;
 import com.example.domain.comment.vo.CommentVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
+import com.example.domain.mainpage.service.NotificationService;
 import com.example.domain.member.vo.MemberVO;
 import com.example.domain.report.vo.BoardAndCommentReportVO;
 import com.example.domain.schedule.service.ScheduleService;
@@ -49,6 +49,10 @@ public class CommunityBoardController {
 
 	@Autowired
 	private ScheduleService scheduleService;
+	
+	/* 게시물 작성자에게 알림을 보내기위한 service -건일 */
+	@Autowired
+	private NotificationService notificationService;
 
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
@@ -272,10 +276,20 @@ public class CommunityBoardController {
 	@RequestMapping("/commentSave")
 	public @ResponseBody List<CommentVO> commentSave(CommentVO vo, Model m) {
 
+		//알림기능 넣을려고 게시물등록자의 memberindex를 받아오기 위해 확인하려고 쓴코드입니다. - 건일 
+	    System.out.println("작성자의 멤버인덱스"+ vo.getMemberIndex());
+
 		communityBoardService.commentSave(vo);
 		System.out.println("댓글 vo 정보" + vo.toString());
 		// 해당 게시글에 작성한 댓글 리스트 가져오기
 		List<CommentVO> list = communityBoardService.commentList(vo.getBoardId());
+		
+		//댓글을 달았을 때 댓글 주인memberindex를 Long으로 바꿔주는 코드. - 건일 
+	    long id = (long)vo.getMemberIndex();
+
+	    //댓글을 달았을 때 댓글 주인에게 알림이 가게하는 함수. - 건일 
+	    notificationService.notify(id, "새로운 댓글이 달렸습니다.");
+
 
 		System.out.println("commentvo" + list);
 		return list;
