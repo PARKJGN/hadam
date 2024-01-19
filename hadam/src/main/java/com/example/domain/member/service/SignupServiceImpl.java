@@ -7,7 +7,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.domain.member.dao.SignupDAO;
+import com.example.domain.member.dao.SignDAO;
 import com.example.domain.member.vo.MemberVO;
 
 import net.nurigo.java_sdk.api.Message;
@@ -17,7 +17,7 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SignupServiceImpl implements SignupService{
 
 	@Autowired
-	private SignupDAO signupDAO;
+	private SignDAO signupDAO;
 	
 //	아이디 중복확인
 	public String memberIdCheck(String id) {
@@ -79,7 +79,29 @@ public class SignupServiceImpl implements SignupService{
 		}
 	}
 	
+//	회원가입 정보입력
 	public Integer signupCompletion(MemberVO vo) {
 		return signupDAO.signupCompletion(vo);
 	}
+
+//	회원가입한 회원 index 조회
+	public Integer getMemberIndex(String memberId) {
+		return signupDAO.getMemberIndex(memberId);
+	}
+	
+//	네이버 회원정보 입력
+	public Integer naverSignup(MemberVO vo) {
+//		네이버 기가입한 회원인지 확인
+		String naver = signupDAO.naverMemberCheck(vo.getMemberId());
+//		가입안된 회원이면 가입시켜	
+		if(naver == null ) {
+			signupDAO.naverSignup(vo);
+			return 1;
+//		기가입된 경우
+		}else {
+			return 0;
+			
+		}
+	}
+	
 }

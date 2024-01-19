@@ -225,48 +225,43 @@
                     <div class="main-register fl-wrap">
                         <div class="close-reg color-bg"><i class="fal fa-times"></i></div>
                         <ul class="tabs-menu">
-                            <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
-                            <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li>
+                            <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> 로그인</a></li>
+                            <li><a href="#tab-2"><i class="fal fa-user-plus"></i> 회원가입</a></li>
                         </ul>
                         <!--tabs -->                       
                         <div id="tabs-container">
                             <div class="tab">
                                 <!--tab -->
                                 <div id="tab-1" class="tab-content">
-                                    <h3>Sign In <span>Easy<strong>Book</strong></span></h3>
+                                    <h3>Sign In <span>HADAM <strong>:)</strong></span></h3>
                                     <div class="custom-form">
-                                        <form method="post"  name="registerform">
-                                            <label>Username or Email Address <span>*</span> </label>
-                                            <input name="email" type="text"   onClick="this.select()" value="">
-                                            <label >Password <span>*</span> </label>
-                                            <input name="password" type="password"   onClick="this.select()" value="" >
-                                            <button type="submit"  class="log-submit-btn color-bg"><span>Log In</span></button>
-                                            <div class="clearfix"></div>
-                                            <div class="filter-tags">
-                                                <input id="check-a" type="checkbox" name="check">
-                                                <label for="check-a">Remember me</label>
-                                            </div>
-                                        </form>
+                                      
+                                        <label>아이디 <span>*</span> <span class="login_comment"></span> </label>
+                                        <input name="memberId" type="text" id="memberId">
+                                        <label >비밀번호 <span>*</span> </label>
+                                        <input name="password" type="password" id="memberPassword">
+                                        <button class="log-submit-btn color-bg" id="loginbtn"><span>로그인</span></button>
+                                        <div class="clearfix"></div>
+                                        <!-- <div class="filter-tags">
+                                            <input id="check-a" type="checkbox" name="check">
+                                            <label for="check-a">Remember me</label>
+                                        </div> -->
+                                      
                                         <div class="lost_password">
-                                            <a href="#">Lost Your Password?</a>
+                                            <a href="#">아이디 찾기&nbsp;</a>
+                                            <a href="#">&nbsp;비밀번호 찾기</a>
                                         </div>
+                                        
+                                        
                                     </div>
                                 </div>
                                 <!--tab end -->
                                 <!--tab -->
                                 <div class="tab">
                                     <div id="tab-2" class="tab-content">
-                                        <h3>Sign Up <span>Easy<strong>Book</strong></span></h3>
+                                        <h3>Sign Up <span>HADAM <strong>:)</strong></span></h3>
                                         <div class="custom-form">
-                                            <form method="post"   name="registerform" class="main-register-form" id="main-register-form2">
-                                                <!-- <label >Full Name <span>*</span> </label> -->
-                                                <a href="/signup/signup" ><input name="name" type="button" value="hadam 회원가입"></a>
-                                                <!-- <label>Email Address <span>*</span></label> -->
-                                                <input name="email" type="text"  onClick="this.select()" value="">
-                                                <!-- <label >Password <span>*</span></label> -->
-                                                <input name="password" type="password"   onClick="this.select()" value="" >
-                                                <button type="submit"     class="log-submit-btn color-bg"  ><span>Register</span></button>
-                                            </form>
+                                        	<a href="/signup/signup" ><input type="button" class='hadamsignbtn' value="hadam 회원가입"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -274,6 +269,11 @@
                             </div>
                             <!--tabs end -->
                             <div class="log-separator fl-wrap"><!-- <span>or</span> --></div>
+                            
+                            <a id="naverIdLogin_loginButton" href="javascript:void(0)"><button class='loginbtn'><img src="/images/sign/naverloginbtn.png" class='naverloginbtn'></button></a>
+                            <button class='loginbtn'><img src="/images/sign/kakaologinbtn.png" class='kakaologinbtn'></button>
+                            
+                            <div class="log-separator fl-wrap">
                             <div class="soc-log fl-wrap">
 <!--                                 <p>For faster login or register use your social account.</p>
                                 <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a> -->
@@ -292,6 +292,9 @@
         <script type="text/javascript" src="/js/jquery.min.js"></script>
         <script type="text/javascript" src="/js/plugins.js"></script>
         <script type="text/javascript" src="/js/scripts.js"></script>
+        <script type="text/javascript" src="/js/sign/signin.js"></script>
+        <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+        <!-- <script type="text/javascript" src="/js/layout/logout.js"></script> -->
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOURAPIKEYHERE&libraries=places&callback=initAutocomplete"></script>  
         <script type="text/javascript" src="/js/map-single.js"></script> -->        
     </body>

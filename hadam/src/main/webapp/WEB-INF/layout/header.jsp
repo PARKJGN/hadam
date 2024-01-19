@@ -49,8 +49,15 @@
                             <a href="/index"><img src="/images/main_logo.png" alt=""></a>
                         <!-- 로고 이미지 변경했습니다 01.11 -정건일 -->
                         </div>
-                        <a href="dashboard-add-listing.html" class="add-hotel">Add Your Hotel <span><i class="far fa-plus"></i></span></a>                     
-                        <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
+                        <a href="dashboard-add-listing.html" class="add-hotel">스케즐 추가하기<span><i class="far fa-plus"></i></span></a>                     
+                        <!-- 로그인 상태 확인 후 헤더 변경 [최성익] -->
+                        <c:if test="${sessionScope.memberNickname == null}">
+                        	<div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>로그인</div>
+                        </c:if>
+                        <c:if test="${sessionScope.memberNickname != null}">
+                        <!-- <div class="show-reg-form signout" id='signout' ><i class="fa fa-sign-in"></i>로그아웃</div> -->
+                        	 <a href="/signin/logout" class="signout"><div class="show-reg-form"><i class="fa fa-sign-in"></i>로그아웃</div></a>
+                        </c:if>
                     </div>
                 </div>
                 <!-- header-top end-->
@@ -58,7 +65,7 @@
                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-
+						<c:if test="${sessionScope.memberNickname != null}">
                         <!--1.12 알림표시 자리입니다. click_evt.js에 #alarmLink로 연결되어있습니다. -정건일-->
                         <div class="alarm-link" id="alarmLink">
 	                        <i class="fal fa-bell "></i>
@@ -86,11 +93,13 @@
              
 
                 		<!--1.11 마이페이지 토글버튼 입니다. -정건일-->
+                        
                         <div class="header-user-menu">
                             <div class="header-user-name">
                                 <span><img src="/images/avatar/1.jpg" alt=""></span>
-                                user_Id
+                              	${sessionScope.memberNickname}
                             </div>
+                        
                             <ul>
                                 <li><a href="dashboard-myprofile.html"> 마이페이지 </a></li>
                                 <li><a href="dashboard-add-listing.html"> 즐겨찾기 </a></li>
@@ -98,6 +107,7 @@
                                 <li><a href="dashboard-review.html"> 게시글관리 </a></li>
                             </ul>
                         </div>
+                        </c:if>
                 		<!--1.11 마이페이지 토글버튼 입니다.end -정건일-->
                         <!-- nav-button-wrap-->
                         <div class="nav-button-wrap color-bg">

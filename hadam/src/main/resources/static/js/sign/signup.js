@@ -267,7 +267,7 @@ $(function() {
 	$('#signup_basicform').hide();							/* 개인정보 입력완료 진짜 버튼 숨기기 */
 	$('#hide_signup_basicform').on('click', function() {
 
-		/*if ($('#member_id').val() != form_id) {
+		if ($('#member_id').val() != form_id) {
 			alert('아이디를 확인해주세요');
 			return false;
 		}
@@ -298,14 +298,28 @@ $(function() {
 		if ($('input[name=member_sex]:checked').val() != '여자' && $('input[name=member_sex]:checked').val() != '남자'){
 			alert('성별을 선택해주세요');
 			return false;			
-		}*/
+		}
 		
 		$('#signup_basicform').trigger("click");
 		
 	})
-
+	
+	
 	$('#signup_completion').hide();
 	$('#hide_signup_completion').on('click', function(){
+		
+		let checkedCategory = [];
+		$('input:checkbox[class~=small]').each(function(){
+			if($(this).is(':checked')==true){
+				/*console.log($(this)[0].id);*/
+				checkedCategory.push($(this)[0].id);
+			}
+		})
+		/*console.log(checkedcCtegory);*/
+		
+		
+		
+		
 		$.ajax({
 			url : '/signup/signupCompletion',
 			type : 'post',
@@ -314,7 +328,8 @@ $(function() {
 					'memberPhoneNumber' : form_phone,
 					'memberNickname' : form_nickname,
 					'memberSex' : $('input[name=member_sex]:checked').val(),
-					'memberBirth' : form_birth },
+					'memberBirth' : form_birth,
+					'checkedCategory' : checkedCategory },
 			success : function(result){
 				if(result==1){
 					$('#signup_completion').trigger("click");				
@@ -333,13 +348,25 @@ $(function() {
 		
 	})
 
+	/* 카테고리 탭에서 중분류 눌렀을때 소분류 태그 토글 */
+	/*소분류 숨기기*/
+	$('div.small').hide();
+	/*중분류 태그 누르면*/
+	$('.ks-cboxtags').find('.middle').on('change',function(){
+		
+		var middle = $(this)
+		/*누른 중분류 태그의 클래스 명의 div가 토글됨*/
+		$(`.${$(this)[0].id}`).toggle('2000');
+		/*누른 중분류 태그 아래 input 태그(소분류)중 체크 된거 있으면 체크 된채로 토글*/
+		if($(`.${$(this)[0].id}`).find('input').is(':checked')){
+			middle.prop('checked',true);
+		}
+		
+	})
 	
-	/*카테고리 탭에서 중분류 눌렀을때 소분류 동적 태그 만들기*/
-/*	$('.hadam_category').on('click', '.category:input[button]', )*/
 	
 	
-	
-	
+
 
 	
 
