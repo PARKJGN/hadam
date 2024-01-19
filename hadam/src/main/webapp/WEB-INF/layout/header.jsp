@@ -276,5 +276,3 @@
             </header>
             <!-- 클릭이벤트 js -정건일 -->
 	<script src="/js/layout/click_evt.js"></script>
-</body>
-</html>

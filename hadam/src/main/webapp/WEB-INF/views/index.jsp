@@ -15,7 +15,7 @@
 
             <div id="wrapper">
 						<!-- kakao map 출발장소 선택-->
-							  <div class="modal" id="myModal"> 					
+							  <div class="modal kakaomap" id="myModal"> 					
 								<div class="map_wrap">
 									    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 									
@@ -35,11 +35,11 @@
 									</div>
 						         <button  class="btn-two green rounded" id="closeModalBtn">창 닫기</button>
 						    </div>
-						       <div class="modal-overlay" id="modalOverlay"></div> 		
+						       <div class="modal-overlay kakaomap" id="modalOverlay"></div> 		
 		           		<!-- kakao map 출발장소 end -->
 		           		
       					<!-- kakao map 스케줄 시작장소 선택-->
-							  <div class="modal" id="myModal2"> 					
+							  <div class="modal kakaomap" id="myModal2"> 					
 								<div class="map_wrap2">
 									    <div id="map2" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 									
@@ -59,7 +59,7 @@
 									</div>
 						         <button class="btn-two green rounded" id="closeModalBtn2">창 닫기</button>
 						    </div>
-						       <div class="modal-overlay" id="modalOverlay2"></div> 		
+						       <div class="modal-overlay kakaomap" id="modalOverlay2"></div> 		
 		           		<!-- kakao map 스케줄 시작장소 선택 end -->
                 <!-- content-->
                 <div class="content">
