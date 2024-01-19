@@ -167,7 +167,7 @@
                                         <!--second level end-->
                                     </li>
                                     <li>
-                                        <a href="/category/locationList">장소찾기 <i class="fas "></i></a>
+                                        <a href="/location/locationList">장소찾기 <i class="fas "></i></a>
                                     </li>
                                 </ul>
                             </nav>

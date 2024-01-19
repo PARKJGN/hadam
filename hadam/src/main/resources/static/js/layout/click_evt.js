@@ -8,19 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-/*const eventSource = new EventSource("/see/stream");
 
-eventSource.onmessage = function (event) {
-	// 데이터가 "data:"로 시작하는 형태일 때만 파싱
-	if (event.data.startsWith("data: ")) {
-		const data = JSON.parse(event.data.substring(6)); // "data: " 이후의 부분만 추출하여 파싱
-		console.log("Received event:", data.message);
-		document.getElementById("sseOutput").innerText = data.message;
-	}
-};*/
 
-/*emitter 구독 하는 코드*/
-const eventSource = new EventSource('http://localhost:8080/notifications/subscribe/1');
+/*emitter 구독 하는 코드 - 정건일*/
+
+//userid session값 적용 시켜서 구독하기
+//const eventSource = new EventSource('http://localhost:8080/notifications/subscribe/{userid}');
 
 document.addEventListener('DOMContentLoaded', function() {
 	const alramUserMenu = document.querySelector('.alram-user-menu');
