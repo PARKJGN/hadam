@@ -247,7 +247,7 @@
 }
 
 /* 모달 css  */
-.modal {
+.modal.kakaomap {
     visibility: hidden; 
     position: fixed;
     top: 50%;
@@ -264,13 +264,13 @@
     transition: all 0.3s ease-in-out;
 }
 
-.modal.show {
+.modal.kakaomap.show {
     visibility: visible;
     opacity: 1;
     transform: translate(-50%, -50%) scale(1); /* 확대하여 나타나도록 변경 */
 }
 /* 배경에 어두운 레이어 스타일 */
-.modal-overlay {
+.modal-overlay.kakaomap {
     display: none;
     position: fixed;
     top: 0;

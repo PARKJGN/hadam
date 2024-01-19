@@ -285,7 +285,7 @@
             <!--register form end -->
             <a class="to-top"><i class="fas fa-caret-up"></i></a>
         </div>
-        
+      </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
         
