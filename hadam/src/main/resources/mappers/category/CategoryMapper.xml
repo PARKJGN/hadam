@@ -2,14 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.domain.category.dao.CategoryDAO">
+
 	
-	<!-- 클릭된 분류별 카테고리 출력하는 쿼리 -->
+	<!-- 클릭된 중분류별 카테고리 출력하는 쿼리 -->
 	<select id="getCategoryLocList" parameterType="CategoryVO" resultType="com.example.domain.location.vo.LocationVO">
 		SELECT l.*, li.*
 		FROM category c
 		JOIN location l ON c.CATEGORY_ID = l.CATEGORY_ID 
 		JOIN location_image li ON l.LOCATION_ID = li.LOCATION_ID
-		WHERE c.MIDDLE_CATEGORY = #{middleCategory}
+		WHERE c.LARGE_CATEGORY = #{largeCategory}
+		<if test ="middleCategory != null">
+			AND c.MIDDLE_CATEGORY = #{middleCategory} 
+		</if>
+		
 		ORDER BY l.LOCATION_ID DESC
 	</select>
 	

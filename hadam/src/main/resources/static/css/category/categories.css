@@ -1,5 +1,49 @@
 @charset "UTF-8";
 
+/* 분류 페이지 버튼 */
+
+.catelist-wrap-search  {	
+	/* margin-bottom:10px; */
+	background: #fff;
+	border-radius:10px;
+	position: relative;
+	vertical-align:middle;
+	margin-bottom: 20px;
+}
+.catelist-wrap-search th span  {	
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+    width: 100%;
+    color: #18458B;
+    margin-bottom: 21px;
+    margin-top: 20px;
+}
+
+.catelist-wrap-search.lisfw {
+	text-align:left;
+	vertical-align:middle;
+	
+}
+
+.catelist-cate {
+	font-size: 15px;
+	margin-bottom: 3px;
+	margin-top : 20px;
+}
+
+.catelist-wrap-search.lisfw a{
+	padding: 3px 8px 3px;
+	background: transparent;
+}
+
+.catelist-wrap-search.lisfw a.all {
+	background: #18458B;
+	color : #fff;
+	border-radius: 16px;
+}
+
 /* 장소 나타내는 텍스트 부분 수정 */
 .catedir-category-content {
 	padding:20px;
@@ -157,6 +201,20 @@
 	left:10px;
 	width:80px;
 	height:80px;
+}
+.catereview-comments-avatar img {
+	width:80px;
+	height:80px;
+	float:left;
+	border-radius:100%;
+}
+.catereviews-comments-item-text {
+	float:left;
+	width:100%;
+	position:relative;
+	padding:30px 20px;
+	background:#f9f9f9;
+	border-radius:6px;
 }
 
 /* 박스 수정용 */
@@ -427,4 +485,27 @@
 
 /* 상단 섹터 이동 수정용 (우선순위 낮음 추후 작업)*/
 
+
+/* 이미지 수정용 */
+.catelist-single-main-container{
+	padding-left:60px;
+	display: block;
+    width: 100%;
+    height: 100%;
+    position:relative;
+}
+
+.catelist-single-main-media {
+	position:relative;
+	margin-bottom:20px;
+	width:100%;
+	height:500px;
+}
+
+.cateimg-good {
+	position:relative;
+	width:100%;
+}
+	 
+/* 찜 기능 */
 
