@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.domain.schedule.dao.ScheduleDAO">
+
+	<select id="getScheduleList" parameterType="Integer" resultType="ScheduleVO">
+		select st.*, s.*, l.*, li.*
+		from schedule_table st 
+		inner join schedule s
+		on st.SCHEDULE_TABLE_ID  = s.SCHEDULE_TABLE_ID 
+		inner join location l 
+		on s.LOCATION_ID = l.LOCATION_ID 
+		inner join location_image li 
+		on l.LOCATION_ID = li.LOCATION_ID
+		where st.SCHEDULE_TABLE_ID = #{scheduleTableId}
+
+	</select>
+	
+</mapper>

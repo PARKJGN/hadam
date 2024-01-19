@@ -15,7 +15,7 @@ public class BoardVO {
 	
 	private Integer memberIndex;
 	
-	private  Integer schduleTableId;
+	private  Integer scheduleTableId;
 	
 	private  String boardTitle;
 	

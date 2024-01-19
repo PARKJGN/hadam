@@ -1,5 +1,6 @@
 package com.example.domain.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,5 +59,8 @@ public interface CommunityBoardDAO {
 	
 	// 해당 게시글 삭제시 댓글도 삭제
 	public void deleteComment(int boardId);
+	
+	// 스케줄 저장
+	public void scheduleTableSave(BoardVO vo);
 	
 }

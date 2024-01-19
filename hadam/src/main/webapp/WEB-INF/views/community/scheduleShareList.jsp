@@ -15,20 +15,18 @@
                 <div class="content">
                     <!--  section  -->
                     <section class="parallax-section single-par" data-scrollax-parent="true">
-                        <div class="bg par-elem "  data-bg="images/bg/1.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="bg par-elem "  data-bg="/images/board/park.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
                         <div class="overlay"></div>
                         <div class="container">
                             <div class="section-title center-align big-title">
-                                <div class="section-title-separator"><span></span></div>
+                                
                                 <h2><span>스케줄 공유 게시판</span></h2>
                                 <span class="section-separator"></span>
-                                <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt arcu, sit amet fermentum sem.</h4>
+                                <h4>hadam</h4>
                             </div>
                              
                         </div>
-                        <div class="header-sec-link">
-                            <div class="container"><a href="#sec1" class="custom-scroll-link color-bg"><i class="fal fa-angle-double-down"></i></a></div>
-                        </div>
+                     
                     </section>
                     <!--  section  end-->
                     <div class="breadcrumbs-fs fl-wrap">
@@ -51,16 +49,18 @@
                                     <!--col-list-wrap -->
                                     <div class="col-list-wrap fw-col-list-wrap">
                                         <!-- list-main-wrap-->
+                                        
                                         <div class="list-main-wrap fl-wrap card-listing" id="box">
                                          
                                             <!-- list-main-wrap-opt-->
+                                            
                                             <div class="list-main-wrap-opt fl-wrap">
                                                 <div class="list-main-wrap-title fl-wrap col-title" id="scheduleTitle">
-                                                    <h2>Schedule : <span> 스케줄명 </span></h2>
+                                                    <h2>Schedule : <span><a href="/community/scheduleShareView"> ${list.scheduleTableName} </a></span></h2>
                                                 </div>
-                                                
+                                                <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>사용자명</span></a></div> <!--회원 별명-->
                                                 <!-- price-opt-->
-                                                 <a class="btn btn-primary" href="#" role="button" id="shareBtn">스케줄 공유하기</a> 
+                                                 <a class="btn btn-primary" href="/community/scheduleShareWrite" role="button" id="shareBtn">스케줄 공유하기</a> 
                                                 <!-- price-opt end-->                               
                                             </div>
                                             <!-- list-main-wrap-opt end-->
@@ -251,6 +251,7 @@
                                             </div>
 
                                             </div>
+                                    
                                             <div class="pagination">
                                                 <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
                                                 <a href="#" >1</a>

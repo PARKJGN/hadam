@@ -26,4 +26,18 @@ public class ScheduleTableVO {
 	private String scheduleTableStartMember;
 	
 	private String scheduleTableStatus;
+	
+	// 스케줄 목록 조회하려고 추가
+	private String scheduleStartTime;
+	
+	// 스케줄 목록 조회하려고 추가
+	private String scheduleEndTime;
+	
+	// 스케줄 목록 조회하려고 추가
+	private String averageTime;
+	
+	// 스케줄 목록 조회하려고 추가
+	private String locationName;
+	
+	private String memberNickname;
 }
