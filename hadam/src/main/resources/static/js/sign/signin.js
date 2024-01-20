@@ -47,6 +47,7 @@ $(function() {
 
 	naverLogin.init();
 
+/* 네이버 정보 동의를 하고 창을 닫으면 콜백url이 불러지면서 status가 들어옴  */
 	window.addEventListener('load', function() {
 		naverLogin.getLoginStatus(function(status) {
 			if (status) {
