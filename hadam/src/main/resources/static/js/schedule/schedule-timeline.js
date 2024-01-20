@@ -16,7 +16,7 @@ $(() => {
 
 	// 드래그 한 img 사이즈
 	var startdragsize;
-	
+
 	var map;
 
 	// 타임테이블의 thead의 th생성
@@ -127,8 +127,8 @@ $(() => {
 							for (var i = startresize; i <= startresize + $(this).width() / 90 - 1; i++) {
 								$(".scheduleTable").children().eq(i).droppable("disable")
 							}
-							
-							changesummary()
+
+							changemap()
 
 						},
 						// 리사이즈 시작했을때
@@ -197,6 +197,8 @@ $(() => {
 					enddragindex = $(event.target).index()
 					console.log(enddragindex)
 					console.log(startdragsize / 90 - 1)
+					
+					// 스케줄의 길이가 12시가 넘어가지않게
 					if (enddragindex + (startdragsize / 90 - 1) >= 50) {
 						return false
 					}
@@ -205,8 +207,6 @@ $(() => {
 					for (var i = enddragindex; i <= enddragindex + startdragsize / 90 - 1; i++) {
 						// 자기 img가 아니고 드랍칸에 자식이 있을때
 						if (i !== startindex && $(".scheduleTable").children().eq(i).children().length) {
-							console.log($(".scheduleTable").children().eq(i).children().width())
-
 							// 다른 이미지가 있으면 해당 이미지 인벤토리에 보내면서 그 이미지가 차지하고 있던 칸의 드랍 풀기
 							for (var j = i; j <= i + $(".scheduleTable").children().eq(i).children().width() / 90 - 1; j++) {
 								$(".scheduleTable").children().eq(j).droppable("enable")
@@ -245,7 +245,9 @@ $(() => {
 
 						}
 					}
+					
 					$(event.target).append($(ui.draggable[0]))
+					
 					// 드랍한 img의 길이만큼 칸 드랍 묶기
 					for (var i = enddragindex; i <= enddragindex + startdragsize / 90 - 1; i++) {
 						$(".scheduleTable").children().eq(i).droppable("disable")
@@ -253,7 +255,7 @@ $(() => {
 
 				}
 
-				changesummary()
+				
 				// 드랍한 칸에 자식이 있으면
 			} /*else {
 
@@ -263,6 +265,7 @@ $(() => {
 					$(event.target).append(ui.draggable[0])
 				}
 			}*/
+			changemap()
 		}	// end of drop
 
 	})
@@ -290,7 +293,7 @@ $(() => {
 			return false
 		}
 		// 자식이 있으면 모달창에 해당 내용을 지울지 물어본다
-		else if(td.children().length){
+		else if (td.children().length) {
 
 			if (confirm("해당 장소를 일정에서 삭제 하시겠습니까?")) {
 				// 삭제 후 스케줄 크기만큼 드랍 풀기
@@ -298,10 +301,11 @@ $(() => {
 					$(".scheduleTable").children().eq(i).droppable("enable")
 				}
 				td.empty()
+				changemap()
 			}
-			else{
-			return false
-				}
+			else {
+				return false
+			}
 
 		}
 
@@ -311,21 +315,31 @@ $(() => {
 
 	// 모달창의 추가하기 눌렀을때 스케줄표에 사진 추가하는 이벤트
 	$(document).on("click", '.scheduleadd', function(e) {
-		
-		
+
+
 
 		// 추가한 가게의 정보들
 		var modalimg = $(this).parents(".dashboard-listing-table-text").prev().find('img').attr("src")
 		var modallocationname = $(this).parents(".dashboard-listing-table-text").find('.modallocationname').text()
-		var locationLatitude = $('.locationLatitude').val()
-		var locationLongitude = $('.locationLongitude').val()
-		var locationPlace = $('.locationPlace').val()
-		
+		var locationLatitude = $(this).parents(".dashboard-listing-table-text").find('.locationLatitude').val()
+		var locationLongitude = $(this).parents(".dashboard-listing-table-text").find('.locationLongitude').val()
+		var locationPlace = $(this).parents(".dashboard-listing-table-text").find('.locationPlace').val()
+
+		// 이미 스케줄표에 있는 장소를 추가하려고하면 alter창 띄워주고 return
+		if ($('.scheduleTable').find('img').length > 0) {
+			for (i = 0; i < $('.scheduleTable').find('img').length; i++) {
+				if ($($('.scheduleTable').find('img')[i]).attr('id') == locationPlace) {
+					alert('이미 존재하는 장소입니다.')
+					return false
+				}
+			}
+		}
+
 		e.preventDefault();
 
 		$('#schedulemodal').modal("hide");
 
-		td.append(`<img style=width : 180px src= ${modalimg} alt=${modallocationname} id = '${locationPlace}' name = ${locationLatitude},${locationLongitude}>`)
+		td.append(`<img style=width : 180px src= ${modalimg} alt= '${modallocationname}' id = '${locationPlace}' name = ${locationLatitude},${locationLongitude}>`)
 
 
 		td.children().resizable({
@@ -397,7 +411,7 @@ $(() => {
 					$(".scheduleTable").children().eq(i).droppable("disable")
 				}
 
-				changesummary()
+				changemap()
 			},
 			// 리사이즈 시작했을때
 			start: function(event, ui) {
@@ -454,10 +468,10 @@ $(() => {
 		td.droppable("disable");
 		td.next().droppable("disable");
 
-		// 요약이랑 맵 바꾸기
-		changesummary()
+		// 요약이랑 맵 바꾸기 (요약함수가 맵바꾸는 함수안에 존재)
 		changemap()
 		
+
 	})
 
 	// 인벤토리에 있는 사진을 드래그 했을때의 사진이 가진 이벤트
@@ -489,23 +503,24 @@ $(() => {
 });
 
 // 스케줄에 변동이 있을때 스케줄 요약표 바꿔주는 함수
-let changesummary = () => {
-		// 스케줄의 이미지들의 개수를 알아낸다.
-		var imgcount = $(".scheduleTable").find('img')
-		
-			 var totcontent = '';
-			 
-			 // 이미지의 개수만큼 for문을 돌려서 요약표에 개수만큼 넣기
-			 $.each(imgcount, function(idx, element){
-				var src = $(element).attr('src')
-				var index = $(element).parents('td').index()
-				var locname = $(element).attr('alt')
-				
-				// 이미지가 들어가있는 td의 인덱스로 시작시간과 끝나는 시간 구하기
-				var starttime = index%2 == 0? `${index/2}:00`: `${Math.floor(index/2)}:30`
-				var endtime = (index + $(element).width()/90 )%2 == 0? `${(index + $(element).width()/90 )/2}:00`: `${Math.floor((index + $(element).width()/90 )/2)}:30`
-				
-				var content = (`<div class="listing-item" id="listItem">
+let changesummary = (totalTimelist) => {
+	// 스케줄의 이미지들의 개수를 알아낸다.
+	var imgcount = $(".scheduleTable").find('img')
+	var timeindex = 0;
+
+	var totcontent = '';
+	console.log()
+	// 이미지의 개수만큼 for문을 돌려서 요약표에 개수만큼 넣기
+	$.each(imgcount, function(idx, element) {
+		var src = $(element).attr('src')
+		var index = $(element).parents('td').index()
+		var locname = $(element).attr('alt')
+
+		// 이미지가 들어가있는 td의 인덱스로 시작시간과 끝나는 시간 구하기
+		var starttime = index % 2 == 0 ? `${index / 2}:00` : `${Math.floor(index / 2)}:30`
+		var endtime = (index + $(element).width() / 90) % 2 == 0 ? `${(index + $(element).width() / 90) / 2}:00` : `${Math.floor((index + $(element).width() / 90) / 2)}:30`
+
+		var content = (`<div class="listing-item" id="listItem">
 						<article class="geodir-category-listing fl-wrap">
 						<div class="geodir-category-img">
 							<a href="listing-single.html"><img src="${src}"
@@ -525,22 +540,25 @@ let changesummary = () => {
 						</div>
 						</article>
 					</div>`)
-					
-				totcontent += content
-				
-				
-				if(idx < (imgcount.length -1)) totcontent += (`<div class="arrowBox">
-												<div class="arrow2"></div>
-											 </div>
-											 <div class="timeTaken">
-												<span>대중교통</span>
-												<p>몇분</p>
-												<span>자차</span>
-												<p>몇분</p>
-											 </div>`)
-			})			
-			
-			$(".listing-item-container").html(totcontent)
-		
-	
+
+		totcontent += content
+
+
+		if (idx < (imgcount.length - 1)) {
+			totcontent += (`<div class="arrowBox">
+								<div class="arrow2"></div>
+							</div>
+							<div class="timeTaken">
+								<span>대중교통</span>
+								<p>${totalTimelist[timeindex]}분</p>
+								<span>자차</span>
+								<p>몇분</p>
+							</div>`)
+			timeindex +=  1
+		}
+	})
+
+	$(".listing-item-container").html(totcontent)
+
+
 }
