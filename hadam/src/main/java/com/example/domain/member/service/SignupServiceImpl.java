@@ -1,5 +1,11 @@
 package com.example.domain.member.service;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.member.dao.SignDAO;
 import com.example.domain.member.vo.MemberVO;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -89,6 +98,8 @@ public class SignupServiceImpl implements SignupService{
 		return signupDAO.getMemberIndex(memberId);
 	}
 	
+	
+	
 //	네이버 회원정보 입력
 	public Integer naverSignup(MemberVO vo) {
 //		네이버 기가입한 회원인지 확인
@@ -102,6 +113,133 @@ public class SignupServiceImpl implements SignupService{
 			return 0;
 			
 		}
+	}
+	
+	
+	
+	
+//	카카오 인가코드 받아오기	
+	public String getKakaoAccessToken(String code) {
+		String accessToken = "";
+		String refreshToken = "";
+		String reqUrl = "https://kauth.kakao.com/oauth/token";
+		
+		try {
+//			연결 객체 생성
+			URL url = new URL(reqUrl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+//			필수 헤더 세팅
+	        conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+	        conn.setDoOutput(true); 						//OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
+	        
+	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+	        StringBuilder sb = new StringBuilder();
+	        
+//	        필수 쿼리 파라미터 세팅
+	        sb.append("grant_type=authorization_code");
+	        sb.append("&client_id=").append("1bce4a6cad3104a2d5cc6134e1af3958");
+	        sb.append("&redirect_uri=").append("http://localhost:8080/signup/kakaoCallback");
+	        sb.append("&code=").append(code);
+	        
+//	        BufferedWriter로 파라미터 읽고, 보냄 (아직 안닫음)
+	        bw.write(sb.toString());
+	        bw.flush();
+			
+	        int responseCode = conn.getResponseCode();
+//	        log.info("[KakaoApi.getAccessToken] responseCode = {}", responseCode);
+	        
+//	        가져온 코드가 200~300사이가 아니면 오류임
+	        BufferedReader br;
+	        if (responseCode >= 200 && responseCode <= 300) {
+	            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        } else {
+	            br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+	        }
+	        
+	        String line = "";
+	        StringBuilder responseSb = new StringBuilder();
+	        while((line = br.readLine()) != null){
+	            responseSb.append(line);
+	        }
+	        
+	        String result = responseSb.toString();
+//	        log.info("responseBody = {}", result);
+	        
+	        
+	        JsonElement el =(JsonParser.parseString(result));
+	        accessToken = el.getAsJsonObject().get("access_token").getAsString();
+	        refreshToken = el.getAsJsonObject().get("refresh_token").getAsString();
+	        
+	        br.close();
+	        bw.close();
+	        
+	        
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return accessToken;
+	}
+	
+	/*카카오 사용자 정보받아오기*/
+	public MemberVO getKakaoUserInfo(String accessToken){
+		MemberVO vo = new MemberVO();
+		String reqUrl = "https://kapi.kakao.com/v2/user/me";
+		
+		 try{
+		        URL url = new URL(reqUrl);
+		        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		        conn.setRequestMethod("POST");
+		        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+		        conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+
+		        int responseCode = conn.getResponseCode();
+//		        log.info("[KakaoApi.getUserInfo] responseCode : {}",  responseCode);
+
+		        BufferedReader br;
+		        if (responseCode >= 200 && responseCode <= 300) {
+		            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		        } else {
+		            br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		        }
+
+		        String line = "";
+		        StringBuilder responseSb = new StringBuilder();
+		        while((line = br.readLine()) != null){
+		            responseSb.append(line);
+		        }
+		        String result = responseSb.toString();
+//		        log.info("responseBody = {}", result);
+
+		        
+		        JsonElement el = JsonParser.parseString(result);
+		        
+		        JsonObject properties = el.getAsJsonObject().get("properties").getAsJsonObject();
+		        JsonObject kakaoAccount = el.getAsJsonObject().get("kakao_account").getAsJsonObject();
+
+		        System.out.println(properties.getAsJsonObject());
+		        
+		        String memberNickname = properties.getAsJsonObject().get("nickname").getAsString();
+				/*String memberSex = properties.getAsJsonObject().get("gender").getAsString();
+				String birthday = properties.getAsJsonObject().get("birthday").getAsString();
+				String birthyear = properties.getAsJsonObject().get("birthyear").getAsString();
+				String memberPhoneNumber = properties.getAsJsonObject().get("phone_number").getAsString();
+				
+				System.out.println(birthyear+"/"+birthday);*/
+		        
+		        vo.setMemberNickname(memberNickname);
+				/*vo.setMemberSex(memberSex);
+				vo.setMemberPhoneNumber(memberPhoneNumber);*/
+		        
+		        
+		        br.close();
+
+		    }catch (Exception e){
+		        e.printStackTrace();
+		    }
+		    return vo;
+		
 	}
 	
 }

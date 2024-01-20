@@ -2,6 +2,7 @@ package com.example.domain.member.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,12 +105,28 @@ public class SignupController {
 		}
 	}	
 	
-	/* 네이버 회원가입 */
+	/* 네이버 회원가입 시도하기 - 가입이력이 있는지 확인. */
 	@RequestMapping(value="/naverSignup", method=RequestMethod.POST)
 	@ResponseBody
 	public Integer naverSignup(MemberVO vo) {
 		System.out.println("네이버 회원가입 시도"+vo);
 		return signupService.naverSignup(vo);
 	}
+	
+	/* 카카오 회원가입 */
+	@RequestMapping(value="/kakaoCallback", method=RequestMethod.GET)
+	public String kakaoSignup(@RequestParam(value="code", required=false) String code) {
+//		인가 코드 받아오기
+		System.out.println("code : " + code);
+//		토큰 받기
+		String accessToken = signupService.getKakaoAccessToken(code);
+//		System.out.println(accessToken);
+		
+//		사용자 정보 받기
+		MemberVO vo = signupService.getKakaoUserInfo(accessToken);
+		System.err.println("정보 다 가져옴 " + vo);
+		return  "redirect:/index";
+	}
+	
 	
 }

@@ -1,5 +1,10 @@
 package com.example.domain.member.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,11 +81,40 @@ public class SigninController {
 		
 	}
 	
-//	카카오 로그인
-/*	@RequestMapping(value="/kakaoCallback", method=RequestMethod.GET)
-	public SomeData requestMethodName(@RequestParam String param) {
-		return new SomeData();
+	
+//	카카오 로그아웃
+	@RequestMapping("/kakaoLogout")
+	public void kakaoLogout(String accessToken) {
+	    String reqUrl = "https://kapi.kakao.com/v1/user/logout";
+
+	    try{
+	        URL url = new URL(reqUrl);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod("POST");
+	        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+
+	        int responseCode = conn.getResponseCode();
+//	        log.info("[KakaoApi.kakaoLogout] responseCode : {}",  responseCode);
+
+	        BufferedReader br;
+	        if (responseCode >= 200 && responseCode <= 300) {
+	            br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        } else {
+	            br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+	        }
+
+	        String line = "";
+	        StringBuilder responseSb = new StringBuilder();
+	        while((line = br.readLine()) != null){
+	            responseSb.append(line);
+	        }
+	        String result = responseSb.toString();
+//	        log.info("kakao logout - responseBody = {}", result);
+
+	    }catch (Exception e){
+	        e.printStackTrace();
+	    }
 	}
-	*/
+	
 	
 }

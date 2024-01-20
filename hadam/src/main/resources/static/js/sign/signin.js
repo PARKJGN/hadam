@@ -115,15 +115,12 @@ $(function() {
 		});
 	});
 
-
-
-
-
+/*네이버 로그인 로그아웃 링크*/
 /*https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=sIGCFQ1qvJKFf37n_gIA&client_secret=Wq_cQNV4qs&access_token=
 &state=af2d41f3-e90c-4334-ba64-272b1c9e8daa&service_provider=NAVER*/
 
 
-
+/*네이버 로그인 어쩌구 저쩌구*/
 	/*var testPopUp;
 	function openPopUp() {
 		testPopUp = window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
@@ -140,6 +137,11 @@ $(function() {
 
 
 	}*/
+
+
+
+
+
 
 
 })

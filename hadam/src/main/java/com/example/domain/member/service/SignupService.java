@@ -1,6 +1,6 @@
 package com.example.domain.member.service;
 
-import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Map;
 
 import com.example.domain.member.vo.MemberVO;
 
@@ -13,4 +13,7 @@ public interface SignupService {
 	Integer getMemberIndex(String memberId);								// 회원가입한 회원 index 조회
 	
 	Integer naverSignup(MemberVO vo);										// 네이버 회원정보 입력
+	
+	String getKakaoAccessToken(String code);								// 카카오 accesstoken 가져오기
+	MemberVO getKakaoUserInfo(String accessToken);				// 카카오 사용자 정보 받아오기
 }
