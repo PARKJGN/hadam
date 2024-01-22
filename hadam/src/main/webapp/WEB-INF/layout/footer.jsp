@@ -274,12 +274,15 @@
 							</label> <input name="memberId" type="text" id="memberId"> <label>비밀번호
 								<span>*</span>
 							</label> <input name="password" type="password" id="memberPassword">
-							<button class="log-submit-btn color-bg hadamsignbtn"
-								id="loginbtn">
+
+							<button class="log-submit-btn color-bg" id="loginbtn">
 								<span>로그인</span>
 							</button>
 							<div class="clearfix"></div>
-
+							<!-- <div class="filter-tags">
+                                            <input id="check-a" type="checkbox" name="check">
+                                            <label for="check-a">Remember me</label>
+                                        </div> -->
 
 							<div class="lost_password">
 								<a href="#">아이디 찾기&nbsp;</a> <a href="#">&nbsp;비밀번호 찾기</a>
@@ -311,26 +314,22 @@
 				<a id="naverIdLogin_loginButton" href="javascript:void(0)"><button
 						class='loginbtn'>
 						<img src="/images/sign/naverloginbtn.png" class='naverloginbtn'>
-					</button></a> <a id="kakaoLoginbtn"
-					href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=1bce4a6cad3104a2d5cc6134e1af3958&redirect_uri=	
-http://localhost:8080/signup/kakaoCallback"><button
-						class='loginbtn'>
-						<img src="/images/sign/kakaologinbtn.png" class='kakaologinbtn'>
 					</button></a>
+				<button class='loginbtn'>
+					<img src="/images/sign/kakaologinbtn.png" class='kakaologinbtn'>
+				</button>
 
 				<div class="log-separator fl-wrap">
-					<div class="soc-log fl-wrap">
-						<!--                                 <p>For faster login or register use your social account.</p>
-                                <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a> -->
-					</div>
+					<div class="soc-log fl-wrap"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--register form end -->
-	<a class="to-top"><i class="fas fa-caret-up"></i></a>
 </div>
 </div>
+<!--register form end -->
+<a class="to-top"><i class="fas fa-caret-up"></i></a>
+
 <!-- Main end -->
 <!--=============== scripts  ===============-->
 
@@ -338,7 +337,8 @@ http://localhost:8080/signup/kakaoCallback"><button
 <script type="text/javascript" src="/js/plugins.js"></script>
 <script type="text/javascript" src="/js/scripts.js"></script>
 <script type="text/javascript" src="/js/sign/signin.js"></script>
-<script	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
+<script
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
 	charset="utf-8"></script>
 <!-- <script type="text/javascript" src="/js/layout/logout.js"></script> -->
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOURAPIKEYHERE&libraries=places&callback=initAutocomplete"></script>  

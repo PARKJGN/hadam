@@ -115,9 +115,15 @@ $(function() {
 
 		});
 	});
-
 /*네이버 로그인 로그아웃 링크*/
 /*https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=sIGCFQ1qvJKFf37n_gIA&client_secret=Wq_cQNV4qs&access_token=
+=======
+
+
+
+
+/*https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=sIGCFQ1qvJKFf37n_gIA&client_secret=Wq_cQNV4qs&access_token=AAAAOsxomvXRIwIiUizKqFtP_-RAuKjtm7ajMSvyGaNVtMvH24EuL192Cw9fgggYujs4Am4miv_6s8v8KXVFsDelpno
+>>>>>>> branch '20240119_seoungik' of https://github.com/PARKJGN/hadam.git
 &state=af2d41f3-e90c-4334-ba64-272b1c9e8daa&service_provider=NAVER*/
 
 
