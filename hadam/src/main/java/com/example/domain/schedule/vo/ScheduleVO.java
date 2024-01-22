@@ -1,7 +1,5 @@
 package com.example.domain.schedule.vo;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,9 +17,9 @@ public class ScheduleVO {
 	
 	private Integer memberIndex;
 	
-	private Date scheduleStartTime;
+	private String scheduleStartTime;
 	
-	private Date scheduleEndTime;
+	private String scheduleEndTime;
 	
 	// 스케줄 목록 조회시 사용
 	private String averageTime;

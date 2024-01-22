@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.domain.schedule.vo.ScheduleVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 @Mapper
@@ -28,6 +27,9 @@ public interface ScheduleTableDAO {
 	
 	// 스케줄표 상태 업데이트
 	void updateScheduleTableStatus(ScheduleTableVO vo);
+	
+	// 스케줄표 insert
+	void insertscheduletable(ScheduleTableVO stvo);
 	
 	
 }

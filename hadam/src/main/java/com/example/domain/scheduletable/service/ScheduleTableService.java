@@ -2,8 +2,6 @@ package com.example.domain.scheduletable.service;
 
 import java.util.List;
 
-import com.example.domain.board.vo.BoardVO;
-import com.example.domain.schedule.vo.ScheduleVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 public interface ScheduleTableService {
@@ -27,6 +25,8 @@ public interface ScheduleTableService {
 	// 스케줄표 상태 업데이트
 	void updateScheduleTableStatus(ScheduleTableVO vo);
 	
+	// 스케줄표 insert
+	void insertscheduletable(ScheduleTableVO stvo);
 
 
 	

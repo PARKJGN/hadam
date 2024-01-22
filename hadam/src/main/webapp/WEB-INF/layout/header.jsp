@@ -21,8 +21,6 @@
         <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="/images/favicon.ico">
-		<!--=============== script ===============-->
-		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	    <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
 		<script src="https://kit.fontawesome.com/b2960bc7d5.js" crossorigin="anonymous"></script>	
 	

@@ -324,6 +324,7 @@ $(() => {
 		var locationLatitude = $(this).parents(".dashboard-listing-table-text").find('.locationLatitude').val()
 		var locationLongitude = $(this).parents(".dashboard-listing-table-text").find('.locationLongitude').val()
 		var locationPlace = $(this).parents(".dashboard-listing-table-text").find('.locationPlace').val()
+		var locationId = $(this).parents(".dashboard-listing-table-text").find('.locationId').val()
 
 		// 이미 스케줄표에 있는 장소를 추가하려고하면 alter창 띄워주고 return
 		if ($('.scheduleTable').find('img').length > 0) {
@@ -339,7 +340,7 @@ $(() => {
 
 		$('#schedulemodal').modal("hide");
 
-		td.append(`<img style=width : 180px src= ${modalimg} alt= '${modallocationname}' id = '${locationPlace}' name = ${locationLatitude},${locationLongitude}>`)
+		td.append(`<img style=width : 180px src= ${modalimg} alt= '${modallocationname}' id = ${locationId} name = "${locationLatitude},${locationLongitude},${locationPlace}">`)
 
 
 		td.children().resizable({
@@ -515,22 +516,24 @@ let changesummary = (totalTimelist) => {
 		var src = $(element).attr('src')
 		var index = $(element).parents('td').index()
 		var locname = $(element).attr('alt')
+		var locid = $(element).attr('id')
 
 		// 이미지가 들어가있는 td의 인덱스로 시작시간과 끝나는 시간 구하기
 		var starttime = index % 2 == 0 ? `${index / 2}:00` : `${Math.floor(index / 2)}:30`
 		var endtime = (index + $(element).width() / 90) % 2 == 0 ? `${(index + $(element).width() / 90) / 2}:00` : `${Math.floor((index + $(element).width() / 90) / 2)}:30`
 
-		var content = (`<div class="listing-item" id="listItem">
+		var content = (`<div class="listing-item listItem">
 						<article class="geodir-category-listing fl-wrap">
 						<div class="geodir-category-img">
 							<a href="listing-single.html"><img src="${src}"
 							alt=""></a>
+							<input type="hidden" class = "locid" value="${locid}" />
 							<div class="geodir-category-opt"></div>
 						</div>
 						<div class="geodir-category-content fl-wrap title-sin_item">
 							<div class="geodir-category-content-title fl-wrap">
 								<div class="geodir-category-content-title-item">
-									<h3 class="title-sin_map">${starttime} ~ ${endtime}</h3>
+									<h3 class="scheduletime title-sin_map">${starttime} ~ ${endtime}</h3>
 									<div class="geodir-category-location fl-wrap">
 										<a href="#" class="map-item"><i
 										class="fas fa-map-marker-alt"></i>${locname}</a>

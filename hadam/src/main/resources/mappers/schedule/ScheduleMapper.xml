@@ -17,4 +17,24 @@
 
 	</select>
 	
+	
+	<insert id="insertScheduleList" parameterType="map" >
+    INSERT INTO schedule(
+          LOCATION_ID
+        , SCHEDULE_TABLE_ID
+        , MEMBER_INDEX
+        , SCHEDULE_START_TIME
+        , SCHEDULE_END_TIME
+    ) VALUES 
+    <foreach collection="svoList" item="schedule" separator=",">
+    (
+          #{schedule.locationId}
+        , #{scheduleTableId}
+        , #{memberIndex}
+        , #{schedule.scheduleStartTime}
+        , #{schedule.scheduleEndTime}
+    )
+    </foreach>
+</insert>
+	
 </mapper>

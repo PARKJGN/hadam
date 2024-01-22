@@ -24,7 +24,7 @@ async function DurationOfTime(imgcount) {
 			"<p style='margin-bottom: 7px;'>" +
 			`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${$(element).attr('alt')}</span>` +
 			"<p>" +
-			`<span class='new-addr'>${$(element).attr('id')}</span>` +
+			`<span class='new-addr'>${$(element).attr('name').split(",")[2]}</span>` +
 			"</p>" +
 			"</div>" +
 			`<a href='javascript:void(0)' onclick=$(this).parent().parent().css("visibility","hidden") class='btn-close' style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'></a>` +

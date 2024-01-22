@@ -146,12 +146,19 @@
 	font-size: 14px;
 }
 
-.btn-two {
+.btn-two.small {
 	margin: 9px;
 	float: right;
 	position: relative;
 	bottom: 20;
 }
+
+.btn-two-submit{
+	width: 150px;
+	height: 40px;
+	padding: 0px 0px 
+}
+
 
 .btn-two.blue {
 	background-color: #80d8ff;
@@ -242,10 +249,9 @@
     margin-bottom: 40px;
 }
 
-#listItem {
+.listItem {
 	height: auto !important;
-	width: 165px;
-	position: relative;
+	width: 165px !important;
 }
 
 .arrowBox {
@@ -302,4 +308,21 @@
 
 .geodir-category-content-title:before{
 	top:20px !important;
+}
+
+.scheduletitle , #datepicker{
+  width: 500px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+  margin: 20px;
+  text-align: center;
+}
+
+.daterangepicker.single.auto-apply{
+	width: auto !important;
 }

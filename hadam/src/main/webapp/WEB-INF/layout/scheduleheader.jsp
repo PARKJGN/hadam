@@ -252,6 +252,3 @@
                 </div>
                 <!-- header-search  end -->
             </header>
-
-</body>
-</html>

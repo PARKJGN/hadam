@@ -1,11 +1,13 @@
 package com.example.domain.scheduletable.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.example.domain.schedule.dao.ScheduleDAO;
 import com.example.domain.schedule.vo.ScheduleVO;
 import com.example.domain.scheduletable.dao.ScheduleTableDAO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
@@ -15,6 +17,9 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 	
 	@Autowired 
 	private ScheduleTableDAO scheduleTableDAO;
+	
+	@Autowired
+	private ScheduleDAO scheduleDao;
 
 	// 스케줄표 리스트 가져오기
 	public List<ScheduleTableVO> getScheduleTableList() {
@@ -55,6 +60,21 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 		
 		scheduleTableDAO.updateScheduleTableStatus(vo);
 		
+	}
+
+	@Override
+	@Transactional
+	public void insertscheduletable(ScheduleTableVO stvo) {
+		
+		// 스케줄표 insert
+		scheduleTableDAO.insertscheduletable(stvo);
+		
+		//셀렉키로 stvo에 스케줄테이블id가 들어가있음
+		Integer scheduleTableId = stvo.getScheduleTableId();
+		
+		// 스케줄 insert
+		List<ScheduleVO> svoList = stvo.getScheduleList();
+		scheduleDao.insertScheduleList(svoList, scheduleTableId, stvo.getMemberIndex());
 	}
 
 	
