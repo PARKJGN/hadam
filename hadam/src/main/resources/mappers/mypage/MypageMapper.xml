@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.domain.mypage.dao.MypageDAO">
+	
+	<select id="passwordCheck" parameterType="String" resultType="String">
+		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PASSWORD = #{password}
+	</select>
+
+	<update id="passwordChange" parameterType="String">
+		UPDATE MEMBER SET MEMBER_PASSWORD = #{newPassword} WHERE MEMBER_ID = #{memberId}
+	</update>
+
+</mapper>

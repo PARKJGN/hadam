@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+
+.flat-header.color-bg.adm-header.mypage {			
+	padding-top : 30px;						/* 마이페이지 상단 매뉴바 padding 조절 */
+}
+
+.dasboard-sidebar-content.fl-wrap.mypage{
+	padding: 20px 0 0px 0;					/* 마이페이지 상단 매뉴바 안에 프로필 영역 padding 조절 */
+}

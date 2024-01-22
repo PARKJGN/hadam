@@ -101,7 +101,7 @@
                             </div>
                         
                             <ul>
-                                <li><a href="dashboard-myprofile.html"> 마이페이지 </a></li>
+                                <li><a href="/mypage/mypageProfile"> 마이페이지 </a></li>
                                 <li><a href="dashboard-add-listing.html"> 즐겨찾기 </a></li>
                                 <li><a href="dashboard-bookings.html">  스케줄관리  </a></li>
                                 <li><a href="dashboard-review.html"> 게시글관리 </a></li>
