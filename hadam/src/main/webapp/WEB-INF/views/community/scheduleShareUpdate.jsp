@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.text.SimpleDateFormat"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="java.util.Date"%>
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
 <!--  header end -->
@@ -35,59 +34,32 @@
 			<div class="col-list-wrap fw-col-list-wrap">
 				<div class="list-single-main-item fl-wrap" id="writeBox">
 					<div class="list-single-main-item-title fl-wrap">
-						<h3>스케줄 게시글 작성</h3>
+						<h3>공유 스케줄 수정</h3>
 					</div>
 					<div id="asd">
-						<form class="custom-form" action="scheduleTableSave"
+						<form class="custom-form" action="scheduleTableUpdate"
 							id="contactform" method="post">
-
+							
+							<input name ="boardId" type='hidden' value="${schedule.boardId}">
 							<!-- 여기서 부터 갖고와라  -->
 							<div id="modalScheduleTableList">
-
+									
 								<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox"></div>
 							</div>
-							<!-- 희망 나이 선택 -->
-							<label for="validationTextarea" class="form-label">희망 성별</label>
-							<fieldset>
-							  <label for="agree1" class="radio_box">
-									<input type="radio" id="agree1" name="boardSex" value="남자" checked="checked" />
-									<span class="on"></span>
-									남자
-								</label>
-								<label for="agree2" class="radio_box">
-									<input type="radio" id="agree2" name="boardSex" value="여자" />
-									<span class="on"></span>
-									여자
-								</label>
-							</fieldset>
-							
-							
-							<div class="selectBox">
-							  <select name="fruits" class="select">
-							    <option disabled selected>희망 나이 </option>
-							    <option value="apple">상관없음</option>
-							    <option value="orange">20~29</option>
-							    <option value="grape">30~39</option>
-							    <option value="melon">40~49</option>
-							    <option value="melon">50~59</option>
-							  </select>
-							  <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
-							</div>
-							
 							<label for="validationCustom01" class="form-label">제목</label> <input
 								type="text" name="boardTitle" id="boardTitle"
 								placeholder="제목을 입력해주세요" required />
 							<!-- 게시글 제목 작성 -->
-							
+
 							<label for="validationTextarea" class="form-label">글 내용</label>
 							<textarea name="boardContent" id="boardContent" cols="40"
 								rows="3" placeholder="메시지를 입력해주세요" required></textarea>
 							<!-- 내용 작성 -->
-							
-						
+
+
 
 							<input type="submit" class="btn btn-primary" id="comment"
-								value="공유" />
+								value="수정" />
 
 						</form>
 						<a class="btn btn-primary" href="/community/scheduleShareList"
@@ -144,7 +116,15 @@
 
 							<div class="geodir-category-content-title-item">
 								<h3 class="title-sin_map" id="modalScheduleTime">
-									<fmt:formatDate value="${scheduleTableList.scheduleTableRegisteDate}" pattern="yyyy/MM/dd" />
+									<%
+									// boardRegisterDate를 받아오는 부분, 예시로 현재 시간을 사용
+									Date scheduleTableRegisteDate = new Date();
+									// SimpleDateFormat을 사용하여 날짜를 원하는 형식으로 포맷
+									SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+									String formattedDate = sdf.format(scheduleTableRegisteDate);
+									%>
+
+									<%=formattedDate%>
 								</h3>
 							</div>
 				
@@ -172,5 +152,5 @@
 </div>
 
 
-<script type="text/javascript" src="/js/board/scheduleWrite.js"></script>
+<script type="text/javascript" src="/js/board/scheduleUpdate.js"></script>
 <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>

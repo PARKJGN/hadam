@@ -61,5 +61,23 @@ public interface CommunityBoardService {
 	// 공유스케줄 저장
 	void scheduleTableSave(BoardVO vo);
 	
+	// 스케줄 목록조회
+	List<BoardVO> getScheduleShareList();
+	
+	// 스케줄표 목록조회
+	List<BoardVO> getScheduleTableShareList();
+	
+	// 스케줄 상세 모달 댓글 작성
+	void scheduleCommentWrite(CommentVO vo);
+	
+	// 스케줄 상세페이지 댓글리스트
+	List<CommentVO> scheduleCommentList(Integer boardId);
+	
+	// 스케줄 수정
+	void scheduleTableUpdate(BoardVO vo);
+
+	// boardList
+	List<BoardVO> boardList(Integer boardId);
+	
 	
 }

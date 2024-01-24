@@ -11,5 +11,8 @@ import com.example.domain.schedule.vo.ScheduleVO;
 public interface ScheduleDAO {
 
 	List<ScheduleVO> getScheduleList( Integer scheduleTableId);
+	
+	// 보드테이블에 저장된 스케줄리스트 조회
+	List<ScheduleVO> getScheduleBoardList();
 
 }

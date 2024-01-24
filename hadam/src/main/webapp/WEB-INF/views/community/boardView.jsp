@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <!-- 작성일 문자형식으로 포맷팅하려고 import 했습니다 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -40,7 +41,7 @@
                                     <div class="post-container fl-wrap" id="box">
                       
                                                      <a style="text-decoration:none; color:black;"  href="boardWrite"  id="writeButton"><i style="color:#64A0FF;" class="fa-solid fa-pen-to-square" >글 작성</i></a>
-                                               <c:if test="${board.memberIndex eq sessionScope.memberIndex}"> <!-- 내가 쓴 글의 게시판일경우에만 수정 삭제 버튼 보임-->
+                                               <c:if test="${sessionScope.memberIndex eq board.memberIndex}"> <!-- 내가 쓴 글의 게시판일경우에만 수정 삭제 버튼 보임-->
                                                  <a style="text-decoration:none; color:black;"  href="boardUpdate?boardId=${board.boardId}"  id="updateBtn" ><i style="color:#28AEFF"class="fa-solid fa-pencil">수정</i></a><!--클릭 시 수정 페이지로 이동-->   
                                                  <a style="text-decoration:none; color:black;" id="deleteBtn" href="boardDelete?boardId=${board.boardId}"><i  style="color:#DC6089"class="fa-solid fa-xmark">삭제</i></a>          
                                              	 
@@ -59,14 +60,11 @@
                                                     <div class="post-opt" id="inforTab">
                                                     
                                                     <ul>											<!--게시판 등록일-->
-                                                        <li><i class="fal fa-calendar"></i> <span><%// boardRegisterDate를 받아오는 부분, 예시로 현재 시간을 사용
-																									Date boardRegisterDate = new Date();
-																									// SimpleDateFormat을 사용하여 날짜를 원하는 형식으로 포맷
-																									SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-																									String formattedDate = sdf.format(boardRegisterDate);
-																								  %>
-																										    
-																								  <%= formattedDate %></td></span></li>
+                                                        <li><i class="fal fa-calendar"></i> <span>
+                                                         <fmt:formatDate value="${board.boardRegisterDate}" pattern="yyyy/MM/dd HH:MM:SS" />
+                                                        
+                                                        
+                                                       </span></li>
 																								  
 																								   <!--게시판 수정일-->
                                                         
@@ -135,10 +133,7 @@
 											                    <p style="font-size:11px;">${comment.commentContent}</p>
 											                    <div class="reviews-comments-item-date" id="replydateBox">
 											                        <span id="replydate"><i class="far fa-calendar-check"></i> 
-											                        <% Date commentRegisteDate = new Date(); 
-											                        SimpleDateFormat saf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-											                        String formattDate = sdf.format(boardRegisterDate);
-											                        %> <%= formattedDate %> </span>
+											                         <fmt:formatDate value="${comment.commentRegisteDate}" pattern="yyyy/MM/dd HH:MM:SS" /></span>
 											                    </div>
 											                    <c:if test="${comment.memberIndex ne sessionScope.memberIndex}">
 											                    <button type="button" id="danger" class="btn btn-danger" onclick="commentReport()">신고</button>
@@ -192,8 +187,8 @@
       			const commentContent = document.getElementById("commentContent").value;
       			const boardId = '${board.boardId}'
       			/* 게시물 작성자에게 알림을 보내기위해 작성자 Index를 보내야함 -건일 */
-      			const memberIndex = '${board.memberIndex}'
-      			
+      			const memberIndex = '${sessionScope.memberIndex}'
+      			console.log("session값확인",memberIndex);
       			$.ajax ({
       				type: "post",
       				url: "/community/commentSave",
@@ -209,7 +204,7 @@
       					console.log(commentList);
       					
       					// 세션으로 담아온 memberIndex 값 변수에 저장
-      					var memberIndex = ${sessionScope.memberIndex};
+      					/* var memberIndex = ${sessionScope.memberIndex}; */
       					
       					// 날짜 문자형으로 변환
       					function formatDate(dateString) {
@@ -239,7 +234,7 @@
       					if ( commentList[i].memberIndex !== memberIndex) {
       						output += '<button type="button" id="danger"class="btn btn-danger">신고</button>';
       					}   
-      					
+      					console.log("올라간댓글 memberIndex들 확인",commentList[i].memberIndex)
       					output += '</div>';
       					output += '</div>';
       				

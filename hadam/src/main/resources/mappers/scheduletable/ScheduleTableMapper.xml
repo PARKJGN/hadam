@@ -5,14 +5,14 @@
 <mapper namespace="com.example.domain.scheduletable.dao.ScheduleTableDAO">
 	
 	<!--스케줄표 리스트 가져오기 -->
-	<select	id="getScheduleTableList" resultType="ScheduleTableVO">
+	<select	id="getScheduleTableList" resultType="ScheduleTableVO" parameterType="ScheduleTableVO">
 		
 		select st.*
 		from schedule_table st 
-		where st.MEMBER_INDEX =1;
+		where st.MEMBER_INDEX = #{memberIndex} AND st.SCHEDULE_TABLE_STATUS = "대기"
 		
 	</select>
-	
+
 	<select id="getScheduleList" resultType="ScheduleVO">
 		select st.*, s.*, l.*, li.*
 		from schedule_table st 
@@ -37,7 +37,7 @@
 		inner join location_image li 
 		on l.LOCATION_ID = li.LOCATION_ID
 		where st.SCHEDULE_TABLE_ID = #{scheduleTableId}
-		and st.MEMBER_INDEX =1;
+		and st.MEMBER_INDEX = #{memberIndex};
 	</select>
 	
 	<select id="getScheduleTableId" parameterType="ScheduleTableVO" resultType="Integer">
@@ -53,7 +53,54 @@
 	<update id="updateScheduleTableStatus" parameterType="ScheduleTableVO">
 		update schedule_table set
 		SCHEDULE_TABLE_STATUS = "공유중"
-		WHere SCHEDULE_TABLE_ID = #{scheduleTableId}
+		WHERE SCHEDULE_TABLE_ID = #{scheduleTableId}
 	</update>
 	
+	<select id="getScheduleTableBoardList" resultType="ScheduleTableVO">
+		select st.*,b.*
+		from schedule_table st
+		inner join board b 
+		on st.SCHEDULE_TABLE_ID = b.SCHEDULE_TABLE_ID
+		where st.SCHEDULE_TABLE_STATUS ="공유중"
+		order by b.BOARD_ID desc
+	</select>
+	
+	<select id="getScheduleDataByBoardId" parameterType="Integer" resultType="ScheduleTableVO">
+		select b.*, s.*, st.*, li.*, l.*, m.*
+		from schedule_table st
+		inner join board b
+		on b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID 
+		inner join schedule s
+		on s.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID 
+		inner join location l
+		on l.LOCATION_ID = s.LOCATION_ID 
+		inner join location_image li
+		on li.LOCATION_ID = s.LOCATION_ID 
+		inner join member m
+		on m.MEMBER_INDEX = b.MEMBER_INDEX
+		where b.board_id= #{boardId};
+	</select >
+    <select id="checkEntry">
+	    select member_index 
+	    from entry_application 
+	    where member_index = #{memberIndex} AND BOARD_ID = #{boardId}
+    </select>
+  	
+    
+    <!-- 스케줄공유 게시글 수정하기위해 boardId 얻어오기 -->
+	<select id="getBoardIdByScheduleTable" parameterType="integer" resultType="ScheduleTableVO">
+		select b.*, st.*
+		from schedule_table st
+		inner join board b 
+		on b.SCHEDULE_TABLE_ID  = st.SCHEDULE_TABLE_ID
+		where board_id = #{boardId}
+	</select>
+	
+	<update id="updateScheduleTableStatusToWait" parameterType="BoardVO">
+		update schedule_table st
+		inner join board b
+		on b.SCHEDULE_TABLE_ID  = st.SCHEDULE_TABLE_ID 
+		set st.SCHEDULE_TABLE_STATUS = "대기"
+		WHERE b.BOARD_ID = #{boardId}
+	</update>
 </mapper>

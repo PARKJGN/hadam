@@ -2,178 +2,316 @@
 
 
 #listBox {
-     				 display: flex;
-                     justify-content: space-between;
-                     background-color: white;
-            		 border-radius: 10px;
-            		 height:320px;
-            		 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
-            		 position:relative;
-            		 right:-200px;
-     			}
-     			
-     			#listItem {
-     				margin-right:30px;
-     				width: 280px;
-     				position:relative;
-     				bottom:-40px;
-     				right:-30px;
-     			}
-     			
-     			#box {
-     				width:1600px;
-     				position:relative;
-     				left:-300px;
-     			}
-     			
-     			#information {
-     				position: relative;
-     				bottom:-130px;
-     				width:300px;
-     			}
-     			
-     			#shareBtn {
-     				width:120px;
-            		height:25px;
-            		font-size:14px;     
+                   display: flex;
+                   justify-content: space-between;
+                   background-color: white;
+                   border-radius: 10px;
+                   height:200px;
+                   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);         
+                   width:1200px;
+              }
+              
+              #listBox1 {
+              	  height:200px;
+              	  border-radius: 10px;
+              	  background-color: white;
+              	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+              	  display: flex;
+                  justify-content: space-between;
+              }
+              
+              #replyBox{
+		
+					
+					height:250px;
+				}
+				
+				#replyBox h4 {
+					position:relative;
+					top:-20px;
+				}
+				
+				#replyBox p {
+					position:relative;
+					left:-40px;
+				}
+				
+				#replyinnerBox {
+					width:1400px;
+					position:relative;
+					left:-20px;
+					top:-50px;
+				}
+				#replyinnerBox span {
+					position:relative;
+					top:-100px;
+					
+				}
+				
+				#userInfo {
+            		margin-top:35px;
+            	}
+            	
+            	#danger{
+            		width:50px;
+            		height:20px;
+            		font-size:12px;
+            		margin-left:610px;
             		text-align : center;
 	 				padding : 0 0;
-	 				position:relative;
-	 				bottom:-50px;
-	 				right:-780px;
 	 				
-     			}
-     			
-     			.pagination {
-     				position:relative;
-     				right:-550px;
-     			}
-     			
-				.arrowBox {
-				  display: flex;
-				  justify-content: center;
-				  align-items: center;
-				  height: 50vh;
-				  margin: 0;
-				}
-
-				.arrow {
-				  width: 0;
-				  height: 0;
-				  border-top: 10px solid transparent;
-				  border-bottom: 10px solid transparent;
-				  border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
-				  position:relative;
-				  right:-25px;
-				  top:-50px;
-				}
-
-				.timeTaken {
-					position:relative; 
-					bottom:-200px; 
-					white-space: nowrap;
-					
-				}
+            	}
+            	
+            	#commentContent{
+            		border-radius: 10px;
+			    background-color: #f9f9f9;
+			    margin-left: -1390px;
+			    margin-top: 70px;
+			    width: 1400px;
+			    border: 0px;
+            	}
+            	
+            	.commentBtn{
+            		text-align:right;
+            	}
+            	
+            	.dangerBox{
+            		text-align:right;
+            		position:relative;
+            		top:-70px;
+            	}
+            	
+            	#replydateBox {
+            		position:relative;
+            		bottom:-50px;
+            	}
+            	
+            	#replyWriteBox {
+   
+            		
+            		height:220px;
+            	}
+            	
+            	#COMMENT_CONTENT {
+            		height:80px;
+            	}
+            	
+            	#comment {
+          			height:30px;
+            		
+            		font-size:14px;
+            	}
+            	
+            	#chatBox {
+            		position:relative;
+            		top:-50px;
+            		height:100px;
+            	}
+            	
+            	#replyImage {
+            		position:relative;
+            		bottom:-10px;
+            		left:-10px;
+            	}
 				
-				.whatTime {
-					position:relative;
-					top:-30px;
-				}
-				
-				#scheduleTitle {
-					position:relative;
-					bottom:-20px;
-					right:-200px;
-				}
-				
-				#timeBox h3{
-					font-size:13px;
-					white-space: nowrap;
-				}
-				
-				#moveTab {
-				 position:relative;
-				 left:-90px;
-				}
-				
-				#realArrow {
-					padding-top: 80px;
-					/* 
-					text-decoration:none;
-					font-size:1px;
-					position: relative;
-					display:inline-block; */
-				}
-				
-				#realArrow span{
-					 position: absolute;
-					 top: 0;
-					 left: 50%;
-					 width: 24px;
-					 height: 24px;
-					 margin-left: -12px;
-					 border-left: 1px solid black;
-					 border-bottom: 1px solid black;
-					 -webkit-transform: rotate(-45deg);
-					 transform: rotate(-135deg);
-					 -webkit-animation: sdb 2s infinite;
-					 animation: sdb 2s infinite;
-					 opacity: 0;
-					 box-sizing: border-box;
-					
-				}
-				
-				#realArrow span:nth-of-type(1) {
-				
-					 -webkit-animation-delay: 0s;
-  					 animation-delay: 0s;
-				}
-				
-				#realArrow span:nth-of-type(2) {
-					top: 16px;
-  					-webkit-animation-delay: .15s;
-  					animation-delay: .15s;
-				}
-				
-				#realArrow span:nth-of-type(3) {
-					top: 32px;
-  					-webkit-animation-delay: .3s;
-  					animation-delay: .3s;
-				}
-				
-				@-webkit-keyframes sdb {
-				  0% {
-				    opacity: 0;
-		
-				  }
-				  50% {
-				    opacity: 1;
-
-				  }
-				  100% {
-				    opacity: 0;
-	
-				  }
-				}
-				
-				@keyframes sdb {
-				  0% {
-				    opacity: 0;
-
-				  }
-				  50% {
-				    opacity: 1;
-
-				  }
-				  100% {
-				    opacity: 0;
-
-				  }
-				}
-							
-			#userInfo {
-				position:relative;
-				right:-200px;
-				bottom:-10px;
+              .asdf{
+              	width:1500px;
+              	text-align:center;
+              	position:relative;
+              	right:-700px;
+              	margin-top:30px;
+              }
+              
+              .asdf2{
+              	width:1000px;
+              	text-align:center;
+              	position:relatvie;
+              	right:-1000px;
+              	margin-top:200px;
+              }
+              
+              
+              .modal-fullscreen .modal-content {
+              	height:800px;
+              }
+              
+              .buttonBox {
+              	text-align:right;
+    			position: relative;
+    			top: -60px;
+              }
+              
+              .modalBtn{
+                height:25px;
+                font-size:14px;     
+                text-align : center;
+                padding : 0 0;	
+                width:70px;
+                margin-left:-70px;
+                margin-top:-20px;
+              }
+              
+              #listItem {                
+                 width: 70px;
+              	 flex: 1;
+      			 box-sizing: border-box; /* 마진과 패딩을 요소의 크기에 포함시키기 위해 */
+      			 background-color: white; /* 테스트를 위한 배경색 설정 */
+      			 text-align: center; /* 텍스트를 가운데 정렬하기 위해 */
+     			 margin: 5px;
+              }
+              
+              .listImg {
+              	height:85px;
+              }
+              
+              #box {
+                 width:1200px;
+                 position:relative;
+                 right:-700px;
+         	     margin-top:30px;
+              }
+              
+              #box1 {
+              	
+              }
+              
+              #information {
+                 margin-top: 60px;
+                 width:250px;
+              }
+              
+              #shareBtn {
+                width:120px;
+                height:25px;
+                font-size:14px;     
+                text-align : center;
+                padding : 0 0;
+                margin-bottom: -20px;
+                
+              }
+              
+              #shareBtn1 {
+              	width:120px;
+                height:25px;
+                font-size:14px;     
+                text-align : center;
+                padding : 0 0;
+                margin-top: -40px;
+              }
+              
+             .pagination {
+                 position:relative;
+                 right:-550px;
+              }
+              
+            .arrowBox {
+              display: flex;  
+              align-items: center;
+              height: 50vh;
+              margin-top: -100px;
+            }
 			
+			.arrowBox1 {
+			  display: flex;  
+              align-items: center;
+              height: 50vh;
+              margin-top: -130px;
 			}
+			
+            .arrow {
+              width: 0;
+              height: 0;
+              border-top: 10px solid transparent;
+              border-bottom: 10px solid transparent;
+              border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
+              position:relative;
+              right:-25px;
+              top:-50px;
+            }
+
+            .timeTaken {
+               
+               white-space: nowrap;
+               margin-top:-20px;
+            }
+            
+         	.shareBtnBox{
+         		text-align:right;
+         		position:relative;
+         		top:-15px;
+         	}
+            
+            .whatTime {
+               
+            }
+            
+            #scheduleTitle {
+               text-align:left;
+               position:relative;
+               bottom:-20px;
+            }
+            #scheduleTitle > h5 a {
+               text-decoration: none;
+               color: #64A0FF;
+            } 
+            #timeBox h3{
+               font-size:13px;
+               white-space: nowrap;
+            }
+            
+            #moveTab {
+             position:relative;
+             left:-90px;
+            }
+            
+            #realArrow {
+               padding-top: 80px;
+               
+               /* 
+               text-decoration:none;
+               font-size:1px;
+               position: relative;
+               display:inline-block; */
+            }
+            
+            #realArrow span{
+                position: absolute;
+                top: 0;
+                left: 50%;
+                width: 24px;
+                height: 24px;
+                margin-left: -12px;
+                border-left: 1px solid black;
+                border-bottom: 1px solid black;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-135deg);
+                -webkit-animation: sdb 2s infinite;
+                animation: sdb 2s infinite;
+                opacity: 0;
+                box-sizing: border-box;
+               
+            }
+            
+            #contactform {
+            	position:relative;
+            	bottom:-30px;
+            }
+           
+           #comment1 {
+           		height: 30px;
+			    font-size: 14px;
+			    margin-left: -60px;
+			    margin-top: 240px;
+           }
+          
+               
+         #userInfo {
+            position:relative;
+            right:-200px;
+            margin-top:-40px;
+         
+         }
+         
+         #userInfo1 {
+         	
+         }

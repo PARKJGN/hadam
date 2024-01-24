@@ -40,4 +40,10 @@ public class ScheduleTableVO {
 	private String locationName;
 	
 	private String memberNickname;
+	
+	private Integer boardId;
+	
+	private String boardTitle;
+	
+	private String boardContent;
 }

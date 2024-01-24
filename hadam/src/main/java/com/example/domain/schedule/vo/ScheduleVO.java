@@ -19,9 +19,9 @@ public class ScheduleVO {
 	
 	private Integer memberIndex;
 	
-	private Date scheduleStartTime;
+	private String scheduleStartTime;
 	
-	private Date scheduleEndTime;
+	private String scheduleEndTime;
 	
 	// 스케줄 목록 조회시 사용
 	private String averageTime;
@@ -30,4 +30,6 @@ public class ScheduleVO {
 	private String locationName;
 	
 	private String scheduleTableName;
+	
+	private String boardTitle;
 }

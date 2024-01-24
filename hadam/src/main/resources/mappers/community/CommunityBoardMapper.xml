@@ -6,18 +6,17 @@
 	
 	<!-- 자유게시판 목록 출력 memberNickname-->
 	<select id="getBoardList" resultType="BoardVO" >
-		<if test="scheduleTableId == null">
 		SELECT b.*, m.*
 		FROM board b INNER JOIN member m 
 		ON b.MEMBER_INDEX = m.MEMBER_INDEX
+		WHERE b.SCHEDULE_TABLE_ID IS NULL
 		ORDER BY BOARD_ID desc
-		</if>
 	</select>
 	
 	<!-- 제목,내용,등록일 insert -->
 	<insert id="saveBoard" parameterType="BoardVO">
 		INSERT INTO board( BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS, MEMBER_INDEX, BOARD_UPDATE_DATE)
-		values(#{boardTitle}, #{boardContent},now(), 0, 1, now())
+		values(#{boardTitle}, #{boardContent},now(), 0, #{memberIndex}, now())
 	</insert>
 	
 	<!-- 자유게시판 상세 페이지 사진과 글정보-->
@@ -82,7 +81,7 @@
 		select c.*, m.* 
 		from comment c INNER JOIN member m
 		ON c.MEMBER_INDEX = m.MEMBER_INDEX
-		WHERE BOARD_ID = #{boardId} 
+		WHERE c.BOARD_ID = #{boardId} 
 	
 	</select>
 	
@@ -109,6 +108,65 @@
 	<!-- 스케줄 저장 -->
 	<insert id="scheduleTableSave" parameterType="BoardVO">
 		insert into board (MEMBER_INDEX, SCHEDULE_TABLE_ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS)
-		values (1, #{scheduleTableId}, #{boardTitle}, #{boardContent}, current_date, 0)
+		values (#{memberIndex}, #{scheduleTableId}, #{boardTitle}, #{boardContent}, current_date,0 )
 	</insert>
+	
+	<select id="getScheduleShareList" resultType="BoardVO">
+		select b.*,st.*,l.*,li.*,m.*
+		from board b
+		inner join schedule_table st
+		on b.SCHEDULE_TABLE_ID  = st.SCHEDULE_TABLE_ID  
+		inner join schedule s
+		on s.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID 
+		inner join location l
+		on l.LOCATION_ID = s.LOCATION_ID  
+		inner join location_image li
+		on li.LOCATION_ID = l.LOCATION_ID 
+		inner join member m 
+		on b.MEMBER_INDEX =m.MEMBER_INDEX
+	</select>
+	
+	<select id="getScheduleTableShareList" resultType="BoardVO">
+		select st.*,b.*,m.*
+		from board b
+		inner join schedule_table st
+		on b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
+		inner join member m
+		on m.MEMBER_INDEX = b.MEMBER_INDEX
+		order by BOARD_ID desc
+	</select>
+	
+	<!-- 스케줄 상세 댓글 저장 -->
+	<insert id="scheduleCommentWrite" parameterType="CommentVO">
+		insert into comment (COMMENT_CONTENT, COMMENT_REGISTE_DATE, MEMBER_INDEX, BOARD_ID)
+		values ( #{commentContent}, (current_date), #{memberIndex}, #{boardId})
+	</insert>
+	
+	<!-- 스케줄 상세 댓글 목록 -->
+	<select id="scheduleCommentList" parameterType="Integer" resultType="CommentVO">
+		select c.*, m.* 
+		from comment c INNER JOIN member m
+		ON c.MEMBER_INDEX = m.MEMBER_INDEX
+		WHERE c.BOARD_ID = #{boardId} 
+	</select>
+	
+	<update id="scheduleTableUpdate" parameterType="BoardVO">
+		UPDATE board b
+		INNER JOIN schedule_table st
+		on b.schedule_table_id = st.schedule_table_id
+		SET
+		b.BOARD_TITLE = #{boardTitle},
+		b.BOARD_CONTENT = #{boardContent},
+		b.BOARD_UPDATE_DATE = (current_date),
+		b.SCHEDULE_TABLE_ID = #{scheduleTableId},
+		st.SCHEDULE_TABLE_UPDATE_DATE = (current_date)
+		WHERE b.BOARD_ID = #{boardId} 
+	</update>
+	
+	<select id="boardList" parameterType="Integer" resultType="BoardVO">
+		select *
+		from board
+		where board_id = #{boardId}
+	
+	</select>
 </mapper>

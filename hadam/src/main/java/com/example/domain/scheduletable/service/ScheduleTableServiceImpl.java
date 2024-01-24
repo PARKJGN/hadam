@@ -1,12 +1,12 @@
 package com.example.domain.scheduletable.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.domain.schedule.vo.ScheduleVO;
+import com.example.domain.board.vo.BoardVO;
+import com.example.domain.entry.vo.EntryApplicationVO;
 import com.example.domain.scheduletable.dao.ScheduleTableDAO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
@@ -17,9 +17,9 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 	private ScheduleTableDAO scheduleTableDAO;
 
 	// 스케줄표 리스트 가져오기
-	public List<ScheduleTableVO> getScheduleTableList() {
+	public List<ScheduleTableVO> getScheduleTableList(ScheduleTableVO vo) {
 		
-		List<ScheduleTableVO> list = scheduleTableDAO.getScheduleTableList();
+		List<ScheduleTableVO> list = scheduleTableDAO.getScheduleTableList(vo);
 		
 		return list;
 	}
@@ -54,6 +54,31 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 	public void updateScheduleTableStatus(ScheduleTableVO vo) {
 		
 		scheduleTableDAO.updateScheduleTableStatus(vo);
+		
+	}
+
+	// 스케줄 테이블 id 리스트 가져오기
+	public List<ScheduleTableVO> getScheduleTableBoardList() {
+		
+		return scheduleTableDAO.getScheduleTableBoardList();
+	}
+
+	// boardId값 넘겨받아 스케줄테이블 리스트 출력
+	public List<ScheduleTableVO> getScheduleDataByBoardId(Integer boardId) {
+		
+		return scheduleTableDAO.getScheduleDataByBoardId(boardId);
+	}
+
+	// 수정할 스케줄에서 boardId 가져오기
+	public ScheduleTableVO getBoardIdByScheduleTable(Integer boardId) {
+		
+		return scheduleTableDAO.getBoardIdByScheduleTable(boardId);
+	}
+
+	// 수정시 기존에 있던 boardStatus 대기로 바꾸기
+	public void updateScheduleTableStatusToWait(BoardVO vo) {
+		
+		scheduleTableDAO.updateScheduleTableStatusToWait(vo);
 		
 	}
 

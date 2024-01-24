@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.domain.entry.dao.EntryDAO">
+	
+	<!-- 스케줄 참가하기 저장 -->
+	<insert id="scheduleAttendSave" parameterType="EntryApplicationVO">
+		insert into ENTRY_APPLICATION( MEMBER_INDEX, BOARD_ID, ENTRY_APPLICATION_CONTENT, ENTRY_APPLICATION_DATE)
+		VALUES (#{memberIndex}, #{boardId}, #{entryApplicationContent}, (current_date) )
+	</insert>
+	
+	<delete id="deleteEntry" parameterType="Integer">
+		delete from entry_application
+		where board_id = #{boardId}
+	</delete>
+</mapper>

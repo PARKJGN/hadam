@@ -1,5 +1,7 @@
 package com.example.domain.member.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,5 @@ public class SigninServiceImpl implements SigninService{
 		
 		return signDAO.loginCheck(memberId, memberPassword);
 	}
-	
-	
-	
+
 }

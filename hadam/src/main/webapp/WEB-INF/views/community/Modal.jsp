@@ -26,6 +26,9 @@
       </div>
       <div class="modal-body">
         ...
+           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+  정적 백드롭
+</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -34,6 +37,30 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+ 	<!-- 중앙배치 -->
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+  정적 백드롭
+</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- modal 배경 클릭시 안닫힘 끝 -->
 
 <!-- modal 배경 클릭시 닫힘 시작-->
@@ -91,9 +118,59 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static"
+	data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-fullscreen modal-dialog-centered">
+		<div class="modal-content asdf">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="staticBackdropLabel">내 스케줄</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+
+
+				
+		
+					<div class="list-main-wrap-opt fl-wrap" id="modalpadding">
+						<div class="list-main-wrap-title fl-wrap col-title"
+							id="modalScheduleTitle">
+							<h2>
+								Schedule : <span> ${scheduleTableList.scheduleTableName }
+								</span>
+							</h2>
+						</div>
+
+						<div class="geodir-category-content fl-wrap title-sin_item">
+
+							<div class="geodir-category-content-title-item">
+								<h3 class="title-sin_map" id="modalScheduleTime">
+									
+								</h3>
+							</div>
+				
+							<button type="button"
+								class="btn btn-primary btn-sm scheduleSelectBtn"
+								id="scheduleSelect${loop.index}"
+								data-schedule-id="${scheduleTableList.scheduleTableId}"
+								data-bs-dismiss="modal">선택</button>
+
+						</div>
+					</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">닫기</button>
+
+			</div>
+		</div>
+	</div>
+</div>
 <!-- 툴팁과 팝오버 끝-->
-   <script type="text/javascript" src="/js/bootstrap/bootstrap.bundle.min.js"></script>
-   <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
+   
    <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
 </body>
 </html>
