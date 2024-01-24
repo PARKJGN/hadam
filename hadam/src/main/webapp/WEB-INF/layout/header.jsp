@@ -123,7 +123,7 @@
                                         second level end -->
                                     </li>
                                     <li>
-                                        <a href="schedulepage">스케줄만들기 <i class="fas "></i></a>
+                                        <a href="/schedule/schedulepage">스케줄만들기 <i class="fas "></i></a>
 <!--                                         second level
                                         <ul>
                                             <li><a href="listing.html">Column map</a></li>
