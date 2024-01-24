@@ -1,8 +1,12 @@
 package com.example.domain.mypage.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.domain.favorites.vo.FavoritesVO;
 import com.example.domain.member.vo.MemberVO;
 import com.example.domain.mypage.dao.MypageDAO;
 
@@ -28,4 +32,15 @@ public class MypageServiceImpl implements MypageService {
 	public Integer phoneNumberChange(MemberVO vo) {
 		return mypageDAO.phoneNumberChange(vo);
 	}
+	
+	public List<Integer> mypageHeaderInfo(Integer memberIndex){
+		List<Integer> list = new ArrayList<Integer>();
+		
+		list.add(0, mypageDAO.scheduleNum(memberIndex));
+		list.add(1, mypageDAO.scheduleShareNum(memberIndex));
+		list.add(2, mypageDAO.boardNum(memberIndex));
+		
+		return list;
+	}
+	
 }

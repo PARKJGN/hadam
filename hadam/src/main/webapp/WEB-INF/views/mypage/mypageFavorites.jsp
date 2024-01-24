@@ -9,7 +9,7 @@
 -->
 
 <!-- 개인 css -->
-<!-- <link type="text/css" rel="stylesheet" href="/css/mypage/mypagePhoneNumber.css"> -->
+<link type="text/css" rel="stylesheet" href="/css/mypage/mypageFavorites.css">
 
 <!-- header-->
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
@@ -32,7 +32,31 @@
 							<div class="dashboard-header fl-wrap">
 								<h3>Your Listings</h3>
 							</div>
+							
+<%-- 							<c:forEach var="vo" items="${list}"> --%>
 							<!-- dashboard-list  -->
+							<div class="dashboard-list">
+								<div class="dashboard-message">
+									<a href="#" class="del-btn" ><span>Delete<i class="fal fa-trash-alt"></i></span></a>
+									<div class="dashboard-listing-table-image">
+										<a href="listing-single.html"><img src="images/gal/1.jpg" alt=""></a>
+									</div>
+									<div class="dashboard-listing-table-text">
+										<h4>
+											<a href="listing-single.html">Premium Plaza Hotel</a>
+										</h4>
+										<span class="dashboard-listing-table-address">
+										<i class="far fa-map-marker"></i>
+										<a href="#">USA 27TH Brooklyn NY</a>
+										</span>
+										<ul class="dashboard-listing-table-opt  fl-wrap">
+											<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- dashboard-list end-->
+<%-- 							</c:forEach> --%>
 							<div class="dashboard-list">
 								<div class="dashboard-message">
 									<span class="new-dashboard-item">New</span>
@@ -55,76 +79,6 @@
 									</div>
 								</div>
 							</div>
-							<!-- dashboard-list end-->
-							<!-- dashboard-list -->
-							<div class="dashboard-list">
-								<div class="dashboard-message">
-									<div class="dashboard-listing-table-image">
-										<a href="listing-single.html"><img src="images/gal/1.jpg"
-											alt=""></a>
-									</div>
-									<div class="dashboard-listing-table-text">
-										<h4>
-											<a href="listing-single.html">Grand Hero Palace</a>
-										</h4>
-										<span class="dashboard-listing-table-address"><i
-											class="far fa-map-marker"></i><a href="#"> W 85th St, New
-												York, USA</a></span>
-										<ul class="dashboard-listing-table-opt  fl-wrap">
-											<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>
-											<li><a href="#" class="del-btn">Delete <i
-													class="fal fa-trash-alt"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- dashboard-list end-->
-							<!-- dashboard-list  -->
-							<div class="dashboard-list">
-								<div class="dashboard-message">
-									<div class="dashboard-listing-table-image">
-										<a href="listing-single.html"><img src="images/gal/1.jpg"
-											alt=""></a>
-									</div>
-									<div class="dashboard-listing-table-text">
-										<h4>
-											<a href="listing-single.html">Park Central</a>
-										</h4>
-										<span class="dashboard-listing-table-address"><i
-											class="far fa-map-marker"></i><a href="#">40 Journal
-												Square Plaza, NJ, USA</a></span>
-										<ul class="dashboard-listing-table-opt  fl-wrap">
-											<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>
-											<li><a href="#" class="del-btn">Delete <i
-													class="fal fa-trash-alt"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- dashboard-list end-->
-							<!-- dashboard-list  -->
-							<div class="dashboard-list">
-								<div class="dashboard-message">
-									<div class="dashboard-listing-table-image">
-										<a href="listing-single.html"><img src="images/gal/1.jpg"
-											alt=""></a>
-									</div>
-									<div class="dashboard-listing-table-text">
-										<h4>
-											<a href="listing-single.html">Gold Plaza Hotel </a>
-										</h4>
-										<span class="dashboard-listing-table-address"><i
-											class="far fa-map-marker"></i><a href="#">34-42
-												Montgomery St , NY, USA</a></span>
-										<ul class="dashboard-listing-table-opt  fl-wrap">
-											<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>
-											<li><a href="#" class="del-btn">Delete <i
-													class="fal fa-trash-alt"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- dashboard-list end-->
 						</div>
 						<!-- pagination-->
 						<div class="pagination">

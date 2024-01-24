@@ -1,11 +1,15 @@
 package com.example.domain.mypage.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.domain.favorites.service.FavoritesService;
 import com.example.domain.member.vo.MemberVO;
 import com.example.domain.mypage.service.MypageService;
 
@@ -19,12 +23,24 @@ public class MypageController {
 	@Autowired
 	private MypageService mypageService;
 	
+	@Autowired
+	private FavoritesService favoritesService;
+	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
 		
 		return "mypage/"+step ;
 	}
 	
+	
+	@RequestMapping("/mypageHeaderInfo")
+	@ResponseBody
+	public List<Integer> mypageHeaderInfo(HttpSession session) {
+		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
+		System.out.println("#############"+memberIndex);
+	
+		return mypageService.mypageHeaderInfo(memberIndex);
+	}
 	
 	/*비밀번호 변경하기*/
 	@RequestMapping("/passwordChange")
@@ -67,6 +83,7 @@ public class MypageController {
 		model.addAttribute("memberPhoneNumber", memberPhoneNumber);
 	}
 	
+	/*전화번호 변경하기*/ 
 	@RequestMapping("/phoneNumberChange")
 	public String phoneNumberChange(String phoneNumber, HttpSession session, Model model) {
 //		세션에서 로그인한 회원 index 가져오기
@@ -84,6 +101,15 @@ public class MypageController {
 
 		return "/mypage/mypagePhoneNumber";
 	}
+	
+	/*찜목록 불러오기*/
+	@RequestMapping("/mypageFavorites")
+	public void mypageFavorites(HttpSession session, Model model) {
+		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
+		favoritesService.listFavorites(memberIndex);
+	}
+	
+	
 	
 	
 }

@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<!-- css -->
 <link type="text/css" rel="stylesheet" href="/css/mypage/mypagemenu.css">
+<!-- js -->
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/mypage/mypageHeader.js"></script>
 
 					<!-- section-->
                     <section class="flat-header color-bg adm-header mypage">
@@ -26,15 +29,15 @@
                                             <ul>
                                                 <li>
                                                     내 스케줄	
-                                                    <span>4</span>
+                                                    <span id="scheduleNum"></span>
                                                 </li>
                                                 <li>
                                                     공유 스케줄
-                                                    <span>32</span>	
+                                                    <span id="scheduleShareNum"></span>	
                                                 </li>
                                                 <li>
                                                     내 게시글
-                                                    <span>9</span>	
+                                                    <span id="boardNum"></span>	
                                                 </li>
                                             </ul>
                                         </div>
@@ -77,3 +80,4 @@
                         </div>
                     </section>
                     <!-- section end-->
+                    

@@ -124,7 +124,7 @@ function showGreeting(message) {
         }
 
  */
-function getChatRoomList() { 
+/*function getChatRoomList() { 
     //const data = { "memberIndex": `${sessionScope.memberIndex}` };
 	const data = { "memberIndex": 1};
 
@@ -208,6 +208,6 @@ $(function () {
 
     connect();
 });
-
+*/
 
  

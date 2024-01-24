@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.dashboard-message .del-btn:hover {
+	background : #f91942;
+}
+
+.dashboard-message .del-btn {
+	position : absolute;
+	background : #f9b90f;
+	color : #fff;
+	padding : 9px 22px;
+	border-radius : 4px;
+	right : 30px;
+	top : 28px;
+}

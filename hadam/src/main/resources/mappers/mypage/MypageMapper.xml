@@ -18,4 +18,18 @@
 		UPDATE MEMBER SET MEMBER_PHONENUMBER = #{memberPhoneNumber} WHERE MEMBER_INDEX = #{memberIndex}
 	</update>
 	
+	<select id="scheduleNum" parameterType="integer">
+		SELECT COUNT(*) FROM SCHEDULE_TABLE WHERE MEMBER_INDEX = #{memberIndex}
+	</select>
+	
+	<select id="scheduleShareNum" parameterType="integer">
+		SELECT COUNT(*) FROM SCHEDULE_TABLE ST JOIN BOARD B 
+		ON ST.SCHEDULE_TABLE_ID  =  B.SCHEDULE_TABLE_ID 
+		WHERE ST.MEMBER_INDEX = #{memberIndex}
+	</select>
+	
+	<select id="boardNum" parameterType="integer">
+		SELECT COUNT(*) FROM BOARD WHERE MEMBER_INDEX = #{memberIndex}
+	</select>
+	
 </mapper>
