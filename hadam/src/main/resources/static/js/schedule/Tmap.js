@@ -63,31 +63,28 @@ async function DurationOfTime(imgcount) {
 			let prevlogi = $(imgcount[idx - 1]).attr('name').split(",")[1]
 			let lati = $(element).attr('name').split(",")[0]
 			let logi = $(element).attr('name').split(",")[1]
-
 			// 지도불러온 후 계산해서 나온 이동시간 리스트에 넣기
-			await Tmaptransit(prevlati, prevlogi, lati, logi).then(async (data) => {
-				// 대중교통을 이용해서 이동을 하는 경우
-				if (data.hasOwnProperty('metaData')) {
-					totalTimelist.push(Math.round(data.metaData.plan.itineraries[0].totalTime / 60))
-					drawTmapTransitPolyLine(data)
-				} else if (data.hasOwnProperty('result')) {
+			const transitData = await Tmaptransit(prevlati, prevlogi, lati, logi)
+			// 대중교통을 이용해서 이동을 하는 경우
+			if (transitData.hasOwnProperty('metaData')) {
+				totalTimelist.push(Math.round(transitData.metaData.plan.itineraries[0].totalTime / 60))
+				drawTmapTransitPolyLine(transitData)
+			} else {
+				switch (transitData.result.status) {
 					// 거리가 너무 가까워서 대중교통을 이용할 필요가 없는 경우
-					if (data.result.status == 11) {
-						//보행자 API
-						await TmapPedestrian(prevlati, prevlogi, lati, logi).then((data) => {
-							totalTimelist.push(Math.round(data.features[0].properties.totalTime / 60))
-							drawTmapPedestrianPolyLine(data)
-						})
-					} else if (data.result.status == 14) {
-						// 검색결과가 존재하지 않을때 처리
-					} else if (data.result.status == 31) {
-						// 응답시간이 길때 처리
-					} else {
-						// 12 : 출발지 정류장 매핑 실패, 13: 도착지 정류장 매핑 실패, 21: 필수 입력 값 형식 및 범위 오류, 22: 필수 입력 값 누락 오류, 23: 서비스 지역 아님, 24: 타임머신 시각 오류, 32: 기타 오류
-						// 나머지 처리
-					}
+					//보행자 API
+					case 11: const pedestrianData = await TmapPedestrian(prevlati, prevlogi, lati, logi)
+						totalTimelist.push(Math.round(pedestrianData.features[0].properties.totalTime / 60))
+						drawTmapPedestrianPolyLine(pedestrianData)
+						break
+					// 검색결과가 존재하지 않을때 처리
+					case 14: break
+					// 응답시간이 길때 처리
+					case 31: break
+					// 12 : 출발지 정류장 매핑 실패, 13: 도착지 정류장 매핑 실패, 21: 필수 입력 값 형식 및 범위 오류, 22: 필수 입력 값 누락 오류, 23: 서비스 지역 아님, 24: 타임머신 시각 오류, 32: 기타 오류
+					// 나머지 처리
 				}
-			}).catch((error) => { console.log(error) })
+			}
 		}
 	}
 	// 총시간을 가지고 요약표를 만들기
@@ -209,7 +206,7 @@ function drawTmapTransitPolyLine(data) {
 				lineArray.push(new Tmapv2.LatLng(list[k].split(",")[1], list[k].split(",")[0]))
 			}
 
-		} 
+		}
 
 		// 대중교통의 종류에 따라서 색상 변경
 		if (data.metaData.plan.itineraries[0].legs[j].mode == "WALK") {
