@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link type="text/css" rel="stylesheet" href="/css/schedule/schedule.css">
+<link type="text/css" rel="stylesheet" href="/css/schedule/scheduledate.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -39,6 +40,11 @@
 				<div class="row">
 					<!--listing -->
 					<div class="col-md-12">
+					<div>
+					<input type="text" class="scheduletitle" placeholder="스케줄표 제목을 지어주세요"/>
+					<input type="text" style = "width:300px;" placeholder="일정 시작날짜를 선택해주세요"  id="datepicker" class="hasDatepicker" readonly/>
+					</div>
+					
 						<!--list-wrap-search   -->
 						<div
 			class="listing-item-container init-grid-items three-columns-grid"
@@ -71,6 +77,9 @@
 									<div class="scheduleinven">
 									</div>
 								</div>
+							</div>
+							<div>
+								<button type="button" class= "btn-two blue btn-two-submit" id="scheduleTableInsert" value="스케줄생성하기">스케줄생성하기</button>
 							</div>
 						</div>
 						<!-- list-main-wrap end-->
@@ -145,8 +154,10 @@
 </div>
 
 <!--footer end -->
+
+<script type="text/javascript" src="/js/schedule/schedulesubmit.js"></script>
 <script type="text/javascript" src="/js/schedule/schedulemodal.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript" src="/js/schedule/Tmap.js"></script>
@@ -157,3 +168,7 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=bTzxg9y1S91QlJO5guOD39akE04QLCba8oakDcja"></script>
+	<script
+  src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"
+  integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c="
+  crossorigin="anonymous"></script>

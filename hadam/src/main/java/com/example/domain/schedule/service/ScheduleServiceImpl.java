@@ -12,7 +12,7 @@ import com.example.domain.schedule.vo.ScheduleVO;
 public class ScheduleServiceImpl implements ScheduleService{
 	
 	@Autowired
-	ScheduleDAO scheduleDAO;
+	private ScheduleDAO scheduleDAO;
 	// 스케줄 목록 조회
 	public List<ScheduleVO> getScheduleList(Integer scheduleTableId) {
 

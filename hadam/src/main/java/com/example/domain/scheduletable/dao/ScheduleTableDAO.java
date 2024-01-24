@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.domain.board.vo.BoardVO;
-import com.example.domain.schedule.vo.ScheduleVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 @Mapper
@@ -42,5 +41,7 @@ public interface ScheduleTableDAO {
 	// 수정시 기존에 있던 tableStatus 대기로 바꾸기 
 	void updateScheduleTableStatusToWait(BoardVO vo);
 	
+	// 스케줄표 insert
+	void insertscheduletable(ScheduleTableVO stvo);
 	
 }

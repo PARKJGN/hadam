@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 public class MypageController {
 	
 	@Autowired
-	MypageService mypageService;
+	private MypageService mypageService;
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {

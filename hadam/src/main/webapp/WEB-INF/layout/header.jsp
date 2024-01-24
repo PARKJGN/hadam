@@ -18,15 +18,8 @@
         <link type="text/css" rel="stylesheet" href="/css/color.css">
         <!-- 헤더 css 임포트 -정건일-->
         <link type="text/css" rel="stylesheet" href="/css/layout/header.css">
-        <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="/images/favicon.ico">
-		<!--=============== script ===============-->
-		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-		<!-- STOMP 소캣 생성을 위한 import -정건일-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-    	<!-- end STOMP 소캣 생성을 위한 import -정건일-->
 	    <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
 		<script src="https://kit.fontawesome.com/b2960bc7d5.js" crossorigin="anonymous"></script>	
 	
@@ -285,6 +278,3 @@
 				
 			
             </header>
-            <!-- 클릭이벤트 js -정건일 -->
-	<script src="/js/layout/click_evt.js"></script>
-	<script src="/js/layout/header.js"></script>

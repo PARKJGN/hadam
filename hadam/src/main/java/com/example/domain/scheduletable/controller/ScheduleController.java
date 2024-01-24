@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
 import com.example.domain.schedule.vo.PagingVO;
+import com.example.domain.scheduletable.service.ScheduleTableService;
+import com.example.domain.scheduletable.vo.ScheduleTableVO;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -22,10 +27,12 @@ public class ScheduleController {
 
 	 
 	 private final LocationService locser;
+	 private final ScheduleTableService stser;
 	 
-	 
-	 public ScheduleController(LocationService locser) {
+	 @Autowired
+	 public ScheduleController(LocationService locser, ScheduleTableService stser) {
 		 this.locser = locser;
+		 this.stser = stser;
 	 }
 	 
 	 // 경로 이동
@@ -45,6 +52,16 @@ public class ScheduleController {
 		map.put("list", list);
 		map.put("paging", pvo);
 		return map;
+	}
+	
+	@PostMapping("insertscheduletable")
+	public String insertScheduleTable(ScheduleTableVO stvo, HttpSession session) {
+		
+		stvo.setMemberIndex(1); 
+		stser.insertscheduletable(stvo);
+		
+		return "redirect:/index";
+		
 	}
 
 }

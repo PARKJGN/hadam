@@ -126,6 +126,7 @@ $(() => {
 									<input type="hidden" class= "locationLatitude" value="${item.locationLatitude}" />
 									<input type="hidden" class= "locationLongitude" value="${item.locationLongitude}" />
 									<input type="hidden" class= "locationPlace" value="${item.locationPlace}"/>
+									<input type="hidden" class= "locationId" value="${item.locationId}"/>
 								</div>
 							</div>
 						</div>`)

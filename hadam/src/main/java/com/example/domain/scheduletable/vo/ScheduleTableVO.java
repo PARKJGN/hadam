@@ -1,6 +1,8 @@
 package com.example.domain.scheduletable.vo;
 
-import java.util.Date;
+import java.util.List;
+
+import com.example.domain.schedule.vo.ScheduleVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,11 +19,11 @@ public class ScheduleTableVO {
 	
 	private String scheduleTableName;
 	
-	private Date scheduleTableRegisteDate;
+	private String scheduleTableRegisteDate;
 	
-	private Date scheduleTableUpdateDate;
+	private String scheduleTableUpdateDate;
 	
-	private Date scheduleTableStartDate;
+	private String scheduleTableStartDate;
 	
 	private String scheduleTableStartMember; 
 	
@@ -46,4 +48,7 @@ public class ScheduleTableVO {
 	private String boardTitle;
 	
 	private String boardContent;
+	
+	// 스케줄표 insert할때 가져갈 schedule 리스트
+	private List<ScheduleVO> scheduleList;
 }

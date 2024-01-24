@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SigninController {
 
 	@Autowired
-	SigninService signinService;
+	private SigninService signinService;
 	
 	
 //	로그인 정보 확인 후 로그인 페이지 이동

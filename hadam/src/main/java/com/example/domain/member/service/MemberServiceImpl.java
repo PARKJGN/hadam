@@ -12,7 +12,7 @@ import com.example.domain.member.vo.MemberVO;
 public class MemberServiceImpl implements MemberService{
 	
 	@Autowired
-	MemberDAO memberDAO;
+	private MemberDAO memberDAO;
 	// 스케줄 참가하기 버튼 클릭시 작성할 내 정보 조회
 	public List<MemberVO> getMemberList(MemberVO vo) {
 		

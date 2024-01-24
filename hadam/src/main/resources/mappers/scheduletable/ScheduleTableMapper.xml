@@ -2,55 +2,61 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.domain.scheduletable.dao.ScheduleTableDAO">
-	
+<mapper
+	namespace="com.example.domain.scheduletable.dao.ScheduleTableDAO">
+
 	<!--스케줄표 리스트 가져오기 -->
 	<select	id="getScheduleTableList" resultType="ScheduleTableVO" parameterType="ScheduleTableVO">
-		
 		select st.*
 		from schedule_table st 
 		where st.MEMBER_INDEX = #{memberIndex} AND st.SCHEDULE_TABLE_STATUS = "대기"
-		
 	</select>
 
 	<select id="getScheduleList" resultType="ScheduleVO">
-		select st.*, s.*, l.*, li.*
-		from schedule_table st 
+		select st.*, s.*, l.*,
+		li.*
+		from schedule_table st
 		inner join schedule s
-		on st.SCHEDULE_TABLE_ID  = s.SCHEDULE_TABLE_ID 
-		inner join location l 
-		on s.LOCATION_ID = l.LOCATION_ID 
-		inner join location_image li 
+		on st.SCHEDULE_TABLE_ID = s.SCHEDULE_TABLE_ID
+		inner join location l
+		on s.LOCATION_ID = l.LOCATION_ID
+		inner join location_image li
 		on l.LOCATION_ID = li.LOCATION_ID
 		where st.MEMBER_INDEX = #{memberIndex}
-
 	</select>
-	
-	
-	<select id="getScheduleTable" parameterType="ScheduleTableVO" resultType="ScheduleTableVO">
+
+
+	<select id="getScheduleTable" parameterType="ScheduleTableVO"
+		resultType="ScheduleTableVO">
 		select st.*, s.*, l.*, li.*
-		from schedule_table st 
+		from schedule_table st
 		inner join schedule s
-		on st.SCHEDULE_TABLE_ID  = s.SCHEDULE_TABLE_ID 
-		inner join location l 
-		on s.LOCATION_ID = l.LOCATION_ID 
-		inner join location_image li 
+		on st.SCHEDULE_TABLE_ID = s.SCHEDULE_TABLE_ID
+		inner join location l
+		on s.LOCATION_ID = l.LOCATION_ID
+		inner join location_image li
 		on l.LOCATION_ID = li.LOCATION_ID
 		where st.SCHEDULE_TABLE_ID = #{scheduleTableId}
 		and st.MEMBER_INDEX = #{memberIndex};
 	</select>
-	
-	<select id="getScheduleTableId" parameterType="ScheduleTableVO" resultType="Integer">
-		select SCHEDULE_TABLE_ID from schedule_table where MEMBER_INDEX = #{memberIndex} AND SCHEDULE_TABLE_ID = #{scheduleTableId}
+
+	<select id="getScheduleTableId" parameterType="ScheduleTableVO"
+		resultType="Integer">
+		select SCHEDULE_TABLE_ID from schedule_table where
+		MEMBER_INDEX = #{memberIndex} AND SCHEDULE_TABLE_ID =
+		#{scheduleTableId}
 	</select>
-	
-	<select id="getSchedule" parameterType="ScheduleTableVO" resultType="ScheduleTableVO">
+
+	<select id="getSchedule" parameterType="ScheduleTableVO"
+		resultType="ScheduleTableVO">
 		select *
 		from schedule_table
-		WHERE SCHEDULE_TABLE_ID = #{scheduleTableId}
+		WHERE SCHEDULE_TABLE_ID =
+		#{scheduleTableId}
 	</select>
-	
-	<update id="updateScheduleTableStatus" parameterType="ScheduleTableVO">
+
+	<update id="updateScheduleTableStatus"
+		parameterType="ScheduleTableVO">
 		update schedule_table set
 		SCHEDULE_TABLE_STATUS = "공유중"
 		WHERE SCHEDULE_TABLE_ID = #{scheduleTableId}
@@ -80,6 +86,7 @@
 		on m.MEMBER_INDEX = b.MEMBER_INDEX
 		where b.board_id= #{boardId};
 	</select >
+	
     <select id="checkEntry">
 	    select member_index 
 	    from entry_application 
@@ -103,4 +110,18 @@
 		set st.SCHEDULE_TABLE_STATUS = "대기"
 		WHERE b.BOARD_ID = #{boardId}
 	</update>
+
+	<insert id="insertscheduletable" parameterType="ScheduleTableVO">
+		insert into schedule_table(MEMBER_INDEX, SCHEDULE_TABLE_NAME,
+		SCHEDULE_TABLE_REGISTE_DATE, SCHEDULE_TABLE_START_DATE,
+		SCHEDULE_TABLE_START_MEMBER)
+		values(#{memberIndex},
+		#{scheduleTableName}, CURRENT_DATE(), '${scheduleTableStartDate}',
+		#{memberIndex})
+		<selectKey keyProperty="scheduleTableId" resultType="int"
+			order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
 </mapper>

@@ -10,7 +10,7 @@ import com.example.domain.mypage.dao.MypageDAO;
 public class MypageServiceImpl implements MypageService {
 
 	@Autowired
-	MypageDAO mypageDAO;
+	private MypageDAO mypageDAO;
 	
 	/*현재 비밀번호 확인하기*/
 	public String passwordCheck(String memberId, String password) {

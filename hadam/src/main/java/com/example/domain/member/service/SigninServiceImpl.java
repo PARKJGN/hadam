@@ -12,7 +12,7 @@ import com.example.domain.member.vo.MemberVO;
 public class SigninServiceImpl implements SigninService{
 
 	@Autowired
-	SignDAO signDAO;
+	private SignDAO signDAO;
 
 	
 //	로그인 정보 확인 후 로그인 페이지 이동

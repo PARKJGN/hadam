@@ -14,7 +14,6 @@
 		inner join location_image li 
 		on l.LOCATION_ID = li.LOCATION_ID
 		where st.SCHEDULE_TABLE_ID = #{scheduleTableId}
-
 	</select>
 	
 	<select id="getScheduleBoardList" resultType="ScheduleVO">
@@ -31,4 +30,24 @@
 		where st.SCHEDULE_TABLE_STATUS ="공유중"
 		order by b.BOARD_ID desc
 	</select>
+	
+	<insert id="insertScheduleList" parameterType="map" >
+    INSERT INTO schedule(
+          LOCATION_ID
+        , SCHEDULE_TABLE_ID
+        , MEMBER_INDEX
+        , SCHEDULE_START_TIME
+        , SCHEDULE_END_TIME
+    ) VALUES 
+    <foreach collection="svoList" item="schedule" separator=",">
+    (
+          #{schedule.locationId}
+        , #{scheduleTableId}
+        , #{memberIndex}
+        , #{schedule.scheduleStartTime}
+        , #{schedule.scheduleEndTime}
+    )
+    </foreach>
+</insert>
+	
 </mapper>

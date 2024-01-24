@@ -332,11 +332,20 @@
 
 <!-- Main end -->
 <!--=============== scripts  ===============-->
+<!-- STOMP 소캣 생성을 위한 import -정건일-->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<!-- end STOMP 소캣 생성을 위한 import -정건일-->
 
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/plugins.js"></script>
 <script type="text/javascript" src="/js/scripts.js"></script>
 <script type="text/javascript" src="/js/sign/signin.js"></script>
+<!-- 클릭이벤트 js -정건일 -->
+<script src="/js/layout/click_evt.js"></script>
+<script src="/js/layout/header.js"></script>
 <script
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
 	charset="utf-8"></script>

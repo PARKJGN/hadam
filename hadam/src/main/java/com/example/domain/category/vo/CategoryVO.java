@@ -16,9 +16,4 @@ public class CategoryVO {
 	private String middleCategory;
 	
 	private String smallCategory;
-
-	public String getMiddleCategory() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
