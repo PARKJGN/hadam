@@ -44,23 +44,24 @@
                             <div class="breadcrumbs fl-wrap"><a href="/community/scheduleShareList">커뮤니티</a><a href="/community/scheduleShareList">스케줄 공유 게시판</a><span>스케줄 상세</span></div>
                         </div>
                     </div>
-                    <section  id="sec1" class="grey-b lue-bg middle-padding">
-                    	<div class="col-list-wrap fw-col-list-wrap">
+         
+
+                  
                                         <!-- list-main-wrap-->
                                         <div class="list-main-wrap fl-wrap card-listing" id="box">
                                          
                                             <!-- list-main-wrap-opt-->
-                                            <div class="list-main-wrap-opt fl-wrap">
+                                            
                                                 <div class="list-main-wrap-title fl-wrap col-title" id="scheduleTitle">
                                                     <h2>Schedule : <span> 스케줄명 </span></h2>
                                                 </div>
                                                 <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>사용자명</span></a></div> <!--회원 별명-->
                                                 <!-- price-opt-->
+                                                <div class="shareBtnBox">
                                                  <a class="btn btn-primary" href="#" role="button" id="shareBtn">스케줄 참가하기</a> 
-                                                <!-- price-opt end-->                               
-                                            </div>
-                                            <!-- list-main-wrap-opt end-->
-                                            <!-- listing-item-container -->
+                                               </div> <!-- price-opt end-->                               
+                                     
+                                          
                                             
                                             <div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox">
                                                 <!-- listing-item  -->
@@ -68,8 +69,8 @@
                                             
                                                 <div class="listing-item" id="listItem">
                                                 
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
+                                                    <article class="geodir-category-listing fl-wrap" style="width:120px;">
+                                                        <div class="geodir-category-img listImg" >
                                                             <a href="listing-single.html"><img src="../images/gal/1.jpg" alt=""></a>
                                                            
                                                            
@@ -78,10 +79,10 @@
                                                                 
                                                             </div>
                                                         </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
+                                                        <div class="geodir-category-content fl-wrap title-sin_item" style="height:90px;">
                                                             <div class="geodir-category-content-title fl-wrap">
                                                                 <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map">12:00 ~ 13:00</h3>
+                                                                    <h3 class="title-sin_map" style="white-space:nowrap; margin-left:-10px;">12:00 ~ 13:00</h3>
                                                                     <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>장소명</a></div>
                                                                 </div>
                                                             </div>
@@ -90,21 +91,22 @@
                                                             
                                                         </div>
                                                     </article>
-                                                </div>
- 												<div class="arrowBox">
+                                                    <div class="arrowBox">
  													<div class="arrow"></div>
- 													
-												</div>
-												<div class="timeTaken" >
-													<p>소요시간</p>
- 													<p class="whatTime">몇분</p>
+ 													<div class="timeTaken" >
+													
+ 													<p >몇분</p>
  												</div>
+												</div>
+                                                </div>
+ 												
+												
                                                 <!-- listing-item end -->
                                                 <!-- listing-item  -->
                                                
                                                 <div class="listing-item" id="listItem">
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
+                                                    <article class="geodir-category-listing fl-wrap" style="width:120px;">
+                                                        <div class="geodir-category-img listImg">
                                                             <a href="listing-single.html"><img src="../images/gal/1.jpg" alt=""></a>
                                                            
                                                             
@@ -113,10 +115,10 @@
                                                                 
                                                             </div>
                                                         </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
+                                                        <div class="geodir-category-content fl-wrap title-sin_item" style="height:90px;">
                                                             <div class="geodir-category-content-title fl-wrap">
                                                                 <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map">12:00 ~ 13:00</h3>
+                                                                    <h3 class="title-sin_map" style="white-space:nowrap; margin-left:-10px;">12:00 ~ 13:00</h3>
                                                                     <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>장소명</a></div>
                                                                 </div>
                                                             </div>
@@ -124,20 +126,22 @@
                                                             
                                                         </div>
                                                     </article>
+                                                    <div class="arrowBox">
+ 													<div class="arrow"></div>
+ 													<div class="timeTaken" >
+											
+ 													<p >몇분</p>
+ 												</div>
+												</div>
                                                 </div>
 												
- 												<div class="arrowBox">
- 													<div class="arrow"></div>
-												</div>
-												<div class="timeTaken" >
-													<p>소요시간</p>
- 													<p class="whatTime">몇분</p>
- 												</div>
+ 												
+												
                                                 <!-- listing-item end -->                                                  
                                                 <!-- listing-item  -->
                                                 <div class="listing-item" id="listItem">
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
+                                                    <article class="geodir-category-listing fl-wrap" style="width:120px;">
+                                                        <div class="geodir-category-img listImg">
                                                             <a href="listing-single.html"><img src="../images/gal/1.jpg" alt=""></a>
                                                             
                                                             
@@ -146,30 +150,32 @@
                                                                 
                                                             </div>
                                                         </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
+                                                        <div class="geodir-category-content fl-wrap title-sin_item" style="height:90px;">
                                                             <div class="geodir-category-content-title fl-wrap">
                                                                 <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map">12:00 ~ 13:00</h3>
+                                                                    <h3 class="title-sin_map" style="white-space:nowrap; margin-left:-10px;">12:00 ~ 13:00</h3>
                                                                     <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>장소명</a></div>
                                                                 </div>
                                                             </div>
                                                            
                                                         </div>
                                                     </article>
+                                                    <div class="arrowBox">
+ 													<div class="arrow"></div>
+ 													<div class="timeTaken" >
+											
+ 													<p >몇분</p>
+ 												</div>
+												</div>
                                                 </div>
  											
- 												<div class="arrowBox">
- 													<div class="arrow"></div>
-												</div>
-												<div class="timeTaken" >
-													<p>소요시간</p>
- 													<p class="whatTime">몇분</p>
- 												</div>
+ 												
+												
                                                 <!-- listing-item end -->                           
                                                 <!-- listing-item  -->
                                                 <div class="listing-item" id="listItem">
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
+                                                    <article class="geodir-category-listing fl-wrap" style="width:120px;">
+                                                        <div class="geodir-category-img listImg">
                                                             <a href="listing-single.html"><img src="../images/gal/1.jpg" alt=""></a>
                                                             
                                                          
@@ -178,10 +184,10 @@
                                                                 
                                                             </div>
                                                         </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
+                                                        <div class="geodir-category-content fl-wrap title-sin_item" style="height:90px;">
                                                             <div class="geodir-category-content-title fl-wrap">
-                                                                <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map">12:00 ~ 13:00</h3>
+                                                                <div class="geodir-category-content-title-item" >
+                                                                    <h3 class="title-sin_map" style="white-space:nowrap; margin-left:-10px;">12:00 ~ 13:00</h3>
                                                                     <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>장소명</a></div>
                                                                 </div>
                                                             </div>
@@ -189,20 +195,22 @@
                                                             
                                                         </div>
                                                     </article>
+                                                    <div class="arrowBox">
+ 													<div class="arrow"></div>
+ 													<div class="timeTaken" >
+												
+ 													<p >몇분</p>
+ 												</div>
+												</div>
                                                 </div>
    												
-   												<div class="arrowBox">
- 													<div class="arrow"></div>
-												</div>
-												<div class="timeTaken" >
-													<p>소요시간</p>
- 													<p class="whatTime">몇분</p>
- 												</div>
+   												
+												
                                                 <!-- listing-item end --> 
                                                 <!-- listing-item  -->
                                                  <div class="listing-item" id="listItem">
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
+                                                    <article class="geodir-category-listing fl-wrap" style="width:120px;">
+                                                        <div class="geodir-category-img listImg">
                                                             <a href="listing-single.html"><img src="../images/gal/1.jpg" alt=""></a>
                                                             
                                                             
@@ -211,10 +219,10 @@
                                                                 
                                                             </div>
                                                         </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
+                                                        <div class="geodir-category-content fl-wrap title-sin_item" style="height:90px;">
                                                             <div class="geodir-category-content-title fl-wrap">
-                                                                <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map">12:00 ~ 13:00</h3>
+                                                                <div class="geodir-category-content-title-item" >
+                                                                    <h3 class="title-sin_map" style="white-space:nowrap; margin-left:-10px;">12:00 ~ 13:00</h3>
                                                                     <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>장소명</a></div>
                                                                 </div>
                                                             </div>
@@ -227,7 +235,7 @@
                                        <!-- listing-item end -->
                                                 <!-- listing-item  -->
                                                 <div class="listing-item" id="information">
-                                                    <article class="geodir-category-listing fl-wrap">
+                                                    <article class="geodir-category-listing fl-wrap" >
                                                         
                                                         <div class="geodir-category-content fl-wrap title-sin_item"  id ="timeBox"style="border:solid 1px; border-radius:10px; border-color:lightblue">
                                                          
@@ -246,33 +254,24 @@
                                              
                                                 
                                             </div>
-
-                                            </div>
-                                           
-                                        <!-- list-main-wrap end-->
-                                    </div>
-                        <div class="container">
-                            <div class="row">
-                                
-                                <div class="col-md-8">
-                                    <div class="list-single-main-item fl-wrap" id="writeForm">
+									 <div class="list-single-main-item fl-wrap" id="writeForm">
                                         <div class="list-single-main-item-title fl-wrap">
                                             <h3>글 내용</h3>
                                         </div>
                                         <div id="contact-form">
                                             <div id="message"></div>
                                             <form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">
-                                                <fieldset>
+                                             
                                                 	
                                                 	
-                                                    <div class="clearfix"></div>
+                                                   
                                                     
-                                                    <label for="validationTextarea" class="form-label">글 내용</label>
-                                                    <textarea name="BOARD_CONTENT"  id="BOARD_CONTENT" cols="40" rows="3" placeholder="Your Message:" required></textarea>
+                                                    
+                                                    <p>내용</p>
                                
                                                 	
                                                 
-                                                </fieldset>
+                                         
                                                 <!-- <button class="btn float-btn color2-bg" style="margin-top:15px;" id="submit">Send Message<i class="fal fa-angle-right"></i></button> -->
                                             	 
  												
@@ -281,9 +280,9 @@
                                         </div>
                                         <!-- contact form  end--> 
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                            
+                  
+           
                         <div class="list-single-main-item fl-wrap" id="replyBox">
                                                 <div class="list-single-main-item-title fl-wrap">
                                                     <h3> 댓글  <span> 댓글 개수 </span></h3>
@@ -299,8 +298,9 @@
                                                             
                                                             <p style=font-size:11px;>댓글 내용</p>
                                                             <div class="reviews-comments-item-date" id="replydateBox"><span><i class="far fa-calendar-check"></i>작성일</span> </div>
+                                                       		<div class="dangerBox">
                                                        		<button type="button" id="danger"class="btn btn-danger" >신고</button>
-          
+          													</div>
                                                         </div>
                                                     </div>
                                                                                                                 
@@ -327,13 +327,27 @@
                                                             </div>
                                                             <textarea cols="40" rows="3" id="COMMENT_CONTENT" name="COMMENT_CONTENT" placeholder="댓글을 입력해주세요"></textarea>
                                                         </fieldset>
+                                                        <div class="commentBtn">
                                                        <button class="btn btn-primary" id="comment"type="submit">등록</button>
+                                                    	</div>
                                                     </form>
                                                 </div>
                                                 <!-- Add Review Box / End -->
                                             </div>
+                                            <div class="pagination" id="page">
+                                            </div>
+                                            </div>
+                                           
+                                        <!-- list-main-wrap end-->
+                    
+
+                      
+                                
+                           
+                                   
                         <div class="section-decor"></div>
-                    </section>
+        
+
                     <!-- section end -->
                 </div>
                 <!-- content end-->

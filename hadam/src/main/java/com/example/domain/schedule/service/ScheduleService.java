@@ -8,5 +8,8 @@ public interface ScheduleService {
 	
 	// 스케줄 목록 조회
 	List<ScheduleVO> getScheduleList(Integer scheduleTableId);
+	
+	// 보드테이블에 저장된 스케줄 목록조회
+	List<ScheduleVO> getScheduleBoardList();
 
 }

@@ -11,8 +11,8 @@
 	text-align: center;
 	padding: 0 0;
 	position: relative;
-	right: -743px;
-	top: -34px;
+	right: -445px;
+	top: -14px;
 }
 
 #comment {
@@ -22,15 +22,20 @@
 	text-align: center;
 	padding: 0 0;
 	font-size: 14px;
-	right: -685px;
-	bottom: -10px;
+	right: -390px;
+	bottom: -30px;
+}
+
+.imgSize {
+	
+	height:100px;
 }
 
 #listBox {
 	display: flex;
 	background-color: white;
 	border-radius: 10px;
-	height: 320px;
+	height: 250px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	position: relative;
 	justify-content: center;
@@ -56,6 +61,9 @@
 	height: auto !important;
 	width: 280px;
 	position: relative;
+	box-sizing: border-box;
+	text-align: center;
+	margin-top:20px;
 }
 
 #box {
@@ -65,9 +73,9 @@
 }
 
 #writeBox {
-	width: 1600px;
+	width: 1000px;
 	position: relative;
-	right: -500px;
+	right: -700px;
 	bottom: -50px;
 }
 
@@ -91,8 +99,8 @@
 	text-align: center;
 	padding: 0 0;
 	position: relative;
-	top: -875px;
-	right: -730px;
+	margin-top:-2100px;
+	right: -435px;
 }
 
 .pagination {
@@ -238,4 +246,114 @@
 	position: relative;
 	top: -50px;
 	height: 100px;
+}
+
+.form-label > fieldset > label {
+	  font-size: 18px;
+	  line-height: 2rem;
+	  padding: 0.2em 0.4em;
+	
+}
+
+.form-label > fieldset > label  span {
+	
+	color:#64A0FF;
+}
+
+[type="radio"], span {
+  vertical-align: middle;
+}
+
+[type="radio"] {
+  appearance: none;
+  border: max(2px, 0.1em) solid gray;
+  border-radius: 50%;
+  width: 1.25em;
+  height: 1.25em;
+  transition: border 0.5s ease-in-out;
+}
+
+[type="radio"]:checked {
+  border: 0.4em solid tomato;
+}
+
+[type="radio"]:focus-visible {
+  outline-offset: max(2px, 0.1em);
+  outline: max(2px, 0.1em) dotted tomato;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+  cursor: pointer;
+}
+
+[type="radio"]:hover + span {
+  cursor: pointer;
+}
+
+[type="radio"]:disabled {
+  background-color: lightgray;
+  box-shadow: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[type="radio"]:disabled + span {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Global CSS */
+fieldset {
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.selectBox {
+  position: relative;
+  width: 150px;
+  height: 35px;
+  border-radius: 4px;
+  border: 2px solid lightcoral;
+  margin-bottom:30px;
+}
+.selectBox .select {
+  width: 130px;
+  height: inherit;
+  background: transparent;
+  border: 0 none;
+  outline: 0 none;
+  padding: 0 5px;
+  position: relative;
+  z-index: 3; 
+}
+.selectBox .select option {
+  background: lightcoral;
+  color: #fff;
+  padding: 3px 0;
+  font-size: 16px;
+}
+.selectBox .icoArrow {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  z-index: 1; 
+  width: 35px; 
+  height: inherit;
+  border-left: 2px solid lightcoral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectBox .icoArrow img {
+  width: 50%;
+  transition: .3s;
+}
+
+.selectBox .select:focus + .icoArrow img {
+  transform: rotate(180deg);
 }

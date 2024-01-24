@@ -37,6 +37,7 @@ public class SigninController {
 //			로그인 세션 저장
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNickname", vo.getMemberNickname());
+			session.setAttribute("memberIndex", vo.getMemberIndex());
 //			세션 1시간 유지
 			session.setMaxInactiveInterval(60*60);
 			

@@ -152,6 +152,48 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	}
 
 
+	// 스케줄 목록 조회
+	public List<BoardVO> getScheduleShareList() {
+	
+		return communityBoardDAO.getScheduleShareList();
+	}
+
+
+	// 스케줄표 목록 조회
+	public List<BoardVO> getScheduleTableShareList() {
+		
+		return communityBoardDAO.getScheduleTableShareList();
+	}
+
+
+	// 스케줄 상세 모달 댓글 작성
+	public void scheduleCommentWrite(CommentVO vo) {
+		
+		communityBoardDAO.scheduleCommentWrite(vo);
+	}
+
+
+	// 스케줄 상세 댓글 리스트
+	public List<CommentVO> scheduleCommentList(Integer boardId) {
+		
+		return communityBoardDAO.scheduleCommentList(boardId);
+	}
+
+
+	// 스케줄 수정
+	public void scheduleTableUpdate(BoardVO vo) {
+		
+		communityBoardDAO.scheduleTableUpdate(vo);
+	}
+
+
+	// boardList
+	public List<BoardVO> boardList(Integer boardId) {
+		
+		return communityBoardDAO.boardList(boardId);
+	}
+
+
 
 
 

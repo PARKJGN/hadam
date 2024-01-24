@@ -18,5 +18,11 @@ public class ScheduleServiceImpl implements ScheduleService{
 
 		return scheduleDAO.getScheduleList(scheduleTableId);
 	}
+	
+	// 보드테이블에 저장된 스케줄 목록 조회
+	public List<ScheduleVO> getScheduleBoardList() {
+	
+		return scheduleDAO.getScheduleBoardList();
+	}
 
 }

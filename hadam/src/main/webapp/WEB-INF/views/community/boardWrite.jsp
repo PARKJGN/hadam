@@ -29,6 +29,7 @@
                                 <div class="col-md-8">
                                     <div class="list-single-main-item fl-wrap" id="box">
                                         <div class="list-single-main-item-title fl-wrap">
+                             
                                             <h3>게시글 작성</h3>
                                         </div>
                                         <div id="asd">

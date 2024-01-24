@@ -44,4 +44,25 @@ public class BoardVO {
 	
 	// 자유게시판 수정페이지에서 파일첨부 수정 하려고 넣음
 	private String memberUploadImageOriginalname;
+	
+	// 스케줄 공유 게시판 목록조회
+	private String locationName;
+	
+	// 스케줄 공유 게시판 목록조회
+	private String scheduleTableName;
+	
+	// 스케줄 공유 게시판 목록조회
+	private Date scheduleStartTime;
+	
+	// 스케줄 공유 게시판 목록조회
+	private Date scheduleEndTime;
+	
+	// 스케줄 공유 게시판 목록조회
+	private Date scheduleTableRegisteDate;
+	
+	// 스케줄 공유 게시판 목록조회
+	private String averageTime;
+	
+	// 스케줄 작성시 희망 성별
+	private String boardSex;
 }

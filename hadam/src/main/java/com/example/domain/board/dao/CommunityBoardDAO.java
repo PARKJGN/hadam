@@ -63,4 +63,22 @@ public interface CommunityBoardDAO {
 	// 스케줄 저장
 	public void scheduleTableSave(BoardVO vo);
 	
+	// 스케줄 목록조회
+	public List<BoardVO> getScheduleShareList();
+
+	// 스케줄표 목록조회
+	public List<BoardVO> getScheduleTableShareList();
+	
+	// 스케줄 상세 모달 댓글 작성
+	public void scheduleCommentWrite(CommentVO vo);
+	
+	// 스케줄 상세 댓글 리스트
+	public List<CommentVO> scheduleCommentList(Integer boardId);
+	
+	// 스케줄 수정
+	public void scheduleTableUpdate(BoardVO vo);
+	
+	// boardList
+	public List<BoardVO> boardList(Integer boardId);
+	
 }

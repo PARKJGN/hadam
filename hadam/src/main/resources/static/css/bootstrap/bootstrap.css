@@ -5282,6 +5282,7 @@ textarea.form-control-lg {
 }
 
 .modal-backdrop {
+  /* 원래 있던 코드 position:fixed; */
   position: fixed;
   top: 0;
   left: 0;
