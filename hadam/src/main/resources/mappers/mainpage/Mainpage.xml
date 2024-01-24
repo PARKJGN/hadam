@@ -8,7 +8,7 @@
 	<select id="getLocationList" resultType="com.example.domain.mainpage.vo.LocationInfoVO" >
 		
 	SELECT LOCATION_NAME,LOCATION_RATING,LOCATION_REVIEW_COUNT,LOCATION_PLACE,LOCATION_CONTENT,LOCATION_ID
-	FROM location LIMIT 100;
+	FROM location LIMIT 10;
 		
 	</select>
 	

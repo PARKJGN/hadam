@@ -1,13 +1,13 @@
 package com.example.domain.mainpage.controller;
 
 public class Message {
-	   private String name;
+	   private String userMessage;
 
-	    public String getName() {
-	        return name;
+	    public String getUserMessage() {
+	        return userMessage;
 	    }
 
-	    public void setName(String name) {
-	        this.name = name;
+	    public void setUserMessage(String userMessage) {
+	        this.userMessage = userMessage;
 	    }
 }

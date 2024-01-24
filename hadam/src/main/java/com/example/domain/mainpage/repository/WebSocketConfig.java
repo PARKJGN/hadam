@@ -18,12 +18,12 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{
 	    //해당 주소를 구독하고 있는 클라이언트들에게 메세지 전달
 	        config.enableSimpleBroker("/topic");
  
+
 	    }
 
 	    @Override
 	    // 클라이언트와 웹 소켓을 연결할 수 있게 해주는 경로를 설정하는 함수
 	    public void registerStompEndpoints(StompEndpointRegistry registry) {
-	       
 	        registry.addEndpoint("/websocket-example").withSockJS();
 	    }
 	

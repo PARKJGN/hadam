@@ -14,6 +14,7 @@
 
 
             <div id="wrapper">
+            <!-- 모달창 코드 장소 입니다. 구성 : 카카오맵/작성자 : 정건일-->
 						<!-- kakao map 출발장소 선택-->
 							  <div class="modal kakaomap" id="myModal"> 					
 								<div class="map_wrap">
@@ -60,7 +61,10 @@
 						         <button class="btn-two green rounded" id="closeModalBtn2">창 닫기</button>
 						    </div>
 						       <div class="modal-overlay kakaomap" id="modalOverlay2"></div> 		
-		           		<!-- kakao map 스케줄 시작장소 선택 end -->
+		           		<!-- kakao map 스케줄 시작장소 선택 end -->			
+		      <!-- 모달창 코드 장소 입니다. 구성 : 카카오맵/작성자 : 정건일-->
+		           		
+		           		
                 <!-- content-->
                 <div class="content">
                     <!--main_header_section -->
@@ -86,14 +90,14 @@
                                     <!-- 장소정하기 -->
                                         <div class="main-search-input-item location" id="autocomplete-container">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
-                                            <input type="text" placeholder="출발 장소 선택" class="autocomplete-input" id="autocompleteid1"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기1"/>
+                                            <input type="text" placeholder="출발 장소 선택" class="autocomplete-input" id="autocompleteid1"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기1" readonly/>
                                            
                                         </div>
                                     <!-- 장소정하기 -->
                                     <!-- 장소정하기2 -->
                                         <div class="main-search-input-item main-search-input-item_small" id="autocomplete-container2">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
-                                            <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid2"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2"/>
+                                            <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid2"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2" readonly/>
                                             
                                         </div>
                                     <!-- 장소정하기2 -->
@@ -101,7 +105,7 @@
                                     <!-- 날짜정하기 -->
                                         <div class="main-search-input-item main-date-parent main-search-input-item_small">
                                             <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> 
-                                            <input type="text" placeholder="When" name="main-input-search77"   value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2"/>
+                                            <input type="text" placeholder="When" name="main-input-search77"   value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2" readonly/>
                                         </div>
                             		<!-- 날짜정하기 -->
 
@@ -170,7 +174,7 @@
                                     <div class="listing-item" style="width:400px;">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
-                                                <a href="listing-single.html"><img src="images/location/${infoList.locationName}.jpg" alt="" style="width:100%;"></a>
+                                                <a href="listing-single.html"><img src="images/location/${infoList.locationName}.jpg" alt="" style="width:100%; height:270px" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
 
                                                 <div class="geodir-category-opt">
                                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="${infoList.locationRating}"></div>
@@ -184,7 +188,7 @@
                                                 <div class="geodir-category-content-title fl-wrap">
                                                     <div class="geodir-category-content-title-item">
                                                         <h3 class="title-sin_map"><a href="listing-single.html">${infoList.locationName}</a></h3>
-                                                        <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i> 서울 마포구 신수동 81-17</a></div>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>${infoList.locationPlace}</a></div>
                                                     </div>
                                                 </div>
                                                 <p>${infoList.locationContent}</p>
