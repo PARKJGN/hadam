@@ -9,10 +9,13 @@ import com.example.domain.favorites.vo.FavoritesVO;
 @Mapper
 public interface FavoritesDAO {
 	
+	// 찜 여부 확인
+	public FavoritesVO getFavorites(FavoritesVO vo);
+	
 	// 찜하기 
-	public void addFavorites(FavoritesVO vo);
+	public Integer addFavorites(FavoritesVO vo);
 	// 찜 삭제 
-	public void deleteFavorites(FavoritesVO vo);
+	public Integer deleteFavorites(FavoritesVO vo);
 
 	// 찜 목록 조회
 	public List<FavoritesVO> listFavorites(int memberIndex);

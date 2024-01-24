@@ -110,10 +110,11 @@
                                                 <c:forEach var="categoryLoc" items="${categoryLocList}">
 	                                                <div class="listing-item">
 	                                                    <article class="geodir-category-listing fl-wrap">
-	                                                        <div class="catedir-category-img">	                                                        	
+	                                                        <div class="geodir-category-img">		                                                        	
 	                                                            <a href="/location/locationDetail?locationId=${categoryLoc.locationId }">
 	                                                            <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
-	                                                            <img src="${pageContext.request.contextPath}/images/location/${categoryLoc.locationImageOriginalname}" 
+	                                                           
+	                                                            <img style="width:100%;  height:270px;" src="${pageContext.request.contextPath}/images/location/${categoryLoc.locationImageOriginalname}"
 	                                                            onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
 	                                                            <div class="geodir-category-opt">
 	                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="${categoryLoc.locationRating }"></div>

@@ -9,12 +9,11 @@
 		SELECT l.*, li.*
 		FROM category c
 		JOIN location l ON c.CATEGORY_ID = l.CATEGORY_ID 
-		JOIN location_image li ON l.LOCATION_ID = li.LOCATION_ID
+		LEFT OUTER JOIN location_image li ON l.LOCATION_ID = li.LOCATION_ID
 		WHERE c.LARGE_CATEGORY = #{largeCategory}
 		<if test ="middleCategory != null">
 			AND c.MIDDLE_CATEGORY = #{middleCategory} 
 		</if>
-		
 		ORDER BY l.LOCATION_ID DESC
 	</select>
 	

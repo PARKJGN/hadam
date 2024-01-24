@@ -11,7 +11,15 @@ public class LocationReviewsVO {
 
 	private Integer locationReviewId;
 	
-	private String locationReviewContent;
+	private String locationReviewContent1;
+	
+	private String locationReviewContent2;
+	
+	private String locationReviewContent3;
+	
+	private String locationReviewContent4;
+	
+	private String locationReviewContent5;
 	
 	private Integer locationId;
 	

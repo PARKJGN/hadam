@@ -11,17 +11,26 @@ import com.example.domain.favorites.vo.FavoritesVO;
 	
 	@Autowired FavoritesDAO favoritesDAO;
 
+	// 찜 여부 확인
+	public FavoritesVO getFavorites(FavoritesVO vo) {
+		
+		return favoritesDAO.getFavorites(vo);
+	};
+	
 	// 찜하기
 	@Override 
-	public void addFavorites(FavoritesVO vo) {
-		favoritesDAO.addFavorites(vo); 
+	public Integer addFavorites(FavoritesVO vo) {
+		Integer result = favoritesDAO.addFavorites(vo);
+		
+		return result;
 	}
 
 	// 찜 삭제
 	@Override
-	public void deleteFavorites(FavoritesVO vo) {
-		favoritesDAO.deleteFavorites(vo); 	
-	
+	public Integer deleteFavorites(FavoritesVO vo) {
+		Integer result = favoritesDAO.deleteFavorites(vo);
+		
+		return result;
 	}
 
 	// 찜 목록 조회

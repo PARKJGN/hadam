@@ -92,10 +92,10 @@
                                                 <div class="price-opt">
                                                     <span class="price-opt-title">정렬순 :</span>
                                                     <div class="listsearch-input-item">
-                                                        <select data-placeholder="Popularity" class="chosen-select no-search-select" >
-                                                            <option>최신순</option>
-                                                            <option>인기순</option>
-                                                            <option>별점순</option>
+                                                        <select data-placeholder="최신순" class="chosen-select no-search-select" >
+                                                            <option value="최신순">최신순</option>
+                                                            <option value="인기순">인기순</option>
+                                                            <option value="별점순">별점순</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -110,10 +110,10 @@
                                                 <c:forEach var="location" items="${locationList}">
 	                                                <div class="listing-item">
 	                                                    <article class="geodir-category-listing fl-wrap">
-	                                                        <div class="catedir-category-img">	                                                        	
+	                                                        <div class="geodir-category-img">	                                                        	
 	                                                            <a href="/location/locationDetail?locationId=${location.locationId }">
 	                                                            <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
-	                                                            <img src="${pageContext.request.contextPath}/images/location/${location.locationImageOriginalname}" 
+	                                                            <img style="width:100%; height:270px;" src="${pageContext.request.contextPath}/images/location/${location.locationImageOriginalname}" 
 	                                                            onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
 	                                                            <div class="geodir-category-opt">
 	                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="${location.locationRating }"></div>
