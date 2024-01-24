@@ -3,7 +3,6 @@ package com.example.domain.favorites.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.favorites.service.FavoritesService;
 import com.example.domain.favorites.vo.FavoritesVO;
@@ -23,21 +23,22 @@ import com.example.domain.favorites.vo.FavoritesVO;
 	
 	// 찜하기
 	@PostMapping("/addFavorites")
-	public void addFavorites(Model m, FavoritesVO vo) {
+	public @ResponseBody Integer addFavorites(Model m, FavoritesVO vo) {
 		
-		favoritesService.addFavorites(vo);
+		System.out.println("아작스 찍히는지 아닌지 확인"+vo);
 		
+		Integer result = favoritesService.addFavorites(vo);
 		
+		return result;
+	
 	}
 	
 	// 찜 삭제
-	@DeleteMapping("/deleteFavorites")
-	public ResponseEntity<String> deleteFavorites(Model m, FavoritesVO vo) {
+	@PostMapping("/deleteFavorites")
+	public @ResponseBody Integer deleteFavorites(Model m, FavoritesVO vo) {
 		
-		favoritesService.deleteFavorites(vo);
-		
-		return ResponseEntity.ok("찜 제거");
-		
+		Integer result = favoritesService.deleteFavorites(vo);
+		return result;
 	}
 	
 	// 찜 목록 조회

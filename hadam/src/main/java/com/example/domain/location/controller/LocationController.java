@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.domain.category.service.CategoryService;
 import com.example.domain.category.vo.CategoryVO;
 import com.example.domain.favorites.service.FavoritesService;
+import com.example.domain.favorites.vo.FavoritesVO;
 import com.example.domain.images.vo.LocationImagesVO;
 import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
 
 import edu.emory.mathcs.backport.java.util.Arrays;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("location")
@@ -78,6 +80,7 @@ public class LocationController {
 	    if(pagingList.size() != 0) {
 	         
 	    } else {
+	  
 
 	    }
 	      
@@ -88,7 +91,7 @@ public class LocationController {
 	    }
 	      
 	      
-	    m.addAttribute("locationList",pagingList);
+	    m.addAttribute("locationList", pagingList);
 	    m.addAttribute("numList", numList);
 	    m.addAttribute("prevMax", page-1 < 1 ? 1 : page-1);
 	    m.addAttribute("nextMin", page+1 > lastPage ? lastPage : page+1);
@@ -99,9 +102,21 @@ public class LocationController {
 	
 	// 장소 상세 조회
 	@RequestMapping(value = "/locationDetail", method = RequestMethod.GET)
-	public void locationDetail(Model m, LocationVO vo) {
+	public void locationDetail(Model m, LocationVO lvo, FavoritesVO fvo, HttpSession session) {
 		
-		LocationVO locationDetail = locationService.getLocationDetail(vo);
+		// 로그인한 회원인지 확인하기 위해 session에 저장
+		Integer memberIndex = (Integer)session.getAttribute("memberIndex");
+		System.out.println("세션값 확인 " + memberIndex);
+		
+		LocationVO locationDetail = locationService.getLocationDetail(lvo);
+		
+		fvo.setMemberIndex(memberIndex);
+		
+		System.out.println("들고오는 값 확인"+fvo);
+		
+		FavoritesVO getFavorites = favoritesService.getFavorites(fvo);
+		
+		System.out.println("들고온 값 확인" + getFavorites);
 		
 		// 메뉴 정보를 파싱하여 리스트로 설정 List<String> menus =
 		List<String> menus 	= Arrays.asList(locationDetail.getLocationMenusName().split("/"));
@@ -118,8 +133,9 @@ public class LocationController {
 	        menuList.add(menuInfo);
 	    }
 
-	    
+	    m.addAttribute("favorites", getFavorites);
 		m.addAttribute("locationDetail", locationDetail);
+		m.addAttribute("memberIndex", memberIndex);
 		// 메뉴 정보를 모델에 추가
 		m.addAttribute("menuList", menuList);
 		
@@ -136,7 +152,7 @@ public class LocationController {
 		List<LocationVO> list = categoryService.getCategoryLocList(vo);
 		
 		
-		// 자유게시판 5개씩 페이징 처리
+		// 장소 12개씩 페이징 처리
 	    int pagingSize = 12;
 	    
 	    // 5개의 블럭만 보여준다.
@@ -184,6 +200,8 @@ public class LocationController {
 	    m.addAttribute("lastPage", lastPage);
 		
 	}
+	
+	
 	
 }
 

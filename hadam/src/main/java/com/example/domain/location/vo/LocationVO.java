@@ -52,12 +52,18 @@ public class LocationVO{
 	private Integer locationReviewId;
 	
 	// 장소 리뷰 띄우기
-	private String locationReviewContent;
+	private String locationReviewContent1;
+	
+	private String locationReviewContent2;
+	
+	private String locationReviewContent3;
+	
+	private String locationReviewContent4;
+	
+	private String locationReviewContent5;
 	
 	// 장소 소분류
 	private String smallCategory;
 	
-	// 찜 여부 확인 위해 멤버 index 추가
-	private Integer memberIndex;
 	
 }

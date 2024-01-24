@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -47,29 +47,18 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="catelist-single-main-container ">
-                                        <!-- fixed-scroll-column  -->
-                                        <div class="fixed-scroll-column">
-                                            <div class="fixed-scroll-column-item fl-wrap">
-                                                <div class="showshare sfcs fc-button"><i class="far fa-share-alt"></i><span>Share </span></div>
-                                                <div class="share-holder fixed-scroll-column-share-container">
-                                                    <div class="share-container  isShare"></div>
-                                                </div>
-                                                	<a class="fc-button" href="addFavorites?locationId=${locationDetail.locationId }&memberIndex='세션아이디 여기 넣으면 됨'">
-                                                	<i class="far fa-heart"></i> <span>찜하기</span></a>
-                                            </div>
-                                        </div>
                                         <!-- 장소 이미지 -->                                          
                                         <div class="catelist-single-main-media fl-wrap" id="sec1">
 	                                        <div class="slick-slide-item">
 	                                        <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
-	                                        <img class="cateimg-good" style="text-align:center;" src="${pageContext.request.contextPath}/locationImages/${locationDetail.locationImageName }" 
+	                                        <img class="cateimg-good" style="text-align:center;" src="${pageContext.request.contextPath}/images/location/${locationDetail.locationImageOriginalname}"
 	                                        onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></div>
                                         </div> 
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <!-- 우측 툴탭 -->
-                                    <div class="flat-hero-container fl-wrap">
+                                    <div class="flat-hero-container fl-wrap" id="locationContainer">
                                         <div class="catebox-widget-item-header fl-wrap ">
                                             <h3>${locationDetail.locationName }</h3>
                                             <div class="listing-rating-wrap">
@@ -84,7 +73,32 @@
                                         </div>
                                         <div class="catelist-single-hero-price fl-wrap">평균 시간<span> 1 시간 </span></div> 
                                         
-                                        <a href="" class="btn flat-btn color2-bg big-btn float-btn image-popup">스케줄에 추가</a>
+                                        <!-- 찜하기 -->
+                                        <c:if test="${not empty sessionScope.memberIndex}">
+										    <!-- 로그인한 경우 -->
+										    <!-- 찜이 아닌경우 -->
+										    <c:if test="${locationDetail.locationId != favorites.locationId && sessionScope.memberIndex != favorites.memberIndex}" >
+										        <a class="fc-add-button">
+										            <i class="fa-regular fa-heart" id="heartIcon"></i>
+										        </a>
+										    </c:if>
+										    <!-- 찜이 된경우 -->
+										    <c:if test="${locationDetail.locationId == favorites.locationId && sessionScope.memberIndex == favorites.memberIndex}" >
+										        <a class="fc-delete-button">
+										            <i class="fa-solid fa-heart" id="heartIcon"></i>
+										        </a>
+										    </c:if>
+										</c:if>
+										<c:if test="${empty sessionScope.memberIndex}">
+										    <!-- 로그인하지 않은 경우 -->
+										    <a class="fc-button">
+										        <i class="far fa-heart" id="heartIcon"></i>
+										    </a>
+										</c:if> 
+                                        
+                                        <input id="realLocationId" type="hidden" value="${locationDetail.locationId}"></input>
+                                        <input id="memberIndex" type="hidden" value="${sessionScope.memberIndex}"></input>
+                                        <!-- 찜하기 end -->
                                         <!-- reviews-score-wrap end -->   
                                     </div>
                                     <!--   flat-hero-container end -->
@@ -127,7 +141,6 @@
                                                     		</ul><ul style="clear: both;">
                                                     	</c:if>
                                                     	<li>${menuInfo.menuName} - ${menuInfo.menuPrice}</li>
-                                                    	
                                                     </c:forEach>                                                    
                                                 </ul>
                                             </div>             
@@ -138,27 +151,70 @@
                                             <div class="catelist-single-main-item-title fl-wrap">
                                                 <h3>리뷰</h3>
                                             </div>
-                                            <!--  rooms-container -->
-                                            <div class="rooms-container fl-wrap">                                            		
+                                            <!--  리뷰 container -->
+                                            <div class="rooms-container fl-wrap">
+                                            	<!-- 리뷰 레코드가 있을 때만 화면 출력 -->
+                                            	<c:if test="${locationDetail.locationReviewContent1 != null && locationDetail.locationReviewContent1 != '리뷰없음'}" >
                                                	<div class="catereviews-comments-item">
                                                    	<div class="catereview-comments-avatar">
-                                                       	<img src="${pageContext.request.contextPath}/images/avatar/1.jpg" alt=""> 
+                                                       	<img src="${pageContext.request.contextPath}/images/avatar/유저 프로필 이미지 여기서 받음"
+                                                       	onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/avatar/avatar-bg.png'">  
                                                    	</div>
                                                    	<div class="catereviews-comments-item-text">                                                        	                                                        	
-                                                       	<p>${locationDetail.locationReviewContent }</p>
+                                                       	<p>${locationDetail.locationReviewContent1 }</p>
                                                    	</div>
                                                	</div>
-                                               		                                                	                                                                  		                                            		
+                                               	</c:if>
+                                               	                                           
+                                               	<c:if test="${locationDetail.locationReviewContent2 != null && locationDetail.locationReviewContent2 != '리뷰없음'}" >
                                                	<div class="catereviews-comments-item">
                                                    	<div class="catereview-comments-avatar">
-                                                       	<img src="${pageContext.request.contextPath}/images/avatar/1.jpg" alt=""> 
+                                                       	<img src="${pageContext.request.contextPath}/images/avatar/유저 프로필 이미지 여기서 받음"
+                                                       	onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/avatar/avatar-bg.png'">  
                                                    	</div>
                                                    	<div class="catereviews-comments-item-text">                                                        	                                                        	
-                                                       	<p>${locationDetail.locationReviewContent }</p>
+                                                       	<p>${locationDetail.locationReviewContent2 }</p>
                                                    	</div>
-                                               	</div>	                                                	                                                                                                               	                             
+                                               	</div>
+                                               	</c:if>
+                                               	
+                                               	<c:if test="${locationDetail.locationReviewContent3 != null && locationDetail.locationReviewContent3 != '리뷰없음'}" >
+                                               	<div class="catereviews-comments-item">
+                                                   	<div class="catereview-comments-avatar">
+                                                       	<img src="${pageContext.request.contextPath}/images/avatar/유저 프로필 이미지 여기서 받음"
+                                                       	onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/avatar/avatar-bg.png'">  
+                                                   	</div>
+                                                   	<div class="catereviews-comments-item-text">                                                        	                                                        	
+                                                       	<p>${locationDetail.locationReviewContent3 }</p>
+                                                   	</div>
+                                               	</div>
+                                               	</c:if>
+                                               	
+                                               	<c:if test="${locationDetail.locationReviewContent4 != null && locationDetail.locationReviewContent4 != '리뷰없음'}" >
+                                               	<div class="catereviews-comments-item">
+                                                   	<div class="catereview-comments-avatar">
+                                                       	<img src="${pageContext.request.contextPath}/images/avatar/유저 프로필 이미지 여기서 받음"
+                                                       	onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/avatar/avatar-bg.png'">  
+                                                   	</div>
+                                                   	<div class="catereviews-comments-item-text">                                                        	                                                        	
+                                                       	<p>${locationDetail.locationReviewContent4 }</p>
+                                                   	</div>
+                                               	</div>
+                                               	</c:if>
+                                               	
+                                               	<c:if test="${locationDetail.locationReviewContent5 != null && locationDetail.locationReviewContent5 != '리뷰없음'}" >
+                                               	<div class="catereviews-comments-item">
+                                                   	<div class="catereview-comments-avatar">
+                                                       	<img src="${pageContext.request.contextPath}/images/avatar/유저 프로필 이미지 여기서 받음"
+                                                       	onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/avatar/avatar-bg.png'">  
+                                                   	</div>
+                                                   	<div class="catereviews-comments-item-text">                                                        	                                                        	
+                                                       	<p>${locationDetail.locationReviewContent5 }</p>
+                                                   	</div>
+                                               	</div>
+                                               	</c:if>
                                         	</div>
-                                        <!--   rooms-container end -->
+                                        <!--   리뷰 container end -->
                                     	</div>
                                         <!-- 리뷰 end -->     
                                         <div class="list-single-main-item fl-wrap" id="sec6">
@@ -171,9 +227,21 @@
                                         	<script>
                                         		var container = document.getElementById("map");
                                         		var options = {
-                                        			center : new kakao.maps.LatLng(33.450701, 126.570667), level: 3
+                                        			center : new kakao.maps.LatLng(${locationDetail.locationLatitude}, ${locationDetail.locationLongitude}), level: 3
+                                        		
                                         		};
                                         		var map = new kakao.maps.Map(container, options);
+                                        		
+                                        		// 마커가 표시될 위치입니다 
+                                        		var markerPosition  = new kakao.maps.LatLng(${locationDetail.locationLatitude}, ${locationDetail.locationLongitude}); 
+
+                                        		// 마커를 생성합니다
+                                        		var marker = new kakao.maps.Marker({
+                                        		    position: markerPosition
+                                        		});
+
+                                        		// 마커가 지도 위에 표시되도록 설정합니다
+                                        		marker.setMap(map);
                                         	</script>                                       		
                                         	</div>
                                         </div>

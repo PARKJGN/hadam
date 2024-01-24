@@ -6,11 +6,14 @@ import com.example.domain.favorites.vo.FavoritesVO;
 
 public interface FavoritesService {
 
+	// 찜 여부 확인
+	FavoritesVO getFavorites(FavoritesVO vo);
+	
 	// 찜하기 
-	void addFavorites(FavoritesVO vo);
+	Integer addFavorites(FavoritesVO vo);
  
 	// 찜 삭제 
-	void deleteFavorites(FavoritesVO vo);
+	Integer deleteFavorites(FavoritesVO vo);
 	
 	// 찜 목록 조회
 	List<FavoritesVO> listFavorites(int memberIndex);

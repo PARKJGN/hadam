@@ -506,6 +506,38 @@
 	position:relative;
 	width:100%;
 }
-	 
-/* 찜 기능 */
+
+/* 찜 버튼 */
+.fc-add-button {
+	width:50px;
+	height:50px;
+	float:left;
+	position:relative;
+	line-height:50px;
+	background: #fff;
+	cursor:pointer;
+	border-radius:4px;
+	margin-bottom:4px;
+	color:#3AACED;
+}
+
+.fc-add-button  {
+	margin-right:5px;
+}
+
+.fc-delete-button {
+	width:50px;
+	height:50px;
+	float:left;
+	position:relative;
+	line-height:50px;
+	background: #fff;
+	cursor:pointer;
+	border-radius:4px;
+	margin-bottom:4px;
+}
+
+.fc-delete-button  {
+	margin-right:5px;
+}
 

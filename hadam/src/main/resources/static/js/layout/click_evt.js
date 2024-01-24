@@ -20,7 +20,7 @@ eventSource.onmessage = function (event) {
 };*/
 
 /*emitter 구독 하는 코드*/
-const eventSource = new EventSource('http://localhost:8080/notifications/subscribe/1');
+//const eventSource = new EventSource('http://localhost:8080/notifications/subscribe/1');
 
 document.addEventListener('DOMContentLoaded', function() {
 	const alramUserMenu = document.querySelector('.alram-user-menu');
