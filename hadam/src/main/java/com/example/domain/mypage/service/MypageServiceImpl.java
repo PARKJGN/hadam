@@ -3,6 +3,7 @@ package com.example.domain.mypage.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.domain.member.vo.MemberVO;
 import com.example.domain.mypage.dao.MypageDAO;
 
 @Service
@@ -18,5 +19,13 @@ public class MypageServiceImpl implements MypageService {
 	
 	public Integer passwordChange(String memberId, String newPassword) {
 		return mypageDAO.passwordChange(memberId, newPassword);
+	}
+	
+	public String mypagePhoneNumber(Integer index) {
+		return mypageDAO.mypagePhoneNumber(index);
+	}
+	
+	public Integer phoneNumberChange(MemberVO vo) {
+		return mypageDAO.phoneNumberChange(vo);
 	}
 }

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<link type="text/css" rel="stylesheet" href="/css/mypage/mypage.css">
+<link type="text/css" rel="stylesheet" href="/css/mypage/mypagemenu.css">
 
 					<!-- section-->
                     <section class="flat-header color-bg adm-header mypage">
@@ -21,7 +21,7 @@
                                                 ${sessionScope.memberNickname}
                                             </h3>
                                         </div>
-                                        <!-- <a href="dashboard-add-listing.html" class="ed-btn">닉네임 수정</a> -->                                        
+                                        <a href="dashboard-add-listing.html" class="ed-btn">닉네임 수정</a>                                        
                                         <div class="user-stats fl-wrap">
                                             <ul>
                                                 <li>
@@ -46,15 +46,15 @@
                                     <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i></div>
                                     <ul class="dasboard-menu-wrap">
                                         <li>
-                                            <a href="/mypage/mypageProfile" class="user-profile-act"><i class="far fa-user"></i>개인정보수정</a>
+                                            <a href="/mypage/mypagePassword" class="user-profile-act"><i class="far fa-user"></i>개인정보수정</a>
                                             <ul>
-                                                <li><a href="/mypage/mypageProfile">Edit profile</a></li>
                                                 <li><a href="/mypage/mypagePassword">비밀번호변경</a></li>
+                                                <li><a href="/mypage/mypagePhoneNumber">전화번호변경</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="dashboard-messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
                                         <li>
-                                            <a href="dashboard-listing-table.html"><i class="far fa-th-list"></i> My listigs  </a>
+                                            <a href="/mypage/mypageFavorites"><i class="far fa-th-list"></i>찜꽁빵꽁</a>
                                             <ul>
                                                 <li><a href="#">Active</a><span>5</span></li>
                                                 <li><a href="#">Pending</a><span>2</span></li>

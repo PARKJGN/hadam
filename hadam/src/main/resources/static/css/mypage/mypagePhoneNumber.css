@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+
+.custom-form .mypage.phoneinput, .custom-form .mypage.phonecheckinput {
+	width : 80%;					/* 전화번호 and 인증번호 input 크기조절 */
+}
+
+.custom-form .mypage.phonecheck, .custom-form .mypage.phonechecknum {
+	width : 15%;					/* 전화번호 인증번호 보내기 and 인증번호 확인하기 button 크기조절 */
+	min-width : 85px;
+	float : right;
+	padding : 14 20px;
+	
+}
+
+.custom-form .mypage.phonecheck:hover, .custom-form .mypage.phonechecknum:hover {			
+	width : 15%;					/* 전화번호 인증번호 보내기 and 인증번호 확인하기 button hover */
+	float : right;
+	padding : 14 20px;
+	background-color: #3AACED;
+	color : #fff;
+	
+}
+
+.custom-form input[type="number"] {
+	/* input 태그 type number는 템플릿 적용안되서 복사해옴 */
+	float: left;
+	border: 1px solid #eee;
+	background: #F7F9FB;
+	padding: 14px 20px 14px 10px;
+	border-radius: 6px;
+	color: #666;
+	font-size: 13px;
+}
+
+.custom-form input[type="number"]:focus {
+	/* input 태그 type number는 템플릿 적용안되서 복사해옴 */
+	float: left;
+	border: 1px solid #eee;
+	background: #fff;
+	padding: 14px 20px 14px 10px;
+	border-radius: 6px;
+	color: #666;
+	font-size: 13px;
+}
+
+#check_phone_count {
+	position : sticky;
+	margin-left: 20px;
+	color : #000;
+}
+
+.disa {
+	pointer-events: none;
+	
+}
+#btn_phonenumber_change_completion {
+	background-color: #f9b90f5c;	/* #F9B90F */
+}

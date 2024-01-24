@@ -3,12 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!--
- 	파일명 	mypagePassword
-	페이지명	비밀번호 변경 페이지
+ 	파일명 	mypagePhoneNumber
+	페이지명	전화번호 변경 페이지
 	작성자 	최성익  
 -->
 
-<link type="text/css" rel="stylesheet" href="/css/mypage/mypagePassword.css">
+<!-- 개인 css -->
+<link type="text/css" rel="stylesheet" href="/css/mypage/mypagePhoneNumber.css">
 
 <!-- header-->
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
@@ -22,6 +23,7 @@
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
+                	<!-- mypage header 추가 -->
                     <jsp:include page="/WEB-INF/views/mypage/mypageHeader.jsp"></jsp:include>
                     <!-- section-->
                     <section class="middle-padding">
@@ -31,26 +33,24 @@
                                 <!-- dashboard-content--> 
                                 <div class="dashboard-content fl-wrap">
                                     <div class="box-widget-item-header">
-                                        <h3>비밀번호 변경</h3>
+                                        <h3>전화번호 변경</h3>
                                     </div>
-                                    <form action="/mypage/passwordChange" method="post">
+                                   <form action="/mypage/phoneNumberChange" method="post">
                                     <div class="custom-form no-icons">
                                         <div class="pass-input-wrap fl-wrap">
-                                            <label>현재 비밀번호</label>
-                                            <input type="password" class="pass-input" placeholder="" value="" name="password"/>
-                                            <span class="eye"><i class="far fa-eye" aria-hidden="true"></i> </span>
+                                            <label>전화번호 </label>
+                                            <input type="number" id="member_phone" class="mypage phoneinput" placeholder="${memberPhoneNumber}" name="phoneNumber" />
+											<input type="button" id="member_phone_check" class="mypage phonecheck" value="인증하기" >
                                         </div>
+                                    </div>
+                                   
+                                    <div class="custom-form no-icons">
                                         <div class="pass-input-wrap fl-wrap">
-                                            <label>새 비밀번호 <span class="password_comment"></span></label>
-                                            <input type="password" class="pass-input" id="memberNewPassword" placeholder="" value="" name="newPassword"/>
-                                            <span class="eye"><i class="far fa-eye" aria-hidden="true"></i> </span>
+                                            <label>인증번호 <span id="check_phone_count"></span></label>
+                                            <input type="text" id="member_phone_checknum" class="mypage phonecheckinput" placeholder=""/>
+											<input type="button" id="btn_member_phone_checknum" class="mypage phonechecknum" value="확인" >
                                         </div>
-                                        <div class="pass-input-wrap fl-wrap">
-                                            <label>새 비밀번호 확인 <span class="passwordCheck_comment"></span></label>
-                                            <input type="password" class="pass-input" id="memberNewPasswordCheck" placeholder="" value=""/>
-                                            <span class="eye"><i class="far fa-eye" aria-hidden="true"></i> </span>
-                                        </div>
-                                        <button class="btn  big-btn  color2-bg flat-btn float-btn">Save Changes<i class="fal fa-save"></i></button>
+                                        <button class="btn  big-btn  color2-bg flat-btn float-btn disa" id="btn_phonenumber_change_completion">완료하기<i class="fal fa-save"></i></button>
                                     </div>
                                     </form>
                                 </div>
@@ -70,4 +70,4 @@
 <!--footer end -->
 
 <!--=============== 개인 js  ===============-->
-<script type="text/javascript" src="/js/mypage/mypagePassword.js"></script>
+<script type="text/javascript" src="/js/mypage/mypagePhoneNumber.js"></script>

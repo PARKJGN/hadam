@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+
+.custom-form .mypage.nicknameinput, .custom-form .mypage.phoneinput {
+	width : 80%;
+}
+
+.custom-form .mypage.nicknamecheck, .custom-form .mypage.phonecheck {
+	width : 15%;
+	min-width : 85px;
+	float : right;
+	padding : 14 20px;
+	
+}
+
+.custom-form .mypage.nicknamecheck:hover, .custom-form .mypage.phonecheck:hover {
+	width : 15%;
+	float : right;
+	padding : 14 20px;
+	background-color: #3AACED;
+	color : #fff;
+	
+}

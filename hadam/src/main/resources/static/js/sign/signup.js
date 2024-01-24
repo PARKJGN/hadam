@@ -305,6 +305,7 @@ $(function() {
 	})
 	
 	
+	/* 회원가입 완료 번튼 눌렀을 때 */
 	$('#signup_completion').hide();
 	$('#hide_signup_completion').on('click', function(){
 		
@@ -316,9 +317,7 @@ $(function() {
 			}
 		})
 		/*console.log(checkedcCtegory);*/
-		
-		
-		
+
 		
 		$.ajax({
 			url : '/signup/signupCompletion',

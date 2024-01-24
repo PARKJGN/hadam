@@ -10,4 +10,12 @@
 		UPDATE MEMBER SET MEMBER_PASSWORD = #{newPassword} WHERE MEMBER_ID = #{memberId}
 	</update>
 
+	<select id="mypagePhoneNumber" parameterType="integer" resultType="String">
+		SELECT MEMBER_PHONENUMBER FROM MEMBER WHERE MEMBER_INDEX = #{memberIndex}
+	</select>
+
+	<update id="phoneNumberChange" parameterType="com.example.domain.member.vo.MemberVO">
+		UPDATE MEMBER SET MEMBER_PHONENUMBER = #{memberPhoneNumber} WHERE MEMBER_INDEX = #{memberIndex}
+	</update>
+	
 </mapper>

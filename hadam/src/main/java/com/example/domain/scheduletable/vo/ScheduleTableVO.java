@@ -23,7 +23,7 @@ public class ScheduleTableVO {
 	
 	private Date scheduleTableStartDate;
 	
-	private String scheduleTableStartMember;
+	private String scheduleTableStartMember; 
 	
 	private String scheduleTableStatus;
 	
