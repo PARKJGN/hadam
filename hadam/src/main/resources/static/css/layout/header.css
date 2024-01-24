@@ -313,3 +313,23 @@
 }
 
 
+/* 채팅창 모달css */
+.chattingmodal{
+    width: 400px;
+    height: 500px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chattingroommodal{
+    width: 400px;
+    height: 500px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* end 채팅창 모달 css */
+

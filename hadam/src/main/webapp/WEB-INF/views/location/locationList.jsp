@@ -113,7 +113,7 @@
 	                                                        <div class="catedir-category-img">	                                                        	
 	                                                            <a href="/location/locationDetail?locationId=${location.locationId }">
 	                                                            <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
-	                                                            <img src="${pageContext.request.contextPath}/locationImages/${location.locationImageName}" 
+	                                                            <img src="${pageContext.request.contextPath}/images/location/${location.locationImageOriginalname}" 
 	                                                            onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
 	                                                            <div class="geodir-category-opt">
 	                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="${location.locationRating }"></div>

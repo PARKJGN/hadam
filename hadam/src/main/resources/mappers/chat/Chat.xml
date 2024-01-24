@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.domain.chat.dao.ChatDAO">
+	
+	<!-- 자유게시판 목록 출력 -->
+	<insert id="insertChatRoom" parameterType="com.example.domain.chat.vo.ChatRoomVO" >
+		
+	INSERT INTO chat_room (BOARD_ID, CHAT_ROOM_MAX) 
+	VALUES(#{boardId},#{chatRoomMax});
+		
+	</insert>
+	
+	<insert id="joinChatRoom" parameterType="com.example.domain.chat.vo.ChatRoomVO" >
+		
+	INSERT INTO chat_room_join (CHAT_ROOM_ID, MEMBER_INDEX) 
+	VALUES(#{chatRoomId},#{memberIndex});
+		
+	</insert>
+	
+	
+	<select id="getChatRoomList" parameterType="com.example.domain.chat.vo.ChatRoomVO" resultType="com.example.domain.chat.vo.ChatRoomVO">
+		SELECT chat_room_id ,chat_room_name FROM chat_room_join 
+		WHERE MEMBER_INDEX = #{memberIndex}
+	</select>
+	
+
+</mapper>

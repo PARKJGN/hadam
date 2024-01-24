@@ -23,6 +23,10 @@
         <link rel="shortcut icon" href="/images/favicon.ico">
 		<!--=============== script ===============-->
 		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+		<!-- STOMP 소캣 생성을 위한 import -정건일-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    	<!-- end STOMP 소캣 생성을 위한 import -정건일-->
 	    <!-- 원하는 아이콘을 가져다가 쓰세요 https://fontawesome.com/search -정건일--> 
 		<script src="https://kit.fontawesome.com/b2960bc7d5.js" crossorigin="anonymous"></script>	
 	
@@ -77,17 +81,10 @@
                         </div>
                 		<!--1.12 알림표시 자리입니다.  -정건일-->
                 		                        
-                        		 <!--1.12 채팅창아이콘 자리입니다. -정건일-->
+                        <!--1.12 채팅창아이콘 자리입니다. -정건일-->
                         <div class="alarm-link" id="alarmLink">
                         <i class="fa-regular fa-comment-dots"></i>
 	                      <span class="wl_counter">8<!-- 알림갯수로 들어오는 데이터 --></span>
-                                        <!--second level -->
-                              <!--           <ul class="alram-user-menu">
-                                            <li><a href="index.html">새로운 메세지가 도착했습니다.</a></li>
-                                            <li><a href="index2.html">1:1 문의 답변이 완료되었습니다.</a></li>
-                                            <li><a href="index3.html">스케줄에 참가신청이 들어왔습니다.</a></li>
-                                            <li><a href="index4.html">텐서플로우</a></li>
-                                        </ul> -->
                         </div>
                 		<!--1.12 채팅창아이콘 자리입니다. -정건일-->
              
@@ -167,7 +164,7 @@
                                         <!--second level end-->
                                     </li>
                                     <li>
-                                        <a href="/category/locationList">장소찾기 <i class="fas "></i></a>
+                                        <a href="/location/locationList">장소찾기 <i class="fas "></i></a>
                                     </li>
                                 </ul>
                             </nav>
@@ -273,6 +270,21 @@
                     <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
                 </div>
                 <!-- header-search  end -->
+                <!-- 채팅방 모달창 입니다. -정건일 -->
+	                <!--  <div class="chattingmodal">채팅창 모달창입니다.
+	                <button onclick="addChatRoom()"> 마이페이지에서 채팅방 추가하기 </button>
+	                <button onclick="getChatRoomList()"> 채팅방아이콘눌렀을때 </button>
+	                
+	                     <div id="chatRoomList"></div>
+	                 
+	                </div>
+	                <div class="chattingmodalplace">
+	         
+	                </div>  -->
+				<!-- end of 채팅방 모달창 입니다. -정건일 -->
+				
+			
             </header>
             <!-- 클릭이벤트 js -정건일 -->
 	<script src="/js/layout/click_evt.js"></script>
+	<script src="/js/layout/header.js"></script>

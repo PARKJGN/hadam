@@ -62,7 +62,7 @@
                                         <div class="catelist-single-main-media fl-wrap" id="sec1">
 	                                        <div class="slick-slide-item">
 	                                        <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
-	                                        <img class="cateimg-good" style="text-align:center;" src="${pageContext.request.contextPath}/locationImages/${locationDetail.locationImageName }" 
+	                                        <img class="cateimg-good" style="text-align:center;" src="${pageContext.request.contextPath}/images/location/${locationDetail.locationImageOriginalname}" 
 	                                        onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></div>
                                         </div> 
                                     </div>
