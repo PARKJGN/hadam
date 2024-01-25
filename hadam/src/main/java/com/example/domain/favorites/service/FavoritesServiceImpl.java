@@ -40,6 +40,11 @@ import com.example.domain.favorites.vo.FavoritesVO;
 		return favoritesDAO.listFavorites(memberIndex);
 	}
 	
+	
+	// 찜 목록 삭제하기
+	public Integer favoritesDelete(Integer locationId, Integer memberIndex) {
+		return favoritesDAO.favoritesDelete(locationId, memberIndex);
+	}
 
 }
 

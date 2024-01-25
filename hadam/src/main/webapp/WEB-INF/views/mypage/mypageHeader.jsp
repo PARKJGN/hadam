@@ -55,15 +55,11 @@
                                                 <li><a href="/mypage/mypagePhoneNumber">전화번호변경</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="dashboard-messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
+                                        
                                         <li>
                                             <a href="/mypage/mypageFavorites"><i class="far fa-th-list"></i>찜꽁빵꽁</a>
-                                            <ul>
-                                                <li><a href="#">Active</a><span>5</span></li>
-                                                <li><a href="#">Pending</a><span>2</span></li>
-                                                <li><a href="#">Expire</a><span>3</span></li>
-                                            </ul>
                                         </li>
+                                        <li><a href="/mypage/mypageEntry"><i class="far fa-envelope"></i> 동행신청 <span></span></a></li>
                                         <li><a href="dashboard-bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
                                         <li><a href="dashboard-review.html"><i class="far fa-comments"></i> Reviews </a></li>
                                     </ul>

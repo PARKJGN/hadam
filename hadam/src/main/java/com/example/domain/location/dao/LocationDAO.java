@@ -3,6 +3,7 @@ package com.example.domain.location.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.location.vo.LocationVO;
 import com.example.domain.schedule.vo.PagingVO;
@@ -20,4 +21,6 @@ public interface LocationDAO {
 	
 	public int locationscheduleListSize(PagingVO pvo);
 	
+	public List<LocationVO> mypageFavoritesList(@Param("list") List<Integer> locationIds);
+	 
 }

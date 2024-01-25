@@ -18,5 +18,8 @@ public interface FavoritesService {
 	// 찜 목록 조회
 	List<FavoritesVO> listFavorites(int memberIndex);
 
+	// 찜 목록 삭제하기
+	Integer favoritesDelete(Integer locationId, Integer memberIndex);
+	
 }
  

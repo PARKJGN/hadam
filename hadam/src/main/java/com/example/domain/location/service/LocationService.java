@@ -15,4 +15,8 @@ public interface LocationService {
 	
 	// 장소 카테고리,지역별로 출력
 	List<LocationVO> locationScheduleList(PagingVO pvo);
+	
+	// 찜한 장소 목록 출력
+	List<LocationVO> mypageFavoritesList(List<Integer> locationIds);
+	
 }

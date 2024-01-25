@@ -13,3 +13,21 @@
 	right : 30px;
 	top : 28px;
 }
+
+.fa-solid.fa-star {
+	color : #e20808;
+}
+
+.locationRating {
+	margin : 7 0 0 0;
+	float : right;
+}
+
+.locationInfo {
+	display : grid;
+}
+
+.dashboard-listing-table-image img{
+	height: 160px !important;	
+	object-fit: cover;
+}

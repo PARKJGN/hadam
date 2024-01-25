@@ -29,4 +29,9 @@
 		WHERE MEMBER_INDEX = #{memberIndex}
 	</select>
 	
+	<delete id="favoritesDelete" parameterType="integer" >
+		DELETE FROM favorites
+		WHERE LOCATION_ID = #{locationId} AND MEMBER_INDEX = #{memberIndex}
+	</delete>
+	
 </mapper>

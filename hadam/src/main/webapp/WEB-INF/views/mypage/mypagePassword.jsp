@@ -22,7 +22,11 @@
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
+                
+                    <!-- mypageheader -->
                     <jsp:include page="/WEB-INF/views/mypage/mypageHeader.jsp"></jsp:include>
+                    <!-- mypageheader end -->
+                    
                     <!-- section-->
                     <section class="middle-padding">
                         <div class="container">

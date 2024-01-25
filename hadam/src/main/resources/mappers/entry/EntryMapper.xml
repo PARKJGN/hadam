@@ -14,4 +14,8 @@
 		delete from entry_application
 		where board_id = #{boardId}
 	</delete>
+	
+	<select id="mypageEntry" parameterType="integer" resultType="com.example.domain.entry.vo.EntryApplicationVO">
+		SELECT * FROM entry_application ea JOIN board b ON b.BOARD_ID = ea.BOARD_ID WHERE b.MEMBER_INDEX = #{memberIndex};
+	</select>
 </mapper>

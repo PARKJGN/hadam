@@ -1,15 +1,22 @@
 package com.example.domain.mypage.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.domain.entry.service.EntryService;
+import com.example.domain.entry.vo.EntryApplicationVO;
 import com.example.domain.favorites.service.FavoritesService;
+import com.example.domain.favorites.vo.FavoritesVO;
+import com.example.domain.location.service.LocationService;
+import com.example.domain.location.vo.LocationVO;
 import com.example.domain.member.vo.MemberVO;
 import com.example.domain.mypage.service.MypageService;
 
@@ -26,6 +33,12 @@ public class MypageController {
 	@Autowired
 	private FavoritesService favoritesService;
 	
+	@Autowired
+	private LocationService locationService;
+	
+	@Autowired
+	private EntryService entryService;
+	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
 		
@@ -37,8 +50,6 @@ public class MypageController {
 	@ResponseBody
 	public List<Integer> mypageHeaderInfo(HttpSession session) {
 		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
-		System.out.println("#############"+memberIndex);
-	
 		return mypageService.mypageHeaderInfo(memberIndex);
 	}
 	
@@ -106,10 +117,38 @@ public class MypageController {
 	@RequestMapping("/mypageFavorites")
 	public void mypageFavorites(HttpSession session, Model model) {
 		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
-		favoritesService.listFavorites(memberIndex);
+//		로그인 사용자 찜 목록 가져오기 
+		List<FavoritesVO> result = favoritesService.listFavorites(memberIndex);
+//		찜목록에서 locationId만 추출
+		List<Integer> lacationIds = new ArrayList<Integer>();
+		for(FavoritesVO favoritesVO : result) {
+			lacationIds.add(favoritesVO.getLocationId());
+		}
+		List<LocationVO> favoritesList = new ArrayList<LocationVO>();
+		favoritesList = locationService.mypageFavoritesList(lacationIds);
+
+		model.addAttribute("favoritesList",favoritesList);
+		
+	}
+	
+	/*찜목록 삭제하기*/
+	@GetMapping("/favoritesDelete/{locationId}")
+	public String favoritesDelete(@PathVariable("locationId") Integer locationId, HttpSession session) {
+		System.out.println("delete controller : " + locationId);
+		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
+		favoritesService.favoritesDelete(locationId, memberIndex);
+		return "redirect:/mypage/mypageFavorites";
 	}
 	
 	
-	
+	/*동생신청 받은 목록 불러오기*/
+	@RequestMapping("/mypageEntry")
+	public void mypageEntry(HttpSession session, Model model) {
+		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
+		
+		List<EntryApplicationVO> result = entryService.mypageEntry(memberIndex);
+		System.out.println(result);
+		
+	}
 	
 }

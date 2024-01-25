@@ -64,5 +64,19 @@
 
 
 	</select>
+	
+	<!-- 좋아요 목록 가져오는 -->
+	<select id="mypageFavoritesList" parameterType="java.util.List">
+		SELECT l.*, li.*
+		FROM location l
+		LEFT JOIN location_image li
+		ON l.LOCATION_ID = li.LOCATION_ID
+		WHERE l.LOCATION_ID IN
+		<foreach collection="list" item="locationId" open="(" separator="," close=")">
+		#{locationId}
+		</foreach>
+		ORDER BY l.LOCATION_ID DESC
+	</select>
+	
 
 </mapper>
