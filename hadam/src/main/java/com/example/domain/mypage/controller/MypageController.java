@@ -1,7 +1,9 @@
 package com.example.domain.mypage.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
 import com.example.domain.member.vo.MemberVO;
 import com.example.domain.mypage.service.MypageService;
+import com.example.domain.schedule.service.ScheduleService;
+import com.example.domain.schedule.vo.ScheduleVO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -38,6 +42,9 @@ public class MypageController {
 	
 	@Autowired
 	private EntryService entryService;
+	
+	@Autowired
+	private ScheduleService scheduleService;
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
@@ -149,6 +156,61 @@ public class MypageController {
 		List<EntryApplicationVO> result = entryService.mypageEntry(memberIndex);
 		System.out.println(result);
 		
+		model.addAttribute("entryList", result);
 	}
+	
+	
+	/*내 스케줄 목록 불러오기*/
+	@RequestMapping("/mypageSchedule")
+	public void mypageSchedule(HttpSession session, Model model) {
+		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
+		List<ScheduleVO> result = scheduleService.mypageSchedule(memberIndex);
+		
+//		System.out.println(scheduleTable);
+		
+//		한개의 스케줄에 들어갈 장소 List 선언 
+		List<ScheduleVO> schedule = new ArrayList<ScheduleVO>();
+//		장소 리스트가 scheduleId기준으로 들어갈 Map 선언
+		Map<Integer, List<ScheduleVO>> scheduleTable = new HashMap<Integer, List<ScheduleVO>>();
+
+		
+		
+		for(int i=0; i<result.size(); i++) {
+//			0번째 vo는 그냥 리스트에 넣음
+			if(i>0) {
+//				0번째 vo랑 다음 vo랑 tableId 같은지 확인. 다르면?
+				if(result.get(i).getScheduleTableId()!=result.get(i-1).getScheduleTableId()) {
+//					지금까지 모은리스트 map에 넣어
+					List<ScheduleVO> temp = new ArrayList<>(schedule);
+					scheduleTable.put(result.get(i-1).getScheduleTableId(), temp);
+//					그리고 리스트 초기화시켜
+					schedule.clear();
+				}
+			}
+//			새로운 tableId는 초기화시킨 리스트에 넣어
+			schedule.add(result.get(i));
+		}
+		
+		// 마지막 부분에서도 map에 넣어주어야 함
+		if (!schedule.isEmpty()) {
+		    scheduleTable.put(result.get(result.size() - 1).getScheduleTableId(), new ArrayList<>(schedule));
+		}
+		
+		
+//		키값이 들어갈 list 선언
+		List<Integer> keyList = new ArrayList<Integer>(scheduleTable.keySet());
+		
+		model.addAttribute("scheduleTableMap", scheduleTable);
+		model.addAttribute("keyList", keyList);
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
 	
 }

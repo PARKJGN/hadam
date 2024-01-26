@@ -94,7 +94,7 @@
                                 <li><a href="/mypage/mypagePassword"> 마이페이지 </a></li>
                                 <li><a href="/mypage/mypageFavorites"> 즐겨찾기 </a></li>
                                 <li><a href="/mypage/mypageEntry">  동행신청  </a></li>
-                                <li><a href="/mypage/mypageEntry">  스케줄관리  </a></li>
+                                <li><a href="/mypage/mypageSchedule">  스케줄관리  </a></li>
                                 <li><a href="dashboard-review.html"> 게시글관리 </a></li>
                             </ul>
                         </div>

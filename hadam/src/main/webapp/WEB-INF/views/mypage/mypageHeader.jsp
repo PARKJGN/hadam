@@ -60,8 +60,8 @@
                                             <a href="/mypage/mypageFavorites"><i class="far fa-th-list"></i>찜꽁빵꽁</a>
                                         </li>
                                         <li><a href="/mypage/mypageEntry"><i class="far fa-envelope"></i> 동행신청 <span></span></a></li>
-                                        <li><a href="dashboard-bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
-                                        <li><a href="dashboard-review.html"><i class="far fa-comments"></i> Reviews </a></li>
+                                        <li><a href="/mypage/mypageSchedule"> <i class="far fa-calendar-check"></i> 내 스케줄 <span>2</span></a></li>
+                                        <li><a href="dashboard-review.html"><i class="far fa-comments"></i> 내 게시물 </a></li>
                                     </ul>
                                 </div>
                                 <!--dasboard-menu end-->

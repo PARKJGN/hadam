@@ -15,7 +15,13 @@
 		where board_id = #{boardId}
 	</delete>
 	
+	<!-- 마이페이지 참가신청 리스트 가져오기 [최성익] -->
 	<select id="mypageEntry" parameterType="integer" resultType="com.example.domain.entry.vo.EntryApplicationVO">
-		SELECT * FROM entry_application ea JOIN board b ON b.BOARD_ID = ea.BOARD_ID WHERE b.MEMBER_INDEX = #{memberIndex};
+		SELECT * FROM entry_application ea JOIN board b 
+		ON b.BOARD_ID = ea.BOARD_ID
+		JOIN `member` m 
+		ON b.MEMBER_INDEX = m.MEMBER_INDEX
+		WHERE b.MEMBER_INDEX = #{memberIndex};
 	</select>
+	
 </mapper>

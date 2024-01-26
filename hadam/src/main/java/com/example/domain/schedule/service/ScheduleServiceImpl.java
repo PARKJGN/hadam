@@ -25,4 +25,8 @@ public class ScheduleServiceImpl implements ScheduleService{
 		return scheduleDAO.getScheduleBoardList();
 	}
 
+	// 내 스케줄 목록 불러오기 [최성익]
+	public List<ScheduleVO> mypageSchedule(Integer memberIndex){
+		return scheduleDAO.mypageSchedule(memberIndex);
+	}
 }

@@ -19,7 +19,10 @@ public class EntryApplicationVO {
 	
 	private String entryApplicationContent;
 	
-	private Date entryApplicationDate;
+	private String entryApplicationDate;
 	
-	private Integer ScheduleTableId;
+	private Integer scheduleTableId;
+	
+	// 추가 - 신청서 확인시 nickname 필요 [최성익]
+	private String memberNickname;
 }

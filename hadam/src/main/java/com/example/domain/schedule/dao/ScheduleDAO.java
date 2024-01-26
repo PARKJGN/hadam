@@ -18,4 +18,7 @@ public interface ScheduleDAO {
 	// 스케줄 list insert
 	void insertScheduleList(@Param("svoList") List<ScheduleVO> svoList, @Param("scheduleTableId") Integer scheduleTableId, @Param("memberIndex") Integer memberIndex);
 
+	// 내 스케줄 목록 불러오기 [최성익]
+	List<ScheduleVO> mypageSchedule(Integer memberIndex);
+	
 }

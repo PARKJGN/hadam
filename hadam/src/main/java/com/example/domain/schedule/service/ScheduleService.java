@@ -11,5 +11,8 @@ public interface ScheduleService {
 	
 	// 보드테이블에 저장된 스케줄 목록조회
 	List<ScheduleVO> getScheduleBoardList();
+	
+	// 내 스케줄 목록 불러오기 [최성익]
+	List<ScheduleVO> mypageSchedule(Integer memberIndex);
 
 }

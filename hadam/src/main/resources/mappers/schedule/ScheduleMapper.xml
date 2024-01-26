@@ -48,6 +48,17 @@
         , #{schedule.scheduleEndTime}
     )
     </foreach>
-</insert>
+	</insert>
+	
+	<select id="mypageSchedule" parameterType="integer" resultType="com.example.domain.schedule.vo.ScheduleVO">
+		SELECT * FROM schedule_table st JOIN schedule s
+		ON st.SCHEDULE_TABLE_ID = s.SCHEDULE_TABLE_ID 
+		JOIN location l
+		ON s.LOCATION_ID = l.LOCATION_ID 
+		JOIN location_image li 
+		ON l.LOCATION_ID = li.LOCATION_ID
+		WHERE st.MEMBER_INDEX = #{memberIndex};
+	</select>
+	
 	
 </mapper>

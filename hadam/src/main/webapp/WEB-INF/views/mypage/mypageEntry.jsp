@@ -31,50 +31,33 @@
                                 <div class="dashboard-content fl-wrap">
                                     <div class="dashboard-list-box fl-wrap">
                                         <div class="dashboard-header fl-wrap">
-                                            <h3>Bookings</h3>
+                                            <h3>동행신청</h3>
                                         </div>
                                         
-                                        
+                                        <c:forEach var="entry" items="${entryList}">
                                         <!-- dashboard-list end-->    
                                         <div class="dashboard-list">
                                             <div class="dashboard-message">
+												<button id="entryRejection">거절</button><button id="entryAccept">수락</button>
                                                 <span class="new-dashboard-item">New</span>
                                                 <div class="dashboard-message-avatar">
+                                                    <!-- 프로필 사진 경로 -->
                                                     <img src="/images/avatar/1.jpg" alt="">
                                                 </div>
                                                 <div class="dashboard-message-text">
-                                                    <h4>Andy Smith - <span>27 December 2018</span></h4>
+                                                	<!-- 닉네임, 신청일 -->
+                                                    <h4>${entry.memberNickname} <span>${entry.entryApplicationDate}</span></h4>
                                                     <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Listing Item :</span> :
-                                                        <span class="booking-text"><a href="listing-sinle.html">Premium Plaza Hotel</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Persons :</span>   
-                                                        <span class="booking-text">4 Peoples</span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Booking Date :</span>   
-                                                        <span class="booking-text">02.03.2018  - 10.03.2018</span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">                                                               
-                                                        <span class="booking-title">Mail :</span>  
-                                                        <span class="booking-text"><a href="#" target="_top">yormail@domain.com</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Phone :</span>   
-                                                        <span class="booking-text"><a href="tel:+496170961709" target="_top">+496170961709</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Payment State :</span> 
-                                                        <span class="booking-text"> <strong class="done-paid">Paid  </strong>  using Paypal</span>
+                                                        <span class="booking-title">동행 신청 스케줄</span> 
+                                                        <span class="booking-text"><a href="#">링크 걸어줘야 함${entry.scheduleTableId}</a></span>
                                                     </div>
                                                     <span class="fw-separator"></span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
+                                                    <p>${entry.entryApplicationContent}</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- dashboard-list end-->    
-                                        
+                                        </c:forEach>
                                         
                                         <!-- dashboard-list end-->    
                                         <!-- <div class="dashboard-list">
