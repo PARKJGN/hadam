@@ -1,21 +1,27 @@
-document.addEventListener('DOMContentLoaded', function() {
+let memberIndex= $("#hidden_session_idxvalue").val();
+
+
+
+/*document.addEventListener('DOMContentLoaded', function() {
 	var alarmLink = document.getElementById('alarmLink');
 
-	/*alarmLink.addEventListener('click', function() {
+	alarmLink.addEventListener('click', function() {
 		var alramUserMenu = document.querySelector('.alram-user-menu');
 		alramUserMenu.classList.toggle('hu-menu-vis');
-	});*/
+	});
 
 });
-
+*/
 
 
 
 /*emitter 구독 하는 코드 - 정건일*/
 
 //userid session값 적용 시켜서 구독하기
-//const eventSource = new EventSource('http://localhost:8080/notifications/subscribe/{userid}');
-
+if(memberIndex){
+	console.log("sse구독 시작");
+const eventSource = new EventSource('http://localhost:8080/notifications/subscribe/{memberIndex}');
+}else{console.log("로그아웃 상태입니다.")}
 document.addEventListener('DOMContentLoaded', function() {
 	const alramUserMenu = document.querySelector('.alram-user-menu');
 
@@ -41,3 +47,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 })
 /*emitter 구독 하는 코드*/
+
+
+//채팅목록 껏다켯다
+document.getElementById('chatlist').addEventListener('click', function() {
+    
+        var chatRoomList = document.getElementById('chatRoomList');
+
+    if (chatRoomList.style.display === 'none' || chatRoomList.style.display === '') {
+        chatRoomList.style.display = 'block';
+    } else {
+        chatRoomList.style.display = 'none';
+    }
+   
+});

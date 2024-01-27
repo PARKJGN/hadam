@@ -1,13 +1,10 @@
 package com.example.domain.mainpage.controller;
 
+import lombok.Data;
+
+@Data
 public class Message {
 	   private String userMessage;
-
-	    public String getUserMessage() {
-	        return userMessage;
-	    }
-
-	    public void setUserMessage(String userMessage) {
-	        this.userMessage = userMessage;
-	    }
+	   private String memberNickname;
+	   private String sendTime;
 }

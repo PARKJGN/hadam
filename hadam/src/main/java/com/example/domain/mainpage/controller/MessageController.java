@@ -15,16 +15,12 @@ import org.springframework.web.util.HtmlUtils;
 @RequestMapping("app")
 public class MessageController {
 	
-    @Autowired
-    private SimpMessagingTemplate messagingTemplate;
 	
-    @MessageMapping("/chat/{roomId}")
-    @SendTo("/topic/greetings/{roomId}")
-    public Greeting handleChatMessage(@DestinationVariable String roomId, Message message) {
+    @MessageMapping("/chat/{RoomId}")
+    @SendTo("/topic/greetings/{RoomId}")
+    public Greeting handleChatMessage(Message message) {
         // 클라이언트로부터 받은 메시지를 처리하고, 해당 채팅방으로 메시지를 전송
-    	System.out.println("greeting message?: "+ message.getUserMessage());
-    	System.out.println("roomId?: "+ roomId);
-    	return new Greeting(message.getUserMessage());
+    	return new Greeting(message.getUserMessage(),message.getMemberNickname(),message.getSendTime());
     	
      }
 }

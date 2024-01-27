@@ -559,21 +559,21 @@ $(document).ready(function () {
 /*날짜 등록 입력했을 때 달력나오게 하기*/
     $('input[name="main-input-search77"]').daterangepicker({
 	  autoUpdateInput: false,
+	  singleDatePicker: true,
 	    timePicker: true, // 시간 선택기 활성화
     timePicker24Hour: true, // 24시간 형식 사용 여부
-    timePickerIncrement: 1, // 분 간격 (예: 30분 단위)
+    timePickerIncrement: 30, // 분 간격 (예: 30분 단위)
     parentEl: $(".date-parent"),
     locale: {
         cancelLabel: 'Clear'
     },
-    minDate: moment(), // 현재 날짜부터 선택 가능하도록 설정
-    maxDate: moment().add(1, 'day'),
-    startDate: moment().startOf('hour'),
-    endDate: moment().startOf('hour').add(1, 'hour') // 기본으로 1시간 동안 선택 가능하도록 설정
+    minDate: moment() // 현재 날짜부터 선택 가능하도록 설정
+    
+    
 });
     /*인풋필드에 선택한 날짜의 범위를 입력해주는 부분*/
     $('input[name="main-input-search77"]').on('apply.daterangepicker', function (ev, picker) {
-    $(this).val(picker.startDate.format('MM/DD HH:mm') + ' - ' + picker.endDate.format('MM/DD HH:mm'));
+    $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm'));
     });
     /*캔슬이 발생하면 인풋 필드를 비워주는 함수*/
     $('input[name="main-input-search77"]').on('cancel.daterangepicker', function (ev, picker) {

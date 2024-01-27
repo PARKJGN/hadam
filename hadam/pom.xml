@@ -23,10 +23,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>-->
-		<!--<dependency>
+		<!--mongodb 라이브러리추가 -정건일-->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>-->
+		</dependency>
+		<!--mongodb 라이브러리추가 -정건일-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
@@ -128,6 +130,8 @@
 			<artifactId>gson</artifactId>
 			<version>2.8.6</version>
 		</dependency>
+
+
 
 
 	</dependencies>
