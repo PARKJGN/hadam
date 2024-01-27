@@ -84,22 +84,22 @@
                                 </div>
                                <div class="main-search-input-container">
                                 <div class="main-search-input-wrap">
-                                    <div class="main-search-input fl-wrap" style="width:1150px;left:-150px;">
+                                    <div class="main-search-input fl-wrap" style="width:900px;">
 									<form action="AI스케줄 생성페이지로 붙혀주기" method="post" id="">
 
                                     <!-- 장소정하기 -->
                                         <div class="main-search-input-item location" id="autocomplete-container">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
-                                            <input type="text" placeholder="출발 장소 선택" class="autocomplete-input" id="autocompleteid1"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기1" readonly/>
+                                            <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid1"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기1" readonly/>
                                            
                                         </div>
                                     <!-- 장소정하기 -->
                                     <!-- 장소정하기2 -->
-                                        <div class="main-search-input-item main-search-input-item_small" id="autocomplete-container2">
+                                     <!--    <div class="main-search-input-item main-search-input-item_small" id="autocomplete-container2">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
                                             <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid2"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2" readonly/>
                                             
-                                        </div>
+                                        </div> -->
                                     <!-- 장소정하기2 -->
                                     
                                     <!-- 날짜정하기 -->

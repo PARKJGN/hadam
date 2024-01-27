@@ -33,7 +33,6 @@ public class MainpageController {
 	@GetMapping("/index")
 	public void index(Model m) {
 		List<LocationInfoVO> list = mainpageService .getLocationList();
-		System.out.println("장소정보 갯수"+list.size());
 		m.addAttribute("infoList",list);
 	}
 

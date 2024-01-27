@@ -75,7 +75,7 @@
                 		<!--1.12 알림표시 자리입니다.  -정건일-->
                 		                        
                         <!--1.12 채팅창아이콘 자리입니다. -정건일-->
-                        <div class="alarm-link" id="alarmLink">
+                        <div class="alarm-link" id="chatlist" onclick="getChatRoomList()">
                         <i class="fa-regular fa-comment-dots"></i>
 	                      <span class="wl_counter">8<!-- 알림갯수로 들어오는 데이터 --></span>
                         </div>
@@ -262,19 +262,22 @@
                     </div>
                     <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
                 </div>
+                <input type="hidden" id="hidden_session_idxvalue" value="${sessionScope.memberIndex}"/>
+                <input type="hidden" id="hidden_session_nicknamevalue" value="${sessionScope.memberNickname}"/>
+                
                 <!-- header-search  end -->
                 <!-- 채팅방 모달창 입니다. -정건일 -->
-	                <!--  <div class="chattingmodal">채팅창 모달창입니다.
-	                <button onclick="addChatRoom()"> 마이페이지에서 채팅방 추가하기 </button>
-	                <button onclick="getChatRoomList()"> 채팅방아이콘눌렀을때 </button>
-	                
-	                     <div id="chatRoomList"></div>
+                
+	                  <div class="chattinglistmodal" id="chatRoomList">채팅창
+			            
 	                 
 	                </div>
 	                <div class="chattingmodalplace">
 	         
-	                </div>  -->
+	                </div>  
 				<!-- end of 채팅방 모달창 입니다. -정건일 -->
+				
+				
 				
 			
             </header>

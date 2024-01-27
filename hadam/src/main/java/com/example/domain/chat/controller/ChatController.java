@@ -58,12 +58,9 @@ public class ChatController {
 	 * */
 	@ResponseBody
     @PostMapping("/getchatroomlist")
-	
 	public List<ChatRoomVO> getChatRoomList(ChatRoomVO vo) {
-		System.out.println(vo);
 		List<ChatRoomVO> list = chatService.getChatRoomList(vo);
-		System.out.println(list);
-		
+		 
 		return list;
 	}
 	
