@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.domain.board.vo.BoardVO;
 import com.example.domain.schedule.dao.ScheduleDAO;
+import com.example.domain.schedule.vo.PagingVO;
 import com.example.domain.schedule.vo.ScheduleVO;
 import com.example.domain.scheduletable.dao.ScheduleTableDAO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
@@ -63,9 +64,13 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 	}
 
 	// 스케줄 테이블 id 리스트 가져오기
-	public List<ScheduleTableVO> getScheduleTableBoardList() {
+	public List<ScheduleTableVO> getScheduleTableBoardList(PagingVO pvo) {
 		
-		return scheduleTableDAO.getScheduleTableBoardList();
+		
+		 pvo.setTotalCount(scheduleTableDAO.scheduleTableListSize(pvo));
+		 System.out.println("pagingsize확인"+pvo);
+		 
+		return scheduleTableDAO.getScheduleTableBoardList(pvo);
 	}
 
 	// boardId값 넘겨받아 스케줄테이블 리스트 출력
@@ -99,6 +104,12 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 		// 스케줄 insert
 		List<ScheduleVO> svoList = stvo.getScheduleList();
 		scheduleDao.insertScheduleList(svoList, scheduleTableId, stvo.getMemberIndex());
+	}
+
+	// 스케줄 공유 게시판 검색
+	public List<ScheduleTableVO> searchScheduleBoards(BoardVO vo) {
+		
+		return scheduleTableDAO.searchScheduleBoards(vo);
 	}
 
 	

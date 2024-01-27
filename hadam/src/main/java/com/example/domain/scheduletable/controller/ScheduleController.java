@@ -45,6 +45,7 @@ public class ScheduleController {
 	@ResponseBody
 	@PostMapping("locationsearch")
 	public Map<String,Object> locationSearch(PagingVO pvo) {
+		
 		List<LocationVO> list = locser.locationScheduleList(pvo);
 		
 		Map<String,Object> map = new HashMap<String, Object>();

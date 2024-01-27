@@ -21,5 +21,6 @@ public class EntryApplicationVO {
 	
 	private Date entryApplicationDate;
 	
-	private Integer ScheduleTableId;
+	// 참가신청시 스케줄테이블아이디 들고오기
+	private Integer scheduleTableId;
 }

@@ -1,5 +1,6 @@
 package com.example.domain.scheduletable.vo;
 
+import java.util.Date;
 import java.util.List;
 
 import com.example.domain.schedule.vo.ScheduleVO;
@@ -19,7 +20,7 @@ public class ScheduleTableVO {
 	
 	private String scheduleTableName;
 	
-	private String scheduleTableRegisteDate;
+	private Date scheduleTableRegisteDate;
 	
 	private String scheduleTableUpdateDate;
 	
@@ -51,4 +52,19 @@ public class ScheduleTableVO {
 	
 	// 스케줄표 insert할때 가져갈 schedule 리스트
 	private List<ScheduleVO> scheduleList;
+	
+	// 스케줄 공유 게시판에서 보여줄 희망 성별
+	private String boardSex;
+	
+	private String boardAge;
+	
+	private Integer chatRoomMax;
+	
+	private Integer chatRoomId;
+	
+	private Integer chatRoomCount;
+	
+	private String searchType;
+	
+	private String keyword;
 }

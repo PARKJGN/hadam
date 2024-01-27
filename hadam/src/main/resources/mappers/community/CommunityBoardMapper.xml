@@ -61,7 +61,7 @@
 	
 	<delete id="deleteComment" parameterType="int">
 		DELETE FROM comment
-		WHERE BOARD_ID = #{boardId}
+		WHERE BOARD_ID = #{boardId} 
 	</delete>
 	
 	<!-- 게시글 조회수 처리 -->
@@ -73,7 +73,7 @@
 	<!-- 댓글 저장 -->
 	<insert id="commentSave" parameterType="CommentVO">
 		insert into comment (COMMENT_CONTENT, COMMENT_REGISTE_DATE, MEMBER_INDEX, BOARD_ID)
-		values ( #{commentContent}, (current_date), 1, #{boardId})
+		values ( #{commentContent}, (current_date), #{memberIndex}, #{boardId})
 	</insert>
 	
 	<!-- 해당 게시글에 작성한 댓글 리스트 가져오기 -->
@@ -107,8 +107,11 @@
 	
 	<!-- 스케줄 저장 -->
 	<insert id="scheduleTableSave" parameterType="BoardVO">
-		insert into board (MEMBER_INDEX, SCHEDULE_TABLE_ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS)
-		values (#{memberIndex}, #{scheduleTableId}, #{boardTitle}, #{boardContent}, current_date,0 )
+		insert into board (MEMBER_INDEX, SCHEDULE_TABLE_ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS, BOARD_SEX, BOARD_AGE)
+		values (#{memberIndex}, #{scheduleTableId}, #{boardTitle}, #{boardContent}, current_date, 0, #{boardSex}, #{boardAge})
+		<selectKey resultType="Integer" keyProperty="boardId" order="AFTER">
+       	SELECT LAST_INSERT_ID()     
+    	</selectKey>
 	</insert>
 	
 	<select id="getScheduleShareList" resultType="BoardVO">
@@ -159,6 +162,8 @@
 		b.BOARD_CONTENT = #{boardContent},
 		b.BOARD_UPDATE_DATE = (current_date),
 		b.SCHEDULE_TABLE_ID = #{scheduleTableId},
+		b.BOARD_SEX = #{boardSex},
+		b.BOARD_AGE = #{boardAge},
 		st.SCHEDULE_TABLE_UPDATE_DATE = (current_date)
 		WHERE b.BOARD_ID = #{boardId} 
 	</update>
@@ -169,4 +174,41 @@
 		where board_id = #{boardId}
 	
 	</select>
+	
+	<!-- 참가자 명단 확인 -->
+	<select id="checkEntry" parameterType="Integer" resultType="EntryApplicationVO">
+	    select member_index 
+	    from entry_application 
+	    where member_index = #{memberIndex} AND BOARD_ID = #{boardId}
+    </select>
+    
+    <select id="getBoardId" parameterType="Integer" resultType="BoardVO">
+    	select boardId 
+    	from board
+    	where BOARD_ID = #{boardId}
+    </select>
+    
+    <select id="searchBoards" parameterType="BoardVO" resultType="BoardVO">
+    	SELECT b.*, m.*
+    	FROM board b
+    	INNER JOIN member m
+    	on b.MEMBER_INDEX = m.MEMBER_INDEX
+    	WHERE
+    		<choose>
+    			<when test="searchType == 'T'.toString()">
+    				b.BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+    			</when>
+    			<when test="searchType == 'W'.toString()">
+    				m.MEMBER_NICKNAME LIKE CONCAT('%', #{keyword}, '%')
+    			</when>
+    			<when test="searchType == 'TW'.toString()">
+    				b.BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%') OR m.MEMBER_NICKNAME LIKE CONCAT('%', #{keyword}, '%')
+    			</when>
+
+    			<!-- 기본 전체검색 -->
+    			<otherwise>
+    				b.BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%') OR b.BOARD_CONTENT LIKE CONCAT('%', #{keyword}, '%') OR m.MEMBER_NICKNAME LIKE CONCAT('%', #{keyword}, '%')
+    			</otherwise>
+    		</choose>
+    </select>
 </mapper>

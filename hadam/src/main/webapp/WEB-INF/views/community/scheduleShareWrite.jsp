@@ -34,18 +34,18 @@
 		<section id="sec1" class="grey-b lue-bg middle-padding">
 			<div class="col-list-wrap fw-col-list-wrap">
 				<div class="list-single-main-item fl-wrap" id="writeBox">
-					<div class="list-single-main-item-title fl-wrap">
+					<div class="list-single-main-item-title fl-wrap titleFont">
 						<h3>스케줄 게시글 작성</h3>
 					</div>
 					<div id="asd">
-						<form class="custom-form" action="scheduleTableSave"
-							id="contactform" method="post">
-
+						<form class="custom-form" action="scheduleTableSave" id="contactform" method="post">
+							
 							<!-- 여기서 부터 갖고와라  -->
 							<div id="modalScheduleTableList">
 
 								<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox"></div>
 							</div>
+							
 							<!-- 희망 나이 선택 -->
 							<label for="validationTextarea" class="form-label">희망 성별</label>
 							<fieldset>
@@ -61,15 +61,26 @@
 								</label>
 							</fieldset>
 							
+							<div class="selectBox">
+							  <select name="boardAge" class="select">
+							    <option disabled selected>희망 나이</option>
+							    <option value="20~29">20~29</option>
+							    <option value="30~39">30~39</option>
+							    <option value="40~49">40~49</option>
+							    <option value="50~59">50~59</option>
+							  </select>
+							  <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
+							</div>
+							
+							
 							
 							<div class="selectBox">
-							  <select name="fruits" class="select">
-							    <option disabled selected>희망 나이 </option>
-							    <option value="apple">상관없음</option>
-							    <option value="orange">20~29</option>
-							    <option value="grape">30~39</option>
-							    <option value="melon">40~49</option>
-							    <option value="melon">50~59</option>
+							  <select name="chatRoomMax" class="select">
+							    <option disabled selected>참가인원수</option>
+							    <option value="2">2명</option>
+							    <option value="3">3명</option>
+							    <option value="4">4명</option>
+							    <option value="5">5명</option>
 							  </select>
 							  <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
 							</div>
@@ -135,7 +146,7 @@
 						<div class="list-main-wrap-title fl-wrap col-title"
 							id="modalScheduleTitle">
 							<h2>
-								Schedule : <span> ${scheduleTableList.scheduleTableName }
+								Schedule : <span> ${scheduleTableList.scheduleTableName}
 								</span>
 							</h2>
 						</div>

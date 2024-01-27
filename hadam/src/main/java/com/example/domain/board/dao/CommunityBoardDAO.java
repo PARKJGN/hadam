@@ -8,8 +8,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.example.domain.board.vo.BoardVO;
 import com.example.domain.comment.vo.CommentVO;
+import com.example.domain.entry.vo.EntryApplicationVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.report.vo.BoardAndCommentReportVO;
+import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 
 @Mapper
@@ -80,5 +82,14 @@ public interface CommunityBoardDAO {
 	
 	// boardList
 	public List<BoardVO> boardList(Integer boardId);
+	
+	// 참가자 명단 확인
+	public EntryApplicationVO checkEntry(Integer boardId);
+	
+	// boardId 값 얻어오기
+	public BoardVO getBoardId(Integer boardId);
+	
+	// boardList 검색
+	public List<BoardVO> searchBoards(BoardVO vo);
 	
 }

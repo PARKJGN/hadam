@@ -1,5 +1,7 @@
 package com.example.domain.entry.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.domain.entry.vo.EntryApplicationVO;
@@ -12,6 +14,9 @@ public interface EntryDAO {
 
 	// entry 삭제
 	void deleteEntry(Integer boardId);
+	
+	// entry 명단 확인
+	EntryApplicationVO checkEntry(EntryApplicationVO vo);
 	
 	
 }

@@ -63,3 +63,36 @@
 						font-size:13px;
 					}
           
+.search {
+  position: relative;
+  width: 300px;
+  right: -680px;
+  top:-50px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+img {
+  position : absolute;
+  width: 17px;
+  top: 10px;
+  right: 12px;
+  margin: 0;
+}
+
+.searchType{
+	width: 110px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    position: relative;
+    top: -6px;
+    margin-left:230px;
+}

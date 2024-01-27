@@ -25,5 +25,71 @@
 		WHERE MEMBER_INDEX = #{memberIndex}
 	</select>
 	
-
+	<!-- 스케줄 작성시 최대인원수 저장 -->
+	<insert id="chatRoomSave" parameterType="ChatRoomVO">
+		INSERT INTO chat_room ( CHAT_ROOM_REGISTE_DATE, CHAT_ROOM_MAX, BOARD_ID)
+		VALUES ( current_date, #{chatRoomMax}, #{boardId})
+		<selectKey keyProperty="chatRoomId" resultType="int"
+			order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	
+	
+	
+	
+	<delete id="deleteChatRoom" parameterType="Integer">
+		DELETE FROM chat_room
+		where board_id = #{boardId}
+	</delete>
+	
+	<select id="checkChatRoomMax" parameterType="ChatRoomVO" resultType="ChatRoomVO">
+		select * 
+		from chat_room
+		where board_id = #{boardId}
+	</select>
+	
+	<select id="chatRoomJoinCount" parameterType="ChatRoomJoinVO" resultType="ChatRoomJoinVO">
+		select count(*)
+		from chat_room_join crj
+		inner join chat_room cr
+		on cr.CHAT_ROOM_ID = crj.CHAT_ROOM_ID 
+		inner join board b
+		on b.BOARD_ID = cr.BOARD_ID 
+		where crj.chat_room_id = #{chatRoomId} and cr.board_id=#{boardId}
+	</select>
+	
+	<!-- board테이블과 조인된 chatRoomJoin 목록 출력 -->
+	<select id="getChatRoomJoinList" resultType="ChatRoomJoinVO">
+		select cr.*
+		from chat_room_join cr
+		inner join chat_room c
+		on c.CHAT_ROOM_ID = cr.CHAT_ROOM_ID 
+		inner join board b
+		on b.BOARD_ID = c.BOARD_ID
+		inner join schedule_table st
+		on st.SCHEDULE_TABLE_ID  = b.SCHEDULE_TABLE_ID
+		order by b.BOARD_ID desc
+	</select>
+	
+	<update id="updateChatRoomMax" parameterType="BoardVO">
+		UPDATE chat_room 
+		SET chat_room_max = #{chatRoomMax}
+		WHERE board_id = #{boardId}
+	</update>
+  <delete id="deleteChatRoomJoin" parameterType="Integer">
+		DELETE cr
+		FROM chat_room_join cr
+		INNER JOIN chat_room c ON cr.CHAT_ROOM_ID = c.CHAT_ROOM_ID 
+		INNER JOIN board b ON b.BOARD_ID = c.BOARD_ID 
+		WHERE b.board_id = #{boardId};
+	</delete>
+	
+	<!-- chat_room_join 테이블 insert -->
+	<insert id="chatRoomJoinSave" parameterType="ChatRoomJoinVO">
+		INSERT INTO chat_room_join (CHAT_ROOM_ID, MEMBER_INDEX)
+		VALUES (#{chatRoomId},#{memberIndex})
+	</insert>
+	
 </mapper>

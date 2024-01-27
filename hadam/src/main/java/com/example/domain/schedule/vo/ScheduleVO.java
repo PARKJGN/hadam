@@ -30,4 +30,6 @@ public class ScheduleVO {
 	private String scheduleTableName;
 	
 	private String boardTitle;
+	
+	private Integer boardId;
 }

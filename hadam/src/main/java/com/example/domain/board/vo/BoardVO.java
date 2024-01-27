@@ -33,7 +33,6 @@ public class BoardVO {
 	// 자유게시판 상세페이지에 이미지 띄울라고 추가
 	private String memberUploadImagePath;
 	
-	
 	private String memberUploadImageId;
 	
 	// 자유게시판 상세페이지에 이미지 띄울라고 추가
@@ -52,10 +51,10 @@ public class BoardVO {
 	private String scheduleTableName;
 	
 	// 스케줄 공유 게시판 목록조회
-	private Date scheduleStartTime;
+	private String scheduleStartTime;
 	
 	// 스케줄 공유 게시판 목록조회
-	private Date scheduleEndTime;
+	private String scheduleEndTime;
 	
 	// 스케줄 공유 게시판 목록조회
 	private Date scheduleTableRegisteDate;
@@ -65,4 +64,18 @@ public class BoardVO {
 	
 	// 스케줄 작성시 희망 성별
 	private String boardSex;
+	
+	private String boardAge;
+	
+	private Integer chatRoomId;
+	
+	private Integer chatRoomMax;
+	
+	private Integer chatRoomCount;
+	
+	// 검색시 유형
+	private String searchType;
+	
+	// 게시판 검색시 검색어
+	private String keyword;
 }

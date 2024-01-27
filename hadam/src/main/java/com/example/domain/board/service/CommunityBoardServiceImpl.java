@@ -9,9 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.domain.board.dao.CommunityBoardDAO;
 import com.example.domain.board.dao.FileDAO;
 import com.example.domain.board.vo.BoardVO;
+import com.example.domain.chat.chatjoin.vo.ChatRoomJoinVO;
+import com.example.domain.chat.dao.ChatDAO;
+import com.example.domain.chat.vo.ChatRoomVO;
 import com.example.domain.comment.vo.CommentVO;
+import com.example.domain.entry.vo.EntryApplicationVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.report.vo.BoardAndCommentReportVO;
+import com.example.domain.scheduletable.dao.ScheduleTableDAO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 @Service
@@ -22,6 +27,12 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	
 	@Autowired
 	private FileDAO fileDAO;
+	
+	@Autowired
+	private ChatDAO chatDAO;
+	
+	@Autowired
+	private ScheduleTableDAO scheduleTableDAO;
 	
 	// 파일, 글정보 insert
 	@Transactional
@@ -144,11 +155,26 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 
 
 	// 스케줄 저장
-	public void scheduleTableSave(BoardVO vo) {
+	@Transactional
+	public void scheduleTableSave(BoardVO vo, ChatRoomVO cvo, ScheduleTableVO svo, ChatRoomJoinVO cjvo) {
 		
-
+		// 스케줄 보드에 insert
 		communityBoardDAO.scheduleTableSave(vo);
 		
+		// 스케줄 보드에 담긴 boardId chat_room 테이블 boardId에 저장
+		cvo.setBoardId(vo.getBoardId());
+		
+		// chat_room table 최대인원수 정해서 insert
+		chatDAO.chatRoomSave(cvo);
+		
+		// chat_room_id 가져오기
+		cjvo.setChatRoomId(cvo.getChatRoomId());
+		
+		// chat_room_join 테이블 insert
+		chatDAO.chatRoomJoinSave(cjvo);
+		
+		// insert되면 shceduleTable 상태 공유중으로 update
+		scheduleTableDAO.updateScheduleTableStatus(svo);
 	}
 
 
@@ -191,6 +217,27 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	public List<BoardVO> boardList(Integer boardId) {
 		
 		return communityBoardDAO.boardList(boardId);
+	}
+
+
+	// 참가명단 확인
+	public EntryApplicationVO checkEntry(Integer boardId) {
+		
+		return communityBoardDAO.checkEntry(boardId);
+	}
+
+
+	// boardId 값 얻어오기
+	public BoardVO getBoardId(Integer boardId) {
+		
+		return communityBoardDAO.getBoardId(boardId);
+	}
+
+
+	// boardList 검색
+	public List<BoardVO> searchBoards(BoardVO vo) {
+		
+		return communityBoardDAO.searchBoards(vo);
 	}
 
 

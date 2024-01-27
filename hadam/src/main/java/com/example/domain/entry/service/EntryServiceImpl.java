@@ -1,5 +1,7 @@
 package com.example.domain.entry.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,13 @@ public class EntryServiceImpl implements EntryService{
 	public void deleteEntry(Integer boardId) {
 		
 		entryDAO.deleteEntry(boardId);
+	}
+
+
+	// entry 명단 확인
+	public EntryApplicationVO checkEntry(EntryApplicationVO vo) {
+		
+		return entryDAO.checkEntry(vo);
 	}
 	
 	

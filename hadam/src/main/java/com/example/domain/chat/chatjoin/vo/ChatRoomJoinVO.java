@@ -18,4 +18,6 @@ public class ChatRoomJoinVO {
 	private String chatRoomName;
 	
 	private Date chatRoomJoinTime;
+	
+	private Integer boardId;
 }
