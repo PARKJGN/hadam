@@ -21,6 +21,7 @@
 }
 
 .scheduleName {
+	padding : 0 0 10 0px;
 	width: 100%;
     display: inline-block;	
 }
@@ -71,3 +72,20 @@
 	font-size: 17px;
 }
 
+
+/* 스케줄 삭제 버튼 */
+.scheduleDeleteBtn {
+	border-radius: 7px;
+	padding: 3 5 3 5px;
+	border: groove;
+	float: right;
+}
+
+/* 스케줄 날짜 */
+span.scheduleTableStartDate {
+	padding-top: 4px;
+	font-size: larger;
+	color : #ffc107;
+	float : rigth;
+	margin-left: 10px;
+}

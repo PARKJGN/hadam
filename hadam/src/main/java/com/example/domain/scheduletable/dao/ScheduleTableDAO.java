@@ -44,4 +44,6 @@ public interface ScheduleTableDAO {
 	// 스케줄표 insert
 	void insertscheduletable(ScheduleTableVO stvo);
 	
+	// 내 스케줄 삭제 [최성익]
+	Integer scheduleDelete(Integer scheduleTableId);
 }

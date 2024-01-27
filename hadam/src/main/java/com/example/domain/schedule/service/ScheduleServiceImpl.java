@@ -29,4 +29,5 @@ public class ScheduleServiceImpl implements ScheduleService{
 	public List<ScheduleVO> mypageSchedule(Integer memberIndex){
 		return scheduleDAO.mypageSchedule(memberIndex);
 	}
+	
 }

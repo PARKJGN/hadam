@@ -30,4 +30,7 @@ public class ScheduleVO {
 	private String scheduleTableName;
 	
 	private String boardTitle;
+	
+	// 내 스케줄관리에서 스케줄 날짜 필요 [최성익] 
+	private String  scheduleTableStartDate;
 }

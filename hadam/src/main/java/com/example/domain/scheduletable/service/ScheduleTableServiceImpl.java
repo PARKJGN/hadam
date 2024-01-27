@@ -101,7 +101,9 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 		scheduleDao.insertScheduleList(svoList, scheduleTableId, stvo.getMemberIndex());
 	}
 
-	
-
+	// 내 스케줄 삭제 [최성익]
+	public Integer scheduleDelete(Integer scheduleTableId) {
+		return scheduleTableDAO.scheduleDelete(scheduleTableId);
+	}
 	
 }

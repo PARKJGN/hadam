@@ -193,7 +193,10 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 		return communityBoardDAO.boardList(boardId);
 	}
 
-
+	// 내 게시물 가져오기 [최성익]
+	public List<BoardVO> mypageBoard(Integer memberIndex){
+		return communityBoardDAO.mypageBoard(memberIndex);
+	}
 
 
 

@@ -11,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.domain.board.service.CommunityBoardService;
+import com.example.domain.board.vo.BoardVO;
 import com.example.domain.entry.service.EntryService;
 import com.example.domain.entry.vo.EntryApplicationVO;
 import com.example.domain.favorites.service.FavoritesService;
@@ -23,8 +26,8 @@ import com.example.domain.member.vo.MemberVO;
 import com.example.domain.mypage.service.MypageService;
 import com.example.domain.schedule.service.ScheduleService;
 import com.example.domain.schedule.vo.ScheduleVO;
+import com.example.domain.scheduletable.service.ScheduleTableService;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -45,6 +48,12 @@ public class MypageController {
 	
 	@Autowired
 	private ScheduleService scheduleService;
+	
+	@Autowired
+	private ScheduleTableService scheduleTableService;
+	
+	@Autowired
+	private CommunityBoardService communityBoardService;
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
@@ -199,15 +208,30 @@ public class MypageController {
 		
 //		키값이 들어갈 list 선언
 		List<Integer> keyList = new ArrayList<Integer>(scheduleTable.keySet());
-		
+		System.out.println(scheduleTable);
 		model.addAttribute("scheduleTableMap", scheduleTable);
 		model.addAttribute("keyList", keyList);
 	}
 	
 	
-
+	/*내 스케줄 삭제*/
+	@RequestMapping(value = "/scheduleDelete", method = RequestMethod.GET)
+	public String scheduleDelete(Integer scheduleTableId) {
+	
+		scheduleTableService.scheduleDelete(scheduleTableId);
+		
+		return "redirect:/mypage/mypageSchedule";
+	}
 	
 	
+	/*내 게시물 가져오기*/
+	@RequestMapping("/mypageBoard")
+	public void mypageBoard(HttpSession session, Model model) {
+		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
+		List<BoardVO> result = communityBoardService.mypageBoard(memberIndex);
+		model.addAttribute("boardList", result);
+		System.out.println(result);
+	}
 	
 	
 	

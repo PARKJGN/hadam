@@ -57,7 +57,7 @@
 		ON s.LOCATION_ID = l.LOCATION_ID 
 		JOIN location_image li 
 		ON l.LOCATION_ID = li.LOCATION_ID
-		WHERE st.MEMBER_INDEX = #{memberIndex};
+		WHERE st.MEMBER_INDEX = #{memberIndex} AND st.SCHEDULE_TABLE_STATUS != "삭제" ;
 	</select>
 	
 	

@@ -15,4 +15,5 @@ public interface ScheduleService {
 	// 내 스케줄 목록 불러오기 [최성익]
 	List<ScheduleVO> mypageSchedule(Integer memberIndex);
 
+	
 }

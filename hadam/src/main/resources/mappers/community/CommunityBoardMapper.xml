@@ -169,4 +169,9 @@
 		where board_id = #{boardId}
 	
 	</select>
+	
+	
+	<select id="mypageBoard">
+		SELECT * FROM BOARD WHERE MEMBER_INDEX = #{memberIndex}
+	</select>
 </mapper>

@@ -81,4 +81,6 @@ public interface CommunityBoardDAO {
 	// boardList
 	public List<BoardVO> boardList(Integer boardId);
 	
+	// 내 게시물 가져오기 [최성익]
+	List<BoardVO> mypageBoard(Integer memberIndex);
 }

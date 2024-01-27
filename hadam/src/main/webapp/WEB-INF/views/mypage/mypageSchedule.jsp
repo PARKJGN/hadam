@@ -39,22 +39,29 @@
 							<c:forEach var="scheduleId" items="${keyList}">
 							<!-- dashboard-list end-->
 							<div class="dashboard-list">
-							<div class="scheduleName"><span><%-- ${scheduleTableMap[scheduleId].scheduleTableName} --%></span></div>
+							<div class="scheduleName">
+								<span>${scheduleTableMap[scheduleId][0].scheduleTableName}</span>
+								<div class="scheduleDeleteBtn"><a href="/mypage/scheduleUpdate?scheduleTableId=${scheduleTableMap[scheduleId][0].scheduleTableId}">수정</a></div>
+								<div class="scheduleDeleteBtn"><a href="/mypage/scheduleDelete?scheduleTableId=${scheduleTableMap[scheduleId][0].scheduleTableId}">삭제</a></div>
+								<span class="scheduleTableStartDate">${scheduleTableMap[scheduleId][0].scheduleTableStartDate}</span>
+							</div>
 								<div class="dashboard-message">
 							 <c:forEach var="schedule" items="${scheduleTableMap[scheduleId]}" varStatus="idx">
+									
 									<div class="schedule-wrap">
 									<article class="schedule-wrap-article">
 										<img class="schedule-img" src="/images/location/${schedule.locationName}.jpg" 
 										onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';">
 										<div class="scheduleContext-wrap">
-											<a href="#" class="schedule-locationName">${schedule.locationName}</a>
+											<a href="/location/locationDetail?locationId=${schedule.locationId}" class="schedule-locationName">${schedule.locationName}</a>
 											<div>
 												<span class="schedule-locationTime">${schedule.scheduleStartTime} ~ ${schedule.scheduleEndTime}</span>
 											</div>
 										</div>
 									</article>
 									</div>
-
+									
+							
 								<c:if test="${!idx.last}">
 								
 									<div class="arrow"></div>

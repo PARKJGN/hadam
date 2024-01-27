@@ -124,4 +124,9 @@
 		</selectKey>
 	</insert>
 
+	<update id="scheduleDelete" parameterType="integer">
+		UPDATE SCHEDULE_TABLE SET SCHEDULE_TABLE_STATUS = "삭제" WHERE SCHEDULE_TABLE_ID = #{scheduleTableId} 
+	</update>
+	
+	
 </mapper>
