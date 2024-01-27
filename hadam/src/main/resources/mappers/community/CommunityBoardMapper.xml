@@ -2,176 +2,266 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.domain.board.dao.CommunityBoardDAO">
-	
-	<!-- 자유게시판 목록 출력 memberNickname-->
-	<select id="getBoardList" resultType="BoardVO" >
+<mapper
+	namespace="com.example.domain.board.dao.CommunityBoardDAO">
+
+	<!-- 자유게시판 목록 출력 memberNickname -->
+	<select id="getBoardList" resultType="BoardVO">
 		SELECT b.*, m.*
-		FROM board b INNER JOIN member m 
+		FROM board b INNER JOIN member m
 		ON b.MEMBER_INDEX = m.MEMBER_INDEX
 		WHERE b.SCHEDULE_TABLE_ID IS NULL
 		ORDER BY BOARD_ID desc
 	</select>
-	
+
 	<!-- 제목,내용,등록일 insert -->
 	<insert id="saveBoard" parameterType="BoardVO">
-		INSERT INTO board( BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS, MEMBER_INDEX, BOARD_UPDATE_DATE)
-		values(#{boardTitle}, #{boardContent},now(), 0, #{memberIndex}, now())
+		INSERT INTO board(
+		BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS,
+		MEMBER_INDEX, BOARD_UPDATE_DATE)
+		values(#{boardTitle},
+		#{boardContent},now(), 0, #{memberIndex}, now())
 	</insert>
-	
-	<!-- 자유게시판 상세 페이지 사진과 글정보-->
-	<select id="getBoard" parameterType="BoardVO" resultType="BoardVO">
+
+	<!-- 자유게시판 상세 페이지 사진과 글정보 -->
+	<select id="getBoard" parameterType="BoardVO"
+		resultType="BoardVO">
 		SELECT b.*, m.*, i.*
 		FROM board b INNER JOIN member m
-		ON b.MEMBER_INDEX = m.MEMBER_INDEX
+		ON
+		b.MEMBER_INDEX = m.MEMBER_INDEX
 		INNER JOIN MEMBER_UPLOAD_IMAGE i
-		ON b.BOARD_ID = i.BOARD_ID
+		ON
+		b.BOARD_ID = i.BOARD_ID
 		WHERE b.BOARD_ID = #{boardId}
 	</select>
-	
-	<!-- boardId에 해당하는 게시글 정보 가져오기 근데 수정하면 파일이 삭제된후 다시생성되는과정에서 하나만 안찾아와서 limit 1을 붙임-->
-	<select id="findByboardId" parameterType="int" resultType="BoardVO">
+
+	<!-- boardId에 해당하는 게시글 정보 가져오기 근데 수정하면 파일이 삭제된후 다시생성되는과정에서 하나만 안찾아와서 limit 
+		1을 붙임 -->
+	<select id="findByboardId" parameterType="int"
+		resultType="BoardVO">
 		SELECT b.*,m.*,i.*
 		FROM board b INNER JOIN member m
-		ON b.MEMBER_INDEX = m.MEMBER_INDEX
+		ON
+		b.MEMBER_INDEX = m.MEMBER_INDEX
 		INNER JOIN MEMBER_UPLOAD_IMAGE i
-		ON b.BOARD_ID = i.BOARD_ID
+		ON
+		b.BOARD_ID = i.BOARD_ID
 		WHERE b.BOARD_ID = #{boardId}
 	</select>
 	<!-- boardId select -->
 	<select id="selectId" resultType="int">
-		SELECT BOARD_ID FROM board order by BOARD_ID desc limit 1
+		SELECT BOARD_ID FROM board
+		order by BOARD_ID desc limit 1
 	</select>
-	
+
 	<!-- 파일선택 안할경우board만 수정하기 -->
 	<update id="updateBoard" parameterType="BoardVO">
-		UPDATE board 
+		UPDATE board
 		SET
 		BOARD_TITLE = #{boardTitle},
 		BOARD_CONTENT = #{boardContent},
-		BOARD_UPDATE_DATE = (current_date)	
+		BOARD_UPDATE_DATE = (current_date)
 		WHERE BOARD_ID = #{boardId}
 	</update>
-	
+
 	<!-- 게시글 삭제 -->
 	<delete id="deleteBoard" parameterType="int">
-    	DELETE FROM board
-    	WHERE BOARD_ID = #{boardId}
+		DELETE FROM board
+		WHERE BOARD_ID = #{boardId}
 	</delete>
-	
+
 	<delete id="deleteComment" parameterType="int">
 		DELETE FROM comment
 		WHERE BOARD_ID = #{boardId}
 	</delete>
-	
+
 	<!-- 게시글 조회수 처리 -->
 	<update id="boardHits" parameterType="int">
-		UPDATE board SET BOARD_VIEWS = BOARD_VIEWS + 1 WHERE BOARD_ID = #{boardId}
-		
+		UPDATE board SET
+		BOARD_VIEWS = BOARD_VIEWS + 1 WHERE BOARD_ID = #{boardId}
+
 	</update>
-	
+
 	<!-- 댓글 저장 -->
 	<insert id="commentSave" parameterType="CommentVO">
-		insert into comment (COMMENT_CONTENT, COMMENT_REGISTE_DATE, MEMBER_INDEX, BOARD_ID)
-		values ( #{commentContent}, (current_date), 1, #{boardId})
+		insert into comment
+		(COMMENT_CONTENT, COMMENT_REGISTE_DATE, MEMBER_INDEX, BOARD_ID)
+		values
+		( #{commentContent}, (current_date), #{memberIndex}, #{boardId})
 	</insert>
-	
+
 	<!-- 해당 게시글에 작성한 댓글 리스트 가져오기 -->
-	<select id="commentList" parameterType="Integer" resultType="CommentVO">
-		select c.*, m.* 
+	<select id="commentList" parameterType="Integer"
+		resultType="CommentVO">
+		select c.*, m.*
 		from comment c INNER JOIN member m
 		ON c.MEMBER_INDEX = m.MEMBER_INDEX
-		WHERE c.BOARD_ID = #{boardId} 
-	
+		WHERE
+		c.BOARD_ID = #{boardId}
+
 	</select>
-	
+
 	<!-- 신고된 정보 저장 -->
-	<insert id="commentReportSave" parameterType="BoardAndCommentReportVO">
-		INSERT INTO board_comment_report ( BOARD_ID, COMMENT_ID, BOARD_COMMENT_REPORTER, BOARD_COMMENT_REPORT_REGISTE_DATE, BOARD_COMMENT_REPORT_STATUS)
-		VALUES (#{boardId}, #{commentId}, #{boardAndCommentReporter}, current_date, 1)
+	<insert id="commentReportSave"
+		parameterType="BoardAndCommentReportVO">
+		INSERT INTO board_comment_report ( BOARD_ID, COMMENT_ID,
+		BOARD_COMMENT_REPORTER, BOARD_COMMENT_REPORT_REGISTE_DATE,
+		BOARD_COMMENT_REPORT_STATUS)
+		VALUES (#{boardId}, #{commentId},
+		#{boardAndCommentReporter}, current_date, 1)
 	</insert>
-	
+
 	<!-- 해당 게시글의 댓글 id 가져오기 -->
-	<select id="selectCommentId" parameterType="int" resultType="CommentVO">
+	<select id="selectCommentId" parameterType="int"
+		resultType="CommentVO">
 		select *
 		from comment
 		WHERE BOARD_ID = #{boardId}
 		limit 1
-	</select> 
-	
-	<select id="reportList" parameterType="Integer" resultType="BoardAndCommentReportVO">
+	</select>
+
+	<select id="reportList" parameterType="Integer"
+		resultType="BoardAndCommentReportVO">
 		select *
 		from board_comment_report
-		WHERE COMMENT_ID = #{commentId}
+		WHERE COMMENT_ID =
+		#{commentId}
 	</select>
-	
+
 	<!-- 스케줄 저장 -->
 	<insert id="scheduleTableSave" parameterType="BoardVO">
-		insert into board (MEMBER_INDEX, SCHEDULE_TABLE_ID, BOARD_TITLE, BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS)
-		values (#{memberIndex}, #{scheduleTableId}, #{boardTitle}, #{boardContent}, current_date,0 )
+		insert into board (MEMBER_INDEX, SCHEDULE_TABLE_ID, BOARD_TITLE,
+		BOARD_CONTENT, BOARD_REGISTER_DATE, BOARD_VIEWS, BOARD_SEX, BOARD_AGE)
+		values (#{memberIndex}, #{scheduleTableId}, #{boardTitle},
+		#{boardContent}, current_date, 0, #{boardSex}, #{boardAge})
+		<selectKey resultType="Integer" keyProperty="boardId"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
-	
+
 	<select id="getScheduleShareList" resultType="BoardVO">
-		select b.*,st.*,l.*,li.*,m.*
+		select
+		b.*,st.*,l.*,li.*,m.*
 		from board b
 		inner join schedule_table st
-		on b.SCHEDULE_TABLE_ID  = st.SCHEDULE_TABLE_ID  
+		on
+		b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
 		inner join schedule s
-		on s.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID 
+		on s.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
 		inner join location l
-		on l.LOCATION_ID = s.LOCATION_ID  
+		on l.LOCATION_ID = s.LOCATION_ID
 		inner join location_image li
-		on li.LOCATION_ID = l.LOCATION_ID 
-		inner join member m 
+		on li.LOCATION_ID = l.LOCATION_ID
+		inner join member m
 		on b.MEMBER_INDEX =m.MEMBER_INDEX
 	</select>
-	
+
 	<select id="getScheduleTableShareList" resultType="BoardVO">
-		select st.*,b.*,m.*
+		select
+		st.*,b.*,m.*
 		from board b
 		inner join schedule_table st
-		on b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
+		on
+		b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
 		inner join member m
-		on m.MEMBER_INDEX = b.MEMBER_INDEX
+		on
+		m.MEMBER_INDEX = b.MEMBER_INDEX
 		order by BOARD_ID desc
 	</select>
-	
+
 	<!-- 스케줄 상세 댓글 저장 -->
 	<insert id="scheduleCommentWrite" parameterType="CommentVO">
-		insert into comment (COMMENT_CONTENT, COMMENT_REGISTE_DATE, MEMBER_INDEX, BOARD_ID)
-		values ( #{commentContent}, (current_date), #{memberIndex}, #{boardId})
+		insert into
+		comment (COMMENT_CONTENT, COMMENT_REGISTE_DATE, MEMBER_INDEX,
+		BOARD_ID)
+		values ( #{commentContent}, (current_date), #{memberIndex},
+		#{boardId})
 	</insert>
-	
+
 	<!-- 스케줄 상세 댓글 목록 -->
-	<select id="scheduleCommentList" parameterType="Integer" resultType="CommentVO">
-		select c.*, m.* 
+	<select id="scheduleCommentList" parameterType="Integer"
+		resultType="CommentVO">
+		select c.*, m.*
 		from comment c INNER JOIN member m
 		ON c.MEMBER_INDEX = m.MEMBER_INDEX
-		WHERE c.BOARD_ID = #{boardId} 
+		WHERE
+		c.BOARD_ID = #{boardId}
 	</select>
-	
+
 	<update id="scheduleTableUpdate" parameterType="BoardVO">
 		UPDATE board b
 		INNER JOIN schedule_table st
-		on b.schedule_table_id = st.schedule_table_id
+		on b.schedule_table_id =
+		st.schedule_table_id
 		SET
 		b.BOARD_TITLE = #{boardTitle},
-		b.BOARD_CONTENT = #{boardContent},
+		b.BOARD_CONTENT =
+		#{boardContent},
 		b.BOARD_UPDATE_DATE = (current_date),
 		b.SCHEDULE_TABLE_ID = #{scheduleTableId},
-		st.SCHEDULE_TABLE_UPDATE_DATE = (current_date)
-		WHERE b.BOARD_ID = #{boardId} 
+		b.BOARD_SEX = #{boardSex},
+		b.BOARD_AGE = #{boardAge},
+		st.SCHEDULE_TABLE_UPDATE_DATE =
+		(current_date)
+		WHERE b.BOARD_ID = #{boardId}
 	</update>
-	
-	<select id="boardList" parameterType="Integer" resultType="BoardVO">
+
+	<select id="boardList" parameterType="Integer"
+		resultType="BoardVO">
 		select *
 		from board
 		where board_id = #{boardId}
-	
+
 	</select>
-	
-	
+
+
 	<select id="mypageBoard">
-		SELECT * FROM BOARD WHERE MEMBER_INDEX = #{memberIndex}
+		SELECT * FROM BOARD WHERE MEMBER_INDEX =
+		#{memberIndex}
+	</select>
+
+	<!-- 참가자 명단 확인 -->
+	<select id="checkEntry" parameterType="Integer"
+		resultType="EntryApplicationVO">
+		select member_index
+		from entry_application
+		where member_index = #{memberIndex} AND BOARD_ID = #{boardId}
+	</select>
+
+	<select id="getBoardId" parameterType="Integer"
+		resultType="BoardVO">
+		select boardId
+		from board
+		where BOARD_ID = #{boardId}
+	</select>
+
+	<select id="searchBoards" parameterType="BoardVO"
+		resultType="BoardVO">
+		SELECT b.*, m.*
+		FROM board b
+		INNER JOIN member m
+		on b.MEMBER_INDEX = m.MEMBER_INDEX
+		WHERE
+		<choose>
+			<when test="searchType == 'T'.toString()">
+				b.BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchType == 'W'.toString()">
+				m.MEMBER_NICKNAME LIKE CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="searchType == 'TW'.toString()">
+				b.BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%') OR m.MEMBER_NICKNAME LIKE
+				CONCAT('%', #{keyword}, '%')
+			</when>
+
+			<!-- 기본 전체검색 -->
+			<otherwise>
+				b.BOARD_TITLE LIKE CONCAT('%', #{keyword}, '%') OR b.BOARD_CONTENT LIKE
+				CONCAT('%', #{keyword}, '%') OR m.MEMBER_NICKNAME LIKE CONCAT('%',
+				#{keyword}, '%')
+			</otherwise>
+		</choose>
 	</select>
 </mapper>

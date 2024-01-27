@@ -40,8 +40,6 @@
                                         <li><a href="/community/boardList" class="user-profile-act" id="boardTap"><i class="far fa-comments"></i> 자유게시판 </a></li>
                                     </ul>
                                 </div>
-                                <!--dasboard-menu end-->
-                                <!--Tariff Plan menu-->
                                 <div   class="tfp-btn" ><span>커뮤니티: </span> <strong>자유게시판</strong></div>
                                 <div class="tfp-det">
                                     <p> <a href="/community/boardList">자유게시판</a> </p>
@@ -52,17 +50,33 @@
                             </div>
                         </div>
                     </section>
-                    <!-- section end-->
-                    <!-- section-->
                     <section class="middle-padding">
              
                         <div class="container">
          
-                            <!--dasboard-wrap-->
+                            <!--검색기능-->
                             <div class="dasboard-wrap fl-wrap">
-                                        
-                                <!-- dashboard-content--> 
-                           
+								<form action="/community/searchBoards" name="searchForm" method="get">
+								                    <div class="fields">
+								                        <div class="field">
+								                            <div id="searchWarp">
+								                                <select name="searchType" class="searchType">
+								                                    <option value="">검색 기준</option>
+								                                    <option value="T">제목</option>
+								                                    <option value="W">글쓴이</option>
+								                                    <option value="TW">제목 또는 글쓴이</option>
+								                                </select>
+								                                <div class="search">
+								  <input type="text" name="keyword" placeholder="검색어 입력">
+								  <button type="submit" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"></button>
+								</div>
+								                            </div>
+								                        </div>
+								                    </div>
+								                              
+								
+								  </form> 
+  
                               
                                      <div id="table">
                                         <!--자유게시판 컬럼명  -->
@@ -133,7 +147,7 @@
             <!--wrapper end -->
             <!--footer -->
              <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
-
+ 
              <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
-             <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
+			 <script type="text/javascript" src="/js/board/boardList.js"></script>
             

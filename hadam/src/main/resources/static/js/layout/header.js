@@ -330,6 +330,3 @@ function hide_on_chattingroom(chatRoomId){
         
     }
 }
-
-
- 

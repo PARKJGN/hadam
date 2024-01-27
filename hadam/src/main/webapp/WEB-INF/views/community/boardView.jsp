@@ -135,9 +135,9 @@
 											                        <span id="replydate"><i class="far fa-calendar-check"></i> 
 											                         <fmt:formatDate value="${comment.commentRegisteDate}" pattern="yyyy/MM/dd HH:MM:SS" /></span>
 											                    </div>
-											                    <c:if test="${comment.memberIndex ne sessionScope.memberIndex}">
+											                    <%-- <c:if test="${comment.memberIndex ne sessionScope.memberIndex}">
 											                    <button type="button" id="danger" class="btn btn-danger" onclick="commentReport()">신고</button>
-											               		</c:if>
+											               		</c:if> --%>
 											                </div>
 											            </div>
 											        </div>
@@ -162,7 +162,7 @@
                                                             <textarea cols="40" id= "commentContent"rows="3" placeholder="내용을 입력해주세요" ></textarea>
                                                         </fieldset>
                                                           
-                                                        <button class="btn btn-warning" id="commentBtn" onclick="commentWrite()">댓글 등록</button>
+                                                        <button class="btn btn-warning" id="commentBtn" onclick="commentWrite(${sessionScope.memberIndex})">댓글 등록</button>
                                                     
                                                 </div>
                                                 <!-- Add Review Box / End -->
@@ -231,9 +231,9 @@
       					output += '<div class="reviews-comments-item-date" id="replydateBox"><span id="replydate"><i class="far fa-calendar-check"></i>'+formatDate(commentList[i].commentRegisteDate)+'</span></div>';
       					
       					// 댓글작성자의 memberIndex와 로그인한 사용자의 memberIndex가 다르면 신고 버튼 보임
-      					if ( commentList[i].memberIndex !== memberIndex) {
+      					/* if ( commentList[i].memberIndex !== memberIndex) {
       						output += '<button type="button" id="danger"class="btn btn-danger">신고</button>';
-      					}   
+      					}    */
       					console.log("올라간댓글 memberIndex들 확인",commentList[i].memberIndex)
       					output += '</div>';
       					output += '</div>';
@@ -293,6 +293,5 @@
               </script>
            	 
               <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
-             <!-- <script type="text/javascript" src="/js/board/boardView.js"></script> -->
              <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
              <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>

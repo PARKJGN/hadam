@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.schedule.dao.ScheduleDAO;
 import com.example.domain.schedule.vo.ScheduleVO;
+import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService{
@@ -20,9 +21,9 @@ public class ScheduleServiceImpl implements ScheduleService{
 	}
 	
 	// 보드테이블에 저장된 스케줄 목록 조회
-	public List<ScheduleVO> getScheduleBoardList() {
+	public List<ScheduleVO> getScheduleBoardList(List<ScheduleTableVO> getScheduleTableBoardList) {
 	
-		return scheduleDAO.getScheduleBoardList();
+		return scheduleDAO.getScheduleBoardList(getScheduleTableBoardList);
 	}
 
 	// 내 스케줄 목록 불러오기 [최성익]

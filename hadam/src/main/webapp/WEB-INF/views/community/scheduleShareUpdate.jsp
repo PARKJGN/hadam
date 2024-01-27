@@ -46,6 +46,43 @@
 									
 								<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox"></div>
 							</div>
+							
+							<label for="validationTextarea" class="form-label">희망 성별</label>
+							<fieldset>
+							  <label for="agree1" class="radio_box">
+									<input type="radio" id="agree1" name="boardSex" value="남자" checked="checked" />
+									<span class="on"></span>
+									남자
+								</label>
+								<label for="agree2" class="radio_box">
+									<input type="radio" id="agree2" name="boardSex" value="여자" />
+									<span class="on"></span>
+									여자
+								</label>
+							</fieldset>
+							
+							<div class="selectBox">
+							  <select name="boardAge" class="select">
+							    <option disabled selected>희망 나이</option>
+							    <option value="20~29">20~29</option>
+							    <option value="30~39">30~39</option>
+							    <option value="40~49">40~49</option>
+							    <option value="50~59">50~59</option>
+							  </select>
+							  <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
+							</div>
+							
+							<div class="selectBox">
+							  <select name="chatRoomMax" class="select">
+							    <option disabled selected>참가인원수</option>
+							    <option value="2">2명</option>
+							    <option value="3">3명</option>
+							    <option value="4">4명</option>
+							    <option value="5">5명</option>
+							  </select>
+							  <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
+							</div>
+							
 							<label for="validationCustom01" class="form-label">제목</label> <input
 								type="text" name="boardTitle" id="boardTitle"
 								placeholder="제목을 입력해주세요" required />

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.domain.board.vo.BoardVO;
+import com.example.domain.schedule.vo.PagingVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 @Mapper
@@ -17,7 +18,7 @@ public interface ScheduleTableDAO {
 	List<ScheduleTableVO> getScheduleList();
 	
 	// 해당 스케줄 테이블 가져오기
-	 List<ScheduleTableVO> getScheduleTable(ScheduleTableVO vo);
+	List<ScheduleTableVO> getScheduleTable(ScheduleTableVO vo);
 
 	
 	// scheduleTableId 가져오기
@@ -30,7 +31,10 @@ public interface ScheduleTableDAO {
 	void updateScheduleTableStatus(ScheduleTableVO vo);
 	
 	// 스케줄테이블 id 리스트 가져오기
-	List<ScheduleTableVO> getScheduleTableBoardList();
+	List<ScheduleTableVO> getScheduleTableBoardList(PagingVO pvo);
+	
+	// 스케줄테이블리스트 사이즈 구하기
+	int scheduleTableListSize(PagingVO pvo);
 	
 	// boardId값 넘겨받아 스케줄테이블 리스트출력
 	List<ScheduleTableVO> getScheduleDataByBoardId(Integer boardId);
@@ -46,4 +50,8 @@ public interface ScheduleTableDAO {
 	
 	// 내 스케줄 삭제 [최성익]
 	Integer scheduleDelete(Integer scheduleTableId);
+	
+	// 스케줄 공유 게시판 검색
+	List<ScheduleTableVO> searchScheduleBoards(BoardVO vo);
+	
 }

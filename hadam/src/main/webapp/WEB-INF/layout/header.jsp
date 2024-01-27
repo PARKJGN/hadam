@@ -153,7 +153,7 @@
                                         <!--second level -->
                                         <ul>
                                             <li><a href="/community/boardList">자유게시판</a></li>
-                                            <li><a href="/community/scheduleShareList">스케줄공유 게시판</a></li>
+                                            <li><a href="/community/scheduleShareList/1">스케줄공유 게시판</a></li>
                                         </ul>
                                         <!--second level end-->
                                     </li>

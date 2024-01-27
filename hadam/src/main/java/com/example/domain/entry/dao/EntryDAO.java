@@ -17,5 +17,8 @@ public interface EntryDAO {
 	
 	// 마이페이지 참가신청 리스트 가져오기 [최성익]
 	List<EntryApplicationVO> mypageEntry(Integer memberIndex);
+
+	// entry 명단 확인
+	EntryApplicationVO checkEntry(EntryApplicationVO vo);
 	
 }

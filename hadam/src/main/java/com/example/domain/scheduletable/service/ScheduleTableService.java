@@ -3,6 +3,7 @@ package com.example.domain.scheduletable.service;
 import java.util.List;
 
 import com.example.domain.board.vo.BoardVO;
+import com.example.domain.schedule.vo.PagingVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 public interface ScheduleTableService {
@@ -14,8 +15,7 @@ public interface ScheduleTableService {
 	List<ScheduleTableVO> getScheduleList();
 	
 	// 해당하는 스케줄테이블 가져오기 
-	 List<ScheduleTableVO> getScheduleTable(ScheduleTableVO vo);
-
+	List<ScheduleTableVO> getScheduleTable(ScheduleTableVO vo);
 	
 	// 스케줄테이블id 가져오기
 	Integer getScheduleTableId(ScheduleTableVO svo);
@@ -27,7 +27,7 @@ public interface ScheduleTableService {
 	void updateScheduleTableStatus(ScheduleTableVO vo);
 	
 	// 스케줄테이블id 리스트 가져오기
-	List<ScheduleTableVO> getScheduleTableBoardList();
+	List<ScheduleTableVO> getScheduleTableBoardList(PagingVO pvo);
 	
 	// 스케줄상세 모달페이지 -> boardId값 받아서 스케줄리스트 출력
 	List<ScheduleTableVO> getScheduleDataByBoardId(Integer boardId);
@@ -43,5 +43,8 @@ public interface ScheduleTableService {
 	
 	// 내 스케줄 삭제 [최성익]
 	Integer scheduleDelete(Integer ScheduleTableId);
+	
+	// 스케줄공유 게시판에 검색
+	List<ScheduleTableVO> searchScheduleBoards(BoardVO vo);
 	
 }

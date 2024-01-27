@@ -16,7 +16,7 @@
 		where st.SCHEDULE_TABLE_ID = #{scheduleTableId}
 	</select>
 	
-	<select id="getScheduleBoardList" resultType="ScheduleVO">
+	<select id="getScheduleBoardList" resultType="ScheduleVO" parameterType="ScheduleTableVO">
 		select s.*,st.*,l.*,li.*,b.*
 		from schedule s
 		inner join schedule_table st
@@ -27,8 +27,11 @@
 		on l.LOCATION_ID = s.LOCATION_ID 
 		inner join location_image li 
 		on li.LOCATION_ID = l.LOCATION_ID
-		where st.SCHEDULE_TABLE_STATUS ="공유중"
-		order by b.BOARD_ID desc
+		where st.SCHEDULE_TABLE_STATUS ="공유중"	AND
+		<foreach collection="getScheduleTableBoardList" item="scheduleTable" separator="OR">
+		st.SCHEDULE_TABLE_ID = #{scheduleTable.scheduleTableId}
+		</foreach>
+		order by st.SCHEDULE_TABLE_ID desc
 	</select>
 	
 	<insert id="insertScheduleList" parameterType="map" >

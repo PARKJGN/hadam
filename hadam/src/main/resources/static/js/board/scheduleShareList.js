@@ -10,23 +10,11 @@ function openDetailModal(boardId,memberIndex) {
 		 url : '/community/scheduleShareDetail',
 		 data: { 
 			 boardId: boardId
-		 	
 		 }, 
-		 success: function (data){
-			 
-			 
-			 // '스케줄 참가하기' 버튼 상태 설정	 
+		 success: function (data){ 
 			 
 			 console.log('성공',data);
-			 console.log(data);
-		    
-			 function formatDate(dateString) {
-						    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-						    const formattedDate = new Date(dateString).toLocaleDateString('ko-KR', options);
-						    return formattedDate;
-			 }
-			   
-			let output = "</div>";
+			let output  = "</div>";
 			    output += '<div class="list-main-wrap fl-wrap card-listing" id="box1">';
 			    output += '<div class="list-main-wrap-title fl-wrap col-title" id="scheduleTitle">';
 			    output += '<h2>Schedule :<span>'+data[0].boardTitle+'  </span></h2>';
@@ -38,17 +26,31 @@ function openDetailModal(boardId,memberIndex) {
 			    output += '<a style="text-decoration:none; color:black;" id="deleteBtn" href="/community/scheduleShareDelete?boardId='+boardId+'"><i  style="color:#DC6089"class="fa-solid fa-xmark">삭제</i></a>'
 			    output += '</div>';
 			    }
-			     
-			    output += '<div class="shareBtnBox">';																																							// 스케줄 참가하기 버튼
-			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" role="button" id="shareBtn1" onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
+			    
+			    
+			     if (data[0].memberIndex !== memberIndex) {
+			    output += '<div class="shareBtnBox">';																														   // 스케줄 참가하기 버튼
+			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" role="button" id="shareBtn1" onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
 			    output += '</div>';
+				}
+				
+				 if (data[0].chatRoomCount < data[0].chatRoomMax){
+					output += '<div style="text-align:right"><strong>참가인원 :'+data[0].chatRoomCount+'/'+data[0].chatRoomMax+'<strong/></div>'
+				}
+				
+				// 참가인원수가 다차면 스케줄마감버튼바뀜, 참가인원: max로 바뀜
+				 if (data[0].chatRoomCount >= data[0].chatRoomMax){
+					output += '<div style="text-align:right"><strong>참가인원 : max<strong/> </div>' 
+					
+				 }
+			    
 				
 			    output += '<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox1">';
 			    for ( let i in data ) {
 			    output += '<div class="listing-item" id="listItem">';
 			    output += '<article class="geodir-category-listing fl-wrap" style="width:120px;">';
 			    output += '<div class="geodir-category-img listImg">';
-			    output += '<a href=""><img src="../images/location/'+data[i].locationName+'.jpg" alt=""></a>';
+			    output += '<a href="/location/locationDetail?locationId='+data[i].locationId+'"><img src="../images/location/'+data[i].locationName+'.jpg" alt=""></a>';
 			    output += '<div class="geodir-category-opt">';
 			    output += '</div>';
 			    output += '</div>';
@@ -61,22 +63,13 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '</div>';
 		        output += '</div>';
 		        output += '</article>';
+		        if( i< data.length -1){
 		        output += '<div class="arrowBox1">';
 		        output += '<div class="arrow"></div>';
-		        output += '<div class="timeTaken">';
-		        output += '<p >30분</p>';
-		        output += '</div></div></div>'
+		        output += '</div>';
 		        }
-		        output += '<div class="listing-item" id="information">';
-		        output += '<article class="geodir-category-listing fl-wrap" >';
-		        output += '<div class="geodir-category-content fl-wrap title-sin_item"  id ="timeBox"style="border:solid 1px; border-radius:10px; border-color:lightblue">';
-		        output += '<div class="geodir-category-content-title-item" >';
-		        output += '<h3 class="title-sin_map">스케줄일정: '+formatDate(data[0].scheduleTableRegisteDate)+"~"+formatDate(data[0].scheduleTableRegisteDate) +'</h3>';
-		        output += '<h3 class="title-sin_map">예상소요시간: 12:00 ~ 18:00</h3>';
 		        output += '</div>';
-		        output += '</div>';
-		        output += '</article>';
-		        output += '</div>';
+		        }
 		        output += '</div>';
 		        output += '<div class="list-single-main-item fl-wrap" id="writeForm">';
 		        output += '<div class="list-single-main-item-title fl-wrap">';
@@ -89,7 +82,7 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '</form>';
 		        output += '</div></div>';
 		        output += '<div id="scheduleCommentList">';		     		        
-			 	output+= '</div>';
+			 	output += '</div>';
 		        output += '</div>';
 				output += '</div>';
 		        output += '<div class="list-single-main-item fl-wrap" id="replyWriteBox">';
@@ -106,7 +99,7 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '</fieldset>';
 		        output += '<div class="commentBtn">';
 		        // 댓글 등록 버튼 클릭시 함수 호출
-		        output += '<button class="btn btn-primary" id="comment" onclick="scheduleCommentWrite(\'' + data[0].boardId + '\', \'' + memberIndex + '\')">등록</button>';
+		        output += '<button class="btn btn-primary" id="comment" onclick="scheduleCommentWrite(\'' + boardId + '\', \'' + memberIndex + '\')">등록</button>';
 		        output += '</div>';
 
 		        output += '</div>';
@@ -118,23 +111,48 @@ function openDetailModal(boardId,memberIndex) {
 		 		
 		 		
 		 		document.getElementById('modalScheduleDetail').innerHTML = output;
-		 		
-		 		/*scheduleAttendWrite();*/
-		 		
-		 		/*if (data[0].entryApplicationId !== null){
-					 document.getElementById('shareBtn1').innerHTML = '참가완료'
+		 		if(data[0].chatRoomCount >= data[0].chatRoomMax){
+					 document.getElementById('shareBtn1').innerHTML = '스케줄 마감';
+					document.getElementById('shareBtn1').disabled = true;
 				 }
-				else {
-					document.getElementById('shareBtn1').innerHTML = '스케줄 참가하기'
-				}*/
+		 		
+		 		// entry 확인
+		 		$.ajax({
+					 type:"post",
+					 url:'/community/checkEntry',
+					 data : {boardId : boardId},
+					 success : function(data){
+					 	 
+					 	 console.log("checkEntry성공", data); 
+					 	 console.log("data.memberIndex확인",data.memberIndex);
+					 	 console.log(boardId);
+					 	 // 참가했으면 버튼 바뀌기
+					 	 if(data.memberIndex == memberIndex ){
+					 		 document.getElementById('shareBtn1').innerHTML = '참가 완료';
+					 		 
+					 		 // 버튼 비활성화
+    				 		 document.getElementById('shareBtn1').disabled = true;
+					 	    }
+					 	 else if(data.memberIndex == null){
+					 		 document.getElementById('shareBtn1').innerHTML = '스케줄 참가하기';
+					 	 }
+					 	 
+					 
+					 },
+					 error : function(error){
+					 	 console.error("checkEntry실패",error);
+					 }
+				 })   
+				
 		 		
 		 		// 모달상세페이지 댓글 목록 띄우기 
 		 		$.ajax({
-					 
+				
 					 type:'get',
 					 url :'/community/getScheduleCommentList',
 					 data : {boardId : boardId},
 					 success: function (commentData) {
+						 
 						 console.log('댓글 데이터 가져오기 성공', commentData);
 						 console.log(commentData)
 						 
@@ -161,11 +179,12 @@ function openDetailModal(boardId,memberIndex) {
 								output += '<p style=font-size:11px;>'+commentData[i].commentContent+'</p>';
 								output += '<div class="reviews-comments-item-date" id="replydateBox"><span><i class="far fa-calendar-check"></i>'+formatDate(commentData[i].commentRegisteDate)+'</span> </div>';
 								output += '';
-								if( commentData[i].memberIndex !== memberIndex){
+								/*if( commentData[i].memberIndex !== memberIndex){
 								output += '<div class="dangerBox">';
 								output += '<button type="button" id="danger"class="btn btn-danger">신고</button>';
-								output += '</div>'
-								}
+								output += '</div>';
+								}*/
+								
 								output += '</div></div>';
 								
 								output += '</div></div>';
@@ -208,7 +227,8 @@ const scheduleCommentWrite = (boardId,memberIndex) => {
 		success : function(commentList){
 			console.log("작성 성공");
 			console.log(commentList);
-			
+			console.log("commentList[i].memberIndex",commentList[i].memberIndex);
+			console.log("memberIndex",memberIndex)
 			// 날짜 문자형으로 변환
 			function formatDate(dateString) {
 			    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -233,11 +253,12 @@ const scheduleCommentWrite = (boardId,memberIndex) => {
 			output += '<h4 style=font-size:13px;><a href="#">'+commentList[i].memberNickname+'</a></h4>';
 			output += '<p style=font-size:11px;>'+commentList[i].commentContent+'</p>';
 			output += '<div class="reviews-comments-item-date" id="replydateBox"><span><i class="far fa-calendar-check"></i>'+formatDate(commentList[i].commentRegisteDate)+'</span> </div>';
-			if( commentList[i].memberIndex !== memberIndex){
+			if( commentList[i].memberIndex === memberIndex){
 			output += '<div class="dangerBox">';
 			output += '<button type="button" id="danger"class="btn btn-danger">신고</button>';
 			output += '</div>';
 			}
+			
 			output += '</div></div>';
 			
 			output += '</div></div>';
@@ -253,13 +274,80 @@ const scheduleCommentWrite = (boardId,memberIndex) => {
 	})
 }
 
+// 스케줄 참가신청창에서 신청 버튼 클릭시 (scheduleShareList.jsp에 버튼 있음)
 const scheduleAttendWrite = () => {
+	
+
 		alert('참가 신청이 완료되었습니다.');
         
         // 참가 완료로 버튼 텍스트 변경
         document.getElementById('shareBtn1').innerHTML = '참가 완료';
-        // '참가 완료' 상태로 전역 변수 설정
-        
-       
+        // '참가 완료' 상태로 전역 변수 설정  
         
 }
+
+// 스케줄 참가하기 버튼 클릭시
+const scheduleAttend = (boardId,memberIndex, shceduleTableId) => {
+	
+	$.ajax({
+		type:'post',
+		url: '/community/getBoardId',
+		data : {
+			boardId : boardId,
+			shceduleTableId : shceduleTableId
+		},
+		success : function(result) {
+			console.log("boardId가져오기",result);
+			
+			
+			let output = '<input type="hidden" name="boardId" value="'+result[0].boardId+'"/>' ;
+			    output += '<input type="hidden" name="scheduleTableId" value="'+result[0].scheduleTableId+'"/>'
+			document.getElementById('getBoardId').innerHTML = output;
+		},
+		error : function(error){
+			console.log("error",error);
+		}
+	})
+}
+
+$(()=>{
+	// 다음 페이지
+	var pageprevNum = Number(pageNum) - 1 < 1 ? 1 : Number(pageNum) - 1;
+	var pagenextNum = Number(pageNum) + 1 > pageLastPage ? pageLastPage : Number(pageNum) + 1;
+	var paging = '';
+	
+					
+					`<a href="/community/scheduleShareList/1" class="prevposts-link"><i
+					class="fa fa-caret-left"></i></a>
+				<!-- 전페이지로 이동 -->
+				<a href="/community/scheduleShareList/${pageprevNum}"
+					class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+				<!-- 페이지 리스트 3으로 설정하면 3개나옴 -->
+				<!-- 다음페이지 이동 -->
+				<a href="/community/scheduleShareList/${pagenextNum}"
+					class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+				<!-- 마지마페이지 이동 -->
+				<a href="/community/scheduleShareList/${pageLastPage}"
+					class="nextposts-link"><i class="fa fa-caret-right"></i></a>`
+					
+	paging += `<a href="/community/scheduleShareList/1" class="prevposts-link"><i
+					class="fa fa-caret-left"></i></a>
+					<a href="/community/scheduleShareList/${pageprevNum}"
+					class="prevposts-link"><i class="fa fa-caret-left"></i></a>`
+	
+	for (i = pageStartPage; i <= pageEndPage; i++) {
+						if (i == pageNum) {
+							paging += `<a href="/community/scheduleShareList/${i}" id= ${i} class="searchbtn active">${i}</a>`
+						} else {
+							paging += `<a href="/community/scheduleShareList/${i}" id= ${i} class ="searchbtn">${i}</a>`
+						}
+					}
+	paging += `<a href="/community/scheduleShareList/${pagenextNum}"
+					class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+				<!-- 마지마페이지 이동 -->
+				<a href="/community/scheduleShareList/${pageLastPage}"
+					class="nextposts-link"><i class="fa fa-caret-right"></i></a>`
+	
+	$("#page").append(paging)
+	
+})

@@ -37,7 +37,7 @@
 				}
 				
 				#replyinnerBox {
-					width:1400px;
+					width:1100px;
 					position:relative;
 					left:-20px;
 					top:-50px;
@@ -64,11 +64,11 @@
             	
             	#commentContent{
             		border-radius: 10px;
-			    background-color: #f9f9f9;
-			    margin-left: -1390px;
-			    margin-top: 70px;
-			    width: 1400px;
-			    border: 0px;
+				    background-color: #f9f9f9;
+				    margin-left: -1110px;
+				    margin-top: 70px;
+				    width: 1100px;
+				    border: 0px;
             	}
             	
             	.commentBtn{
@@ -114,12 +114,14 @@
             		left:-10px;
             	}
 				
-              .asdf{
-              	width:1500px;
+              .asdf1{
+              	width:1200px;
               	text-align:center;
               	position:relative;
-              	right:-700px;
+              	right:-900px;
               	margin-top:30px;
+              	border-radius:10px; 
+           	    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); 
               }
               
               .asdf2{
@@ -168,12 +170,17 @@
                  width:1200px;
                  position:relative;
                  right:-700px;
-         	     margin-top:30px;
               }
               
               #box1 {
               	
               }
+              
+              .infor {
+              	margin-top:30px;
+              	margin-right:30px;
+              }
+              
               
               #information {
                  margin-top: 60px;
@@ -238,7 +245,7 @@
          	.shareBtnBox{
          		text-align:right;
          		position:relative;
-         		top:-15px;
+         		bottom:-95px;
          	}
             
             .whatTime {
@@ -289,7 +296,6 @@
                 animation: sdb 2s infinite;
                 opacity: 0;
                 box-sizing: border-box;
-               
             }
             
             #contactform {
@@ -307,11 +313,44 @@
                
          #userInfo {
             position:relative;
-            right:-200px;
+            right:-150px;
             margin-top:-40px;
-         
          }
          
          #userInfo1 {
          	
          }
+         
+          .search {
+  position: relative;
+  width: 300px;
+  right: -900px;
+  bottom: 20px;
+}
+
+.searchInput {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.searchImg {
+  position : absolute;
+  width: 17px;
+  top: 10px;
+  right: 12px;
+  margin: 0;
+}
+
+.searchType{
+	width: 110px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    position: relative;
+    top: 22px;
+    margin-left: 480px;
+} 

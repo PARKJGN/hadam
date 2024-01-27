@@ -6,7 +6,10 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.board.vo.BoardVO;
+import com.example.domain.chat.chatjoin.vo.ChatRoomJoinVO;
+import com.example.domain.chat.vo.ChatRoomVO;
 import com.example.domain.comment.vo.CommentVO;
+import com.example.domain.entry.vo.EntryApplicationVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.report.vo.BoardAndCommentReportVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
@@ -59,7 +62,7 @@ public interface CommunityBoardService {
 	void deleteComment(int boardId);
 	
 	// 공유스케줄 저장
-	void scheduleTableSave(BoardVO vo);
+	void scheduleTableSave(BoardVO vo,  ChatRoomVO cvo, ScheduleTableVO svo, ChatRoomJoinVO cjvo);
 	
 	// 스케줄 목록조회
 	List<BoardVO> getScheduleShareList();
@@ -81,5 +84,14 @@ public interface CommunityBoardService {
 	
 	// 내 게시물 가져오기 [최성익]
 	List<BoardVO> mypageBoard(Integer memberIndex);
+
+	// 참가명단 확인
+	EntryApplicationVO checkEntry(Integer boardId);
+	
+	// boardId값 얻어오기
+	BoardVO getBoardId(Integer boardId);
+	
+	// boardList 검색
+	List<BoardVO> searchBoards(BoardVO vo);
 	
 }

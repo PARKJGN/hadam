@@ -10,6 +10,7 @@
 		VALUES (#{memberIndex}, #{boardId}, #{entryApplicationContent}, (current_date) )
 	</insert>
 	
+	<!-- 참가자 명단 삭제 -->
 	<delete id="deleteEntry" parameterType="Integer">
 		delete from entry_application
 		where board_id = #{boardId}
@@ -24,4 +25,12 @@
 		WHERE b.MEMBER_INDEX = #{memberIndex};
 	</select>
 	
+	<!-- 참가자 명단 확인 -->
+	<select id="checkEntry" parameterType="EntryApplicationVO" resultType="EntryApplicationVO">
+	    select MEMBER_INDEX
+	    from entry_application 
+	    where member_index = #{memberIndex} and board_id = #{boardId}
+	 
+    </select>
+    
 </mapper>

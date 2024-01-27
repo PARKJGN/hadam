@@ -99,7 +99,7 @@
 	text-align: center;
 	padding: 0 0;
 	position: relative;
-	margin-top:-2100px;
+	margin-top:-2290px;
 	right: -435px;
 }
 
@@ -356,4 +356,12 @@ fieldset {
 
 .selectBox .select:focus + .icoArrow img {
   transform: rotate(180deg);
+}
+
+.titleFont h3{
+	font-size:23px;
+}
+
+.custom-form label {
+	font-size:17px;
 }

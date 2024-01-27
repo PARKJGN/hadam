@@ -27,6 +27,13 @@ public class EntryServiceImpl implements EntryService{
 		
 		entryDAO.deleteEntry(boardId);
 	}
+
+
+	// entry 명단 확인
+	public EntryApplicationVO checkEntry(EntryApplicationVO vo) {
+		
+		return entryDAO.checkEntry(vo);
+	}
 	
 	
 	// 마이페이지 참가신청 리스트 가져오기 [최성익]
