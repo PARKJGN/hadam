@@ -65,5 +65,8 @@ public class LocationVO{
 	// 장소 소분류
 	private String smallCategory;
 	
+	// 장소 대분류
+	private String largeCategory;
+	
 	
 }

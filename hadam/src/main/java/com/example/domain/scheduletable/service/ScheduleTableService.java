@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.example.domain.board.vo.BoardVO;
 import com.example.domain.schedule.vo.PagingVO;
+import com.example.domain.location.vo.LocationVO;
+import com.example.domain.scheduletable.vo.AiCreateVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 public interface ScheduleTableService {
@@ -39,7 +41,10 @@ public interface ScheduleTableService {
 	void updateScheduleTableStatusToWait(BoardVO vo);
 	
 	// 스케줄표 insert
-	void insertscheduletable(ScheduleTableVO stvo);
+	void insertScheduleTable(ScheduleTableVO stvo);
+	
+	// ai스케줄표 create
+	List<LocationVO> aiCreateScheduleTable(AiCreateVO aivo, Integer memberIndex);
 	
 	// 내 스케줄 삭제 [최성익]
 	Integer scheduleDelete(Integer ScheduleTableId);

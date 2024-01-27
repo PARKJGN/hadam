@@ -1,15 +1,21 @@
 
 // 카테고리 종류들
-var eat = ['전체', '한식', '중식', '일식', '양식']
+let eat = ['전체', '한식', '중식', '일식', '양식', '패스트푸드', '세계음식']
 
-var see = ['전체', '영화', '전시', '등', '등등']
+let see = ['전체', '책방', '공연', '전시', '영화']
 
-var category = [{ id: 'eat', text: '먹기' }, { id: 'drink', text: '마시기' }, { id: 'see', text: '보기' }, { id: 'play', text: '놀기' }, { id: 'walk', text: '걷기' }]
+let drink = ['전체', '주류', '카페']
 
-var pageNum;
+let play = ['전체', '이색', '실내활동', '실외활동']
+
+let walk = ['전체', '시장', '공원', '산책', '명소']
+
+let category = [{ id: 'eat', text: '먹기' }, { id: 'drink', text: '마시기' }, { id: 'see', text: '보기' }, { id: 'play', text: '놀기' }, { id: 'walk', text: '걷기' }]
+
+let pageNum;
 
 // 대분류 카테고리 바꿀때마다 중분류 카테고리 바뀌는 함수
-var catechange = (middlecategory) => {
+let catechange = (middlecategory) => {
 	$('.middlecate').select2("destroy")
 	$('.middlecate option').remove();
 	$('.middlecate').select2({
@@ -45,6 +51,9 @@ $(() => {
 				break;
 			case 'eat': middlecategory = eat
 				break;
+			case 'play': middlecategory = play
+				break
+			case 'walk': middlecategory = walk
 		}
 
 		catechange(middlecategory)
@@ -132,14 +141,16 @@ $(() => {
 						</div>`)
 					})
 
-					// 다음 페이지
-					var pageprevNum = Number(pageNum) - 1 < 1 ? 1 : Number(pageNum) - 1;
 					// 이전 페이지
+					var pageprevNum = Number(pageNum) - 1 < 1 ? 1 : Number(pageNum) - 1;
+					// 다음 페이지
 					var pagenextNum = Number(pageNum) + 1 > res.paging.lastPage ? res.paging.lastPage : Number(pageNum) + 1;
 
 					// 모달 푸터에 달 페이징 번호
 					var paging = '';
-
+					console.log(res.paging.endpage)
+					console.log(res.paging.startpage)
+					console.log(res.paging.lastPage)
 					paging += '<div class="page_wrap">'
 					paging += '<div class="page_nation">'
 					paging += `<a id=1 class="arrow pprev searchbtn" ></a> <a id=${pageprevNum} class="arrow prev searchbtn"></a>`

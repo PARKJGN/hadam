@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
 import com.example.domain.schedule.vo.PagingVO;
 import com.example.domain.scheduletable.service.ScheduleTableService;
+import com.example.domain.scheduletable.vo.AiCreateVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 import jakarta.servlet.http.HttpSession;
@@ -58,11 +60,27 @@ public class ScheduleController {
 	@PostMapping("insertscheduletable")
 	public String insertScheduleTable(ScheduleTableVO stvo, HttpSession session) {
 		
-		stvo.setMemberIndex(1); 
-		stser.insertscheduletable(stvo);
+		stvo.setMemberIndex((Integer)session.getAttribute("memberIndex")); 
+		stser.insertScheduleTable(stvo);
 		
 		return "redirect:/index";
 		
+	}
+	
+	@PostMapping("createaischeduletable")
+	public String insertScheduleTable(AiCreateVO aivo, HttpSession session, RedirectAttributes rttr) {
+		System.out.println(aivo);
+		Integer memberIndex = (Integer)session.getAttribute("memberIndealert(msg)alert(msg)alert(msg)alert(msg)alert(msg)x");
+		
+		List<LocationVO> list =  stser.aiCreateScheduleTable(aivo, memberIndex);
+		if(list.size()==0) {
+			rttr.addFlashAttribute("scheMsg", "추천 장소가 없습니다.");
+			return "redirect:/index";
+		}
+		
+		rttr.addFlashAttribute(list);
+		
+		return "redirect:/schedule/schedulepage";
 	}
 
 }

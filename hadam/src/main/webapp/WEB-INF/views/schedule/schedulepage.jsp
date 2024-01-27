@@ -17,7 +17,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <!-- header-->
-<jsp:include page="../../layout/scheduleheader.jsp"></jsp:include>
+<jsp:include page="../../layout/header.jsp"></jsp:include>
 <!--  header end -->
 
 <!--  wrapper  -->

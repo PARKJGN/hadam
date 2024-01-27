@@ -41,7 +41,7 @@ public class PagingVO {
 
 
 	public int getLastPage() {
-		lastPage = totalCount % pageSize > 0 ? totalCount / pageSize + 1 : totalCount / pageSize;
+		lastPage = totalCount % pageSize > 0 ? (totalCount / pageSize) + 1 : totalCount / pageSize;
 		return lastPage;
 	}
 

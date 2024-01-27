@@ -55,6 +55,7 @@
 		INNER JOIN category c
 		ON l.CATEGORY_ID = c.CATEGORY_ID
 		WHERE l.LOCATION_PLACE LIKE CONCAT('%',#{addrName},'%')
+		AND c.LARGE_CATEGORY = #{largeCate}
 		<if test="middleCate != '전체'">
 			AND c.MIDDLE_CATEGORY = #{middleCate}
 		</if>

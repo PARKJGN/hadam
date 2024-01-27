@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
             <!-- header-->
         <!--=============== import-header  ===============-->
            	<jsp:include page="../layout/header.jsp"></jsp:include>
@@ -84,20 +85,19 @@
                                 </div>
                                <div class="main-search-input-container">
                                 <div class="main-search-input-wrap">
-                                    <div class="main-search-input fl-wrap" style="width:900px;">
-									<form action="AI스케줄 생성페이지로 붙혀주기" method="post" id="">
+                                    <div class="main-search-input fl-wrap" style="width:1150px;left:-150px;">
+									<form action="/schedule/pythonsocket" method="get">
 
                                     <!-- 장소정하기 -->
                                         <div class="main-search-input-item location" id="autocomplete-container">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
                                             <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid1"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기1" readonly/>
-                                           
                                         </div>
                                     <!-- 장소정하기 -->
                                     <!-- 장소정하기2 -->
                                      <!--    <div class="main-search-input-item main-search-input-item_small" id="autocomplete-container2">
                                             <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
-                                            <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid2"  value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2" readonly/>
+                                            <input type="text" placeholder="스케줄 시작 장소 선택" class="autocomplete-input" id="autocompleteid2"  readonly/>
                                             
                                         </div> -->
                                     <!-- 장소정하기2 -->
@@ -105,7 +105,7 @@
                                     <!-- 날짜정하기 -->
                                         <div class="main-search-input-item main-date-parent main-search-input-item_small">
                                             <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> 
-                                            <input type="text" placeholder="When" name="main-input-search77"   value="" name="알고리즘 vo에 들어갈 이름으로 바꾸기2" readonly/>
+                                            <input type="text" placeholder="When" name="main-input-search77" id= "aistarttime" readonly/>
                                         </div>
                             		<!-- 날짜정하기 -->
 
@@ -137,7 +137,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="main-search-button color2-bg" onclick="window.location.href='listing.html'">AI스케줄 생성하러가기</button>
+                                        <button type = "button" class="aisubmit main-search-button color2-bg">AI스케줄 생성하러가기</button>
 									</form>
                                     <!-- 코스 카테고리 선택하기-->
 
@@ -418,10 +418,16 @@
             </div>
             <!--wrapper end -->
             <!--footer -->
+            <!-- 외부 js에서 세션에 담긴 멤버 인덱스를 가져오기 위한 내부 스크립트 -->
+            <script>
+            	const member = <%= session.getAttribute("memberIndex") %>
+            	var msg = "${scheMsg}"
+								            	
+            </script>
+
             <jsp:include page="../layout/footer.jsp"></jsp:include>
             <script src="/js/index.js"></script>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-            
-          
+            <script src="/js/schedule/pythonSocket.js"></script>
             <!--footer end -->
            
