@@ -33,9 +33,9 @@
                                     <ul>
                                         <li><a class="act-scrlink" href="#sec1">장소</a></li>
                                         <li><a href="#sec2">소개</a></li>
-                                        <li><a href="#sec3">주소</a></li>
-                                        <li><a href="#sec4">메뉴</a></li>
-                                        <li><a href="#sec5">리뷰</a></li>
+                                        <li><a href="#sec3">메뉴</a></li>
+                                        <li><a href="#sec4">리뷰</a></li>
+                                        <li><a href="#sec5">주소</a></li>
                                         <li><a href="#sec6">지도</a></li>
                                     </ul>
                                 </nav>                         
@@ -96,8 +96,8 @@
 										    </a>
 										</c:if> 
                                         
-                                        <input id="realLocationId" type="hidden" value="${locationDetail.locationId}"></input>
-                                        <input id="memberIndex" type="hidden" value="${sessionScope.memberIndex}"></input>
+                                        <input id="realLocationId" type="hidden" value="${locationDetail.locationId}"/>
+                                        <input id="memberIndex" type="hidden" value="${sessionScope.memberIndex}"/>
                                         <!-- 찜하기 end -->
                                         <!-- reviews-score-wrap end -->   
                                     </div>
@@ -119,17 +119,9 @@
                                  
                                         </div>
                                         <!-- 소개 end -->
-                                        <!-- 상세정보 -->
-                                        <div class="list-single-main-item fl-wrap" id="sec3">
-                                            <div class="catelist-single-main-item-title fl-wrap">
-                                                <h3> 주소 </h3>
-                                            </div>
-                                            <p> ${locationDetail.locationPlace } </p>
-                                           
-                                        </div>
-                                        <!-- 상세정보 end -->
+                                        
                                         <!-- 메뉴 -->
-                                        <div class="list-single-main-item fl-wrap" id="sec4">
+                                        <div class="list-single-main-item fl-wrap" id="sec3">
                                             <div class="catelist-single-main-item-title fl-wrap">
                                                 <h3> 메뉴 </h3>
                                             </div>
@@ -147,7 +139,7 @@
                                         </div>
                                         <!--   메뉴 end -->                                                     
                                         <!--   리뷰 -->
-                                        <div class="list-single-main-item fl-wrap" id="sec5">
+                                        <div class="list-single-main-item fl-wrap" id="sec4">
                                             <div class="catelist-single-main-item-title fl-wrap">
                                                 <h3>리뷰</h3>
                                             </div>
@@ -217,6 +209,16 @@
                                         <!--   리뷰 container end -->
                                     	</div>
                                         <!-- 리뷰 end -->     
+                                        <!-- 주소 -->
+                                        <div class="list-single-main-item fl-wrap" id="sec5">
+                                            <div class="catelist-single-main-item-title fl-wrap">
+                                                <h3> 주소 </h3>
+                                            </div>
+                                            <p> ${locationDetail.locationPlace } </p>
+                                           
+                                        </div>
+                                        <!-- 주소 end -->
+                                        <!-- 지도 -->
                                         <div class="list-single-main-item fl-wrap" id="sec6">
                                         
                                         	<div class="catelist-single-main-item-title fl-wrap">
@@ -244,7 +246,9 @@
                                         		marker.setMap(map);
                                         	</script>                                       		
                                         	</div>
+                                        	<!-- 지도 end -->
                                         </div>
+                                        <button class="back-button">이전으로</button>
                                     </div>
                                 </div>
                                 <!--   datails end  -->
@@ -263,3 +267,4 @@
             <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>  
             <!--footer end -->
             <script src="/js/favorites/favorites.js"></script>
+            <script src="/js/location/location.js"></script>

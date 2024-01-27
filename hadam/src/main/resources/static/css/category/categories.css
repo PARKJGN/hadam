@@ -541,3 +541,16 @@
 	margin-right:5px;
 }
 
+/* 이전 페이지 버튼 */
+.back-button {
+	float:left;
+	padding:7px 10px 7px;
+	margin-top:50px;
+	border-radius:20px;
+	background:#3AACED;
+	color:#fff;
+	font-size:15px;
+	font-weight:bold;
+	border-style:hidden;
+	cursor:pointer;
+}

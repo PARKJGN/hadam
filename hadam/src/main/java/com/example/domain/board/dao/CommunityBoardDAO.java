@@ -81,4 +81,9 @@ public interface CommunityBoardDAO {
 	// boardList
 	public List<BoardVO> boardList(Integer boardId);
 	
+	
+	// 관리자
+	// 게시글 삭제
+	public void boardD(BoardVO vo);
+	
 }

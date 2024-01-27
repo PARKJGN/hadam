@@ -80,4 +80,8 @@ public interface CommunityBoardService {
 	List<BoardVO> boardList(Integer boardId);
 	
 	
+	// 관리자
+	// 게시글 삭제
+	void boardD(BoardVO vo);
+	
 }

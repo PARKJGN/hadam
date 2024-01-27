@@ -195,6 +195,12 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 
 
 
+	// 관리자
+	// 게시글 삭제
+	public void boardD(BoardVO vo) {
+		
+		communityBoardDAO.boardD(vo);
+	};
 
 
 
