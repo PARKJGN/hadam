@@ -1,5 +1,5 @@
-// header.js
-/*
+/*// header.js
+
 
 채팅창 구축 -정건일
 
@@ -123,7 +123,7 @@ function showGreeting(message) {
             });
         }
 
- */
+ 
 function getChatRoomList() { 
     //const data = { "memberIndex": `${sessionScope.memberIndex}` };
 	const data = { "memberIndex": 1};
@@ -210,4 +210,4 @@ $(function () {
 });
 
 
- 
+ */

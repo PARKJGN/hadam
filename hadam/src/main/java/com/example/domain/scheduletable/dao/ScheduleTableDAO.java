@@ -3,8 +3,11 @@ package com.example.domain.scheduletable.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.board.vo.BoardVO;
+import com.example.domain.location.vo.LocationVO;
+import com.example.domain.scheduletable.vo.AiCreateVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
 
 @Mapper
@@ -42,6 +45,11 @@ public interface ScheduleTableDAO {
 	void updateScheduleTableStatusToWait(BoardVO vo);
 	
 	// 스케줄표 insert
-	void insertscheduletable(ScheduleTableVO stvo);
+	void insertScheduleTable(ScheduleTableVO stvo);
+	
+	// ai스케줄표 create
+	List<LocationVO> aiCreateScheduleTable(@Param("aivo") AiCreateVO aivo, @Param("preferenceList") List<String> preferenceList, @Param("secondAi") Integer secondAi);
+	
+	List<LocationVO> CreateScheduleTable(@Param("aivo") AiCreateVO aivo, @Param("categoryList") List<String> categoryList);
 	
 }

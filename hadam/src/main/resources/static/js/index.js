@@ -339,8 +339,8 @@ $(document).ready(function () {
     });
     
 	$(document).on('click', '.markerinfo', function () {
-	    var text = $(this).find('h5').text();
-	    console.log('Clicked h5 text:', text);
+	    var text = $(this).find('h5').next().text();
+	    console.log('Clicked span text:', text);
     document.getElementById('myModal').classList.remove('show');
         document.getElementById('modalOverlay').style.display = 'none';
         $('#autocompleteid1').val(text);
@@ -543,8 +543,8 @@ $(document).ready(function () {
     });
     
 	$(document).on('click', '.markerinfo2', function () {
-	    var text = $(this).find('h5').text();
-	    console.log('Clicked h5 text:', text);
+	    var text = $(this).find('h5').next().text();
+	    console.log('Clicked span text:', text);
     document.getElementById('myModal2').classList.remove('show');
         document.getElementById('modalOverlay2').style.display = 'none';
         $('#autocompleteid2').val(text);

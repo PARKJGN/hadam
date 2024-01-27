@@ -25,6 +25,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{
 	    // 클라이언트와 웹 소켓을 연결할 수 있게 해주는 경로를 설정하는 함수
 	    public void registerStompEndpoints(StompEndpointRegistry registry) {
 	        registry.addEndpoint("/websocket-example").withSockJS();
+	        // 종건 파이썬 통산
+	        registry.addEndpoint("/python").withSockJS();
 	    }
 	
 }

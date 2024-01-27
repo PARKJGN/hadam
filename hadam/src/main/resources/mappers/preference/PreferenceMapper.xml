@@ -10,6 +10,19 @@
 			(#{memberIndex}, #{categoryId})
 		</foreach>
 	</insert>
+	
+	<select id = "SelectPreferenceByMemberIndex" parameterType="Integer" resultType="String">
+		SELECT c.SMALL_CATEGORY
+		FROM preference p
+		JOIN category c 
+		ON p.CATEGORY_ID = c.CATEGORY_ID
+		JOIN `member` m
+		ON m.MEMBER_INDEX  = p.MEMBER_INDEX
+		WHERE m.MEMBER_INDEX = #{memberIndex} AND
+		<foreach collection = "categoryList" item="category" open="(" close=")" separator='OR'>
+		c.LARGE_CATEGORY = #{category}
+		</foreach>
+	</select>
 
 	
 </mapper>
