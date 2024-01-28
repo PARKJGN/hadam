@@ -2,114 +2,142 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.domain.scheduletable.dao.ScheduleTableDAO">
+<mapper
+	namespace="com.example.domain.scheduletable.dao.ScheduleTableDAO">
 
 	<!--스케줄표 리스트 가져오기 -->
-	<select	id="getScheduleTableList" resultType="ScheduleTableVO" parameterType="ScheduleTableVO">
+	<select id="getScheduleTableList" resultType="ScheduleTableVO"
+		parameterType="ScheduleTableVO">
 		select st.*
-		from schedule_table st 
+		from schedule_table st
 		where st.MEMBER_INDEX = #{memberIndex} AND st.SCHEDULE_TABLE_STATUS = "대기"
 	</select>
 
 	<select id="getScheduleList" resultType="ScheduleVO">
-		select st.*, s.*, l.*, li.*
+		select st.*, s.*, l.*,
+		li.*
 		from schedule_table st
 		inner join schedule s
-		on st.SCHEDULE_TABLE_ID = s.SCHEDULE_TABLE_ID
+		on st.SCHEDULE_TABLE_ID
+		= s.SCHEDULE_TABLE_ID
 		inner join location l
-		on s.LOCATION_ID = l.LOCATION_ID
+		on s.LOCATION_ID =
+		l.LOCATION_ID
 		inner join location_image li
-		on l.LOCATION_ID = li.LOCATION_ID
-		where st.MEMBER_INDEX = #{memberIndex}
+		on l.LOCATION_ID =
+		li.LOCATION_ID
+		where st.MEMBER_INDEX = #{memberIn                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              dex}
 	</select>
 
 
-	<select id="getScheduleTable" parameterType="ScheduleTableVO" resultType="ScheduleTableVO">
+	<select id="getScheduleTable" parameterType="ScheduleTableVO"
+		resultType="ScheduleTableVO">
 		select st.*, s.*, l.*, li.*
 		from schedule_table st
-		inner join schedule s
+		inner join
+		schedule s
 		on st.SCHEDULE_TABLE_ID = s.SCHEDULE_TABLE_ID
-		inner join location l
+		inner join
+		location l
 		on s.LOCATION_ID = l.LOCATION_ID
 		inner join location_image li
 		on l.LOCATION_ID = li.LOCATION_ID
-		where st.SCHEDULE_TABLE_ID = #{scheduleTableId}
+		where st.SCHEDULE_TABLE_ID =
+		#{scheduleTableId}
 		and st.MEMBER_INDEX = #{memberIndex};
 	</select>
 
-	<select id="getScheduleTableId" parameterType="ScheduleTableVO" resultType="Integer">
+	<select id="getScheduleTableId" parameterType="ScheduleTableVO"
+		resultType="Integer">
 		select SCHEDULE_TABLE_ID from schedule_table where
 		MEMBER_INDEX = #{memberIndex} AND SCHEDULE_TABLE_ID =
 		#{scheduleTableId}
 	</select>
 
-	<select id="getSchedule" parameterType="ScheduleTableVO" resultType="ScheduleTableVO">
+	<select id="getSchedule" parameterType="ScheduleTableVO"
+		resultType="ScheduleTableVO">
 		select *
 		from schedule_table
-		WHERE SCHEDULE_TABLE_ID = #{scheduleTableId}
+		WHERE SCHEDULE_TABLE_ID =
+		#{scheduleTableId}
 	</select>
 
-	<update id="updateScheduleTableStatus" parameterType="ScheduleTableVO">
+	<update id="updateScheduleTableStatus"
+		parameterType="ScheduleTableVO">
 		update schedule_table set
 		SCHEDULE_TABLE_STATUS = "공유중"
 		WHERE SCHEDULE_TABLE_ID = #{scheduleTableId}
-	</update> 
-	
+	</update>
+
 	<!-- 스케줄테이블 리스트 출력 최대참가인원수도 같이출력 참여인원수도 /페이징처리 -->
-	<select id="getScheduleTableBoardList" resultType="ScheduleTableVO" parameterType="PagingVO">
-		 SELECT st.*, b.*, cr.CHAT_ROOM_MAX,
-         (SELECT COUNT(*) FROM chat_room_join crj2 WHERE crj2.CHAT_ROOM_ID = cr.CHAT_ROOM_ID GROUP BY crj2.CHAT_ROOM_ID) AS chatRoomCount
-	     FROM schedule_table st
-	     INNER JOIN board b ON st.SCHEDULE_TABLE_ID = b.SCHEDULE_TABLE_ID 
-	     JOIN chat_room cr ON cr.BOARD_ID = b.BOARD_ID
-	     JOIN chat_room_join crj ON crj.CHAT_ROOM_ID = cr.CHAT_ROOM_ID
-	     WHERE st.SCHEDULE_TABLE_STATUS = '공유중' AND crj.MEMBER_INDEX = st.SCHEDULE_TABLE_START_MEMBER
-	     LIMIT #{pageSize}  OFFSET #{recordIndex}
+	<select id="getScheduleTableBoardList"
+		resultType="ScheduleTableVO" parameterType="PagingVO">
+		SELECT st.*, b.*, cr.CHAT_ROOM_MAX,
+		(SELECT COUNT(*) FROM chat_room_join crj2 WHERE crj2.CHAT_ROOM_ID =
+		cr.CHAT_ROOM_ID GROUP BY crj2.CHAT_ROOM_ID) AS chatRoomCount
+		FROM schedule_table st
+		INNER JOIN board b ON st.SCHEDULE_TABLE_ID = b.SCHEDULE_TABLE_ID
+		JOIN chat_room cr ON cr.BOARD_ID = b.BOARD_ID
+		JOIN chat_room_join crj ON crj.CHAT_ROOM_ID = cr.CHAT_ROOM_ID
+		WHERE st.SCHEDULE_TABLE_STATUS = '공유중' AND crj.MEMBER_INDEX =
+		st.SCHEDULE_TABLE_START_MEMBER
+		LIMIT #{pageSize} OFFSET #{recordIndex}
 	</select>
-	
+
 	<!-- 스케줄테이블 리스트 사이즈 구하기 -->
-	<select id="scheduleTableListSize" parameterType="PagingVO" resultType="int">
+	<select id="scheduleTableListSize" parameterType="PagingVO"
+		resultType="int">
 		SELECT COUNT(*) AS totalCount
-        FROM schedule_table st
-      	INNER JOIN board b ON st.SCHEDULE_TABLE_ID = b.SCHEDULE_TABLE_ID 
-     	JOIN chat_room cr ON cr.BOARD_ID = b.BOARD_ID
-     	JOIN chat_room_join crj ON crj.CHAT_ROOM_ID = cr.CHAT_ROOM_ID
-   		WHERE st.SCHEDULE_TABLE_STATUS = '공유중' AND crj.MEMBER_INDEX = st.SCHEDULE_TABLE_START_MEMBER;
+		FROM schedule_table st
+		INNER JOIN board b ON st.SCHEDULE_TABLE_ID = b.SCHEDULE_TABLE_ID
+		JOIN chat_room cr ON cr.BOARD_ID = b.BOARD_ID
+		JOIN chat_room_join crj ON crj.CHAT_ROOM_ID = cr.CHAT_ROOM_ID
+		WHERE st.SCHEDULE_TABLE_STATUS = '공유중' AND crj.MEMBER_INDEX =
+		st.SCHEDULE_TABLE_START_MEMBER;
 	</select>
-	
-	<select id="getScheduleDataByBoardId" parameterType="Integer" resultType="ScheduleTableVO">
-		select b.*, s.*, st.*, li.*, l.*, m.*,c.CHAT_ROOM_MAX,(select count(*) from chat_room_join crj2  where crj2.CHAT_ROOM_ID = crj.CHAT_ROOM_ID  group by crj2.CHAT_ROOM_ID) as chatRoomCount
+
+	<select id="getScheduleDataByBoardId" parameterType="Integer"
+		resultType="ScheduleTableVO">
+		select b.*, s.*, st.*, li.*, l.*,
+		m.*,c.CHAT_ROOM_MAX,(select count(*) from chat_room_join crj2 where
+		crj2.CHAT_ROOM_ID = crj.CHAT_ROOM_ID group by crj2.CHAT_ROOM_ID) as
+		chatRoomCount
 		from schedule_table st
 		inner join board b
-		on b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
+		on
+		b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
 		inner join schedule s
-		on s.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID 
+		on
+		s.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
 		inner join location l
-		on l.LOCATION_ID = s.LOCATION_ID 
+		on l.LOCATION_ID = s.LOCATION_ID
 		inner join location_image li
-		on li.LOCATION_ID = s.LOCATION_ID 
+		on li.LOCATION_ID = s.LOCATION_ID
 		inner join member m
 		on m.MEMBER_INDEX = b.MEMBER_INDEX
 		inner join chat_room c
-		on c.BOARD_ID = b.BOARD_ID 
+		on c.BOARD_ID = b.BOARD_ID
 		join chat_room_join crj
-		on crj.CHAT_ROOM_ID  = c.CHAT_ROOM_ID 
+		on crj.CHAT_ROOM_ID = c.CHAT_ROOM_ID
 		where b.board_id= #{boardId} and crj.MEMBER_INDEX = st.MEMBER_INDEX
-	</select >
-    
-    <!-- 스케줄공유 게시글 수정하기위해 boardId 얻어오기 -->
-	<select id="getBoardIdByScheduleTable" parameterType="integer" resultType="ScheduleTableVO">
+	</select>
+
+	<!-- 스케줄공유 게시글 수정하기위해 boardId 얻어오기 -->
+	<select id="getBoardIdByScheduleTable" parameterType="integer"
+		resultType="ScheduleTableVO">
 		select b.*, st.*
 		from schedule_table st
-		inner join board b 
-		on b.SCHEDULE_TABLE_ID  = st.SCHEDULE_TABLE_ID
+		inner join board b
+		on b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
 		where board_id = #{boardId}
 	</select>
-	
-	<update id="updateScheduleTableStatusToWait" parameterType="BoardVO">
+
+	<update id="updateScheduleTableStatusToWait"
+		parameterType="BoardVO">
 		update schedule_table st
 		inner join board b
-		on b.SCHEDULE_TABLE_ID  = st.SCHEDULE_TABLE_ID 
+		on
+		b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
 		set st.SCHEDULE_TABLE_STATUS = "대기"
 		WHERE b.BOARD_ID = #{boardId}
 	</update>
@@ -126,9 +154,10 @@
 			select LAST_INSERT_ID()
 		</selectKey>
 	</insert>
-	
-	<select id="searchScheduleBoards" parameterType="BoardVO" resultType="ScheduleTableVO">
-		
+
+	<select id="searchScheduleBoards" parameterType="BoardVO"
+		resultType="ScheduleTableVO">
+
 	</select>
-	
+
 </mapper>
