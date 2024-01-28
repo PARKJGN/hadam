@@ -91,11 +91,11 @@
                             </div>
                         
                             <ul>
-                                <li><a href="/mypage/mypagePassword"> 마이페이지 </a></li>
-                                <li><a href="/mypage/mypageFavorites"> 즐겨찾기 </a></li>
+                                <li><a href="/mypage/mypagePassword"> 개인정보수정 </a></li>
+                                <li><a href="/mypage/mypageFavorites"> 찜 장소 </a></li>
                                 <li><a href="/mypage/mypageEntry">  동행신청  </a></li>
-                                <li><a href="/mypage/mypageSchedule">  스케줄관리  </a></li>
-                                <li><a href="/mypage/mypageBoard"> 게시글관리 </a></li>
+                                <li><a href="/mypage/mypageSchedule">  내 스케줄  </a></li>
+                                <li><a href="/mypage/mypageBoard"> 내 게시글 </a></li>
                             </ul>
                         </div>
                         </c:if>

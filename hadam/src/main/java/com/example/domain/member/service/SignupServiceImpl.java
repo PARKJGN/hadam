@@ -132,7 +132,7 @@ public class SignupServiceImpl implements SignupService{
 //			필수 헤더 세팅
 	        conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 	        conn.setDoOutput(true); 						//OutputStream으로 POST 데이터를 넘겨주겠다는 옵션.
-	        
+
 	        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 	        StringBuilder sb = new StringBuilder();
 	        
@@ -193,7 +193,8 @@ public class SignupServiceImpl implements SignupService{
 		        conn.setRequestMethod("POST");
 		        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 		        conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-
+		        
+		        
 		        int responseCode = conn.getResponseCode();
 //		        log.info("[KakaoApi.getUserInfo] responseCode : {}",  responseCode);
 
@@ -214,24 +215,27 @@ public class SignupServiceImpl implements SignupService{
 
 		        
 		        JsonElement el = JsonParser.parseString(result);
-		        
+		        System.out.println(result);
+		        String id =  (String) el.getAsJsonObject().get("id").getAsString();
 		        JsonObject properties = el.getAsJsonObject().get("properties").getAsJsonObject();
 		        JsonObject kakaoAccount = el.getAsJsonObject().get("kakao_account").getAsJsonObject();
-
-		        System.out.println(properties.getAsJsonObject());
+		        	
+//		        System.out.println("도와줘요 카카오"+properties.getAsJsonObject());
+//		        System.out.println("도와줘요 카카오"+kakaoAccount.getAsJsonObject());
 		        
+		        String memberId = id;
 		        String memberNickname = properties.getAsJsonObject().get("nickname").getAsString();
-				/*String memberSex = properties.getAsJsonObject().get("gender").getAsString();
-				String birthday = properties.getAsJsonObject().get("birthday").getAsString();
-				String birthyear = properties.getAsJsonObject().get("birthyear").getAsString();
-				String memberPhoneNumber = properties.getAsJsonObject().get("phone_number").getAsString();
-				
-				System.out.println(birthyear+"/"+birthday);*/
-		        
+				String memberSex = kakaoAccount.getAsJsonObject().get("gender").getAsString();
+				String birthyear = kakaoAccount.getAsJsonObject().get("birthyear").getAsString();
+				String birthday = kakaoAccount.getAsJsonObject().get("birthday").getAsString();
+				String memberPhoneNumber = kakaoAccount.getAsJsonObject().get("phone_number").getAsString();
+
+				vo.setMemberId(memberId);
+				vo.setMemberPassword(memberId);
 		        vo.setMemberNickname(memberNickname);
-				/*vo.setMemberSex(memberSex);
-				vo.setMemberPhoneNumber(memberPhoneNumber);*/
-		        
+				vo.setMemberSex(memberSex);
+				vo.setMemberPhoneNumber(memberPhoneNumber);
+				vo.setMemberBirth(birthyear+birthday);
 		        
 		        br.close();
 
@@ -240,6 +244,14 @@ public class SignupServiceImpl implements SignupService{
 		    }
 		    return vo;
 		
+	}
+	
+	
+	/*취향 설정했는지 확인 */
+	public Integer checkPreference(String memberId) {
+		
+		
+		return null;
 	}
 	
 }

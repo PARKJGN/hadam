@@ -4,11 +4,11 @@
 
 <!--
  	파일명 	mypageBoard
-	페이지명	동행신청 받는 페이지
+	페이지명	내 게시물 페이지
 	작성자 	최성익  
 -->
 
-<!-- <link type="text/css" rel="stylesheet" href="/css/mypage/mypageSchedule.css"> -->
+<link type="text/css" rel="stylesheet" href="/css/mypage/mypageBoard.css">
 
 <!-- header-->
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
@@ -33,12 +33,12 @@
 							<div id="table">
 								<!--자유게시판 컬럼명  -->
 
-								<table border="1" id="tableTh" width="100%">
-									<thead min-width="900px">
+								<table border="1" id="tableTh">
+									<thead>
 										<tr>
-											<th width="70%" style="font-weight: bold">제목</th>
-											<th width="20%" style="font-weight: bold">날짜</th>
-											<th width="10%" style="font-weight: bold">조회수</th>
+											<th class="boardTitle">제목</th>
+											<th class="boardDate">날짜</th>
+											<th class="boardCount">조회수</th>
 										</tr>
 									</thead>
 								</table>
@@ -48,25 +48,25 @@
 
 								<!-- 게시판 목록출력 -->
 								<div class="" id="boardTd">
-									<table border="1" id="tableList" width="100%" min-width="900px">
-										
+									<table border="1" id="tableList">
+										<tbody>
 										<c:forEach items="${boardList}" var="board">
-											<tbody>
-												<tr>
-													<td width="70%"><a
-														href="/community/boardView?boardId=${board.boardId}"
-														style="text-decoration: none; color: black;">${board.boardTitle}</a></td>
-													<td width="20%">2022-13-54</td>
-													<td width="10%">${board.boardViews}</td>
+											
+												<tr class="boardList">
+													<td class="boardTitle"><a
+														href="/community/boardView?boardId=${board.boardId}">
+														<div class="boardTitle">${board.boardTitle}</div></a></td>
+													<td class="boardDate">2022-13-54</td>
+													<td class="boardCount">${board.boardViews}</td>
 												</tr>
 												<tr>
 													<td><hr style="opacity: 0.1;" /></td>
 													<td><hr style="opacity: 0.1;" /></td>
 													<td><hr style="opacity: 0.1;" /></td>
 												</tr>
-											</tbody>
+											
 										</c:forEach>
-									
+									</tbody>
 									</table>
 									<hr style="opacity: 0.1;" />
 

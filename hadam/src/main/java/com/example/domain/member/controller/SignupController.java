@@ -109,11 +109,11 @@ public class SignupController {
 	@RequestMapping(value="/naverSignup", method=RequestMethod.POST)
 	@ResponseBody
 	public Integer naverSignup(MemberVO vo) {
-		System.out.println("네이버 회원가입 시도"+vo);
+//		System.out.println("네이버 회원가입 시도"+vo);
 		return signupService.naverSignup(vo);
 	}
 	
-	/* 카카오 회원가입 */
+	/* 카카오 회원가입 - 가입이력 있는지 확인해야 함*/
 	@RequestMapping(value="/kakaoCallback", method=RequestMethod.GET)
 	public String kakaoSignup(@RequestParam(value="code", required=false) String code) {
 //		인가 코드 받아오기
@@ -124,8 +124,14 @@ public class SignupController {
 		
 //		사용자 정보 받기
 		MemberVO vo = signupService.getKakaoUserInfo(accessToken);
-		System.err.println("정보 다 가져옴 " + vo);
-		return  "redirect:/index";
+//		System.err.println("정보 다 가져옴 " + vo);
+		
+		String result = signupService.memberIdCheck(vo.getMemberId());
+
+		if (result!=null) return "";
+		else return "";
+		
+//		return  "redirect:/index";
 	}
 	
 	

@@ -314,10 +314,14 @@
 				<a id="naverIdLogin_loginButton" href="javascript:void(0)"><button
 						class='loginbtn'>
 						<img src="/images/sign/naverloginbtn.png" class='naverloginbtn'>
+					</button></a> <a id="kakaoLoginBtn"
+					href="https://kauth.kakao.com/oauth/authorize?
+					response_type=code&
+					client_id=1bce4a6cad3104a2d5cc6134e1af3958&
+					redirect_uri=http://localhost:8080/signup/kakaoCallback"><button
+						class='loginbtn'>
+						<img src="/images/sign/kakaologinbtn.png" class='kakaologinbtn'>
 					</button></a>
-				<button class='loginbtn'>
-					<img src="/images/sign/kakaologinbtn.png" class='kakaologinbtn'>
-				</button>
 
 				<div class="log-separator fl-wrap">
 					<div class="soc-log fl-wrap"></div>

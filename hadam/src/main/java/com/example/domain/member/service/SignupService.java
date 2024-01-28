@@ -15,5 +15,8 @@ public interface SignupService {
 	Integer naverSignup(MemberVO vo);										// 네이버 회원정보 입력
 	
 	String getKakaoAccessToken(String code);								// 카카오 accesstoken 가져오기
-	MemberVO getKakaoUserInfo(String accessToken);				// 카카오 사용자 정보 받아오기
+	MemberVO getKakaoUserInfo(String accessToken);							// 카카오 사용자 정보 받아오기
+	
+	Integer checkPreference(String memberId);								// 취향 설정했는지 확인
+	
 }
