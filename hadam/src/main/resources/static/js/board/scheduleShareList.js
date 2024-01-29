@@ -3,7 +3,6 @@
  */
 // 모달창 상세페이지           
 function openDetailModal(boardId,memberIndex) {
-	       
 	 $.ajax({
 		   
 		 type:"GET",
@@ -12,7 +11,6 @@ function openDetailModal(boardId,memberIndex) {
 			 boardId: boardId
 		 }, 
 		 success: function (data){ 
-			 
 			 console.log('성공',data);
 			 console.log('data[0].memberIndex', data[0].memberIndex);
 			 console.log('memberIndex', memberIndex);
@@ -304,7 +302,7 @@ const scheduleAttend = (boardId,memberIndex, shceduleTableId) => {
 		data : {
 			boardId : boardId,
 			shceduleTableId : shceduleTableId,
-			memberIndex : memberIndex
+			memberIndex:memberIndex
 		},
 		success : function(result) {
 			console.log("boardId가져오기",result);
@@ -312,7 +310,8 @@ const scheduleAttend = (boardId,memberIndex, shceduleTableId) => {
 			
 			let output = '<input type="hidden" name="boardId" value="'+result[0].boardId+'"/>' ;
 			    output += '<input type="hidden" name="scheduleTableId" value="'+result[0].scheduleTableId+'"/>'
-				output += '<input type="hidden" name="memberIndex" value="'+result[0].memberIndex+'"/>'
+			    output += '<input type="hidden" name="memberIndex" value="'+result[0].memberIndex+'"/>'
+			
 			document.getElementById('getBoardId').innerHTML = output;
 		},
 		error : function(error){
