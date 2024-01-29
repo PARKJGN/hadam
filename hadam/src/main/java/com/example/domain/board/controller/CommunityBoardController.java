@@ -368,7 +368,7 @@ public class CommunityBoardController {
 		long id = (long) vo.getMemberIndex();
 
 		// 댓글을 달았을 때 댓글 주인에게 알림이 가게하는 함수. - 건일
-		notificationService.notify(id, "새로운 댓글이 달렸습니다.");
+		notificationService.notify(id, "새로운 댓글이 달렸습니다."+vo.getBoardId());
 
 		return list;
 	}
@@ -589,6 +589,14 @@ public class CommunityBoardController {
 	public String scheduleAttendWrite(ChatRoomVO cvo, EntryApplicationVO vo, @RequestParam("boardId") Integer boardId,
 			HttpSession session) {
 
+		//[알림] - 건일 
+		//코드 구조상 EntryApplicationVO에 ScheduleShareList주인의 memberidx를 담아왔습니다. 참고해주세요.
+		// 댓글을 달았을 때 댓글 주인memberindex를 Long으로 바꿔주는 코드. - 건일
+		long id = (long) vo.getMemberIndex();
+		// 참가신청을 했을 때 게시글 주인에게 알림이 가게하는 함수. - 건일
+		notificationService.notify(id, "새로운 참가 신청이 들어왔습니다.");
+		//end of [알림] - 건일
+		
 		// session에 memberIndex값 받아오기
 		vo.setMemberIndex((Integer) session.getAttribute("memberIndex"));
 		vo.setBoardId(boardId);
@@ -596,6 +604,9 @@ public class CommunityBoardController {
 		// entry테이블에 저장
 		entryService.scheduleAttendSave(vo);
 
+		 
+		
+		
 		return "redirect:scheduleShareList";
 	}
 

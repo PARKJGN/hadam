@@ -24,7 +24,8 @@ public class NotificationController {
 	 */
 	 @GetMapping(value = "/subscribe/{id}", produces ="text/event-stream")
 	    public SseEmitter subscribe(@PathVariable Long id) {
-//		 System.out.println("emitter생성시도");
+		 
+		 System.out.println("NotificationController/subscribe:"+id);
 	        return notificationService.subscribe(id);
 	    }
 

@@ -3,7 +3,6 @@
  */
 // 모달창 상세페이지           
 function openDetailModal(boardId,memberIndex) {
-	       
 	 $.ajax({
 		   
 		 type:"GET",
@@ -12,7 +11,6 @@ function openDetailModal(boardId,memberIndex) {
 			 boardId: boardId
 		 }, 
 		 success: function (data){ 
-			 
 			 console.log('성공',data);
 			let output  = "</div>";
 			    output += '<div class="list-main-wrap fl-wrap card-listing" id="box1">';
@@ -29,8 +27,8 @@ function openDetailModal(boardId,memberIndex) {
 			    
 			    
 			     if (data[0].memberIndex !== memberIndex) {
-			    output += '<div class="shareBtnBox">';																														   // 스케줄 참가하기 버튼
-			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" role="button" id="shareBtn1" onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
+			    output += '<div class="shareBtnBox1">';																														   // 스케줄 참가하기 버튼
+			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" role="button" id="shareBtn1" onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + data[0].memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
 			    output += '</div>';
 				}
 				
@@ -294,7 +292,8 @@ const scheduleAttend = (boardId,memberIndex, shceduleTableId) => {
 		url: '/community/getBoardId',
 		data : {
 			boardId : boardId,
-			shceduleTableId : shceduleTableId
+			shceduleTableId : shceduleTableId,
+			memberIndex:memberIndex
 		},
 		success : function(result) {
 			console.log("boardId가져오기",result);
@@ -302,6 +301,8 @@ const scheduleAttend = (boardId,memberIndex, shceduleTableId) => {
 			
 			let output = '<input type="hidden" name="boardId" value="'+result[0].boardId+'"/>' ;
 			    output += '<input type="hidden" name="scheduleTableId" value="'+result[0].scheduleTableId+'"/>'
+			    output += '<input type="hidden" name="memberIndex" value="'+result[0].memberIndex+'"/>'
+
 			document.getElementById('getBoardId').innerHTML = output;
 		},
 		error : function(error){

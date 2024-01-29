@@ -52,6 +52,8 @@ public class NotificationServiceImpl implements NotificationService{
      * @param data - 전송할 데이터.
      */
 	public void sendToClient(Long id, Object data) {
+		 System.out.println("sendToClient도착 :"+id+"/"+data);
+
 		SseEmitter emitter = emitterRepository.get(id);
         if (emitter != null) {
             try {
