@@ -154,6 +154,9 @@
 </div>
 
 <!--footer end -->
+<script type="text/javascript">
+
+</script>
 
 <script type="text/javascript" src="/js/schedule/schedulesubmit.js"></script>
 <script type="text/javascript" src="/js/schedule/schedulemodal.js"></script>
