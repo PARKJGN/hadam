@@ -9,42 +9,36 @@
 		select * from member where member_index = #{memberIndex}
 	</select>
 	
-	<!-- 모든 회원 정보 조회 -->
-	<select id="allMemberList" resultType="MemberVO">
-		select * from member order by member_index desc 
-	</select>
-	
 	
 	<!-- 관리자 -->
-	<!-- 계정 정보 조회 -->
-	<select id="getAccountInfo">
-		select member_index, admin_status, member_nickname, member_status
-		from member
-		where member_id = #{memberId}
+	<!-- 모든 회원 정보 조회 -->
+	<select id="allMemberList" resultType="MemberVO">
+		select m.*,
+		 (select count(*) from board b where b.MEMBER_INDEX = m.MEMBER_INDEX ) as board_cnt,
+		 (select count(*) from comment c where c.MEMBER_INDEX = m.MEMBER_INDEX) as comment_cnt,
+		 (select count(*) from schedule s where s.MEMBER_INDEX = m.member_index) as schedule_cnt
+		from member m
+		order by m.MEMBER_INDEX desc
 	</select>
 	
-	<!-- 계정 생성 -->
-	<insert id="accountC">
-		insert into member(admin_status, member_id, member_password,
-		member_phonenumber, member_nickname, member_sex, member_birth,
-		member_registe_date)
-		values(#{adminStatus}, #{memberId}, #{memberPassword}, #{memberPhoneNumber}
-		, #{memberNickname}, #{memberSex}, #{memberBirth}, #{memberRegisteDate})
-	</insert>
+	<!-- 계정 정보 조회 -->
+	<select id="getAccountInfo" resultType="MemberVO">
+		select * from member where member_id = #{memberId}
+	</select>
 	
 	<!-- 계정 정보 수정 -->
-	<update id="accountU">
+	<update id="accountU" parameterType="MemberVO">
 		update member
 		set admin_status = #{adminStatus},
 			member_nickname = #{memberNickname},
 			member_status = #{memberStatus}
-		where member_id = #{memberId}
+		where member_index = #{memberIndex}
 	</update>
 	
 	<!-- 계정 삭제 -->
-	<delete id="accountD">
+	<delete id="accountD" parameterType="MemberVO">
 		delete from member
-		where member_id = #{memberId}
+		where member_index = #{memberIndex}
 	</delete>
 	
 </mapper>

@@ -17,11 +17,8 @@ public interface MemberService {
 	// 관리자
 	
 	// 계정 정보 조회
-	MemberVO getAccountInfo(String id);
+	MemberVO getAccountInfo(String memberId);
 	
-	// 계정 생성
-	void accountC(MemberVO vo);
-		
 	// 계정 정보 수정
 	MemberVO accountU(MemberVO vo);
 		

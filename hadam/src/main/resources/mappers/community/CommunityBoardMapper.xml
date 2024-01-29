@@ -175,6 +175,6 @@
 	<!-- 게시글 삭제 -->
 	<delete id="boardD">
 		delete from board
-		set board_id = #{boardId}
+		where board_id = #{boardId}
 	</delete>
 </mapper>

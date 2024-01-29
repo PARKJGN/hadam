@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.board.service.CommunityBoardService;
 import com.example.domain.board.vo.BoardVO;
+import com.example.domain.comment.vo.CommentVO;
 import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
 import com.example.domain.member.service.MemberService;
@@ -43,37 +44,37 @@ public class AdminController {
 	public void adminAccountManagement(Model m) {
 		
 		List<MemberVO> list = memberService.allMemberList();
-//		System.out.println("받아온 memberVO 값"+list);
+		
 		m.addAttribute("memberList",list);
 	}
 	
+	// 계정 정보 조회
 	@ResponseBody
 	@RequestMapping("/getAccountInfo")
-	public MemberVO getuserInfo(String id) {
-		MemberVO accout = memberService.getAccountInfo(id);
-		return accout;
+	public MemberVO getAccountInfo(String memberId) {
+		
+		System.out.println("bbbbbbbbbb"+ memberId);
+		MemberVO account = memberService.getAccountInfo(memberId);
+		System.out.println("aaaaaaaaaaa" + account);
+		return account;
 	}
-	/*
+
+	// 계정에서 작성한 게시글 조회
 	@ResponseBody
 	@RequestMapping("/getAccountBoardList")
-	public List<BoardVO> getAccountBoardList(String boardWiter) {
-		List<BoardVO> list = 
-		
+	public List<BoardVO> getAccountBoardList(Integer memberIndex) {
+		List<BoardVO> list = boardService.getAccountBoardList(memberIndex);
 		return list;
 	}
+	
+	// 계정에서 작성한 댓글 조회
 	@ResponseBody
 	@RequestMapping("/getAccountCommentList")
-	public List<CommentVO> getAccountCommentList(String comWriter){
-		List<CommentVO> list = boardService.
+	public List<CommentVO> getAccountCommentList(Integer memberIndex){
+		List<CommentVO> list = boardService.getAccountCommentList(memberIndex);
 		return list;
 	}
-	*/
-	// 계정 생성
-	@RequestMapping("/adminAccountC")
-	public void adminAccountC(MemberVO vo) {
 		
-		memberService.accountC(vo);
-	}
 	
 	// 계정 정보 수정
 	@RequestMapping("/adminAccountU")

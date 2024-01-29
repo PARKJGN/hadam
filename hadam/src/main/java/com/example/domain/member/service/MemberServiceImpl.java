@@ -31,16 +31,11 @@ public class MemberServiceImpl implements MemberService{
 	
 	// 계정 정보 조회
 	@Override
-	public MemberVO getAccountInfo(String id) {
+	public MemberVO getAccountInfo(String memberId) {
 		
-		return memberDAO.getAccountInfo(id);
+		return memberDAO.getAccountInfo(memberId);
 	}
 	
-	// 계정 생성
-	@Override
-	public void accountC(MemberVO vo) {
-		
-	}
 
 	// 계정 정보 수정
 	@Override

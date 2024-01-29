@@ -202,13 +202,17 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 		communityBoardDAO.boardD(vo);
 	};
 
-
-
-
+	// 계정에서 작성한 게시글 조회
+	public List<BoardVO> getAccountBoardList(Integer memberIndex){
 	
-
-
-
+		return communityBoardDAO.getAccountBoardList(memberIndex);
+	};
+	
+	// 계정에서 작성한 댓글 조회
+	public List<CommentVO> getAccountCommentList(Integer memberIndex){
+		
+		return communityBoardDAO.getAccountCommentList(memberIndex);
+	};
 
 
 

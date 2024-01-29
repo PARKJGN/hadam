@@ -38,4 +38,13 @@ public class MemberVO {
 	private Date memberLeaveDate;
 	
 	private Integer memberApi;
+	
+	
+	// 관리자
+	// 유저가 작성한 스케줄 수, 게시글 수, 댓글 수 서브쿼리로 불러오기
+	private Integer scheduleCnt;
+	
+	private Integer boardCnt;
+	
+	private Integer commentCnt;
 }

@@ -86,4 +86,10 @@ public interface CommunityBoardDAO {
 	// 게시글 삭제
 	public void boardD(BoardVO vo);
 	
+	// 계정에서 작성한 게시글 조회
+	public List<BoardVO> getAccountBoardList(Integer boardIndex);
+	
+	// 계정에서 작성한 댓글 조회
+	public List<CommentVO> getAccountCommentList(Integer boardIndex);
+
 }
