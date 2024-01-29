@@ -262,10 +262,12 @@
             position:relative;
             bottom:-14px;
          }
+         
          #scheduleTitle > h5 a {
             text-decoration: none;
             color: #64A0FF;
-         } 
+         }
+          
          #timeBox h3{
             font-size:13px;
             white-space: nowrap;
@@ -350,7 +352,7 @@
 }
 
 .searchType{
-	    width: 110px;
+	width: 110px;
     border: 1px solid #bbb;
     border-radius: 8px;
     padding: 10px 12px;

@@ -71,12 +71,9 @@
 	                                    <option value="T">최신순</option>
 	                                    <option value="P">오래된순</option>
 	                                </select>
-	                              
 	                            </div>
 	                        </div>
 	                    </div>
-	                              
-								
 			</form> 
 			
 			<c:forEach items="${map}" var="map" varStatus="outerIndex">
