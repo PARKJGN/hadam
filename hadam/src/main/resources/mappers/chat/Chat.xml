@@ -92,4 +92,20 @@
 		VALUES (#{chatRoomId},#{memberIndex})
 	</insert>
 	
+	
+	<!-- 동행신청에서 수락 눌렀을 때 1 [최성익] -->
+    <select id="entryAcceptCheck" parameterType="integer" resultType="ChatRoomVO">
+    	SELECT * FROM CHAT_ROOM WHERE BOARD_ID = #{boardId}
+    </select>
+    <!-- 동행신청에서 수락 눌렀을 때 2 [최성익] -->
+    <select id="entryAcceptMaxCheck" resultType="integer">
+    	SELECT COUNT(*) FROM CHAT_ROOM_JOIN WHERE CHAT_ROOM_ID = #{chatRoomId}
+    </select>
+	<!-- 동행신청에서 수락 눌렀을 때 3 [최성익] -->
+	<insert id="entryAccept" parameterType="integer">
+		INSERT INTO CHAT_ROOM_JOIN (CHAT_ROOM_ID, MEMBER_INDEX, CHAT_ROOM_NAME)
+		VALUES(#{chatRoomId}, #{guestMemberIndex}, (SELECT BOARD_TITLE FROM BOARD WHERE BOARD_ID = #{boardId}))
+	</insert>
+	
+	
 </mapper>

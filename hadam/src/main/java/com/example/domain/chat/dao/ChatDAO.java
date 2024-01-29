@@ -3,6 +3,7 @@ package com.example.domain.chat.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.board.vo.BoardVO;
 import com.example.domain.chat.chatjoin.vo.ChatRoomJoinVO;
@@ -46,5 +47,11 @@ public interface ChatDAO {
 	// chatRoomJoin 테이블 insert
 	public void chatRoomJoinSave(ChatRoomJoinVO cjvo);
 
+	// 동행신청에서 수락 눌렀을 때 1 채팅방 번호랑 최대인원수 확인 [최성익]
+	ChatRoomVO entryAcceptCheck(@Param("boardId")Integer boardId, @Param("memberIndex") Integer guestMemberIndex);
+	// 동행신청에서 수락 눌렀을 때 2 참석 가능한 채팅방인지 확인 [최성익]
+	Integer entryAcceptMaxCheck(Integer chatRoomId);
+	// 동행신청에서 수락 눌렀을 때 3 참석하기 [최성익]
+	Integer entryAccept(@Param("chatRoomId") Integer chatRoomId, @Param("memberIndex") Integer guestMemberIndex, @Param("boardId") Integer boardId);
 	
 }

@@ -79,7 +79,25 @@ public class ChatServiceImpl implements ChatService{
 		chatDAO.updateChatRoomMax(vo);
 	}
 
+	// 동행신청에서 수락 눌렀을 때 [최성익]
+	public String entryAcceptCheck(Integer boardId, Integer guestMemberIndex) {
+		// 채팅방 번호랑 최대인원수 확인
+		ChatRoomVO result = chatDAO.entryAcceptCheck(boardId, guestMemberIndex);
+		Integer chatRoomId = result.getChatRoomId();
+		// 참석 가능한 채팅방인지 확인
+		Integer count = chatDAO.entryAcceptMaxCheck(chatRoomId);
 
+		if(count >= result.getChatRoomMax() ) {
+			return "정원이 마감된 스케줄 입니다";
+		}else {
+			Integer entryAcceptResult =  chatDAO.entryAccept(chatRoomId, guestMemberIndex, boardId);
+			if(entryAcceptResult==1) {
+				return "수락 되었습니다"; 
+			}else {
+				return "네트워크에 문제가 있습니다 잠시후 시도해 주세요";
+			}
+		}
+	}
 
 	
 	

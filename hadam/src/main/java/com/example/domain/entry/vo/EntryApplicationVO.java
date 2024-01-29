@@ -24,4 +24,7 @@ public class EntryApplicationVO {
 	
 	// 참가신청시 스케줄테이블아이디 들고오기
 	private Integer scheduleTableId;
+	
+	// 신청 현황 0대기 1수락 2거절 [최성익]
+	private Integer entryStatus;
 }

@@ -22,7 +22,8 @@
 		ON b.BOARD_ID = ea.BOARD_ID
 		JOIN `member` m 
 		ON b.MEMBER_INDEX = m.MEMBER_INDEX
-		WHERE b.MEMBER_INDEX = #{memberIndex};
+		WHERE b.MEMBER_INDEX = #{memberIndex} AND ea.ENTRY_STATUS IN (0, 1)
+		ORDER BY ea.ENTRY_APPLICATION_DATE ASC;
 	</select>
 	
 	<!-- 참가자 명단 확인 -->

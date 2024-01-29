@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* 동행 수락 버튼 */
+#entryAccept {
+	float : right;
+	padding: 6px 15px;
+	border-radius: 4px;
+	color: #fff;
+	background: #000;
+	border: none;
+	margin : 5px;
+	cursor: pointer;
+}
+
+/* 동행 거절 버튼 */
+#entryRejection {
+	float : right;
+	padding: 6px 15px;
+	border-radius: 4px;
+	color: #fff;
+	background: #000;
+	border: none;
+	margin : 5px;
+	cursor: pointer;
+}
+
+h4.h4_inline, p.p_inline {
+	display: inline;
+}
+
+
+#entryAccept:hover {
+	background: #3a91ed;
+} 
+
+#entryRejection:hover {
+	background: #ff0505c7;
+}

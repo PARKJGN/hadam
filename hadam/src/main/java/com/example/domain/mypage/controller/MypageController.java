@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.domain.board.service.CommunityBoardService;
 import com.example.domain.board.vo.BoardVO;
+import com.example.domain.chat.service.ChatService;
 import com.example.domain.entry.service.EntryService;
 import com.example.domain.entry.vo.EntryApplicationVO;
 import com.example.domain.favorites.service.FavoritesService;
@@ -54,6 +56,9 @@ public class MypageController {
 	
 	@Autowired
 	private CommunityBoardService communityBoardService;
+	
+	@Autowired
+	private ChatService chatService;
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
@@ -233,8 +238,18 @@ public class MypageController {
 		System.out.println(result);
 	}
 	
-	
-	
+	/*동행신청에서 수락 눌렀을때*/
+	@RequestMapping("/entryAccept")
+	public String entryAccept(@RequestParam("boardId") Integer boardId, 
+							@RequestParam("guestMemberIndex") Integer guestMemberIndex,
+							HttpSession session, Model model ) {
+		Integer hostMemberIndex = (Integer) session.getAttribute("memberIndex");
+		String result = chatService.entryAcceptCheck(boardId, guestMemberIndex);
+		
+		model.addAttribute("msg", result);
+		
+		return "/mypageEntry";
+	}
 	
 	
 }

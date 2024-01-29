@@ -40,7 +40,7 @@ public interface ChatService {
 	// chatRoomMax 업데이트
 	void updateChatRoomMax(BoardVO vo);
 	
+	// 동행신청에서 수락 눌렀을 때 (채팅방 번호랑 최대인원수 확인, 참석 가능한 채팅방인지 확인) [최성익]
+	String entryAcceptCheck(Integer boardId, Integer guestMemberIndex);
 
-
-	
 }
