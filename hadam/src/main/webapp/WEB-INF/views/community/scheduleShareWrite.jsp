@@ -31,6 +31,7 @@
 				</div>
 			</div>
 		</div>
+		<div class="container" id="full">
 		<section id="sec1" class="grey-b lue-bg middle-padding">
 			<div class="col-list-wrap fw-col-list-wrap">
 				<div class="list-single-main-item fl-wrap" id="writeBox">
@@ -101,7 +102,7 @@
 								value="공유" />
 
 						</form>
-						<a class="btn btn-primary" href="/community/scheduleShareList"
+						<a class="btn btn-primary" href="/community/scheduleShareList/1"
 							role="button" id="backBtn">취소</a>
 						<!-- 자유게시판목록으로 이동-->
 
@@ -116,6 +117,7 @@
 
 
 		</section>
+		</div>
 		<!-- section end -->
 	</div>
 	<!-- content end-->

@@ -357,7 +357,6 @@ public class CommunityBoardController {
 	public @ResponseBody List<CommentVO> commentSave(CommentVO vo, Model m, HttpSession session) {
 
 		// 알림기능 넣을려고 게시물등록자의 memberindex를 받아오기 위해 확인하려고 쓴코드입니다. - 건일
-
 		vo.setMemberIndex((Integer) session.getAttribute("memberIndex"));
 		communityBoardService.commentSave(vo);
 
@@ -457,7 +456,7 @@ public class CommunityBoardController {
 	// 스케줄게시판 검색
 	@RequestMapping("/searchScheduleBoards")
 	public String searchScheduleBoards(Model m, @RequestParam("searchType") String searchType,
-			@RequestParam("keyword") String keyword) {
+		@RequestParam("keyword") String keyword) {
 
 		if (searchType != null && keyword != null) {
 			BoardVO vo = new BoardVO();
@@ -467,7 +466,7 @@ public class CommunityBoardController {
 			List<ScheduleTableVO> scheduleTableList = scheduleTableService.searchScheduleBoards(vo);
 		}
 
-		return "/community/scheduleShareList";
+		return "/community/scheduleShareList/1";
 	}
 
 	// 스케줄 상세 모달
@@ -556,7 +555,7 @@ public class CommunityBoardController {
 		// 글 수정시 schedule 공유중으로 바꾸기
 		scheduleTableService.updateScheduleTableStatus(svo);
 
-		return "redirect:scheduleShareList";
+		return "redirect:scheduleShareList/1";
 	}
 
 	// 스케줄 공유 게시판 삭제
@@ -581,7 +580,7 @@ public class CommunityBoardController {
 		// 공유게시판삭제
 		communityBoardService.deleteBoard(boardId);
 
-		return "redirect:scheduleShareList";
+		return "redirect:scheduleShareList/1";
 	}
 
 	// 스케줄 참가하기
@@ -596,7 +595,7 @@ public class CommunityBoardController {
 		// entry테이블에 저장
 		entryService.scheduleAttendSave(vo);
 
-		return "redirect:scheduleShareList";
+		return "redirect:scheduleShareList/1";
 	}
 
 	@RequestMapping("/deleteScheduleComment")
@@ -604,7 +603,7 @@ public class CommunityBoardController {
 
 		communityBoardService.deleteComment(boardId);
 
-		return "redirect:scheduleShareList";
+		return "redirect:scheduleShareList/1";
 
 	}
 

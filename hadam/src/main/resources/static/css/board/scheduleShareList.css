@@ -1,327 +1,332 @@
 @charset "UTF-8";
 
 
-#listBox {
-                   display: flex;
-                   justify-content: space-between;
-                   background-color: white;
-                   border-radius: 10px;
-                   height:200px;
-                   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);         
-                   width:1200px;
-              }
-              
-              #listBox1 {
-              	  height:200px;
-              	  border-radius: 10px;
-              	  background-color: white;
-              	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
-              	  display: flex;
-                  justify-content: space-between;
-              }
-              
-              #replyBox{
-		
-					
-					height:250px;
-				}
-				
-				#replyBox h4 {
-					position:relative;
-					top:-20px;
-				}
-				
-				#replyBox p {
-					position:relative;
-					left:-40px;
-				}
-				
-				#replyinnerBox {
-					width:1100px;
-					position:relative;
-					left:-20px;
-					top:-50px;
-				}
-				#replyinnerBox span {
-					position:relative;
-					top:-100px;
-					
-				}
-				
-				#userInfo {
-            		margin-top:35px;
-            	}
-            	
-            	#danger{
-            		width:50px;
-            		height:20px;
-            		font-size:12px;
-            		margin-left:610px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				
-            	}
-            	
-            	#commentContent{
-            		border-radius: 10px;
-				    background-color: #f9f9f9;
-				    margin-left: -1110px;
-				    margin-top: 70px;
-				    width: 1100px;
-				    border: 0px;
-            	}
-            	
-            	.commentBtn{
-            		text-align:right;
-            	}
-            	
-            	.dangerBox{
-            		text-align:right;
-            		position:relative;
-            		top:-70px;
-            	}
-            	
-            	#replydateBox {
-            		position:relative;
-            		bottom:-50px;
-            	}
-            	
-            	#replyWriteBox {
-   
-            		
-            		height:220px;
-            	}
-            	
-            	#COMMENT_CONTENT {
-            		height:80px;
-            	}
-            	
-            	#comment {
-          			height:30px;
-            		
-            		font-size:14px;
-            	}
-            	
-            	#chatBox {
-            		position:relative;
-            		top:-50px;
-            		height:100px;
-            	}
-            	
-            	#replyImage {
-            		position:relative;
-            		bottom:-10px;
-            		left:-10px;
-            	}
-				
-              .asdf1{
-              	width:1200px;
-              	text-align:center;
-              	position:relative;
-              	right:-900px;
-              	margin-top:30px;
-              	border-radius:10px; 
-           	    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); 
-              }
-              
-              .asdf2{
-              	width:1000px;
-              	text-align:center;
-              	position:relatvie;
-              	right:-1000px;
-              	margin-top:200px;
-              }
-              
-              
-              .modal-fullscreen .modal-content {
-              	height:800px;
-              }
-              
-              .buttonBox {
-              	text-align:right;
-    			position: relative;
-    			top: -60px;
-              }
-              
-              .modalBtn{
-                height:25px;
-                font-size:14px;     
-                text-align : center;
-                padding : 0 0;	
-                width:70px;
-                margin-left:-70px;
-                margin-top:-20px;
-              }
-              
-              #listItem {                
-                 width: 70px;
-              	 flex: 1;
-      			 box-sizing: border-box; /* 마진과 패딩을 요소의 크기에 포함시키기 위해 */
-      			 background-color: white; /* 테스트를 위한 배경색 설정 */
-      			 text-align: center; /* 텍스트를 가운데 정렬하기 위해 */
-     			 margin: 5px;
-              }
-              
-              .listImg {
-              	height:85px;
-              }
-              
-              #box {
-                 width:1200px;
-                 position:relative;
-                 right:-700px;
-              }
-              
-              #box1 {
-              	
-              }
-              
-              .infor {
-              	margin-top:30px;
-              	margin-right:30px;
-              }
-              
-              
-              #information {
-                 margin-top: 60px;
-                 width:250px;
-              }
-              
-              #shareBtn {
-                width:120px;
-                height:25px;
-                font-size:14px;     
-                text-align : center;
-                padding : 0 0;
-                margin-bottom: -20px;
-                
-              }
-              
-              #shareBtn1 {
-              	width:120px;
-                height:25px;
-                font-size:14px;     
-                text-align : center;
-                padding : 0 0;
-                margin-top: -40px;
-              }
-              
-             .pagination {
-                 position:relative;
-                 right:-550px;
-              }
-              
-            .arrowBox {
-              display: flex;  
-              align-items: center;
-              height: 50vh;
-              margin-top: -100px;
-            }
-			
-			.arrowBox1 {
-			  display: flex;  
-              align-items: center;
-              height: 50vh;
-              margin-top: -130px;
-			}
-			
-            .arrow {
-              width: 0;
-              height: 0;
-              border-top: 10px solid transparent;
-              border-bottom: 10px solid transparent;
-              border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
-              position:relative;
-              right:-25px;
-              top:-50px;
-            }
+ #listBox {
+                display: flex;
+                justify-content: space-between;
+                background-color: white;
+                border-radius: 10px;
+                height:200px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);         
+                width:1200px;
+           }
+           
+           #listBox1 {
+           	  height:200px;
+           	  border-radius: 10px;
+           	  background-color: white;
+           	  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+           	  display: flex;
+               justify-content: space-between;
+           }
+           
+           #replyBox{
 
-            .timeTaken {
-               
-               white-space: nowrap;
-               margin-top:-20px;
-            }
-            
-         	.shareBtnBox{
+		
+		height:250px;
+	}
+	
+	#replyBox h4 {
+		position:relative;
+		top:-20px;
+	}
+	
+	#replyBox p {
+		position:relative;
+		left:-40px;
+	}
+	
+	#replyinnerBox {
+		width:1100px;
+		position:relative;
+		left:-20px;
+		top:-50px;
+	}
+	#replyinnerBox span {
+		position:relative;
+		top:-100px;
+		
+	}
+	
+	#userInfo {
+         		margin-top:35px;
+         	}
+         	
+         	#danger{
+         		width:50px;
+         		height:20px;
+         		font-size:12px;
+         		margin-left:610px;
+         		text-align : center;
+			padding : 0 0;
+			
+         	}
+         	
+         	#commentContent{
+         		border-radius: 10px;
+	    background-color: #f9f9f9;
+	    margin-left: -1110px;
+	    margin-top: 70px;
+	    width: 1100px;
+	    border: 0px;
+         	}
+         	
+         	.commentBtn{
+         		text-align:right;
+         	}
+         	
+         	.dangerBox{
          		text-align:right;
          		position:relative;
-         		bottom:-95px;
+         		top:-70px;
          	}
-            
-            .whatTime {
-               
-            }
-            
-            #scheduleTitle {
-               text-align:left;
-               position:relative;
-               bottom:-20px;
-            }
-            #scheduleTitle > h5 a {
-               text-decoration: none;
-               color: #64A0FF;
-            } 
-            #timeBox h3{
-               font-size:13px;
-               white-space: nowrap;
-            }
-            
-            #moveTab {
-             position:relative;
-             left:-90px;
-            }
-            
-            #realArrow {
-               padding-top: 80px;
-               
-               /* 
-               text-decoration:none;
-               font-size:1px;
-               position: relative;
-               display:inline-block; */
-            }
-            
-            #realArrow span{
-                position: absolute;
-                top: 0;
-                left: 50%;
-                width: 24px;
-                height: 24px;
-                margin-left: -12px;
-                border-left: 1px solid black;
-                border-bottom: 1px solid black;
-                -webkit-transform: rotate(-45deg);
-                transform: rotate(-135deg);
-                -webkit-animation: sdb 2s infinite;
-                animation: sdb 2s infinite;
-                opacity: 0;
-                box-sizing: border-box;
-            }
-            
-            #contactform {
-            	position:relative;
-            	bottom:-30px;
-            }
-           
-           #comment1 {
-           		height: 30px;
-			    font-size: 14px;
-			    margin-left: -60px;
-			    margin-top: 240px;
-           }
-          
-               
-         #userInfo {
-            position:relative;
-            right:-150px;
-            margin-top:-40px;
-         }
-         
-         #userInfo1 {
          	
+         	#replydateBox {
+         		position:relative;
+         		bottom:-50px;
+         	}
+         	
+         	#replyWriteBox {
+
+         		
+         		height:220px;
+         	}
+         	
+         	#COMMENT_CONTENT {
+         		height:80px;
+         	}
+         	
+         	#comment {
+       			height:30px;
+         		
+         		font-size:14px;
+         	}
+         	
+         	#chatBox {
+         		position:relative;
+         		top:-50px;
+         		height:100px;
+         	}
+         	
+         	#replyImage {
+         		position:relative;
+         		bottom:-10px;
+         		left:-10px;
+         	}
+	
+           .asdf1{
+           	width:1200px;
+           	text-align:center;
+           	position:relative;
+           	right:-900px;
+           	margin-top:30px;
+           	border-radius:10px; 
+        	    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); 
+           }
+           
+           .asdf2{
+           	width:1000px;
+           	text-align:center;
+           	position:relatvie;
+           	right:-1000px;
+           	margin-top:200px;
+           }
+           
+           
+           .modal-fullscreen .modal-content {
+           	height:800px;
+           }
+           
+           .buttonBox {
+           	text-align:right;
+ 			position: relative;
+ 			top: -60px;
+           }
+           
+           .modalBtn{
+             height:25px;
+             font-size:14px;     
+             text-align : center;
+             padding : 0 0;	
+             width:70px;
+             margin-left:-70px;
+             margin-top:-20px;
+           }
+           
+           #listItem {                
+              width: 70px;
+           	 flex: 1;
+   			 box-sizing: border-box; /* 마진과 패딩을 요소의 크기에 포함시키기 위해 */
+   			 background-color: white; /* 테스트를 위한 배경색 설정 */
+   			 text-align: center; /* 텍스트를 가운데 정렬하기 위해 */
+  			 margin: 5px;
+           }
+           
+           .listImg {
+           	height:85px;
+           }
+           
+           #box {
+              width:1200px;
+           }
+           
+           #box1 {
+           	
+           }
+           
+           .infor {
+           	margin-top:30px;
+           	margin-right: 50px;
+ 			position: relative;
+			    right: -30px;
+           }
+           
+           
+           #information {
+              margin-top: 60px;
+              width:250px;
+           }
+           
+           #shareBtn {
+             width:120px;
+             height:25px;
+             font-size:14px;     
+             text-align : center;
+             padding : 0 0;
+             margin-bottom: -80px;
+             
+           }
+           
+           #shareBtn1 {
+           	width:120px;
+             height:25px;
+             font-size:14px;     
+             text-align : center;
+             padding : 0 0;
+             margin-top: -40px;
+           }
+           
+          .pagination {
+              position:relative;
+              right:-490px;
+              margin-bottom:60px;
+           }
+           
+         .arrowBox {
+           display: flex;  
+           align-items: center;
+           height: 50vh;
+           flex: 1;
+ 		  box-sizing: border-box;
+         }
+
+		.arrowBox1 {
+  		   display: flex;  
+           align-items: center;
+           height: 50vh;
+           flex: 1;
+		   box-sizing: border-box;
+		}
+
+         .arrow {
+           width: 0;
+           height: 0;
+           border-top: 10px solid transparent;
+           border-bottom: 10px solid transparent;
+           border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
+           position:relative;
+           right:-55px;
+           top:-170px;
+         }
+
+         .timeTaken {
+            
+            white-space: nowrap;
+            margin-top:-20px;
          }
          
-          .search {
+      	.shareBtnBox{
+      		    text-align: right;
+   				
+      	}
+         .shareBtnBox1 {
+        	 	text-align:right;
+         }
+         
+         .whatTime {
+            
+         }
+         
+         #scheduleTitle {
+            text-align:left;
+            position:relative;
+            bottom:-14px;
+         }
+         #scheduleTitle > h5 a {
+            text-decoration: none;
+            color: #64A0FF;
+         } 
+         #timeBox h3{
+            font-size:13px;
+            white-space: nowrap;
+         }
+         
+         #moveTab {
+          position:relative;
+          left:-90px;
+         }
+         
+         #realArrow {
+            padding-top: 80px;
+            
+            /* 
+            text-decoration:none;
+            font-size:1px;
+            position: relative;
+            display:inline-block; */
+         }
+         
+         #realArrow span{
+             position: absolute;
+             top: 0;
+             left: 50%;
+             width: 24px;
+             height: 24px;
+             margin-left: -12px;
+             border-left: 1px solid black;
+             border-bottom: 1px solid black;
+             -webkit-transform: rotate(-45deg);
+             transform: rotate(-135deg);
+             -webkit-animation: sdb 2s infinite;
+             animation: sdb 2s infinite;
+             opacity: 0;
+             box-sizing: border-box;
+         }
+         
+         #contactform {
+         	position:relative;
+         	bottom:-30px;
+         }
+        
+        #comment1 {
+        		height: 30px;
+    font-size: 14px;
+    margin-left: -60px;
+    margin-top: 240px;
+        }
+       
+            
+       #userInfo {
+          position:relative;
+          right:-150px;
+          margin-top:-40px;
+       }
+       
+       #userInfo1 {
+       	
+       }
+       
+        .search {
   position: relative;
   width: 300px;
   right: -900px;
@@ -329,28 +334,37 @@
 }
 
 .searchInput {
-  width: 100%;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
-}
-
-.searchImg {
-  position : absolute;
-  width: 17px;
-  top: 10px;
-  right: 12px;
-  margin: 0;
-}
-
-.searchType{
-	width: 110px;
+      width: 100%;
     border: 1px solid #bbb;
     border-radius: 8px;
     padding: 10px 12px;
     font-size: 14px;
-    position: relative;
-    top: 22px;
-    margin-left: 480px;
+}
+
+.searchImg {
+  position: absolute;
+    width: 17px;
+    margin: 0;
+    right: 10px;
+    top: 58px;
+}
+
+.searchType{
+	    width: 110px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+   
 } 
+
+#boardTap{
+	margin-left: -30px;
+    margin-top: 40px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+#tabTab {
+
+}

@@ -37,7 +37,7 @@
                                       				
                                                 	<label for="validationCustom01" class="form-label">제목</label>
                                                     <input type="text" name="boardTitle" id="boardTitle" placeholder="Your Title *" required/><!-- 게시글 제목 작성 -->                                              	
-                                                    
+                                                    <input type="hidden" name="memberIndex" value="${sessionScope.memberIndex }"/>
                                                     <label for="validationTextarea" class="form-label">글 내용</label>
                                                     <textarea name="boardContent"  id="boardContent" cols="40" rows="3" placeholder="Your Message:" required></textarea><!-- 내용 작성 -->
                                

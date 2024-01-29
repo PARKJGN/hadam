@@ -34,7 +34,7 @@
 		order by st.SCHEDULE_TABLE_ID desc
 	</select>
 	
-	<insert id="insertScheduleList" parameterType="map" >
+	<insert id="insertScheduleList" parameterType="map">
     INSERT INTO schedule(
           LOCATION_ID
         , SCHEDULE_TABLE_ID
