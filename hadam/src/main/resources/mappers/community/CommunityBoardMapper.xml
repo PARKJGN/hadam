@@ -264,4 +264,12 @@
 			</otherwise>
 		</choose>
 	</select>
+	
+	
+	<!-- 관리자 -->
+	<!-- 게시글 삭제 -->
+	<delete id="boardD">
+		delete from board
+		where board_id = #{boardId}
+	</delete>
 </mapper>

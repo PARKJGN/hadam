@@ -94,4 +94,14 @@ public interface CommunityBoardService {
 	// boardList 검색
 	List<BoardVO> searchBoards(BoardVO vo);
 	
+	// 관리자
+	// 게시글 삭제
+	void boardD(BoardVO vo);
+	
+	// 계정에서 작성한 게시글 조회
+	List<BoardVO> getAccountBoardList(Integer memberIndex);
+	
+	// 계정에서 작성한 댓글 조회
+	List<CommentVO> getAccountCommentList(Integer memberIndex);
+	
 }

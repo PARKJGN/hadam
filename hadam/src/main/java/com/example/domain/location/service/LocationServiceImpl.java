@@ -18,7 +18,7 @@ public class LocationServiceImpl implements LocationService{
 	
 	// 모든 장소 목록 조회
 	@Override
-	public List<LocationVO> locationList(LocationVO vo) {
+	public List<LocationVO> locationList(PagingVO vo) {
 
 		List<LocationVO> list = locationDAO.locationList(vo);
 //		System.out.println("모든 장소 목록 조회 " + list);		//DB값 오는지만 확인용

@@ -18,5 +18,35 @@ public class MemberServiceImpl implements MemberService{
 		
 		return memberDAO.getMemberList(vo);
 	}
+	
+	// 모든 회원 정보 조회
+	public List<MemberVO> allMemberList(){
+		
+		return memberDAO.allMemberList();
+	}
+	
+	
+	
+	// 관리자
+	
+	// 계정 정보 조회
+	@Override
+	public MemberVO getAccountInfo(String memberId) {
+		
+		return memberDAO.getAccountInfo(memberId);
+	}
+	
+
+	// 계정 정보 수정
+	@Override
+	public MemberVO accountU(MemberVO vo) {
+		return null;
+	}
+
+	// 계정 삭제
+	@Override
+	public void accountD(MemberVO vo) {
+		
+	}
 
 }

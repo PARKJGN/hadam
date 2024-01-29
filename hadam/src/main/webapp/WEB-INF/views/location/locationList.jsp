@@ -122,7 +122,6 @@
 	                                                                </div>
 	                                                            </div>
 	                                                        </div>
-	                                                        <!-- 이미지 없애기 위해 기본 css 카피 후 categories.css 파일 생성해서 수정 -->
 	                                                        <div class="catedir-category-content fl-wrap">
 	                                                            <div class="catedir-category-content-title fl-wrap">
 	                                                                <h3 class="title-sin_map"><a href="/location/locationDetail?locationId=${location.locationId }">${location.locationName }</a></h3> 
@@ -135,7 +134,6 @@
                                                 <!-- 검색결과 목록 end -->                                     
                                             </div>
                                             <!-- 검색결과 목록 container end-->
-                                            
                                             
                                             <!-- 페이지 설정 -->
                                             <div class="pagination" id="page">
