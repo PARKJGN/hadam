@@ -23,17 +23,17 @@
 		<!--  section  -->
 		<section class="parallax-section single-par"
 			data-scrollax-parent="true">
-			<div class="bg par-elem " data-bg="/images/board/park.jpg"
+			<div class="bg par-elem " data-bg="/images/board/back4.png"
 				data-scrollax="properties: { translateY: '30%' }"></div>
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="section-title center-align big-title">
 
 					<h2>
-						<span>스케줄 공유 게시판</span>
+						<span>Hadam(하루를 담다)</span>
 					</h2>
 					<span class="section-separator"></span>
-					<h4>hadam</h4>
+					<h4>당신의 완벽한 하루를 공유하세요!</h4>
 				</div>
 
 			</div>
@@ -43,40 +43,41 @@
 		<div class="breadcrumbs-fs fl-wrap">
 			<div class="container" id="moveTab">
 				<div class="breadcrumbs fl-wrap">
-					<a href="#">커뮤니티</a><span>스케줄 공유 게시판</span>
+					<a href="#" style="text-decoration:none; font-size:16px;">커뮤니티</a><span style="font-size:16px;">스케줄 공유 게시판</span>
 				</div>
 
 			</div>
 		</div>
 
 
-
+		<div class="container" id="full">
 		<div class="list-main-wrap fl-wrap card-listing" id="box">
 			<div class="shareBtnBox">
 				<a class="btn btn-primary" href="/community/scheduleShareWrite"
 					role="button" id="shareBtn">스케줄 공유하기</a>
 			</div>
-			<form action="/community/searchScheduleBoards" name="searchForm" method="get">
+			 <!-- <div class="dasboard-menu">
+                                    <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i></div>
+                                    <ul class="dasboard-menu-wrap" >         
+                                        <li><a href="/community/boardList" class="user-profile-act" id="boardTap"><i class="far fa-comments"></i> 스케줄 공유 게시판 </a></li>
+                                    </ul>
+                                </div> -->
+		    <form action="/community/searchScheduleBoards" name="searchForm" method="get" style="text-align:left;">
 	                    <div class="fields">
 	                        <div class="field">
 	                            <div id="searchWarp">
 	                                <select name="searchType" class="searchType">
-	                                    <option value="">검색 기준</option>
-	                                    <option value="T">스케줄명</option>
-	                                    <option value="P">참가인원</option>
-	                                    <option value="S">희망성별</option>
-	                                    <option value="A">희망나이</option>
+	                                    <option value="">날짜별</option>
+	                                    <option value="T">최신순</option>
+	                                    <option value="P">오래된순</option>
 	                                </select>
-	                                <div class="search">
-						              <input type="text" name="keyword" placeholder="검색어 입력" class="searchInput">
-						              <button type="submit" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" class="searchImg"></button>
-								   </div>
+	                              
 	                            </div>
 	                        </div>
 	                    </div>
 	                              
 								
-			</form>  
+			</form> 
 			
 			<c:forEach items="${map}" var="map" varStatus="outerIndex">
 
@@ -85,7 +86,13 @@
 						 <strong>Schedule</strong> : <span><a href=""><strong>${map.key.boardTitle}</strong> </a></span>
 					</h5>
 				</div>
-
+				
+				<div class="scheduleTitle" id="scheduleTitle">
+					<h5>
+						 <strong>작성일</strong> : <span><a href=""><strong>${map.key.boardTitle}</strong> </a></span>
+					</h5>
+				</div>
+				
 				<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox">
 					<c:forEach items="${map.value}" var="schedule" varStatus="innerIndex">
 
@@ -110,13 +117,13 @@
 
 								</div>
 							</article>
-							<c:if test="${!innerIndex.last}">
+							
+						</div>
+						<c:if test="${!innerIndex.last}">
 								<div class="arrowBox1">
 									<div class="arrow"></div>
 								</div>
 							</c:if>
-						</div>
-
 					</c:forEach>
 			
 					<div class="infor">
@@ -133,13 +140,14 @@
 				</div>
 				
 				<button type="button" class="btn btn-primary modalBtn"
-					data-bs-toggle="modal" data-bs-target="#staticBackdrop1"
+					data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
 					onclick="openDetailModal(${map.key.boardId},${sessionScope.memberIndex})">상세보기</button>
 			</c:forEach>
 			<!-- 페이징 처리-->
 			<div class="pagination" id="page">
 		
 			</div> 
+		</div>
 		</div>
 	</div>
 	<!-- content end-->
@@ -148,7 +156,7 @@
 <!--footer -->
 <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
 
-<div class="modal fade " id="staticBackdrop1" data-bs-backdrop="static"
+<div class="modal fade " id="staticBackdrop2" data-bs-backdrop="static"
 	data-bs-keyboard="false" tabindex="-1"
 	aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-fullscreen ">
@@ -188,7 +196,7 @@
 			<div class="modal-body">				
 				<div id="scheduleAttend"></div>
 				<div class="post-author" id="userInfo1">
-					<a href="#"><img src="../images/avatar/1.jpg" alt=""><span>${sessionScope.memberNickname}</span></a>
+					<a href="#"><img src="/images/avatar/1.jpg" alt=""><span>${sessionScope.memberNickname}</span></a>
 				</div>
 				<form class="custom-form" action="/community/scheduleAttendWrite" id="contactform" method="post">
 					<!-- boardId, scheduleTableId, memberIndex 값 가져오기 -->

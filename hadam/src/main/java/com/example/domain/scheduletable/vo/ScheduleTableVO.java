@@ -67,4 +67,6 @@ public class ScheduleTableVO {
 	private String searchType;
 	
 	private String keyword;
+	
+	private Integer locationId;
 }

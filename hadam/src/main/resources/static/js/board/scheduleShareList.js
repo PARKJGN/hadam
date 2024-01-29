@@ -14,12 +14,14 @@ function openDetailModal(boardId,memberIndex) {
 		 success: function (data){ 
 			 
 			 console.log('성공',data);
+			 console.log('data[0].memberIndex', data[0].memberIndex);
+			 console.log('memberIndex', memberIndex);
 			let output  = "</div>";
 			    output += '<div class="list-main-wrap fl-wrap card-listing" id="box1">';
 			    output += '<div class="list-main-wrap-title fl-wrap col-title" id="scheduleTitle">';
 			    output += '<h2>Schedule :<span>'+data[0].boardTitle+'  </span></h2>';
 			    output += '</div>';
-			    output += '<div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>'+data[0].memberNickname+'</span></a></div>'
+			    output += '<div class="post-author" id="userInfo"><a href="#"><img src="/images/avatar/1.jpg" alt=""><span>'+data[0].memberNickname+'</span></a></div>'
 			   	  if (data[0].memberIndex == memberIndex) {
 			    output += '<div class="buttonBox">'
 			    output += '<a style="text-decoration:none; color:black;"  href="/community/scheduleShareUpdate?boardId= '+boardId +'"  id="updateBtn" ><i style="color:#28AEFF"class="fa-solid fa-pencil">수정</i></a>';
@@ -29,12 +31,44 @@ function openDetailModal(boardId,memberIndex) {
 			    
 			    
 			     if (data[0].memberIndex !== memberIndex) {
-			    output += '<div class="shareBtnBox">';																														   // 스케줄 참가하기 버튼
-			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" role="button" id="shareBtn1" onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
+			    output += '<div class="shareBtnBox1">';																														   // 스케줄 참가하기 버튼
+			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" role="button" id="shareBtn1" onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + data[0].memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
 			    output += '</div>';
 				}
 				
-				 if (data[0].chatRoomCount < data[0].chatRoomMax){
+				
+			    
+				
+			    output += '<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox1">';
+			    for ( let i in data ) {
+			    output += '<div class="listing-item" id="listItem">';
+			    output += '<article class="geodir-category-listing fl-wrap" style="width:120px;">';
+			    output += '<div class="geodir-category-img listImg">';
+			    output += '<a href="/location/locationDetail?locationId='+data[i].locationId+'"><img src="/images/location/'+data[i].locationName+'.jpg" alt=""></a>';
+			    output += '<div class="geodir-category-opt">';
+			    output += '</div>';
+			    output += '</div>';
+			    output += '<div class="geodir-category-content fl-wrap title-sin_item" style="height:90px;">';
+			    output += '<div class="geodir-category-content-title fl-wrap">';
+			    output += '<div class="geodir-category-content-title-item">';
+			    output += '<h3 class="title-sin_map" style="white-space:nowrap; margin-left:-10px;">'+data[i].scheduleStartTime+"~"+data[i].scheduleEndTime+'</h3>';
+			    output += '<div class="geodir-category-location fl-wrap"><a href="/location/locationDetail?locationId='+data[i].locationId+'" class="map-item"><i class="fas fa-map-marker-alt"></i>'+data[i].locationName+'</a></div>'
+		        output += '</div>';
+		        output += '</div>';
+		        output += '</div>';
+		        output += '</article>';
+		       
+		        output += '</div>';
+		         if( i< data.length -1){
+		        output += '<div class="arrowBox1">';
+		        output += '<div class="arrow"></div>';
+		        output += '</div>';
+		        }
+		        }
+		        output += '<div class="infor">';
+		        output += '<p style="font-size:14px; color:black"><strong>희망성별 : '+data[0].boardSex+'</strong></p>';
+		        output += '<p style="font-size:14px; color:black"><strong>희망나이 : '+data[0].boardAge+'</strong></p>';
+		         if (data[0].chatRoomCount < data[0].chatRoomMax){
 					output += '<div style="text-align:right"><strong>참가인원 :'+data[0].chatRoomCount+'/'+data[0].chatRoomMax+'<strong/></div>'
 				}
 				
@@ -43,33 +77,7 @@ function openDetailModal(boardId,memberIndex) {
 					output += '<div style="text-align:right"><strong>참가인원 : max<strong/> </div>' 
 					
 				 }
-			    
-				
-			    output += '<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox1">';
-			    for ( let i in data ) {
-			    output += '<div class="listing-item" id="listItem">';
-			    output += '<article class="geodir-category-listing fl-wrap" style="width:120px;">';
-			    output += '<div class="geodir-category-img listImg">';
-			    output += '<a href="/location/locationDetail?locationId='+data[i].locationId+'"><img src="../images/location/'+data[i].locationName+'.jpg" alt=""></a>';
-			    output += '<div class="geodir-category-opt">';
-			    output += '</div>';
-			    output += '</div>';
-			    output += '<div class="geodir-category-content fl-wrap title-sin_item" style="height:90px;">';
-			    output += '<div class="geodir-category-content-title fl-wrap">';
-			    output += '<div class="geodir-category-content-title-item">';
-			    output += '<h3 class="title-sin_map" style="white-space:nowrap; margin-left:-10px;">'+data[i].scheduleStartTime+"~"+data[i].scheduleEndTime+'</h3>';
-			    output += '<div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>'+data[i].locationName+'</a></div>'
 		        output += '</div>';
-		        output += '</div>';
-		        output += '</div>';
-		        output += '</article>';
-		        if( i< data.length -1){
-		        output += '<div class="arrowBox1">';
-		        output += '<div class="arrow"></div>';
-		        output += '</div>';
-		        }
-		        output += '</div>';
-		        }
 		        output += '</div>';
 		        output += '<div class="list-single-main-item fl-wrap" id="writeForm">';
 		        output += '<div class="list-single-main-item-title fl-wrap">';
@@ -98,6 +106,7 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '<textarea cols="40" rows="3" id="commentContent" name="commentContent" placeholder="댓글을 입력해주세요"></textarea>';
 		        output += '</fieldset>';
 		        output += '<div class="commentBtn">';
+		        
 		        // 댓글 등록 버튼 클릭시 함수 호출
 		        output += '<button class="btn btn-primary" id="comment" onclick="scheduleCommentWrite(\'' + boardId + '\', \'' + memberIndex + '\')">등록</button>';
 		        output += '</div>';
@@ -128,7 +137,7 @@ function openDetailModal(boardId,memberIndex) {
 					 	 console.log(boardId);
 					 	 // 참가했으면 버튼 바뀌기
 					 	 if(data.memberIndex == memberIndex ){
-					 		 document.getElementById('shareBtn1').innerHTML = '참가 완료';
+					 		 document.getElementById('shareBtn1').innerHTML = '신청 완료';
 					 		 
 					 		 // 버튼 비활성화
     				 		 document.getElementById('shareBtn1').disabled = true;
@@ -171,7 +180,7 @@ function openDetailModal(boardId,memberIndex) {
 								output += '</div>';			
 								output += '<div class="reviews-comments-wrap">';		
 								output += '<div class="review-comments-avatar" id="replyImage">';
-								output += '<img src="../images/avatar/1.jpg" alt="">';
+								output += '<img src="/images/avatar/1.jpg" alt="">';
 								output += '</div>';
 								output += '<div class="reviews-comments-item" id="replyinnerBox">';
 								output += '<div class="reviews-comments-item-text" id="chatBox">';
@@ -246,7 +255,7 @@ const scheduleCommentWrite = (boardId,memberIndex) => {
 			output += '</div>';			
 			output += '<div class="reviews-comments-wrap">';		
 			output += '<div class="review-comments-avatar" id="replyImage">';
-			output += '<img src="../images/avatar/1.jpg" alt="">';
+			output += '<img src="/images/avatar/1.jpg" alt="">';
 			output += '</div>';
 			output += '<div class="reviews-comments-item" id="replyinnerBox">';
 			output += '<div class="reviews-comments-item-text" id="chatBox">';
@@ -281,7 +290,7 @@ const scheduleAttendWrite = () => {
 		alert('참가 신청이 완료되었습니다.');
         
         // 참가 완료로 버튼 텍스트 변경
-        document.getElementById('shareBtn1').innerHTML = '참가 완료';
+        document.getElementById('shareBtn1').innerHTML = '신청 완료';
         // '참가 완료' 상태로 전역 변수 설정  
         
 }
@@ -294,7 +303,8 @@ const scheduleAttend = (boardId,memberIndex, shceduleTableId) => {
 		url: '/community/getBoardId',
 		data : {
 			boardId : boardId,
-			shceduleTableId : shceduleTableId
+			shceduleTableId : shceduleTableId,
+			memberIndex : memberIndex
 		},
 		success : function(result) {
 			console.log("boardId가져오기",result);
@@ -302,6 +312,7 @@ const scheduleAttend = (boardId,memberIndex, shceduleTableId) => {
 			
 			let output = '<input type="hidden" name="boardId" value="'+result[0].boardId+'"/>' ;
 			    output += '<input type="hidden" name="scheduleTableId" value="'+result[0].scheduleTableId+'"/>'
+				output += '<input type="hidden" name="memberIndex" value="'+result[0].memberIndex+'"/>'
 			document.getElementById('getBoardId').innerHTML = output;
 		},
 		error : function(error){

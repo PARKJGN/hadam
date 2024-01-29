@@ -88,7 +88,7 @@
 		insert into comment
 		(COMMENT_CONTENT, COMMENT_REGISTE_DATE, MEMBER_INDEX, BOARD_ID)
 		values
-		( #{commentContent}, (current_date), #{memberIndex}, #{boardId})
+		( #{commentContent}, now(), #{memberIndex}, #{boardId})
 	</insert>
 
 	<!-- 해당 게시글에 작성한 댓글 리스트 가져오기 -->

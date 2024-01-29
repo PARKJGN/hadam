@@ -6,8 +6,7 @@
 	namespace="com.example.domain.scheduletable.dao.ScheduleTableDAO">
 
 	<!--스케줄표 리스트 가져오기 -->
-	<select id="getScheduleTableList" resultType="ScheduleTableVO"
-		parameterType="ScheduleTableVO">
+	<select id="getScheduleTableList" resultType="ScheduleTableVO" parameterType="ScheduleTableVO">
 		select st.*
 		from schedule_table st
 		where st.MEMBER_INDEX =
@@ -31,8 +30,7 @@
 	</select>
 
 
-	<select id="getScheduleTable" parameterType="ScheduleTableVO"
-		resultType="ScheduleTableVO">
+	<select id="getScheduleTable" parameterType="ScheduleTableVO" resultType="ScheduleTableVO">
 		select st.*, s.*, l.*, li.*
 		from schedule_table st
 		inner join
@@ -71,8 +69,7 @@
 	</update>
 
 	<!-- 스케줄테이블 리스트 출력 최대참가인원수도 같이출력 참여인원수도 /페이징처리 -->
-	<select id="getScheduleTableBoardList"
-		resultType="ScheduleTableVO" parameterType="PagingVO">
+	<select id="getScheduleTableBoardList" resultType="ScheduleTableVO" parameterType="PagingVO">
 		SELECT st.*, b.*, cr.CHAT_ROOM_MAX,
 		(SELECT COUNT(*) FROM chat_room_join crj2 WHERE crj2.CHAT_ROOM_ID =
 		cr.CHAT_ROOM_ID GROUP BY crj2.CHAT_ROOM_ID) AS chatRoomCount
@@ -94,11 +91,10 @@
 		JOIN chat_room cr ON cr.BOARD_ID = b.BOARD_ID
 		JOIN chat_room_join crj ON crj.CHAT_ROOM_ID = cr.CHAT_ROOM_ID
 		WHERE st.SCHEDULE_TABLE_STATUS = '공유중' AND crj.MEMBER_INDEX =
-		st.SCHEDULE_TABLE_START_MEMBER;
+		st.SCHEDULE_TABLE_START_MEMBER
 	</select>
 
-		<select id="getScheduleDataByBoardId" parameterType="Integer"
-      resultType="ScheduleTableVO">
+	<select id="getScheduleDataByBoardId" parameterType="Integer" resultType="ScheduleTableVO">
       select b.*, s.*, st.*, li.*, l.*,
       m.*,c.CHAT_ROOM_MAX,(select count(*) from chat_room_join crj2 where
       crj2.CHAT_ROOM_ID = crj.CHAT_ROOM_ID group by crj2.CHAT_ROOM_ID) as

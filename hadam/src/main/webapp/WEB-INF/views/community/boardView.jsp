@@ -18,9 +18,9 @@
                         <div class="container">
                             <div class="section-title center-align big-title">
                                 
-                                <h2><span>자유 게시판</span></h2>
+                                <h2><span>Hadam(하루를 담다)</span></h2>
                                 <span class="section-separator"></span>
-                                <h4>hadam</h4>
+                                <h4>당신의 하루를 디자인하세요!</h4>
                             </div>
                              
                         </div>

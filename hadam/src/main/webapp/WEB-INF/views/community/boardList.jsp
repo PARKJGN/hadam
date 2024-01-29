@@ -16,36 +16,39 @@
                 <div class="content">
                     <!-- section-->
                    	<section class="parallax-section single-par" data-scrollax-parent="true">
-                        <div class="bg par-elem "  data-bg="/images/board/park.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="bg par-elem "  data-bg="/images/board/back7.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
                         <div class="overlay"></div>
                         <div class="container">
                             <div class="section-title center-align big-title">
                                 
-                                <h2><span>자유 게시판</span></h2>
+                                <h2><span>Hadam(하루를 담다)</span></h2>
                                 <span class="section-separator"></span>
-                                <h4>hadam</h4>
+                                <h4>당신의 완벽한 하루를 작성하세요!</h4>
                             </div>
                              
                         </div>
                         
                     </section>
                     <section class="flat-header color-bg adm-header" style="background-color:white">
-                   
+                   		 
                         <div class="container" id="full">
+                           <div class="breadcrumbs-fs fl-wrap " id="tabTab">
+								<div class="container" id="moveTab">
+									<div class="breadcrumbs fl-wrap">
+										<a href="#" style="text-decoration:none; font-size:16px;">커뮤니티</a><span style="font-size:16px;">자유 게시판</span>
+									</div>
+					
+								</div>
+							</div>
                             <div class="dasboard-wrap fl-wrap">
-                                <div class="dasboard-breadcrumbs breadcrumbs" style="color:black;"><a href="#" style="color:black;">커뮤니티</a><span><a href="boardList" style="color:black;">자유게시판</a></span></div>
+                           
                                 <div class="dasboard-menu">
                                     <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i></div>
                                     <ul class="dasboard-menu-wrap" >         
                                         <li><a href="/community/boardList" class="user-profile-act" id="boardTap"><i class="far fa-comments"></i> 자유게시판 </a></li>
                                     </ul>
                                 </div>
-                                <div   class="tfp-btn" ><span>커뮤니티: </span> <strong>자유게시판</strong></div>
-                                <div class="tfp-det">
-                                    <p> <a href="/community/boardList">자유게시판</a> </p>
-                                    <p> <a href="/community/scheduleShareList">스케줄공유게시판</a> </p>
-                                    <a href="#" class="tfp-det-btn color2-bg">Details</a>
-                                </div>
+                                
                                 <!--Tariff Plan menu end-->
                             </div>
                         </div>
@@ -56,7 +59,7 @@
          
                             <!--검색기능-->
                             <div class="dasboard-wrap fl-wrap">
-								<form action="/community/searchBoards" name="searchForm" method="get">
+								<form action="/community/searchBoards" name="searchForm" method="get" style="margin-top:-40px;">
 								                    <div class="fields">
 								                        <div class="field">
 								                            <div id="searchWarp">
