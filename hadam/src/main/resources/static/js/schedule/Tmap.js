@@ -19,7 +19,7 @@ async function DurationOfTime(imgcount) {
 	imgc.pop()
 	for (const [idx, element] of imgc) {
 		var content = "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px; box-shadow: 5px 5px 5px #00000040; border-radius: 10px; width : 400px; height:100px; background-color: #FFFFFF; align-items: center; padding: 5px;'>" +
-			`<div class='img-box' style='width: 110px; height: 90px;'><img src=${$(element).attr('src')} style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";></div>` +
+			`<div class='img-box' style='width: 110px; height: 90px;'><img src="${$(element).attr('src')}" style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";></div>` +
 			"<div class='info-box' style='margin-left : 10px'>" +
 			"<p style='margin-bottom: 7px;'>" +
 			`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${$(element).attr('alt')}</span>` +
@@ -265,7 +265,7 @@ let changemap = async () => {
 	if (imgcount.length == 1) {
 
 		var content = "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px; box-shadow: 5px 5px 5px #00000040; border-radius: 10px; width : 400px; height:100px; background-color: #FFFFFF; align-items: center; padding: 5px;'>" +
-			`<div class='img-box' style='width: 110px; height: 90px;'><img src=${imgcount.attr('src')} style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";></div>` +
+			`<div class='img-box' style='width: 110px; height: 90px;'><img src="${imgcount.attr('src')}" style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";></div>` +
 			"<div class='info-box' style='margin-left : 10px'>" +
 			"<p style='margin-bottom: 7px;'>" +
 			`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${imgcount.attr('alt')}</span>` +

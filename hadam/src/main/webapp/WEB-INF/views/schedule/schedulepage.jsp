@@ -154,17 +154,18 @@
 </div>
 
 <!--footer end -->
+<!-- ai추천시 model에서 담아온 장소 리스트 -->
 <script type="text/javascript">
-
+	let locationList = JSON.parse('${locationList}')
+	let aiInformation = JSON.parse('${aiInformation}')
 </script>
-
 <script type="text/javascript" src="/js/schedule/schedulesubmit.js"></script>
 <script type="text/javascript" src="/js/schedule/schedulemodal.js"></script>
-
 <script
 	src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript" src="/js/schedule/Tmap.js"></script>
 <script type="text/javascript" src="/js/schedule/schedule-timeline.js"></script>
+<script type="text/javascript" src="/js/schedule/aitimeline.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

@@ -1,5 +1,6 @@
 package com.example.domain.scheduletable.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +20,10 @@ import com.example.domain.schedule.vo.PagingVO;
 import com.example.domain.scheduletable.service.ScheduleTableService;
 import com.example.domain.scheduletable.vo.AiCreateVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
+import com.google.gson.Gson;
 
+import edu.emory.mathcs.backport.java.util.Arrays;
 import jakarta.servlet.http.HttpSession;
-
 
 @Controller
 @RequestMapping("schedule")
@@ -70,15 +72,24 @@ public class ScheduleController {
 	@PostMapping("createaischeduletable")
 	public String insertScheduleTable(AiCreateVO aivo, HttpSession session, RedirectAttributes rttr) {
 		System.out.println(aivo);
-		Integer memberIndex = (Integer)session.getAttribute("memberIndealert(msg)alert(msg)alert(msg)alert(msg)alert(msg)x");
+		ArrayList categories = (ArrayList) (aivo.getCategoryList());
+		ArrayList orginalCategories = (ArrayList) categories.clone();
+		
+		Integer memberIndex = (Integer)session.getAttribute("memberIndex");
 		
 		List<LocationVO> list =  stser.aiCreateScheduleTable(aivo, memberIndex);
 		if(list.size()==0) {
 			rttr.addFlashAttribute("scheMsg", "추천 장소가 없습니다.");
 			return "redirect:/index";
 		}
+		//JSONArray array = JSONArray.fromObject(list);
 		
-		rttr.addFlashAttribute(list);
+		
+		aivo.setCategoryList(orginalCategories);
+		Gson jsonParser = new Gson();
+		
+		rttr.addFlashAttribute("locationList", jsonParser.toJson(list));
+		rttr.addFlashAttribute("aiInformation",jsonParser.toJson(aivo));
 		
 		return "redirect:/schedule/schedulepage";
 	}

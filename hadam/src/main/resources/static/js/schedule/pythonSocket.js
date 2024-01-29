@@ -1,5 +1,5 @@
 $(() => {
-	const socket = new WebSocket("ws://localhost:8765/socket");
+	const socket = new WebSocket("ws://114.207.167.125:8765/socket");
 	
 	//카테고리리스트
 	let categoryList = []
@@ -61,7 +61,7 @@ $(() => {
         
         console.log(memberIndexList)
         
-        const startDate = '2024-01-24 13:00'
+        const startDate = '2024-01-24 13:30'
         
         const form = $('<form></form>')
 
