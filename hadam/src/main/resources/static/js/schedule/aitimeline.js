@@ -1,7 +1,11 @@
 $(() => {
-	if(locationList === "") alert("비어있습니다.")
+	if(strLocationList=="") return false
 	
-	let [startDate, startTime] = aiInformation.startDate.split(' ')
+	let locationList = JSON.parse(strLocationList)
+	let aiInformation = JSON.parse(strAiInformation)
+	let [startDay, startTime] = aiInformation.startDate.split(' ')
+	
+	$('.hasDatepicker').val(startDay)
 	
 	console.log(locationList)
 	console.log(aiInformation)
@@ -44,23 +48,47 @@ $(() => {
 	console.log(locationListForCategories)
 	let totalMinute = hourToMinute(startTime)
 	let startTd = $('.scheduleTable').find('td').eq(totalMinute/30)
-	
+	let checkOverTimeline = 0
 	// 장소 개수만큼 이미지 생성 후 updatefortimeline함수 호출
-	locationListForCategories.forEach((loc, idx)=>{
+	for(var i = 0; i<locationListForCategories.length; i++){
 		// 처음 스케줄은 시작시간에 넣어야해서 따로 분배
-		if(idx == 0) {
-			startTd.append(createImage(loc.location))
+		if(i == 0) {
+			startTd.append(createImage(locationListForCategories[i].location))
 			updateToImageForTimeline(startTd.children())
+			
 		} else {
-			let index = Number($($('.scheduleTable').find('img')[idx-1]).parents('td').index()) + Number(locationListForCategories[idx-1].location.averageTime)/30
-			console.log($('.scheduleTable').find('img'))
-			console.log(index)
-			let scheduletd = $('.scheduleTable').find('td').eq(index+1)
+			// idx-1 에서 넣었던 이미지의 td index를 구하고
+			// td 1칸당 30분
+			// 각 장소의 평균시간을 가지고 해당 이미지가 몇칸을 차지하고 있는지를 알 수 있다. => 시작 td와 끝나는 td를 구하는 셈
+			let tdIndex = Number($($('.scheduleTable').find('img')[i-1]).parents('td').index())
+			let indexByImgWidth = Number(locationListForCategories[i-1].location.averageTime)/30
+			
+			// 전의 스케줄의 시작 td
+			let startIndex = tdIndex + indexByImgWidth
+			console.log(startIndex)
+			
+			// 넣으려는 스케줄의 끝나는 td
+			let endIndex = startIndex+1 + Number(locationListForCategories[i].location.averageTime)/30
+			console.log(endIndex)
+			
+			// 만약 넣으려는 스케줄이 타임테이블의 24시를 벗어나게 된다면 스케줄 인벤토리에 추가
+			if(endIndex > 48 || checkOverTimeline == 1){
+				console.log("여기 오기는 오나?")
+				checkOverTimeline = 1
+				let invenImg = createImage(locationListForCategories[i].location)
+				console.log(invenImg)
+				// 인벤토리에 들어가는 사진의 width는 주어지면 안되므로 초기화
+				updateToImageForInventory(invenImg)
+				
+			} else{
+			let scheduletd = $('.scheduleTable').find('td').eq(startIndex+1)
+			console.log(scheduletd)
 			scheduletd.append(createImage(loc.location))
 			updateToImageForTimeline(scheduletd.children())
+			}
+			
 		}
-		
-	})
+	}
 	
 	changemap()
 	
@@ -78,9 +106,10 @@ const createImage = (loc) => {
 	let image = $('<img/>')
 	image.attr('alt', loc.locationName)
 	image.attr('id', loc.locationId)
-	image.attr('name', (`${loc.locationLatitude},${loc.locationLongitude}, ${loc.locationPlace}`))
+	image.attr('name', (`${loc.locationLatitude},${loc.locationLongitude}, ${loc.locationPlace}, ${loc.smallCategory}`))
 	image.attr('src', `/images/location/${loc.locationName}.jpg`)
 	image.css("width", Number(loc.averageTime)/30*90)
+	image.attr("onerror", "this.src='/images/gal/no_image2.jpg'")
 	
 	return image
 }

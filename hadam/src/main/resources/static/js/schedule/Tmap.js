@@ -14,12 +14,13 @@ var lineArray;
 // 이동시간 구하는 함수
 async function DurationOfTime(imgcount) {
 	var imgc = Object.entries(imgcount)
+	console.log(imgc)
 	// entries하면 lenghth와 pre 가 존재해서 그걸 빼는 작업
 	imgc.pop()
 	imgc.pop()
 	for (const [idx, element] of imgc) {
 		var content = "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px; box-shadow: 5px 5px 5px #00000040; border-radius: 10px; width : 400px; height:100px; background-color: #FFFFFF; align-items: center; padding: 5px;'>" +
-			`<div class='img-box' style='width: 110px; height: 90px;'><img src="${$(element).attr('src')}" style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";></div>` +
+			`<div class='img-box' style='width: 110px; height: 90px;'><img onerror = "this.src=/images/gal/no_image2.jpg" src="${$(element).attr('src')}" style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";></div>` +
 			"<div class='info-box' style='margin-left : 10px'>" +
 			"<p style='margin-bottom: 7px;'>" +
 			`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${$(element).attr('alt')}</span>` +
@@ -34,6 +35,7 @@ async function DurationOfTime(imgcount) {
 		const maker = new Tmapv2.Marker({
 			position: new Tmapv2.LatLng($(element).attr('name').split(",")[0], $(element).attr('name').split(",")[1]), //Marker의 중심좌표 설정.
 			map: map, //Marker가 표시될 Map 설정..
+			icon: `http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_${Number(idx)+1}.png`,
 		});
 
 		// 인포윈도우생성
@@ -270,7 +272,7 @@ let changemap = async () => {
 			"<p style='margin-bottom: 7px;'>" +
 			`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${imgcount.attr('alt')}</span>` +
 			"<p>" +
-			`<span class='new-addr'>${imgcount.attr('id')}</span>` +
+			`<span class='new-addr'>${imgcount.attr('name').split(',')[2]}</span>` +
 			"</p>" +
 			"</div>" +
 			"<a href='javascript:void(0)' onclick= infoWindow.setVisible(false); class='btn-close' style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'></a>" +
@@ -290,7 +292,8 @@ let changemap = async () => {
 
 		var marker = new Tmapv2.Marker({
 			position: new Tmapv2.LatLng(imgcount.attr('name').split(",")[0], imgcount.attr('name').split(",")[1]), //Marker의 중심좌표 설정.
-			map: map //Marker가 표시될 Map 설정..
+			map: map, //Marker가 표시될 Map 설정..
+			icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_1.png"
 		});
 
 		marker.addListener("click", function(evt) {

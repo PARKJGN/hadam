@@ -21,14 +21,14 @@ $(() => {
 
 	// 타임테이블의 thead의 th생성
 	// 30분 단위로 끊으려고 colspan2
-	for (i = 0; i < 25; i++) {
+	for (i = 0; i < 24; i++) {
 
-		$('.bg-light-gray').append(`<th colspan = "2" >${i}:00</th>`)
+		$('.bg-light-gray').append(`<th colspan = "2" >${i}:30</th>`)
 
 	}
 
 	// 타임테이블의 tbody의 td생성
-	for (i = 0; i < 49; i++) {
+	for (i = 0; i < 47; i++) {
 		$('.scheduleTable').append("<td></td>")
 	}
 
@@ -44,14 +44,19 @@ $(() => {
 
 			// 드랍한 칸에 자식이 없을때
 			if (!$(event.target).children().length) {
-				console.log($(event.target).next().children().length)
+				console.log(startdrag)
 				// 인벤토리에 있는 이미지를 드랍했들때
-				// 인벤토리에서 옮길때는 90px 고정이므로 다음칸에만 자식이 없으면된다. 
-				if ($(startdrag[0]).hasClass("scheduleinven")) {
-					if ($(event.target).next().children().length == 1) return false
-					// 해당 이미지의 그래그 속성 제거하고
+				if ($(startdrag[0]).hasClass("inventory")) {
+					// 인벤토리에서 옮길때 드랍한 td next에 자식이 있으면 추가하지 못하게 한다
+					// 또한 스케줄테이블에 추가된 스케줄이 이미 5개라면 추가 안되게 만들기
+					if ($(event.target).next().children().length == 1 || $('.scheduleTable').find('img').length == 5) return false
+					
+					// 해당 이미지의 그래그 속성 제거하고 드랍한 td에 append하고
 					$(ui.draggable[0]).draggable("destroy");
 					$(event.target).append($(ui.draggable[0]))
+					
+					// 인벤토리에서 해당 이미지를 감싸고 있던 기본 정보 div들 제거
+					$(startdrag).parents('.listItem').remove()
 
 					// 드래그 속성과 리사이즈 속성 다시 추가
 					updateToImageForTimeline($(ui.draggable[0]))
@@ -74,7 +79,7 @@ $(() => {
 					console.log(startdragsize / 90 - 1)
 
 					// 스케줄의 길이가 12시가 넘어가지않게
-					if (enddragindex + (startdragsize / 90 - 1) >= 50) {
+					if (enddragindex + (startdragsize / 90 - 1) >= 48) {
 						return false
 					}
 					// 드랍했을때 드랍한 img의 길이 안에 다른 img가 있을때 그 이미지 인벤토리로 보내기
@@ -86,38 +91,13 @@ $(() => {
 							for (var j = i; j <= i + $(".scheduleTable").children().eq(i).children().width() / 90 - 1; j++) {
 								$(".scheduleTable").children().eq(j).droppable("enable")
 							}
-							var img = $(".scheduleTable").children().eq(i).find("img")
-							// 걸어놨던 리사이즈 초기화
+							let img = $(".scheduleTable").children().eq(i).find("img")
+							
+							// 라사이즈 속성 초기화
 							img.resizable("destroy")
-
-							// css 초기화
-							img.removeAttr("style")
-
-							// 인벤토리 드래그 이벤트 적용
-							img.draggable({
-								// 어디 축으로만 움직일건지
-								axis: 'x, y',
-								// 그래그중에 투명도를 어느정도 할지
-								opacity: 0.7,
-								containment: '.schedulecontent',
-								// 드래그를 하고 드랍했을때 제자리로 돌아간다. 값으로 함수도 가능
-								revert: true,
-								// 제자리로 돌아가는 ms
-								revertDuration: 0,
-								// 어디에서만 움직일 수 있게 할지
-								// 드래그 한 위치 기억
-								start: function(event, ui) {
-									startdrag = $(event.target).parent()
-								},
-
-							})
-							// 인벤토리에 붙이기
-							// 사라졌다가 나타나는 애니메이션
-							img.hide()
-							$(".scheduleinven").append(img.fadeIn())
-							// 옮긴 img 스케줄 테이블에서 제거
-							$(".scheduleTable").children().eq(i).empty();
-
+							
+							// 인벤토리 속성 적용 함수
+							updateToImageForInventory(img);
 						}
 					}
 
@@ -156,11 +136,14 @@ $(() => {
 
 		td = $(this)
 
-		//자식이 없으면 모달창을 띄워준다
-		if (!td.children().length && td.parent().find('img').length < 5) {
-			// 클릭한 td옆에 다른 스케줄이 있으면 추가되지않게 or 끝칸에서 추가하기 눌렀을때
-			if (td.next().children().length == 1 || td.index() == 49) return false
-
+		//해당 td에 자식이 없고 next td에도 자식이 없으면 모달창을 띄워준다
+		if (!td.children().length && !td.next().children().length == 1) {
+			
+			// 만약 스케줄이 5개라면 5개까지밖에 안된다고 알려준다.
+			if(td.parent().find('img').length == 5){
+				alert("스케줄은 5개까지 추가 가능합니다.")
+				return false
+			}
 			$('#schedulemodal').modal("show");
 		}
 		// 리사이즈중에 클릭함수 막는 조건
@@ -192,18 +175,28 @@ $(() => {
 	$(document).on("click", '.scheduleadd', function(e) {
 
 		// 추가한 가게의 정보들
-		var modalimg = $(this).parents(".dashboard-listing-table-text").prev().find('img').attr("src")
-		var modallocationname = $(this).parents(".dashboard-listing-table-text").find('.modallocationname').text()
-		var locationLatitude = $(this).parents(".dashboard-listing-table-text").find('.locationLatitude').val()
-		var locationLongitude = $(this).parents(".dashboard-listing-table-text").find('.locationLongitude').val()
-		var locationPlace = $(this).parents(".dashboard-listing-table-text").find('.locationPlace').val()
-		var locationId = $(this).parents(".dashboard-listing-table-text").find('.locationId').val()
+		let modalimg = $(this).parents(".dashboard-listing-table-text").prev().find('img').attr("src")
+		let modallocationname = $(this).parents(".dashboard-listing-table-text").find('.modallocationname').text()
+		let locationLatitude = $(this).parents(".dashboard-listing-table-text").find('.locationLatitude').val()
+		let locationLongitude = $(this).parents(".dashboard-listing-table-text").find('.locationLongitude').val()
+		let locationPlace = $(this).parents(".dashboard-listing-table-text").find('.locationPlace').val()
+		let locationId = $(this).parents(".dashboard-listing-table-text").find('.locationId').val()
+		let smallCategory = $(this).parent().text().replace('선택하기','').trim()
 
 		// 이미 스케줄표에 있는 장소를 추가하려고하면 alter창 띄워주고 return
 		if ($('.scheduleTable').find('img').length > 0) {
 			for (i = 0; i < $('.scheduleTable').find('img').length; i++) {
-				if ($($('.scheduleTable').find('img')[i]).attr('name').split(',')[2] == locationPlace) {
+				if ($($('.scheduleTable').find('img')[i]).attr('id') == locationId) {
 					alert('이미 존재하는 장소입니다.')
+					return false
+				}
+			}
+			// 인벤토리에 있을때도 마찬가지
+		}
+		if ($('.scheduleinven').find('img').length > 0) {
+			for (i = 0; i < $('.scheduleinven').find('img').length; i++) {
+				if ($($('.scheduleinven').find('img')[i]).attr('id') == locationId) {
+					alert('스케줄 인벤토리에 존재하는 장소입니다.')
 					return false
 				}
 			}
@@ -213,7 +206,7 @@ $(() => {
 
 		$('#schedulemodal').modal("hide");
 
-		td.append(`<img style=width : 180px src= ${modalimg} alt= '${modallocationname}' id = ${locationId} name = "${locationLatitude},${locationLongitude},${locationPlace}">`)
+		td.append(`<img style=width : 180px src= "${modalimg}" alt= '${modallocationname}' id = ${locationId} name = "${locationLatitude},${locationLongitude},${locationPlace},${smallCategory}">`)
 
 		// 드래그 속성과 리사이즈 속성 다시 추가
 		updateToImageForTimeline(td.children())
@@ -227,51 +220,31 @@ $(() => {
 
 
 	})
-
-	// 인벤토리에 있는 사진을 드래그 했을때의 사진이 가진 이벤트
-	$(".scheduleinven").find('img').draggable({
-		// 어디 축으로만 움직일건지
-		axis: 'x, y',
-		// 그래그중에 투명도를 어느정도 할지
-		opacity: 0.7,
-		containment: '.schedulecontent',
-		// 드래그를 하고 드랍했을때 제자리로 돌아간다. 값으로 함수도 가능
-		revert: true,
-		// 제자리로 돌아가는 ms
-		revertDuration: 0,
-		cancel: ".ui-wrapper",
-		// 어디에서만 움직일 수 있게 할지
-		// 드래그 한 위치 기억
-		start: function(event, ui) {
-			startdrag = $(event.target).parent()
-		}
-	})
 });
 
 // 스케줄에 변동이 있을때 스케줄 요약표 바꿔주는 함수
 let changesummary = (totalTimelist) => {
 	// 스케줄의 이미지들의 개수를 알아낸다.
-	var imgcount = $(".scheduleTable").find('img')
-	var timeindex = 0;
+	let imgcount = $(".scheduleTable").find('img')
+	let timeindex = 0;
 
-	var totcontent = '';
-	console.log()
+	let totcontent = '';
 	// 이미지의 개수만큼 for문을 돌려서 요약표에 개수만큼 넣기
 	$.each(imgcount, function(idx, element) {
 		// &nbsp은 공백 표현
-		var src = $(element).attr('src')
-		var index = $(element).parents('td').index()
-		var locname = $(element).attr('alt')
-		var locid = $(element).attr('id')
+		let src = $(element).attr('src')
+		let index = $(element).parents('td').index()
+		let locname = $(element).attr('alt')
+		let locid = $(element).attr('id')
 
 		// 이미지가 들어가있는 td의 인덱스로 시작시간과 끝나는 시간 구하기
-		var starttime = index % 2 == 0 ? `${index / 2}:00` : `${Math.floor(index / 2)}:30`
-		var endtime = (index + $(element).width() / 90) % 2 == 0 ? `${(index + $(element).width() / 90) / 2}:00` : `${Math.floor((index + $(element).width() / 90) / 2)}:30`
+		let starttime = index % 2 == 0 ? `${index / 2}:00` : `${Math.floor(index / 2)}:30`
+		let endtime = (index + $(element).width() / 90) % 2 == 0 ? `${(index + $(element).width() / 90) / 2}:00` : `${Math.floor((index + $(element).width() / 90) / 2)}:30`
 
-		var content = (`<div class="listing-item listItem">
+		let content = (`<div class="listing-item listItem summarySchedule">
 						<article class="geodir-category-listing fl-wrap">
 						<div class="geodir-category-img">
-							<a href="listing-single.html"><img src=	"${src}"
+							<a target="_blank" href="/location/locationDetail?locationId=${locid}"><img src="${src}"
 							alt=""></a>
 							<input type="hidden" class = "locid" value="${locid}" />
 							<div class="geodir-category-opt"></div>
@@ -312,6 +285,59 @@ let changesummary = (totalTimelist) => {
 
 }
 
+// 인벤토리에 사진들어갈때 드래그 속성 적용
+const updateToImageForInventory = (img) => {
+	let src = img.attr('src')
+	let locname = img.attr('alt')
+	let locid = img.attr('id')
+	let smallCategory = img.attr('name').split(',')[3] 
+	
+
+	// css 초기화
+	img.removeAttr("style")
+	
+	let content = (`<div class="listItem">
+						<article class="geodir-category-listing fl-wrap">
+						<div class = "inventory ${locid}">
+						</div>
+						<div class="geodir-category-content fl-wrap title-sin_item">
+							<div class="fl-wrap">
+								<div class="geodir-category-content-title-item">
+									<h3 class="title-sin_map">${locname}</h3>
+									<div class="geodir-category-location fl-wrap">
+										<a class="map-item">${smallCategory}</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						</article>
+					</div>`)
+	$(".scheduleinven").append(content)
+
+	// 인벤토리 드래그 이벤트 적용
+	img.draggable({
+		// 어디 축으로만 움직일건지
+		axis: 'x, y',
+		// 그래그중에 투명도를 어느정도 할지
+		opacity: 0.7,
+		containment: '.schedulecontent',
+		// 드래그를 하고 드랍했을때 제자리로 돌아간다. 값으로 함수도 가능
+		revert: true,
+		// 제자리로 돌아가는 ms
+		revertDuration: 0,
+		// 어디에서만 움직일 수 있게 할지
+		// 드래그 한 위치 기억
+		start: function(event, ui) {
+			startdrag = $(event.target).parent()
+		},
+
+	})
+	// 인벤토리에 붙이기
+	// 사라졌다가 나타나는 애니메이션
+	img.hide()
+	$(`.${locid}`).append(img.fadeIn())
+}
+
 // 타임테이블에 사진들어갈때 드래그, 리사이즈 속성 적용
 const updateToImageForTimeline = (scheduleImage) => {
 	console.log(scheduleImage)
@@ -344,37 +370,11 @@ const updateToImageForTimeline = (scheduleImage) => {
 					for (j = i + 1; j <= i + $(".scheduleTable").children().eq(i).children().width() / 90 - 1; j++) {
 						$(".scheduleTable").children().eq(j).droppable("enable")
 					}
-
-					// 걸어놨던 리사이즈 초기화
+					// 라사이즈 속성 초기화
 					img.resizable("destroy")
-
-					// css 초기화
-					img.removeAttr("style")
-
-					// 인벤토리 드래그 이벤트 적용
-					img.draggable({
-						// 어디 축으로만 움직일건지
-						axis: 'x, y',
-						// 그래그중에 투명도를 어느정도 할지
-						opacity: 0.7,
-						containment: '.schedulecontent',
-						// 드래그를 하고 드랍했을때 제자리로 돌아간다. 값으로 함수도 가능
-						revert: true,
-						// 제자리로 돌아가는 ms
-						revertDuration: 0,
-						// 어디에서만 움직일 수 있게 할지
-						// 드래그 한 위치 기억
-						start: function(event, ui) {
-							startdrag = $(event.target).parent()
-						},
-
-					})
-					// 인벤토리에 붙이기
-					img.hide()
-					// 사라졌다가 나타나는 애니메이션
-					$(".scheduleinven").append(img.fadeIn())
-					// 옮긴 img 스케줄 테이블에서 제거
-
+					
+					// 인벤토리 속성 적용 함수
+					updateToImageForInventory(img);
 				}
 
 
