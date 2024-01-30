@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.favorites.vo.FavoritesVO;
+import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.member.vo.MemberVO;
 
 @Mapper
@@ -17,4 +18,7 @@ public interface MypageDAO {
 	Integer scheduleNum(Integer memberIndex);
 	Integer scheduleShareNum(Integer memberIndex);
 	Integer boardNum(Integer memberIndex);
+	Integer profileModify(MemberUploadImagesVO vo);
+	Integer profileModifyNickname(MemberVO vo);
+	
 }

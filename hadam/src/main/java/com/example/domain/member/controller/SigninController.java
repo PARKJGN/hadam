@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.member.service.SigninService;
 import com.example.domain.member.vo.MemberVO;
 
@@ -43,6 +44,11 @@ public class SigninController {
 			session.setAttribute("memberId", vo.getMemberId());
 			session.setAttribute("memberNickname", vo.getMemberNickname());
 			session.setAttribute("memberIndex", vo.getMemberIndex());
+			MemberUploadImagesVO i_vo = signinService.profileCheck(vo.getMemberIndex());
+			if(i_vo != null) {
+				session.setAttribute("memberUploadImageName", i_vo.getMemberUploadImageName());
+				session.setAttribute("memberUploadImageId", i_vo.getMemberUploadImageId());
+			}
 //			세션 1시간 유지
 			session.setMaxInactiveInterval(60*60);
 			

@@ -39,6 +39,10 @@
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PASSWORD = #{memberPassword}
 	</select>
 
+	<!-- 로그인 시 프로필 사진 가져오기 -->
+	<select id="profileCheck" parameterType="integer">
+		SELECT * FROM MEMBER_UPLOAD_IMAGE WHERE MEMBER_INDEX = #{memberIndex} AND MEMBER_UPLOAD_IMAGE_PATH = "images/profile"
+	</select>
 
 	<!-- 네이버 회원 확인 -->
 	<select id="naverMemberCheck" parameterType="String" resultType="String">

@@ -1,5 +1,8 @@
 package com.example.domain.mypage.controller;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,16 +17,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.board.service.CommunityBoardService;
+import com.example.domain.board.util.MD5Generator;
 import com.example.domain.board.vo.BoardVO;
 import com.example.domain.chat.service.ChatService;
 import com.example.domain.entry.service.EntryService;
 import com.example.domain.entry.vo.EntryApplicationVO;
 import com.example.domain.favorites.service.FavoritesService;
 import com.example.domain.favorites.vo.FavoritesVO;
+import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
+import com.example.domain.member.service.MemberService;
 import com.example.domain.member.vo.MemberVO;
 import com.example.domain.mypage.service.MypageService;
 import com.example.domain.schedule.service.ScheduleService;
@@ -59,6 +66,11 @@ public class MypageController {
 	
 	@Autowired
 	private ChatService chatService;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	
 	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
@@ -162,7 +174,7 @@ public class MypageController {
 	}
 	
 	
-	/*동생신청 받은 목록 불러오기*/
+	/*동행신청 받은 목록 불러오기*/
 	@RequestMapping("/mypageEntry")
 	public void mypageEntry(HttpSession session, Model model) {
 		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
@@ -254,6 +266,7 @@ public class MypageController {
 		return "redirect:/mypage/mypageEntry";
 	}
 	
+	/*동행신청에서 거절 눌렀을때*/
 	@RequestMapping("/entryRejection")
 	public String entryRejection(@RequestParam("boardId") Integer boardId, 
 							@RequestParam("guestMemberIndex") Integer guestMemberIndex,
@@ -269,6 +282,57 @@ public class MypageController {
 		return "redirect:/mypage/mypageEntry";
 	}
 	
-	
+	/*프로필 수정*/
+	@RequestMapping("/mypageProfileModify")
+	public String mypageProfileModify(@RequestParam("file") MultipartFile profileImage, 
+									@RequestParam("memberNickname") String memberNickname,
+									HttpSession session) {
+		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
+		Integer memberUploadImageId = (Integer) session.getAttribute("memberUploadImageId");
+		
+		String originFilename = profileImage.getOriginalFilename();
+		
+		MemberVO m_vo = new MemberVO(); 
+		m_vo.setMemberIndex(memberIndex);
+		m_vo.setMemberNickname(memberNickname);
+		
+		// 닉네임 변경
+		mypageService.profileModifyNickname(m_vo);
+		session.setAttribute("memberNickname", memberNickname);
+		// 프로필 사진 변경 
+		if(!profileImage.isEmpty()) {
+			String filename;
+			try {
+				filename = new MD5Generator(originFilename).toString();
+				String savePath = System.getProperty("user.dir") + "/src/main/resources/static/images/profile";
+				
+				if (!new File(savePath).exists()) {
+					new File(savePath).mkdir();
+				}
+				
+				String filepath = savePath + "/" + filename+".jpg" ;
+				
+				profileImage.transferTo(new File(filepath)); // 파일 저장
+				
+				// 디비에 저장 
+				MemberUploadImagesVO i_vo = new MemberUploadImagesVO();
+				i_vo.setMemberUploadImageId(memberUploadImageId);
+				i_vo.setMemberUploadImageType("profile");
+				i_vo.setMemberUploadImagePath("images/profile");
+				i_vo.setMemberUploadImageName(filename);
+				i_vo.setMemberUploadImageOriginalname(originFilename);
+				i_vo.setMemberIndex(memberIndex);
+				
+				mypageService.profileModify(i_vo);
+				session.setAttribute("memberUploadImageId", i_vo.getMemberUploadImageId());
+				session.setAttribute("memberUploadImageName", i_vo.getMemberUploadImageName());
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}
+		
+		return "redirect:/mypage/mypageSchedule";
+	}
 	
 }

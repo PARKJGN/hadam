@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.member.dao.SignDAO;
 import com.example.domain.member.vo.MemberVO;
 
@@ -21,4 +22,8 @@ public class SigninServiceImpl implements SigninService{
 		return signDAO.loginCheck(memberId, memberPassword);
 	}
 
+//	로그인 시 프로필 사진 가져오기
+	public MemberUploadImagesVO profileCheck(Integer memberIndex) {
+		return signDAO.profileCheck(memberIndex);
+	}
 }

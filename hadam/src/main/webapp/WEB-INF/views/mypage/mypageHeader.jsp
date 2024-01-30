@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- css -->
-<link type="text/css" rel="stylesheet" href="/css/mypage/mypagemenu.css">
+<link type="text/css" rel="stylesheet" href="/css/mypage/mypageHeader.css">
 <!-- js -->
 <script type="text/javascript" src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/mypage/mypageHeader.js"></script>
@@ -16,24 +16,38 @@
 			<div class="dasboard-sidebar">
 				<div class="dasboard-sidebar-content fl-wrap mypage">
 					<div class="dasboard-avatar">
-						<%-- <img src="images/profile/${memberIndex}_${memberUploadImageName}.jpg" height="100px"> --%>
+						<img id="profileImage" class="saveProfile" src="/images/profile/${sessionScope.memberUploadImageName}.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';">
 						
 						<!-- 프로필사진 업로드 -->
-						<form id="profileImage" class="fuzone" action="mypageProfileImage" method="post" enctype="multipart/form-data">
+						<div class="modifyProfile">
+						<form id="profileImageUpload" class="fuzone" action="/mypage/mypageProfileModify" method="post" enctype="multipart/form-data">
 							<div class="fu-text">
 								<span><i class="far fa-cloud-upload-alt"></i>프로필 사진 변경</span>
 								<div class="photoUpload-files fl-wrap"></div>
 							</div>
-							<input type="file" class="upload">
+							<input type="text" id="memberNickname_hidden" name="memberNickname" hidden>
+							<input type="file" name="file" class="upload">
 						</form>
-					
+					</div>
 					</div>
 					<div class="dasboard-sidebar-item fl-wrap">
-						<h3>
-							<span>Welcome </span> ${sessionScope.memberNickname}
-						</h3>
+						
+						<div class="saveProfile">
+							<h3>
+								<span>Welcome </span> ${sessionScope.memberNickname}
+							</h3>
+						</div>
+						
+						<div class="modifyProfile">
+							<h3>
+								<span class="nickname_comment"></span> 
+								<input type="text" id="member_nickname">
+							</h3>
+						</div>
+						
 					</div>
-					<button id="profileModify" class="ed-btn">프로필 수정</button>
+					<button id="profileModify" class="ed-btn">수정</button>
+					<button id="profileModifyCancel" class="ed-btn modifyProfile">취소</button>
 					<div class="user-stats fl-wrap">
 						<ul>
 							<li>내 스케줄 <span id="scheduleNum"></span>

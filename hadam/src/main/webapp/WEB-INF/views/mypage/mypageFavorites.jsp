@@ -33,6 +33,15 @@
 								<h3>내 찜 장소 </h3>
 							</div>
 							
+							<c:if test="${favoritesList == null}">
+								<div class="dashboard-message">
+									<div class="favoritesNull">
+										찜한 장소가 없습니다
+									</div>
+								</div>
+							</c:if>
+							<c:if test="${favoritesList != null}">
+							
 							<c:forEach var="favorites" items="${favoritesList}">
 							<!-- dashboard-list  -->
 							<div class="dashboard-list">
@@ -87,6 +96,7 @@
 							</div>
 							<!-- dashboard-list end-->
 							</c:forEach>
+							</c:if>
 						</div>
 						<!-- pagination-->
 						<!-- <div class="pagination">

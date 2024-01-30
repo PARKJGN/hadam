@@ -99,7 +99,7 @@ $(function() {
 						updateCountdown();
 						// 1초마다 카운트다운 업데이트
 						countdown = setInterval(updateCountdown, 1000);
-						
+
 						$('#btn_check_phone').on('click', function() {
 							if ($('#input_check_phone').val() == result) {
 								$('.reg-modal , .reg-overlay2').fadeOut(200);
@@ -261,7 +261,7 @@ $(function() {
 			$('#btn_check_phone').addClass('disa')
 		}
 	};
-	
+
 	form_sex = $('input[name=select]:checked').val();
 
 	$('#signup_basicform').hide();							/* 개인정보 입력완료 진짜 버튼 숨기기 */
@@ -287,7 +287,7 @@ $(function() {
 			alert('핸드폰 인증을 확인해주세요');
 			return false;
 		}
-		if($('#member_nickname').val() != form_nickname){
+		if ($('#member_nickname').val() != form_nickname) {
 			alert('닉네임을 확인해주세요');
 			return false;
 		}
@@ -295,78 +295,80 @@ $(function() {
 			alert('생년월일를 확인해주세요');
 			return false;
 		}
-		if ($('input[name=member_sex]:checked').val() != '여자' && $('input[name=member_sex]:checked').val() != '남자'){
+		if ($('input[name=member_sex]:checked').val() != '여자' && $('input[name=member_sex]:checked').val() != '남자') {
 			alert('성별을 선택해주세요');
-			return false;			
+			return false;
 		}
-		
+
 		$('#signup_basicform').trigger("click");
-		
+
 	})
-	
-	
+
+
 	/* 회원가입 완료 번튼 눌렀을 때 */
 	$('#signup_completion').hide();
-	$('#hide_signup_completion').on('click', function(){
-		
+	$('#hide_signup_completion').on('click', function() {
+
 		let checkedCategory = [];
-		$('input:checkbox[class~=small]').each(function(){
-			if($(this).is(':checked')==true){
+		$('input:checkbox[class~=small]').each(function() {
+			if ($(this).is(':checked') == true) {
 				/*console.log($(this)[0].id);*/
 				checkedCategory.push($(this)[0].id);
 			}
 		})
 		/*console.log(checkedcCtegory);*/
 
-		
+
 		$.ajax({
-			url : '/signup/signupCompletion',
-			type : 'post',
-			data : { 'memberId' : form_id ,
-					'memberPassword' : form_password,
-					'memberPhoneNumber' : form_phone,
-					'memberNickname' : form_nickname,
-					'memberSex' : $('input[name=member_sex]:checked').val(),
-					'memberBirth' : form_birth,
-					'checkedCategory' : checkedCategory },
-			success : function(result){
-				if(result==1){
-					$('#signup_completion').trigger("click");				
-				}else{
+			url: '/signup/signupCompletion',
+			type: 'post',
+			data: {
+				'memberId': form_id,
+				'memberPassword': form_password,
+				'memberPhoneNumber': form_phone,
+				'memberNickname': form_nickname,
+				'memberSex': $('input[name=member_sex]:checked').val(),
+				'memberBirth': form_birth,
+				'checkedCategory': checkedCategory
+			},
+			success: function(result) {
+				if (result == 1) {
+					$('#signup_completion').trigger("click");
+				} else {
 					alert('네트워크에 문제가 있습니다. 잠심 후 시도해주세요');
 				}
-				
+
 			},
-			error : function(err){
+			error: function(err) {
 				alert('네트워크에 문제가 있습니다. 잠심 후 시도해주세요');
 			}
 
-			
+
 		})
-		
-		
+
+
 	})
 
 	/* 카테고리 탭에서 중분류 눌렀을때 소분류 태그 토글 */
 	/*소분류 숨기기*/
 	$('div.small').hide();
 	/*중분류 태그 누르면*/
-	$('.ks-cboxtags').find('.middle').on('change',function(){
-		
+	$('.ks-cboxtags').find('.middle').on('change', function() {
+
 		var middle = $(this)
 		/*누른 중분류 태그의 클래스 명의 div가 토글됨*/
 		$(`.${$(this)[0].id}`).toggle('2000');
 		/*누른 중분류 태그 아래 input 태그(소분류)중 체크 된거 있으면 체크 된채로 토글*/
-		if($(`.${$(this)[0].id}`).find('input').is(':checked')){
-			middle.prop('checked',true);
+		if ($(`.${$(this)[0].id}`).find('input').is(':checked')) {
+			middle.prop('checked', true);
 		}
-		
+
 	})
-	
-	
-	
 
 
-	
+
+
+
+
 
 })

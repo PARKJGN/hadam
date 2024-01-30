@@ -31,3 +31,8 @@
 	height: 160px !important;	
 	object-fit: cover;
 }
+
+.favoritesNull {
+	padding-bottom : 30px;
+	margin: 100 20 0 20px;
+}

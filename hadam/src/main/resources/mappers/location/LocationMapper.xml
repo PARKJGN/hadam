@@ -67,7 +67,7 @@
 
 	</select>
 	
-	<!-- 좋아요 목록 가져오는 -->
+	<!-- 찜한 장소 목록 출력 -->
 	<select id="mypageFavoritesList" parameterType="java.util.List">
 		SELECT l.*, li.*
 		FROM location l

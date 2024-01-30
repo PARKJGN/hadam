@@ -8,3 +8,7 @@
 .dasboard-sidebar-content.fl-wrap.mypage{
 	padding: 20px 0 0px 0;					/* 마이페이지 상단 매뉴바 안에 프로필 영역 padding 조절 */
 }
+
+#member_nickname {
+	height: 30px;
+}

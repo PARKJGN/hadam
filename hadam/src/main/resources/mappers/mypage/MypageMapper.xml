@@ -1,35 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.domain.mypage.dao.MypageDAO">
-	
-	<select id="passwordCheck" parameterType="String" resultType="String">
-		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId} AND MEMBER_PASSWORD = #{password}
+
+	<select id="passwordCheck" parameterType="String"
+		resultType="String">
+		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId}
+		AND MEMBER_PASSWORD = #{password}
 	</select>
 
 	<update id="passwordChange" parameterType="String">
-		UPDATE MEMBER SET MEMBER_PASSWORD = #{newPassword} WHERE MEMBER_ID = #{memberId}
+		UPDATE MEMBER SET
+		MEMBER_PASSWORD = #{newPassword} WHERE MEMBER_ID = #{memberId}
 	</update>
 
-	<select id="mypagePhoneNumber" parameterType="integer" resultType="String">
-		SELECT MEMBER_PHONENUMBER FROM MEMBER WHERE MEMBER_INDEX = #{memberIndex}
+	<select id="mypagePhoneNumber" parameterType="integer"
+		resultType="String">
+		SELECT MEMBER_PHONENUMBER FROM MEMBER WHERE MEMBER_INDEX =
+		#{memberIndex}
 	</select>
 
-	<update id="phoneNumberChange" parameterType="com.example.domain.member.vo.MemberVO">
-		UPDATE MEMBER SET MEMBER_PHONENUMBER = #{memberPhoneNumber} WHERE MEMBER_INDEX = #{memberIndex}
+	<update id="phoneNumberChange"
+		parameterType="com.example.domain.member.vo.MemberVO">
+		UPDATE MEMBER SET MEMBER_PHONENUMBER =
+		#{memberPhoneNumber} WHERE MEMBER_INDEX = #{memberIndex}
 	</update>
-	
+
 	<select id="scheduleNum" parameterType="integer">
-		SELECT COUNT(*) FROM SCHEDULE_TABLE WHERE MEMBER_INDEX = #{memberIndex}
+		SELECT COUNT(*) FROM
+		SCHEDULE_TABLE WHERE MEMBER_INDEX = #{memberIndex}
 	</select>
-	
+
 	<select id="scheduleShareNum" parameterType="integer">
-		SELECT COUNT(*) FROM SCHEDULE_TABLE ST JOIN BOARD B 
-		ON ST.SCHEDULE_TABLE_ID  =  B.SCHEDULE_TABLE_ID 
+		SELECT COUNT(*) FROM
+		SCHEDULE_TABLE ST JOIN BOARD B
+		ON ST.SCHEDULE_TABLE_ID =
+		B.SCHEDULE_TABLE_ID
 		WHERE ST.MEMBER_INDEX = #{memberIndex}
 	</select>
-	
+
 	<select id="boardNum" parameterType="integer">
-		SELECT COUNT(*) FROM BOARD WHERE MEMBER_INDEX = #{memberIndex}
+		SELECT COUNT(*) FROM BOARD
+		WHERE MEMBER_INDEX = #{memberIndex}
 	</select>
-	
+
+	<insert id="profileModify"
+		parameterType="com.example.domain.images.vo.MemberUploadImagesVO">
+	INSERT INTO	member_upload_image(
+				MEMBER_UPLOAD_IMAGE_ID,
+				MEMBER_UPLOAD_IMAGE_TYPE,
+				MEMBER_UPLOAD_IMAGE_PATH,
+				MEMBER_UPLOAD_IMAGE_NAME,
+				MEMBER_UPLOAD_IMAGE_ORIGINALNAME,
+				MEMBER_INDEX )
+		VALUES
+		( #{memberUploadImageId}, "profile" , "images/profile", #{memberUploadImageName},
+		#{memberUploadImageOriginalname}, #{memberIndex})
+		ON
+		DUPLICATE KEY UPDATE MEMBER_UPLOAD_IMAGE_NAME = #{memberUploadImageName},
+		MEMBER_UPLOAD_IMAGE_ORIGINALNAME = #{memberUploadImageOriginalname}
+	</insert>
+
+	<update id="profileModifyNickname"
+		parameterType="com.example.domain.member.vo.MemberVO">
+		UPDATE MEMBER SET MEMBER_NICKNAME = #{memberNickname}
+		WHERE MEMBER_INDEX = #{memberIndex}
+	</update>
+
 </mapper>

@@ -47,6 +47,9 @@ public class LocationServiceImpl implements LocationService{
 
 	// 찜한 장소 목록 출력
 	public List<LocationVO> mypageFavoritesList(List<Integer> locationIds){
+		if(locationIds.isEmpty()) {
+			return null;
+		}
 		return locationDAO.mypageFavoritesList(locationIds);
 	}
 	

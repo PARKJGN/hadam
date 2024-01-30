@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.favorites.vo.FavoritesVO;
+import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.member.vo.MemberVO;
 import com.example.domain.mypage.dao.MypageDAO;
 
@@ -43,4 +44,11 @@ public class MypageServiceImpl implements MypageService {
 		return list;
 	}
 	
+	public Integer profileModify(MemberUploadImagesVO vo) {
+		return mypageDAO.profileModify(vo);
+	}
+	
+	public Integer profileModifyNickname(MemberVO vo) {
+		return mypageDAO.profileModifyNickname(vo);
+	}
 }

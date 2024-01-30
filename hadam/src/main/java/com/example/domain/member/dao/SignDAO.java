@@ -2,6 +2,7 @@ package com.example.domain.member.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.member.vo.MemberVO;
 
 /*	 
@@ -30,6 +31,9 @@ public interface SignDAO {
 	
 //	로그인 정보 확인 후 로그인 페이지 이동 
 	MemberVO loginCheck(String memberId, String memberPassword);
+	
+//	로그인 시 프로필 사진 가져오기
+	MemberUploadImagesVO profileCheck(Integer memberIndex);
 	
 //	==================== 네이버 ========================
 	
