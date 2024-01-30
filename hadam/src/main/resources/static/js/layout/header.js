@@ -267,6 +267,7 @@ function showGreeting(memberNickname1,RoomId,message,sendTime) {
             console.log("!");
         }
 	var useravatarSrc = "images/avatar/1.jpg";
+	//src="/images/profile/${sessionScope.memberUploadImageName}.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';"
 	var usermessageDate = formattedDate;
 	var usermessageTime =formattedTime;
 	

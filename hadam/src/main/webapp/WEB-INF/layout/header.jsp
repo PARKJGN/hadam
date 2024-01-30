@@ -90,7 +90,7 @@
                         
                         <div class="header-user-menu">
                             <div class="header-user-name">
-                                <span><img src="/images/avatar/1.jpg" alt=""></span>
+                                <span><img src="/images/profile/${sessionScope.memberUploadImageName}.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';"></span>
                               	${sessionScope.memberNickname}
                             </div>
                         
