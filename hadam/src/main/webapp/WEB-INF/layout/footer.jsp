@@ -2,96 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <footer class="main-footer">
-	<div class="subscribe-wrap color-bg  fl-wrap">
-		<div class="container">
-			<div class="sp-bg"></div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="subscribe-header">
-						<h3>Subscribe</h3>
-						<p>Want to be notified when we launch a new template or an
-							udpate. Just sign up and we'll send you a notification by email.</p>
-					</div>
-				</div>
-				<div class="col-md-1"></div>
-				<div class="col-md-5">
-					<div class="footer-widget fl-wrap">
-						<div class="subscribe-widget fl-wrap">
-							<div class="subcribe-form">
-								<form id="subscribe">
-									<input class="enteremail fl-wrap" name="email"
-										id="subscribe-email" placeholder="Enter Your Email"
-										spellcheck="false" type="text">
-									<button type="submit" id="subscribe-button"
-										class="subscribe-button">
-										<i class="fas fa-rss-square"></i> Subscribe
-									</button>
-									<label for="subscribe-email" class="subscribe-message"></label>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="wave-bg"></div>
-	</div>
-	<!--subscribe-wrap end -->
 	<!--footer-inner-->
 	<div class="footer-inner">
 		<div class="container">
 			<!--footer-fw-widget-->
-			<div class="footer-fw-widget fl-wrap">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="footer-carousel-title">Our partners</div>
-					</div>
-					<div class="col-md-9">
-						<!--footer-carousel-wrap-->
-						<div class="footer-carousel-wrap fl-wrap">
-							<div class="footer-carousel fl-wrap">
-								<!--footer-carousel-item-->
-								<div class="footer-carousel-item">
-									<a href="#"><img src="/images/partners/1.png" alt=""></a>
-								</div>
-								<!--footer-carousel-item end-->
-								<!--footer-carousel-item-->
-								<div class="footer-carousel-item">
-									<a href="#"><img src="/images/partners/1.png" alt=""></a>
-								</div>
-								<!--footer-carousel-item end-->
-								<!--footer-carousel-item-->
-								<div class="footer-carousel-item">
-									<a href="#"><img src="/images/partners/1.png" alt=""></a>
-								</div>
-								<!--footer-carousel-item end-->
-								<!--footer-carousel-item-->
-								<div class="footer-carousel-item">
-									<a href="#"><img src="/images/partners/1.png" alt=""></a>
-								</div>
-								<!--footer-carousel-item end-->
-								<!--footer-carousel-item-->
-								<div class="footer-carousel-item">
-									<a href="#"><img src="/images/partners/1.png" alt=""></a>
-								</div>
-								<!--footer-carousel-item end-->
-								<!--footer-carousel-item-->
-								<div class="footer-carousel-item">
-									<a href="#"><img src="/images/partners/1.png" alt=""></a>
-								</div>
-								<!--footer-carousel-item end-->
-							</div>
-							<div class="fc-cont  fc-cont-prev">
-								<i class="fal fa-angle-left"></i>
-							</div>
-							<div class="fc-cont  fc-cont-next">
-								<i class="fal fa-angle-right"></i>
-							</div>
-						</div>
-						<!--footer-carousel-wrap end-->
-					</div>
-				</div>
-			</div>
+			<div class="footer-fw-widget fl-wrap"></div>
 			<!--footer-fw-widget end-->
 			<div class="row">
 				<!--footer-widget -->
@@ -99,30 +14,15 @@
 					<div class="footer-widget fl-wrap">
 						<h3>About Us</h3>
 						<div class="footer-contacts-widget fl-wrap">
-							<p>In ut odio libero, at vulputate urna. Nulla tristique mi a
-								massa convallis cursus. Nulla eu mi magna. Etiam suscipit
-								commodo gravida. Lorem ipsum dolor sit amet, consectetuer
-								adipiscing elit, sed diam.</p>
+							<p>자카드 유사도 알고리즘을 이용하여 사용자의 취향데이터를 분석하고 크롤링한 데이터를 사용성에 맞게 정제하여 일일 스케줄을 추천하는 사용자 맞춤형 서비스를 제공하고 있습니다.</p>
 							<ul class="footer-contacts fl-wrap">
 								<li><span><i class="fal fa-envelope"></i> Mail :</span><a
-									href="#" target="_blank">yourmail@domain.com</a></li>
+									href="#" target="_blank">goldjung9@google.com</a></li>
 								<li><span><i class="fal fa-map-marker-alt"></i>
-										Adress :</span><a href="#" target="_blank">USA 27TH Brooklyn NY</a></li>
+										Adress :</span><a href="#" target="_blank">서울 마포구 백범로 23 3층</a></li>
 								<li><span><i class="fal fa-phone"></i> Phone :</span><a
-									href="#">+7(111)123456789</a></li>
+									href="#">+82 02-739-7235</a></li>
 							</ul>
-							<div class="footer-social">
-								<span>Find us : </span>
-								<ul>
-									<li><a href="#" target="_blank"><i
-											class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#" target="_blank"><i
-											class="fab fa-twitter"></i></a></li>
-									<li><a href="#" target="_blank"><i
-											class="fab fa-instagram"></i></a></li>
-									<li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-								</ul>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -133,24 +33,23 @@
 						<h3>Our Last News</h3>
 						<div class="widget-posts fl-wrap">
 							<ul>
-								<li class="clearfix"><a href="#" class="widget-posts-img"><img
-										src="/images/all/1.jpg" class="respimg" alt=""></a>
+								<li class="clearfix"><a href="https://ictedu.co.kr/index.php?main_page=home" class="widget-posts-img"><img
+										src="/images/all/news1.jpg" class="respimg" alt="" style="width:100%; height:100%;"></a>
 									<div class="widget-posts-descr">
-										<a href="#" title="">Vivamus dapibus rutrum</a> <span
-											class="widget-posts-date"> 21 Mar 09.05 </span>
+										<a href="#" title="">Ict 최종프로젝트 발표</a> <span
+											class="widget-posts-date"> 02 Feb 09:30 </span>
 									</div></li>
-								<li class="clearfix"><a href="#" class="widget-posts-img"><img
-										src="/images/all/1.jpg" class="respimg" alt=""></a>
+								
+								<li class="clearfix">
+									<a href="https://ictedu.co.kr/index.php?main_page=home" class="widget-posts-img">
+										<img src="/images/all/news2.png" class="respimg" alt="">
+									</a>
 									<div class="widget-posts-descr">
-										<a href="#" title=""> In hac habitasse platea</a> <span
-											class="widget-posts-date"> 7 Mar 18.21 </span>
-									</div></li>
-								<li class="clearfix"><a href="#" class="widget-posts-img"><img
-										src="/images/all/1.jpg" class="respimg" alt=""></a>
-									<div class="widget-posts-descr">
-										<a href="#" title="">Tortor tempor in porta</a> <span
-											class="widget-posts-date"> 7 Mar 16.42 </span>
-									</div></li>
+										<a href="#" title=""> Ict 수료</a>
+										<span class="widget-posts-date"> 08 Feb 09:30 </span>
+									</div>
+								</li>
+								
 							</ul>
 						</div>
 					</div>
@@ -163,14 +62,10 @@
 						<ul class="footer-list fl-wrap">
 							<li><a href="about.html">About Our Company</a></li>
 							<li><a href="blog.html">Our last News</a></li>
-							<li><a href="pricing-tables.html">Pricing Plans</a></li>
-							<li><a href="help.html">Help Center</a></li>
-							<li><a href="contacts.html">Contacts</a></li>
 						</ul>
-						<a href="#" class=" down-btn color3-bg fl-wrap"><i
-							class="fab fa-apple"></i> Apple Store </a> <a href="#"
-							class=" down-btn color3-bg fl-wrap"><i class="fab fa-android"></i>
-							Google Play </a>
+						<a class="contact-btn color-bg" href="메일보내는경로">Get In
+							Touch<i class="fal fa-envelope" aria-hidden="true"></i>
+						</a>
 					</div>
 				</div>
 				<!-- footer-widget end-->
@@ -179,20 +74,7 @@
 			<!--footer-widget -->
 			<div class="footer-widget">
 				<div class="row">
-					<div class="col-md-4">
-						<a class="contact-btn color-bg" href="contacts.html">Get In
-							Touch<i class="fal fa-envelope"></i>
-						</a>
-					</div>
-					<div class="col-md-8">
-						<div class="customer-support-widget fl-wrap">
-							<h4>Customer support :</h4>
-							<a href="tel:+19012300888" class="cs-mumber">+1(901)2300888</a> <a
-								href="tel:+19012300888" class="cs-mumber-button color2-bg">Call
-								Now <i class="far fa-phone-volume"></i>
-							</a>
-						</div>
-					</div>
+					<div class="col-md-4"></div>
 				</div>
 			</div>
 			<!--footer-widget end -->
@@ -203,17 +85,17 @@
 	<!--sub-footer-->
 	<div class="sub-footer">
 		<div class="container">
-			<div class="copyright">&#169; EasyBook 2018 . All rights
+			<div class="copyright">&#169; HadamProject 2024 . All rights
 				reserved.</div>
 			<div class="subfooter-lang">
 				<div class="subfooter-show-lang">
-					<span>Eng</span><i class="fa fa-caret-up"></i>
+					<span>Kr</span><i class="fa fa-caret-up"></i>
 				</div>
 				<ul class="subfooter-lang-tooltip">
-					<li><a href="#">Dutch</a></li>
-					<li><a href="#">Italian</a></li>
-					<li><a href="#">French</a></li>
-					<li><a href="#">Spanish</a></li>
+					<li><a href="#">Java</a></li>
+					<li><a href="#">Python</a></li>
+					<li><a href="#">C++</a></li>
+					<li><a href="#">MySQL</a></li>
 				</ul>
 			</div>
 			<div class="subfooter-nav">

@@ -44,14 +44,12 @@ function getChatRoomList() {
                 chatItem.attr('onclick', 'addmodal(' + ChatRoomList.chatRoomId + ', \'' + ChatRoomList.chatRoomName + '\')');
 				var avatarContainer = $('<div class="dashboard-message-avatar"></div>');
 				var avatarImage = $('<img class="프사" src="' + avatarSrc + '" alt="">');
-				var messageCounterDiv = $('<div class="message-counter">' + messageCounter + '</div>');
 				var textContainer = $('<div class="chat-contacts-item-text"></div>');
 				var titleHeader = $('<h4 class="제목들어가야함">' + titleText + '</h4>');
 				var lastChatDateSpan = $('<span class="마지막채팅날짜">' + lastChatDate + '</span>');
 				var lastChatContentP = $('<p class="마지막채팅내용">' + lastChatContent + '</p>');
  				
 				avatarContainer.append(avatarImage);
-				avatarContainer.append(messageCounterDiv);
 				textContainer.append(titleHeader);
 				textContainer.append(lastChatDateSpan);
 				textContainer.append(lastChatContentP);
@@ -182,7 +180,7 @@ function addmodal(chatRoomId,chatRoomName) {
                 // 서버에서 오류 응답을 받았을 때 수행할 동작
                 console.error("POST 요청 실패", error);
             }
-        });	
+        });	//end of ajax
 			}
 	    });
 

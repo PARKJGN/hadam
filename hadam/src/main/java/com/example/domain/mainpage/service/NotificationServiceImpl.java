@@ -40,7 +40,6 @@ public class NotificationServiceImpl implements NotificationService{
      * @param event  - 전송할 이벤트 객체.
      */
 	public void notify(Long userId, Object event) {
-		 System.out.println("sendToClient시도");
 
         sendToClient(userId, event);
 	}
@@ -52,7 +51,6 @@ public class NotificationServiceImpl implements NotificationService{
      * @param data - 전송할 데이터.
      */
 	public void sendToClient(Long id, Object data) {
-		 System.out.println("sendToClient도착 :"+id+"/"+data);
 
 		SseEmitter emitter = emitterRepository.get(id);
         if (emitter != null) {

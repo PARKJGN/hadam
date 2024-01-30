@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 public class MessageServiceImpl implements MessageService{
 
 	private final MessageMongoDBRepository messageRepository;
-	
-	public MessageServiceImpl(MessageMongoDBRepository messageRepository) {
+	private final AlarmMongoDBRepository alarmRepository;
+
+	public MessageServiceImpl(MessageMongoDBRepository messageRepository, AlarmMongoDBRepository alarmRepository){
 		this.messageRepository = messageRepository;
+		this.alarmRepository = alarmRepository;
 	}
+	
 	
 	@Override
 	public MessageMongoDB saveMessage(MessageMongoDB message) {
@@ -32,6 +35,27 @@ public class MessageServiceImpl implements MessageService{
 	@Override
 	public List<MessageMongoDB> getChatMessagesByRoomId(Integer chatRoomId) {
 		return messageRepository.findByChatRoomId(chatRoomId);
+	}
+	
+	
+	//알림
+
+	@Override
+	public AlarmMongoDB saveAlarm(AlarmMongoDB alarm) {
+		 
+		return alarmRepository.save(alarm);
+	}
+
+	@Override
+	public List<AlarmMongoDB> getAllAlarmByMemberIndex(Integer memberIndex) {
+		 
+		return alarmRepository.getAllAlarmByMemberIndex(memberIndex);
+	}
+
+	@Override
+	public void deleteAlarm(String id) {
+		alarmRepository.deleteById(id);
+		
 	}
 
 }
