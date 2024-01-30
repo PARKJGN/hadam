@@ -1,5 +1,4 @@
 $(() => {
-
 	// 시작시간 고르는 캘린더
 	$("#datepicker").daterangepicker({
 		locale: {
@@ -32,7 +31,7 @@ $(() => {
 		scheduleform.attr("action", "/schedule/insertscheduletable")
 
 		// 스케줄의 개수
-		let schedule = $('.listItem')
+		let schedule = $('.summarySchedule')
 
 		// 스케줄이 1개 이하면 submit 안되게 하기
 		if (schedule.length < 2) {

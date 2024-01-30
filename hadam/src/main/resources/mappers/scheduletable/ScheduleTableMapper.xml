@@ -216,6 +216,7 @@
 					c.SMALL_CATEGORY = #{category}
 				</foreach>
 			</foreach>
+			ORDER BY RAND()
 		</select>
 
 		<select id="CreateScheduleTable" parameterType="AiCreateVO"
@@ -249,6 +250,7 @@
 				separator="OR">
 				c.LARGE_CATEGORY = #{category}
 			</foreach>
+			ORDER BY RAND()
 		</select>
 		
 			<!-- 스케줄 공유게시판 최신순 조회 -->

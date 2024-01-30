@@ -111,15 +111,11 @@ $(() => {
 					$('.modal-footer').empty()
 					$.each(res.list, function(i, item) {
 
-						// 파일에러나면 다른 이미지 띄워주기
-						var files = new Image();
-						files.src = `/images/location/${item.locationImageOriginalname}`
-
 						$('.locationlist').append(`
 						<div style="width: 50%;" class="dashboard-list">
 							<div class="dashboard-message">
 								<div class="dashboard-listing-table-image">
-									<a href="listing-single.html"><img class src="${files.src}"  onerror=this.src="/images/location/사진없음.jpg" 
+									<a href="listing-single.html"><img class src="/images/location/${item.locationImageOriginalname}"  onerror=this.src="/images/gal/no_image2.jpg" 
 										alt=""></a>
 								</div>
 								<div style = "height:75px;"class="dashboard-listing-table-text">

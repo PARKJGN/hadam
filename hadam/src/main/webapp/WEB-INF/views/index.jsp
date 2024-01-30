@@ -455,13 +455,12 @@
             <!--wrapper end -->
             <!--footer -->
             <!-- 외부 js에서 세션에 담긴 멤버 인덱스를 가져오기 위한 내부 스크립트 -->
-            <script>
-            	const member = <%= session.getAttribute("memberIndex") %>
-            	var msg = "${scheMsg}"
-								            	
-            </script>
-
             <jsp:include page="../layout/footer.jsp"></jsp:include>
+              <script>
+            	const member = <%= session.getAttribute("memberIndex") %>
+            	let msg = "${scheMsg}"
+            	if(msg != "") alert(msg)
+            </script>
             <script src="/js/index.js"></script>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
             <script src="/js/schedule/pythonSocket.js"></script>

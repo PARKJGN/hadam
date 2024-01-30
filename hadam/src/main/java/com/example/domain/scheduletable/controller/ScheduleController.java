@@ -1,5 +1,6 @@
 package com.example.domain.scheduletable.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +20,9 @@ import com.example.domain.schedule.vo.PagingVO;
 import com.example.domain.scheduletable.service.ScheduleTableService;
 import com.example.domain.scheduletable.vo.AiCreateVO;
 import com.example.domain.scheduletable.vo.ScheduleTableVO;
+import com.google.gson.Gson;
 
 import jakarta.servlet.http.HttpSession;
-
 
 @Controller
 @RequestMapping("schedule")
@@ -42,6 +43,17 @@ public class ScheduleController {
 	public String requestMethodName(@PathVariable String path) {
 		return "schedule/" + path;
 	}
+	
+	@GetMapping("schedulepage")
+	public String scheduleMakePage(HttpSession session, RedirectAttributes rttr) {
+		
+		if(session.getAttribute("memberIndex")==null || session.getAttribute("memberIndex").equals("")) {
+			rttr.addFlashAttribute("scheMsg", "로그인이 필요한 서비스입니다.");
+			return "redirect:/index";
+		}
+		
+		return "/schedule/schedulepage";
+	}
 
 	// 모달창에 장소목록 불러오기
 	@ResponseBody
@@ -58,7 +70,11 @@ public class ScheduleController {
 	}
 	
 	@PostMapping("insertscheduletable")
-	public String insertScheduleTable(ScheduleTableVO stvo, HttpSession session) {
+	public String insertScheduleTable(ScheduleTableVO stvo, HttpSession session, RedirectAttributes rttr) {
+		if(session.getAttribute("memberIndex")==null || session.getAttribute("memberIndex").equals("")) {
+			rttr.addFlashAttribute("scheMsg", "오류가 발생했습니다. 다시 로그인해주세요.");
+			return "redirect:/index";
+		}
 		
 		stvo.setMemberIndex((Integer)session.getAttribute("memberIndex")); 
 		stser.insertScheduleTable(stvo);
@@ -68,9 +84,12 @@ public class ScheduleController {
 	}
 	
 	@PostMapping("createaischeduletable")
-	public String insertScheduleTable(AiCreateVO aivo, HttpSession session, RedirectAttributes rttr) {
+	public String createScheduleTable(AiCreateVO aivo, HttpSession session, RedirectAttributes rttr) {
 		System.out.println(aivo);
-		Integer memberIndex = (Integer)session.getAttribute("memberIndealert(msg)alert(msg)alert(msg)alert(msg)alert(msg)x");
+		ArrayList<String> categories = (ArrayList<String>) (aivo.getCategoryList());
+		ArrayList<String> orginalCategories = (ArrayList<String>) categories.clone();
+		
+		Integer memberIndex = (Integer)session.getAttribute("memberIndex");
 		
 		List<LocationVO> list =  stser.aiCreateScheduleTable(aivo, memberIndex);
 		if(list.size()==0) {
@@ -78,7 +97,11 @@ public class ScheduleController {
 			return "redirect:/index";
 		}
 		
-		rttr.addFlashAttribute(list);
+		aivo.setCategoryList(orginalCategories);
+		Gson jsonParser = new Gson();
+		
+		rttr.addFlashAttribute("locationList", jsonParser.toJson(list));
+		rttr.addFlashAttribute("aiInformation",jsonParser.toJson(aivo));
 		
 		return "redirect:/schedule/schedulepage";
 	}
