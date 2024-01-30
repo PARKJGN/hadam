@@ -247,9 +247,9 @@
 }
 
 .form-label > fieldset > label {
-	  font-size: 18px;
-	  line-height: 2rem;
-	  padding: 0.2em 0.4em;
+    font-size: 18px;
+    line-height: 2rem;
+    padding: 0.2em 0.4em;
 	
 }
 
@@ -259,16 +259,16 @@
 }
 
 [type="radio"], span {
-  vertical-align: middle;
+  	vertical-align: middle;
 }
 
 [type="radio"] {
-  appearance: none;
-  border: max(2px, 0.1em) solid gray;
-  border-radius: 50%;
-  width: 1.25em;
-  height: 1.25em;
-  transition: border 0.5s ease-in-out;
+    appearance: none;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+    transition: border 0.5s ease-in-out;
 }
 
 [type="radio"]:checked {

@@ -1,204 +1,191 @@
 @charset "UTF-8";
-#box{
-            margin-left:800px;
-            		 /* Flexbox 레이아웃 사용 */
-         
-            justify-content: center;
-            width:1200px;
-            	}
+#box {
+   margin-left:800px;     
+   justify-content: center;
+   width:1200px;
+}
             	
-            	#updateBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-            	}
+#updateBtn {
+   width:60px;
+   height:25px;
+   font-size:14px;            
+   text-align : center;
+   padding : 0 0;
+}
             	
-            	#backBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:14px;            
-            		text-align : center;
-	 				padding : 0 0;
-            	}
-            	#listBox {
-     				 display: flex;
-                     justify-content: space-between;
-                     background-color: white;
-            		 border-radius: 10px;
-            		 height:200px;
-            		 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
-            		 width:1200px;
-					
-			
-     			}
+#backBtn {
+   width:60px;
+   height:25px;
+   font-size:14px;            
+   text-align : center;
+   padding : 0 0;
+}
+#listBox {
+   display: flex;
+   justify-content: space-between;
+   background-color: white;
+   border-radius: 10px;
+   height:200px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+   width:1200px;
+}
      			
-     			.listImg {
-     				height:85px;
-     			}
-     			#listItem {
-     				flex:1;
-     				width: 120px;
-     				box-sizing: border-box; /* 마진과 패딩을 요소의 크기에 포함시키기 위해 */
-	      			background-color: white; /* 테스트를 위한 배경색 설정 */
-	      			text-align: center; /* 텍스트를 가운데 정렬하기 위해 */
-	     			margin:5px;
-     			}
+.listImg {
+   height:85px;
+}
+#listItem {
+   flex:1;
+   width: 120px;
+   box-sizing: border-box; /* 마진과 패딩을 요소의 크기에 포함시키기 위해 */
+   background-color: white; /* 테스트를 위한 배경색 설정 */
+   text-align: center; /* 텍스트를 가운데 정렬하기 위해 */
+   margin:5px;
+}
      		
-     			#information {
-     				margin-top: 60px;
-                 	width:250px;
-     			}
-     			#shareBtn {
-     				width:120px;
-            		height:25px;
-            		font-size:14px;     
-            		text-align : center;
-	 				padding : 0 0;
-			
-     			}
+#information {
+   margin-top: 60px;
+   width:250px;
+}
+#shareBtn {
+   width:120px;
+   height:25px;
+   font-size:14px;     
+   text-align : center;
+   padding : 0 0;
+}
      			
-     			.shareBtnBox{
-     				text-align:right;
-     				position:relative;
-     				top:-25px;
-     			}
-     			.pagination {
-     				position:relative;
-     				right:-550px;
-     			}
+.shareBtnBox{
+   text-align:right;
+   position:relative;
+   top:-25px;
+}
+.pagination {
+   position:relative;
+   right:-550px;
+}
      			
-				.arrowBox {
-				  display: flex;
-				  justify-content: center;
-				  align-items: center;
-				  height: 50vh;
-				  margin-top:-100px;
-				  margin:5;
-				}
+.arrowBox {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 50vh;
+   margin-top:-100px;
+   margin:5;
+}
 
-				.arrow {
-				  width: 0;
-				  height: 0;
-				  border-top: 10px solid transparent;
-				  border-bottom: 10px solid transparent;
-				  border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
-				  position:relative;
-				  right:-25px;
-				  top:-50px;
-				}
+.arrow {
+   width: 0;
+   height: 0;
+   border-top: 10px solid transparent;
+   border-bottom: 10px solid transparent;
+   border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
+   position:relative;
+   right:-25px;
+   top:-50px;
+}
 
-				.timeTaken {
+.timeTaken {
+   white-space: nowrap;
+   margin-top:-20px;
+}		
+#scheduleTitle {
+   text-align:left;
+   position:relative;
+   bottom:-20px;
+}
 				
-					white-space: nowrap;
-					margin-top:-20px;
-					
-				}
-				
-				
-				
-				#scheduleTitle {
-					text-align:left;
-               		position:relative;
-               		bottom:-20px;
-				}
-				
-				#timeBox h3{
-					font-size:13px;
-					white-space: nowrap;
-				}
-				
-				#moveTab {
-				 position:relative;
-				 left:-90px;
-				}
-				
-				#writeForm{
-					width:1200px;
-					margin-top:20px;
-				}
-				
-				#replyBox{
-					width: 1200px;
-					
-					height:250px;
-				}
-				
-				#replyBox h4 {
-					position:relative;
-					top:-20px;
-				}
-				
-				#replyBox p {
-					position:relative;
-					left:-40px;
-				}
-				
-				#replyinnerBox {
-					width:1150px;
-					position:relative;
-					left:-20px;
-					top:-50px;
-				}
-				#replyinnerBox span {
-					position:relative;
-					top:-100px;
-				}
-				
-				#danger{
-            		width:50px;
-            		height:20px;
-            		font-size:12px;
-            		margin-left:610px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				
-            	}
-            	
-            	.commentBtn{
-            		text-align:right;
-            	}
-            	
-            	.dangerBox{
-            		text-align:right;
-            		position:relative;
-            		top:-70px;
-            	}
-            	
-            	#replydateBox {
-            		position:relative;
-            		bottom:-50px;
-            	}
-            	
-            	#replyWriteBox {
-            		width:1200px;
-            		
-            		height:220px;
-            	}
-            	
-            	#COMMENT_CONTENT {
-            		height:80px;
-            	}
-            	
-            	#comment {
-          			height:30px;
-            		
-            		font-size:14px;
-            	}
-            	
-            	#chatBox {
-            		position:relative;
-            		top:-50px;
-            		height:100px;
-            	}
-            	
-            	#replyImage {
-            		position:relative;
-            		bottom:-10px;
-            		left:-10px;
-            	}
-            	
-            	#userInfo {
-            		margin-top:35px;
-            	}
+#timeBox h3{
+	font-size:13px;
+	white-space: nowrap;
+}
+
+#moveTab {
+ position:relative;
+ left:-90px;
+}
+
+#writeForm{
+	width:1200px;
+	margin-top:20px;
+}
+
+#replyBox{
+	width: 1200px;
+	
+	height:250px;
+}
+
+#replyBox h4 {
+	position:relative;
+	top:-20px;
+}
+
+#replyBox p {
+	position:relative;
+	left:-40px;
+}
+
+#replyinnerBox {
+	width:1150px;
+	position:relative;
+	left:-20px;
+	top:-50px;
+}
+#replyinnerBox span {
+	position:relative;
+	top:-100px;
+}
+
+#danger{
+	width:50px;
+	height:20px;
+	font-size:12px;
+	margin-left:610px;
+	text-align : center;
+	padding : 0 0;
+}
+        	
+.commentBtn{
+	text-align:right;
+}
+        	
+.dangerBox{
+	text-align:right;
+	position:relative;
+	top:-70px;
+}
+        	
+#replydateBox {
+	position:relative;
+	bottom:-50px;
+}
+        	
+#replyWriteBox {
+	width:1200px;
+	height:220px;
+}
+        	
+#COMMENT_CONTENT {
+	height:80px;
+}
+        	
+#comment {
+	height:30px;
+	font-size:14px;
+}
+        	
+#chatBox {
+	position:relative;
+	top:-50px;
+	height:100px;
+}
+        	
+#replyImage {
+	position:relative;
+	bottom:-10px;
+	left:-10px;
+}
+        	
+#userInfo {
+	margin-top:35px;
+}

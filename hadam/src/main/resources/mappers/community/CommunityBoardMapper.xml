@@ -24,6 +24,7 @@
 	</insert>
 
 	<!-- 자유게시판 상세 페이지 사진과 글정보 -->
+	
 	<select id="getBoard" parameterType="BoardVO"
 		resultType="BoardVO">
 		SELECT b.*, m.*, i.*
@@ -75,7 +76,12 @@
 		DELETE FROM comment
 		WHERE BOARD_ID = #{boardId}
 	</delete>
-
+	
+	<delete id="deleteCommentReport" parameterType="int">
+		DELETE FROM board_comment_report
+		WHERE BOARD_ID = #{boardId}
+	</delete>
+	
 	<!-- 게시글 조회수 처리 -->
 	<update id="boardHits" parameterType="int">
 		UPDATE board SET
@@ -83,12 +89,16 @@
 
 	</update>
 
-	<!-- 댓글 저장 -->
+	<!-- 댓글 저장시 commentId 뽑아오기 -->
 	<insert id="commentSave" parameterType="CommentVO">
 		insert into comment
 		(COMMENT_CONTENT, COMMENT_REGISTE_DATE, MEMBER_INDEX, BOARD_ID)
 		values
 		( #{commentContent}, now(), #{memberIndex}, #{boardId})
+		<selectKey resultType="Integer" keyProperty="commentId"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
 
 	<!-- 해당 게시글에 작성한 댓글 리스트 가져오기 -->
@@ -99,7 +109,6 @@
 		ON c.MEMBER_INDEX = m.MEMBER_INDEX
 		WHERE
 		c.BOARD_ID = #{boardId}
-
 	</select>
 
 	<!-- 신고된 정보 저장 -->
@@ -121,12 +130,10 @@
 		limit 1
 	</select>
 
-	<select id="reportList" parameterType="Integer"
-		resultType="BoardAndCommentReportVO">
+	<select id="reportList" parameterType="Integer" resultType="BoardAndCommentReportVO">
 		select *
 		from board_comment_report
-		WHERE COMMENT_ID =
-		#{commentId}
+		WHERE COMMENT_ID = #{commentId}
 	</select>
 
 	<!-- 스케줄 저장 -->
@@ -181,7 +188,7 @@
 	</insert>
 
 	<!-- 스케줄 상세 댓글 목록 -->
-	<select id="scheduleCommentList" parameterType="Integer"
+	<select id="scheduleCommentList" parameterType="CommentVO"
 		resultType="CommentVO">
 		select c.*, m.*
 		from comment c INNER JOIN member m
@@ -190,6 +197,7 @@
 		c.BOARD_ID = #{boardId}
 	</select>
 
+	<!-- 스케줄 공유 게시판 수정 -->
 	<update id="scheduleTableUpdate" parameterType="BoardVO">
 		UPDATE board b
 		INNER JOIN schedule_table st
@@ -208,15 +216,6 @@
 		WHERE b.BOARD_ID = #{boardId}
 	</update>
 
-	<select id="boardList" parameterType="Integer"
-		resultType="BoardVO">
-		select *
-		from board
-		where board_id = #{boardId}
-
-	</select>
-
-
 	<select id="mypageBoard">
 		SELECT * FROM BOARD WHERE MEMBER_INDEX =
 		#{memberIndex}
@@ -229,14 +228,8 @@
 		from entry_application
 		where member_index = #{memberIndex} AND BOARD_ID = #{boardId}
 	</select>
-
-	<select id="getBoardId" parameterType="Integer"
-		resultType="BoardVO">
-		select boardId
-		from board
-		where BOARD_ID = #{boardId}
-	</select>
-
+	
+	<!-- 자유게시판 검색 -->
 	<select id="searchBoards" parameterType="BoardVO"
 		resultType="BoardVO">
 		SELECT b.*, m.*
@@ -272,4 +265,11 @@
 		delete from board
 		where board_id = #{boardId}
 	</delete>
+	
+	<!-- 해당 게시글 댓글 개수 -->
+	<select id="commentCount" parameterType="int" resultType="CommentVO">
+		select count(*) as count
+        from comment
+        where board_id = #{boardId}
+	</select>
 </mapper>

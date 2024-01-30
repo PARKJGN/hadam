@@ -37,15 +37,22 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	// 파일, 글정보 insert
 	@Transactional
 	public void saveBoard(BoardVO bvo, MemberUploadImagesVO fvo) {
+		
+		// 파일첨부가 있는 경우
 		if ( fvo != null) {
-			// 파일첨부가 있는 경우
-			
+		
+			// 작성한 게시글 저장
 			communityBoardDAO.saveBoard(bvo);
-			fvo.setBoardId(communityBoardDAO.selectId()); 
-			fileDAO.saveFile(fvo);
-			System.out.println("boardServiceImpl -> "+ fvo);
 			
-		} else {
+			// 해당 게시글의 boardId를 MemberUploadImagesVO fvo에 놓기
+			fvo.setBoardId(communityBoardDAO.selectId()); 
+			
+			// 파일첨부
+			fileDAO.saveFile(fvo);	
+		} 
+		
+		// 파일첨부가 없는 경우		
+		else {
 			communityBoardDAO.saveBoard(bvo);
 		}
 	}
@@ -53,7 +60,7 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 
 	// 자유게시판 목록
 	public List<BoardVO> getBoardList() {
-	
+		
 		return communityBoardDAO.getBoardList();
 	}
 
@@ -89,13 +96,15 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	public void updateBoardAndFile(BoardVO vo, MemberUploadImagesVO fvo) {
 		
 		communityBoardDAO.updateBoard(vo);
-		if (fvo != null) {
-			// 파일이 있는 경우 파일 정보 저장
+		
+		// 파일이 있는 경우 파일 정보 저장
+		if (fvo != null) {		
 			fvo.setBoardId(vo.getBoardId());
 			fileDAO.updateFile(fvo);
 		}
 	}
-
+	
+	// 게시글 수정
 	public void updateBoard(BoardVO vo) {
 		
 		communityBoardDAO.updateBoard(vo);
@@ -263,6 +272,20 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	public List<CommentVO> getAccountCommentList(Integer memberIndex){
 		
 		return communityBoardDAO.getAccountCommentList(memberIndex);
+	}
+
+
+	// 댓글 신고 삭제
+	public void deleteCommentReport(int boardId) {
+		
+		communityBoardDAO.deleteCommentReport(boardId);
+		
+	}
+
+	// 해당 게시글 댓글 개수
+	public CommentVO commentCount(int boardId) {
+		
+		return communityBoardDAO.commentCount(boardId);
 	};
 
 

@@ -94,7 +94,6 @@ public interface CommunityBoardDAO {
 	
 	// boardList 검색
 	public List<BoardVO> searchBoards(BoardVO vo);
-	
 
 	// 관리자
 	// 게시글 삭제
@@ -105,5 +104,11 @@ public interface CommunityBoardDAO {
 	
 	// 계정에서 작성한 댓글 조회
 	public List<CommentVO> getAccountCommentList(Integer boardIndex);
+	
+	// 댓글 신고 삭제
+	public void deleteCommentReport(int boardId);
+	
+	// 해당 게시글 댓글 개수
+	public CommentVO commentCount(int boardId);
 
 }

@@ -5,85 +5,79 @@
 <%@ page import="java.util.Date" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="/css/board/boardList.css">
-    <!-- 자유게시판 커뮤니티 페이지 -->
-       
+<jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="/css/board/boardList.css">
+    <!-- 자유게시판 커뮤니티 페이지 -->   
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
                     <!-- section-->
                    	<section class="parallax-section single-par" data-scrollax-parent="true">
+                   		<!-- 자유게시판 배경이미지 시작 -->
                         <div class="bg par-elem "  data-bg="/images/board/back7.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <!-- 자유게시판 배경이미지 끝 -->
                         <div class="overlay"></div>
-                        <div class="container">
-                            <div class="section-title center-align big-title">
-                                
+                        <!-- 자유게시판 배경글 시작 -->
+                        <div class="container">                     	
+                            <div class="section-title center-align big-title">                                
                                 <h2><span>Hadam(하루를 담다)</span></h2>
                                 <span class="section-separator"></span>
                                 <h4>당신의 완벽한 하루를 작성하세요!</h4>
-                            </div>
-                             
-                        </div>
-                        
+                            </div>                            
+                        </div> 
+                         <!-- 자유게시판 배경글 끝 -->                 
                     </section>
-                    <section class="flat-header color-bg adm-header" style="background-color:white">
-                   		 
+                    <section class="flat-header color-bg adm-header" style="background-color:white">          
                         <div class="container" id="full">
+                        	<!-- 자유게시판 tab 시작 -->
                            <div class="breadcrumbs-fs fl-wrap " id="tabTab">
 								<div class="container" id="moveTab">
 									<div class="breadcrumbs fl-wrap">
 										<a href="#" style="text-decoration:none; font-size:16px;">커뮤니티</a><span style="font-size:16px;">자유 게시판</span>
-									</div>
-					
+									</div>					
 								</div>
 							</div>
-                            <div class="dasboard-wrap fl-wrap">
-                           
+							<!-- 자유게시판 tab 끝 -->
+                            <div class="dasboard-wrap fl-wrap">                          
                                 <div class="dasboard-menu">
                                     <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i></div>
                                     <ul class="dasboard-menu-wrap" >         
                                         <li><a href="/community/boardList" class="user-profile-act" id="boardTap"><i class="far fa-comments"></i> 자유게시판 </a></li>
                                     </ul>
-                                </div>
-                                
+                                </div>                               
                                 <!--Tariff Plan menu end-->
                             </div>
                         </div>
                     </section>
-                    <section class="middle-padding">
-             
-                        <div class="container">
-         
-                            <!--검색기능-->
+                    <section class="middle-padding">             
+                        <div class="container" id="full">                              
                             <div class="dasboard-wrap fl-wrap">
+                            
+                                <!-- 게시판 검색 시작-->
 								<form action="/community/searchBoards" name="searchForm" method="get" style="margin-top:-40px;">
-								                    <div class="fields">
-								                        <div class="field">
-								                            <div id="searchWarp">
-								                                <select name="searchType" class="searchType">
-								                                    <option value="">검색 기준</option>
-								                                    <option value="T">제목</option>
-								                                    <option value="W">글쓴이</option>
-								                                    <option value="TW">제목 또는 글쓴이</option>
-								                                </select>
-								                                <div class="search">
-								  <input type="text" name="keyword" placeholder="검색어 입력">
-								  <button type="submit" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"></button>
-								</div>
-								                            </div>
-								                        </div>
-								                    </div>
-								                              
-								
-								  </form> 
-  
+				                    <div class="fields">
+				                        <div class="field">
+				                            <div id="searchWarp">
+				                                <select name="searchType" class="searchType">
+				                                    <option value="">검색 기준</option>
+				                                    <option value="T">제목</option>
+				                                    <option value="W">글쓴이</option>
+				                                    <option value="TW">제목 또는 글쓴이</option>
+				                                </select>
+				                                <div class="search">
+												  <input type="text" name="keyword" placeholder="검색어 입력">
+												  <button type="submit" ><img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"></button>
+												</div>
+				                            </div>
+				                        </div>
+				                    </div>
+								</form> 
+  								<!-- 게시판 검색 끝 -->
                               
                                      <div id="table">
-                                        <!--자유게시판 컬럼명  -->
-                        
+                                        <!-- 자유게시판 th 시작 -->                      
                                           <table border="1" id="tableTh">
                                                <tr>
                                          	<th width="200" style=font-weight:bold>번호</th>
@@ -93,7 +87,10 @@
                                          	<th width="180" style=font-weight:bold>조회수</th>
                                          </tr>
                                          </table>
-                       						<hr style=opacity:0.1;/>
+                                         <!-- 자유게시판 th 끝 -->
+                       					<hr style=opacity:0.1;/>
+                       					
+                       					<!-- 게시판 목록 출력 시작 -->
  										<c:forEach items="${boardList}" var="board">
                                         <div class="reviews-comments-wrap" id="boardTd">
                                              
@@ -119,7 +116,11 @@
                                                                                                                                 
                                          </div>
                                        </c:forEach>  
+                                       <!-- 게시판 목록 출력 끝 -->
+                                       
+                                       	  <!-- 글 작성 페이지 이동 -->
                                           <a style="text-decoration:none; color:black;" href="/community/boardWrite"  id="writeButton" style=color:blue;> <i class="fa-solid fa-pen-to-square" style=color:rgba(124,150,255,1)>글 작성</i></a>
+                                   
                                     <!-- 페이징 처리-->
                                     <div class="pagination" id="page">
                                     	<!-- 페이지 맨처음으로 이동 -->

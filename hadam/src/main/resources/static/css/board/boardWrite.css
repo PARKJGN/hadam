@@ -1,34 +1,32 @@
 @charset "UTF-8";
 #box{
-margin-left:300px;
+	margin-left:300px;
 }
             	
 #updateBtn {
-  		width:60px;
-  		height:25px;
-  		font-size:14px;            
-  		text-align : center;
-		padding : 0 0;
-		position:relative;
-		top:-4px;
-		right:-300px;
+	width:60px;
+	height:25px;
+	font-size:14px;            
+	text-align : center;
+	padding : 0 0;
+	position:relative;
+	top:-4px;
+	right:-300px;
 }
       	
  #backBtn {
-      	width:60px;
-      	height:25px;
-      	font-size:14px;            
-      	text-align : center;
-		padding : 0 0;
-		position:relative;
-		right:-365px;
-		top:-50px;
+   	width:60px;
+   	height:25px;
+   	font-size:14px;            
+   	text-align : center;
+	padding : 0 0;
+	position:relative;
+	right:-365px;
+	top:-50px;
 }
 
-.filebox {
-	
+.filebox {	
 	margin-top:350px;
-	
 }
 /* 인풋 스타일 변경 */
 .filebox .upload-name {

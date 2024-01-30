@@ -118,7 +118,15 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 	// 스케줄 공유 게시판 검색
 	public List<ScheduleTableVO> searchScheduleBoards(BoardVO vo) {
 		
-		return scheduleTableDAO.searchScheduleBoards(vo);
+		if ("T".equals(vo)) {
+            return scheduleTableDAO.getSchedulesByLatest(vo);
+        } else if ("P".equals(vo)) {
+            return scheduleTableDAO.getSchedulesByOldest(vo);
+        } else {
+            // 다른 경우에는 날짜별로 조회하거나 예외 처리를 수행할 수 있습니다.
+            return scheduleTableDAO.getSchedulesByDate(vo);
+        }
+	
 	}
 	
 	@Override

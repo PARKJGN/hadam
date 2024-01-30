@@ -17,5 +17,4 @@ public interface EntryService {
 	
 	// 명단 리스트 확인
 	EntryApplicationVO checkEntry(EntryApplicationVO vo);
-	
 }

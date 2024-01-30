@@ -27,8 +27,10 @@ public class ScheduleVO {
 	// 스케줄 목록 조회시 사용
 	private String locationName;
 	
+	// 스케줄 목록 조회시 사용
 	private String scheduleTableName;
 	
+	// 스케줄 목록 조회시 사용
 	private String boardTitle;
 	
 	// 내 스케줄관리에서 스케줄 날짜 필요 [최성익] 
