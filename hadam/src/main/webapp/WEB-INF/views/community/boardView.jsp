@@ -187,7 +187,7 @@
       			const commentContent = document.getElementById("commentContent").value;
       			const boardId = '${board.boardId}'
       			/* 게시물 작성자에게 알림을 보내기위해 작성자 Index를 보내야함 -건일 */
-      			const memberIndex = '${sessionScope.memberIndex}'
+      			const memberIndex = '${boardMemberIndex.memberIndex}'
       			console.log("session값확인",memberIndex);
       			$.ajax ({
       				type: "post",
@@ -249,6 +249,29 @@
       					console.log("실패");
       				}
       			})
+      			
+      			
+      			let notifyComment="새로운 댓글이 달렸습니다";
+      			//몽고DB에 알림내용 추가하는 ajaxs >_ㅇ -괴도건일
+      			$.ajax({
+		            type: "POST",
+		            url: "http://localhost:8080/mongodb/alarmsave",
+		            contentType: "application/json",
+		            data: JSON.stringify({
+					    "memberIndex": memberIndex,
+					    "boardId": boardId,
+					    "alarmContent": notifyComment
+		            }),
+					success: function (data) {
+						console.log("댓글 알림내용 저장완료");
+		            },error: function (error) {
+		                // 서버에서 오류 응답을 받았을 때 수행할 동작
+		                console.error("POST 요청 실패", error);
+		            }
+		        });	//end of ajax
+      			
+      			
+      			
 	
       		}
 			

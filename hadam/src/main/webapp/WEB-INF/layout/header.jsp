@@ -65,10 +65,14 @@
 						<c:if test="${sessionScope.memberNickname != null}">
                         <!--1.12 알림표시 자리입니다. click_evt.js에 #alarmLink로 연결되어있습니다. -정건일-->
                         <div class="alarm-link" id="alarmLink">
-	                        <i class="fal fa-bell "></i>
-	                        <span class="wl_counter">3<!-- 알림갯수로 들어오는 데이터 그냥 빨간불빛으로 전환할 예정입니다.--></span>
+	                        <i class="fal fa-bell" style=" position: relative;z-index: 1;"></i>
+                        <span class="fa-regular fa-circle" id="alarmCountPointer" style="margin-top: 26px;font-size:10px;right:+36px;position: absolute; z-index: 0;"></span>
+	                        <!-- <span class="wl_counter">3알림갯수로 들어오는 데이터 그냥 빨간불빛으로 전환할 예정입니다.</span> -->
                                         <!--second level -->
                                         <ul class="alram-user-menu">
+                                        <li id="nonealram">
+                                        <a>새로운 알림이 없습니다.</a>
+                                        </li>
                                         <!-- 알림 메세지가 출력될 공간 -->
                                        </ul>
                         </div>
@@ -77,7 +81,7 @@
                         <!--1.12 채팅창아이콘 자리입니다. -정건일-->
                         <div class="alarm-link" id="chatlist" onclick="getChatRoomList()">
                         <i class="fa-regular fa-comment-dots"></i>
-	                      <span class="wl_counter">8<!-- 알림갯수로 들어오는 데이터 --></span>
+                        <span class="fa-regular fa-circle" id="chattingCountPointer" style="margin-top: 26px;font-size:10px;right:+36px;position: absolute; z-index: 0;"></span>
                         </div>
                 		<!--1.12 채팅창아이콘 자리입니다. -정건일-->
              

@@ -23,7 +23,7 @@ public class MessageMongoDBController {
 	}
 	
     
-    
+    //채팅 관련된 mapping
     @PostMapping
 	public MessageMongoDB saveMessage(@RequestBody MessageMongoDB message) {
 		return messageservice.saveMessage(message);
@@ -36,5 +36,20 @@ public class MessageMongoDBController {
     @DeleteMapping("/{Roomid}")
 	public void deleteMessage(MessageMongoDB message) {		
 	}
+    
+    //알림 관련된 mapping
+    @PostMapping("/alarmsave")
+ 	public AlarmMongoDB saveAlarm(@RequestBody AlarmMongoDB alarm) {
+ 		return messageservice.saveAlarm(alarm);
+ 	}
+     
+     @GetMapping("/getalarm/{memberIndex}")
+ 	public List<AlarmMongoDB> getAllAlarmByMemberIndex(@PathVariable Integer memberIndex) {
+    	 return messageservice.getAllAlarmByMemberIndex(memberIndex);
+ 	}
+     @DeleteMapping("/deleteAlarm/{id}")
+ 	public void deleteAlarm(@PathVariable String id) {	
+    	 messageservice.deleteAlarm(id);
+ 	}
 	
 }

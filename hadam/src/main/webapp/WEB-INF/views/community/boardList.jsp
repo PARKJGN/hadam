@@ -103,7 +103,8 @@
                                                 	<!-- 글 번호 -->
                                                 	<td width="200" id="tdBoardId">${board.boardId} </td>
                                                 	<!-- 제목 클릭시 상세페이지 이동 및 글 제목 -->
-                                                    <td width=530 ><a href="/community/boardView?boardId=${board.boardId}" style="text-decoration:none; color:black;">${board.boardTitle}</a></td>
+                                                	<!-- 알림 기능 때문에 board.memberIndex 를 href에 추가해줬다 -정건일 -->
+                                                    <td width=530 ><a href="/community/boardView?boardId=${board.boardId}&memberIndex=${board.memberIndex}" style="text-decoration:none; color:black;">${board.boardTitle}</a></td>
                                              		<!-- 게시글 올린 회원의 닉네임 -->
                                              		<td width=330>${board.memberNickname}</td>
                                              		<!-- 게시글 작성일 -->											<!-- 작성일 문자형식으로 포맷팅  -->
@@ -113,7 +114,7 @@
                                                     <!-- 게시글 조회수 -->
                                                     <td width=180 >${board.boardViews}</td>
                                                     </tr> 
-                                                                                           
+                                                                                            
                                   			</table>
                              				     <hr style=opacity:0.1;/> 
                                                                                                                                 

@@ -25,23 +25,19 @@ public class NotificationController {
 	 @GetMapping(value = "/subscribe/{id}", produces ="text/event-stream")
 	    public SseEmitter subscribe(@PathVariable Long id) {
 		 
-		 System.out.println("NotificationController/subscribe:"+id);
 	        return notificationService.subscribe(id);
 	    }
 
 	    @GetMapping("/send-data/{id}")
 	    public void sendData(@PathVariable Long id) {
-			 System.out.println("sendData시도");
 	        notificationService.notify(id, "새로운알림이 도착했습니다.");
 	    }
 	    @GetMapping("/send-reviewdata/{id}")
 	    public void sendData1(@PathVariable Long id) {
-			 System.out.println("sendData시도");
 	        notificationService.notify(id, "새로운 리뷰가 작성되었습니다.");
 	    }
 	    @GetMapping("/send-agreedata/{id}")
 	    public void sendData2(@PathVariable Long id) {
-			 System.out.println("sendData시도");
 	        notificationService.notify(id, "새로운 동행수락 요청이들어왔습니다.");
 	    }
 }

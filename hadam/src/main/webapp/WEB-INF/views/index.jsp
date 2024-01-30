@@ -28,7 +28,7 @@
 													    키워드 : <input type="text" placeholder="장소를 입력하세요." value="" id="keyword" size="15"> 
 													    <button type="submit" >검색하기</button> 
 													</form>
-									            </div>
+								            </div>
 									        </div>
 									        <hr>
 									        <ul id="placesList"></ul>
@@ -152,7 +152,9 @@
                     </section>
                     <!-- main_header_section end -->                    
                    
-                    <!-- section-->
+
+  
+  		 <!-- 나와 비슷한 성향을 가진 유저들이 좋아하는 장소 section-->
                     <section class="grey-blue-bg">
                         <!-- container-->
                         <div class="container">
@@ -169,29 +171,29 @@
                             <!--listing-carousel-->
                             <div class="listing-carousel fl-wrap ">
 							 <!-- 메인페이지 지금 핫한 장소정보 end -->
-							  <c:forEach var="infoList" items="${infoList}">  
+							  <c:forEach var="simiierLocation" items="${simiierLocation}">  
                                 <div class="slick-slide-item">
                                     <div class="listing-item" style="width:400px;">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
-                                                <a href="listing-single.html"><img src="images/location/${infoList.locationName}.jpg" alt="" style="width:100%; height:270px" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
+                                                <a href="/location/locationDetail?locationId=${simiierLocation.locationId}"><img src="images/location/${simiierLocation.locationName}.jpg" alt="" style="width:100%; height:270px" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
 
                                                 <div class="geodir-category-opt">
-                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="${infoList.locationRating}"></div>
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
                                                     <div class="rate-class-name">
-                                                        <div class="score"><strong>Very Good</strong>${infoList.locationReviewCount} Reviews </div>
-                                                        <span>${infoList.locationRating}</span>                                             
+                                                        <div class="score"><strong>Very Good</strong>${simiierLocation.locationReviewCount} Reviews </div>
+                                                        <span>${simiierLocation.locationRating}</span>                                             
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="geodir-category-content fl-wrap title-sin_item">
                                                 <div class="geodir-category-content-title fl-wrap">
                                                     <div class="geodir-category-content-title-item">
-                                                        <h3 class="title-sin_map"><a href="listing-single.html">${infoList.locationName}</a></h3>
-                                                        <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>${infoList.locationPlace}</a></div>
+                                                        <h3 class="title-sin_map"><a href="/location/locationDetail?locationId=${simiierLocation.locationId}">${simiierLocation.locationName}</a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>${simiierLocation.locationPlace}</a></div>
                                                     </div>
                                                 </div>
-                                                <p>${infoList.locationContent}</p>
+                                                <p>${simiierLocation.locationContent}</p>
                                             </div>
                                             
                                         </article>
@@ -208,9 +210,7 @@
                         </div>
                         <!--  carousel end-->
                     </section>
-                    <!-- section end -->
-  
-  
+                    <!-- 나와 비슷한 성향을 가진 유저들이 좋아하는 장소section end --> 
   <!-- 리뷰마케팅 섹션  -->
                     <section>
                         <div class="container">
@@ -222,7 +222,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <!--slider-carousel-wrap -->
-                        <div class="slider-carousel-wrap text-carousel-wrap fl-wrap" style="height:250px">
+                        <div class="slider-carousel-wrap text-carousel-wrap fl-wrap" style="height:250px margin-top: -15px;">
                             <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left"></i></div>
                             <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right"></i></div>
                             <div class="text-carousel single-carousel fl-wrap">
@@ -231,21 +231,57 @@
                                     <div class="text-carousel-item">
                                         <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
                                         <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
-                                        <div class="review-owner fl-wrap">Milka Antony  - <span>Happy Client</span></div>
-                                        <p> "In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit, sed diam nonu mmy nibh euismod tincidunt ut laoreet dolore magna aliquam erat."</p>
+                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
+                                        <p  style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
                                         <a href="#" class="testim-link">Via Facebook</a>
                                     </div>
-                                </div>
+                                </div> 
                                 
-                                
+                                                                <div class="slick-item">
+                                    <div class="text-carousel-item">
+                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
+                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
+                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
+                                        <p style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
+                                        <a href="#" class="testim-link">Via Facebook</a>
+                                    </div>
+                                </div> 
+                                                                <div class="slick-item">
+                                    <div class="text-carousel-item">
+                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
+                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
+                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
+                                        <p style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
+                                        <a  href="#" class="testim-link">Via Facebook</a>
+                                    </div>
+                                </div> 
+                                                                <div class="slick-item">
+                                    <div class="text-carousel-item">
+                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
+                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
+                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
+                                        <p style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
+                                        <a href="#" class="testim-link">Via Facebook</a>
+                                    </div>
+                                </div> 
+                                                                <div class="slick-item">
+                                    <div class="text-carousel-item">
+                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
+                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
+                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
+                                        <p style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
+                                        <a href="#" class="testim-link">Via Facebook</a>
+                                    </div>
+                                </div> 
                                 <!--slick-item end -->
                             </div>
-                            
-                        </div>
+                      </div>                   
                         <!--slider-carousel-wrap end-->
                     </section>
                     <!-- 리뷰마케팅 섹션 end  -->
  
+ 
+	                    <!-- 지금 핫한 장소 섹션 section-->
                     <section class="grey-blue-bg">
                         <!-- container-->
                         <div class="container">
@@ -267,10 +303,10 @@
                                     <div class="listing-item" style="width:400px;">
                                         <article class="geodir-category-listing fl-wrap">
                                             <div class="geodir-category-img">
-                                                <a href="listing-single.html"><img src="images/gal/마포식당.jpg" alt=""></a>
+                                                <a href="/location/locationDetail?locationId=${infoList.locationId}"><img src="images/location/${infoList.locationName}.jpg" alt="" style="width:100%; height:270px" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
 
                                                 <div class="geodir-category-opt">
-                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="${infoList.locationRating}"></div>
                                                     <div class="rate-class-name">
                                                         <div class="score"><strong>Very Good</strong>${infoList.locationReviewCount} Reviews </div>
                                                         <span>${infoList.locationRating}</span>                                             
@@ -280,8 +316,8 @@
                                             <div class="geodir-category-content fl-wrap title-sin_item">
                                                 <div class="geodir-category-content-title fl-wrap">
                                                     <div class="geodir-category-content-title-item">
-                                                        <h3 class="title-sin_map"><a href="listing-single.html">${infoList.locationName}</a></h3>
-                                                        <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i> 서울 마포구 신수동 81-17</a></div>
+                                                        <h3 class="title-sin_map"><a href="/location/locationDetail?locationId=${infoList.locationId}">${infoList.locationName}</a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#" class="map-item"><i class="fas fa-map-marker-alt"></i>${infoList.locationPlace}</a></div>
                                                     </div>
                                                 </div>
                                                 <p>${infoList.locationContent}</p>
@@ -301,7 +337,7 @@
                         </div>
                         <!--  carousel end-->
                     </section>
-                    <!-- section end -->                                   
+                    <!--지금 핫한 장소  section end -->                           
 
                     
 <!--section -->     
@@ -313,13 +349,13 @@
                                 <div class="section-title-separator"><span></span></div>
                                 <h2>20대, 30대에게 인기있는</h2>
                                 <span class="section-separator"></span>
-                                <p>Browse the latest articles from our blog.</p>
+                                <p>유저의 나이대에 맞춰서 현재 인기있는 장소들을 출력하고있습니다.</p>
                             </div>
                             <div class="row home-posts">
                                 <div class="col-md-4">
                                     <article class="card-post">
                                         <div class="card-post-img fl-wrap">
-                                            <a href="blog-single.html"><img  src="images/all/1.jpg"   alt=""></a>
+                                            <a href="blog-single.html"><img src="images/location/${twentyThirtyPop[0].locationName}.jpg" alt="" style="width:100%; height:270px" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
                                         </div>
                                         <div class="card-post-content fl-wrap">
                                             <h3><a href="blog-single.html">Blog Post Title.</a></h3>
@@ -341,7 +377,7 @@
                                             <div class="list-single-main-media fl-wrap">
                                                 <div class="single-slider-wrapper fl-wrap">
                                                     <div class="single-slider fl-wrap"  >
-                                                        <div class="slick-slide-item"><img src="images/all/1.jpg" alt=""></div>
+                                                        <div class="slick-slide-item"><img src="images/location/${twentyThirtyPop[1].locationName}.jpg" alt="" style="width:100%; height:270px" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></div>
                                                         <div class="slick-slide-item"><img src="images/all/1.jpg" alt=""></div>
                                                         <div class="slick-slide-item"><img src="images/all/1.jpg" alt=""></div>
                                                     </div>

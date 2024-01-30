@@ -93,8 +93,9 @@ public class CommunityBoardController {
 	// 자유게시판 상세 페이지 내 페이지랑 내페이지 아닐 때 구분해서 수정 삭제 버튼 보이게하기
 	@RequestMapping("/boardView")
 	public void boardView(@RequestParam("boardId") int boardId, Model m, MemberVO mvo) {
-
-		// 조회수 처리
+		
+		System.out.println(""+mvo);
+		// 조회수 처리	
 		communityBoardService.boardHits(boardId);
 		BoardVO data = communityBoardService.findByboardId(boardId);
 
@@ -108,6 +109,8 @@ public class CommunityBoardController {
 		m.addAttribute("commentId", commentId);
 		m.addAttribute("commentList", list);
 		m.addAttribute("board", data);
+		//알림때문에 추가됬습니다. -건일
+		m.addAttribute("boardMemberIndex",mvo);
 
 	}
 
@@ -224,7 +227,6 @@ public class CommunityBoardController {
 	public String getboardList(Model m, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
 
 		List<BoardVO> list = communityBoardService.getBoardList();
-
 		// 자유게시판 5개씩 페이징 처리
 		int pagingSize = 10;
 
@@ -357,17 +359,19 @@ public class CommunityBoardController {
 	public @ResponseBody List<CommentVO> commentSave(CommentVO vo, Model m, HttpSession session) {
 
 		// 알림기능 넣을려고 게시물등록자의 memberindex를 받아오기 위해 확인하려고 쓴코드입니다. - 건일
+		// 댓글을 달았을 때 댓글 주인memberindex를 Long으로 바꿔주는 코드. - 건일
+		long id = (long) vo.getMemberIndex();
+
+		// 댓글을 달았을 때 댓글 주인에게 알림이 가게하는 함수. - 건일
+		notificationService.notify(id, "새로운 댓글이 달렸습니다."+vo.getBoardId());
+				
 		vo.setMemberIndex((Integer) session.getAttribute("memberIndex"));
 		communityBoardService.commentSave(vo);
 
 		// 해당 게시글에 작성한 댓글 리스트 가져오기
 		List<CommentVO> list = communityBoardService.commentList(vo.getBoardId());
 
-		// 댓글을 달았을 때 댓글 주인memberindex를 Long으로 바꿔주는 코드. - 건일
-		long id = (long) vo.getMemberIndex();
-
-		// 댓글을 달았을 때 댓글 주인에게 알림이 가게하는 함수. - 건일
-		notificationService.notify(id, "새로운 댓글이 달렸습니다."+vo.getBoardId());
+		 
 
 		return list;
 	}

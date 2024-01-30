@@ -7,4 +7,9 @@ public interface MessageService {
 	List<MessageMongoDB> getAllMessage();
 	void deleteMessage(String id);
 	List<MessageMongoDB> getChatMessagesByRoomId(Integer chatRoomId);
+	
+	
+	AlarmMongoDB saveAlarm(AlarmMongoDB alarm);
+	List<AlarmMongoDB> getAllAlarmByMemberIndex(Integer memberIndex);
+	void deleteAlarm(String id);
 }
