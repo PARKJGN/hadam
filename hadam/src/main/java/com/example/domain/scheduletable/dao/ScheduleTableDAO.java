@@ -62,4 +62,12 @@ public interface ScheduleTableDAO {
 	// 스케줄 공유 게시판 검색
 	List<ScheduleTableVO> searchScheduleBoards(BoardVO vo);
 	
+	// "최신순"으로 공유게시판 목록조회
+	List<ScheduleTableVO> getSchedulesByLatest(BoardVO vo);
+	
+	// "오래된순"으로 공유게시판 목록조회
+    List<ScheduleTableVO> getSchedulesByOldest(BoardVO vo);
+    
+    // "예외일 경우" 공유게시판 목록조회
+    List<ScheduleTableVO> getSchedulesByDate(BoardVO vo);
 }

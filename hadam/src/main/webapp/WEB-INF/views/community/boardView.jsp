@@ -13,7 +13,7 @@
             <div id="wrapper">
                 <div class="content">
                     <section class="parallax-section single-par" data-scrollax-parent="true">
-                        <div class="bg par-elem "  data-bg="/images/board/park.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                        <div class="bg par-elem "  data-bg="/images/board/back7.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
                         <div class="overlay"></div>
                         <div class="container">
                             <div class="section-title center-align big-title">
@@ -24,9 +24,7 @@
                             </div>
                              
                         </div>
-                        <div class="header-sec-link">
-                            <div class="container"><a href="#sec1" class="custom-scroll-link color-bg"><i class="fal fa-angle-double-down"></i></a></div>
-                        </div>
+ 
                     </section>
                     <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
@@ -35,56 +33,48 @@
                         </div>
                     </div>
                     <section  id="sec1" class="middle-padding grey-blue-bg">
-                        <div class="container">
+                        <div class="container" id="full">
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="post-container fl-wrap" id="box">
-                      
-                                                     <a style="text-decoration:none; color:black;"  href="boardWrite"  id="writeButton"><i style="color:#64A0FF;" class="fa-solid fa-pen-to-square" >글 작성</i></a>
-                                               <c:if test="${sessionScope.memberIndex eq board.memberIndex}"> <!-- 내가 쓴 글의 게시판일경우에만 수정 삭제 버튼 보임-->
-                                                 <a style="text-decoration:none; color:black;"  href="boardUpdate?boardId=${board.boardId}"  id="updateBtn" ><i style="color:#28AEFF"class="fa-solid fa-pencil">수정</i></a><!--클릭 시 수정 페이지로 이동-->   
-                                                 <a style="text-decoration:none; color:black;" id="deleteBtn" href="boardDelete?boardId=${board.boardId}"><i  style="color:#DC6089"class="fa-solid fa-xmark">삭제</i></a>          
-                                             	 
-                                               </c:if> 
-                                        <article class="post-article">
-                                           
-                                            <div class="list-single-main-item fl-wrap" >
-                                             <form action="" >
-                                             <input name="BOARD_ID" type="hidden" value=""/>
-                                              <div class="list-single-main-item-title fl-wrap" >
-                                                     <div class="list-single-main-item-title fl-wrap" >
-                                    
-                                         			<h3 style=font-size:20px; id="largeTitleTab">${board.boardTitle}</h3> <!-- 게시글 제목 -->
-                                         			</div>	
-                                                      <div class="post-author" id="userInfo"><a href="#"><img src="../images/avatar/1.jpg" alt=""><span>${board.memberNickname}</span></a></div> <!--회원 별명-->
-                                                    <div class="post-opt" id="inforTab">
-                                                    
-                                                    <ul>											<!--게시판 등록일-->
-                                                        <li><i class="fal fa-calendar"></i> <span>
-                                                         <fmt:formatDate value="${board.boardRegisterDate}" pattern="yyyy/MM/dd HH:MM:SS" />
-                                                        
-                                                        
-                                                       </span></li>
-																								  
-																								   <!--게시판 수정일-->
-                                                        
-                                                        <li><i class="fal fa-eye"></i> <span>${board.boardViews}</span></li><!-- 게시판 조회수-->
-                                                        	
-                                                    </ul>
-                                                  
-                                                </div>
-                                                </div>
-                                                <div>
-                                             	 <div class="list-single-main-media fl-wrap">
-                                             	 
-                                                <div class="single-slider-wrapper fl-wrap">
-                                                
-                                                    <div class="single-slider fl-wrap"  >
-                                                    
+                                    	<!-- 글 작성페이지로 이동 -->
+                                        <a style="text-decoration:none; color:black;"  href="boardWrite"  id="writeButton"><i style="color:#64A0FF;" class="fa-solid fa-pen-to-square" >글 작성</i></a>
+                                        <!-- 내가 쓴 글의 게시판일경우에만 수정 삭제 버튼 보임-->
+                                        <c:if test="${sessionScope.memberIndex eq board.memberIndex}"> 
+                                        <a style="text-decoration:none; color:black;"  href="boardUpdate?boardId=${board.boardId}"  id="updateBtn" ><i style="color:#28AEFF"class="fa-solid fa-pencil">수정</i></a><!--클릭 시 수정 페이지로 이동-->   
+                                        <a style="text-decoration:none; color:black;" id="deleteBtn" href="boardDelete?boardId=${board.boardId}"><i  style="color:#DC6089"class="fa-solid fa-xmark">삭제</i></a><!-- 클릭시 삭제 -->          
+                                        </c:if> 
+                                      		<article class="post-article">                                          
+	                                            <div class="list-single-main-item fl-wrap" >
+	                                             <form action="" >
+	                                             <input name="BOARD_ID" type="hidden" value=""/>
+	                                              <div class="list-single-main-item-title fl-wrap" >
+	                                                  <div class="list-single-main-item-title fl-wrap" >
+	                                    				<!-- 게시글 제목 -->
+	                                         			<h3 style=font-size:20px; id="largeTitleTab">${board.boardTitle}</h3>
+	                                         		  </div>		            
+	                                         		  	<!--회원 별명-->                                         
+	                                                    <div class="post-author" id="userInfo"><a href="#"><img src="/communityBoardFile/d1fa1aea12bb6c5633762505152d9561" alt=""><span>${board.memberNickname}</span></a></div> 
+	                                                    <div class="post-opt" id="inforTab">
+	                                                    <ul>											
+	                                                        <li><i class="fal fa-calendar"></i> <span>
+	                                                        <!--게시판 등록일-->
+	                                                         <fmt:formatDate value="${board.boardRegisterDate}" pattern="yyyy/MM/dd HH:MM:SS" />                                                
+	                                                       </span></li>
+	                                                        <!-- 게시판 조회수-->
+	                                                        <li><i class="fal fa-eye"></i> <span>${board.boardViews}</span></li>                        	
+	                                                    </ul>                                                  
+	                                                </div>
+	                                                </div>
+                                               	 <div>
+                                             	<div class="list-single-main-media fl-wrap">       	 
+                                                <div class="single-slider-wrapper fl-wrap">                                                
+                                                    <div class="single-slider fl-wrap"  >                                                    
                                                         <div class="slick-slide-item">
-                                                        
-                                                        <img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}?" alt="파일첨부">
-                                                        </div><!--파일첨부한 이미지-->
+  														<!-- 첨부사진 출력 -->                                                      
+                                                        <img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}?" alt="파일첨부"
+                                                        onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/girlfriend.jpg'">
+                                                        </div>
                                          
                                                     </div>
                                                    
@@ -97,47 +87,45 @@
                                             </div>
                                             
                                             <div class="list-single-main-item fl-wrap">
-                                                
+                                                 <!-- 게시글 내용 --> 
                                                 <p>
-                                                   <!-- 게시글 내용 --> ${board.boardContent}
+                                                  ${board.boardContent}
                                                 </p>
 
                                             </div>
-                                             
-                                                
-                                                
-                                                </form>
-                                            </div>
-                                            
-                                           
-                                            
-                                            <!-- 입력한 댓글 목록-->
-                                            
-                             				
-                      <%--${comment.commentRegisteDate} --%>
-                               			
+                                           	</form>
+                                            </div>                                                                         
+                                            <!-- 입력한 댓글 목록-->       			
                                				 <div id="commentList">
                                                
                                                <div class="list-single-main-item fl-wrap" id="sec5">
                                                 <div class="list-single-main-item-title fl-wrap">
-                                                    <h3> 댓글 </h3>
+                                                						<!-- 댓글 개수 -->
+                                                    <h3> 댓글 </h3> <h3>${commentCount.count}</h3>
                                                 </div>
+                                                <!-- 작성한 댓글 목록 -->
                                                 <c:forEach items="${commentList}" var="comment">
 											        <div class="reviews-comments-wrap"> 
 											            <div class="reviews-comments-item">
+											            	<!-- 해당 memberIndex 프로필 사진 출력 -->
 											                <div class="review-comments-avatar" id="replyImage">
-											                    <img src="../images/avatar/1.jpg" alt=""> 
-											                </div>
+											                    <img src="/communityBoardFile/d1fa1aea12bb6c5633762505152d9561" alt=""> 
+											                </div>											                
 											                <div class="reviews-comments-item-text" id="chatBox">
-											                    <h4 style="font-size:13px;">${comment.memberNickname}</h4>                                                    
+											                	<!-- 댓글 작성자 -->
+											                    <h4 style="font-size:13px;">${comment.memberNickname}</h4>
+											                    <!-- 댓글 내용 -->                                                    
 											                    <p style="font-size:11px;">${comment.commentContent}</p>
 											                    <div class="reviews-comments-item-date" id="replydateBox">
-											                        <span id="replydate"><i class="far fa-calendar-check"></i> 
+											                        <span id="replydate"><i class="far fa-calendar-check"></i>
+											                        <!-- 댓글 등록일 --> 
 											                         <fmt:formatDate value="${comment.commentRegisteDate}" pattern="yyyy/MM/dd HH:MM:SS" /></span>
 											                    </div>
-											                    <%-- <c:if test="${comment.memberIndex ne sessionScope.memberIndex}">
+											                    <!-- 댓글 작성자와 로그인한 사용자가 다르면 신고버튼 보임 -->
+											                    <c:if test="${comment.memberIndex ne sessionScope.memberIndex}">
+											                    <!-- 신고클릭시 함수호출 -->
 											                    <button type="button" id="danger" class="btn btn-danger" onclick="commentReport()">신고</button>
-											               		</c:if> --%>
+											               		</c:if>
 											                </div>
 											            </div>
 											        </div>
@@ -145,27 +133,26 @@
 													</c:forEach>
                                             </div> 
                                          			
-                              			          </div>  		
-                               	
-                                                              
-                                           <div class="list-single-main-item fl-wrap" id="sec6" style=height:300px;>
-                                               
+                              			          </div>  		                                                     
+                                           <div class="list-single-main-item fl-wrap" id="sec6" style=height:300px;>       
+                                           	<form class="custom-form">                                  
                                                 <div class="list-single-main-item-title fl-wrap">
                                                     <h3>댓글 등록</h3>
                                                 </div>
                                                 <!-- Add Review Box -->
                                                 <div id="add-review" class="add-review-box">
                                                     <!-- Review Comment -->
-              
-                                                        <fieldset>
-                                                            
-                                                            <textarea cols="40" id= "commentContent"rows="3" placeholder="내용을 입력해주세요" ></textarea>
-                                                        </fieldset>
-                                                          
-                                                        <button class="btn btn-warning" id="commentBtn" onclick="commentWrite(${sessionScope.memberIndex})">댓글 등록</button>
+                                                    		
+                                                            <label for="validationTextarea" class="form-label">내용</label>                                     
+                                                            <textarea cols="40" id="commentContent"rows="3" placeholder="내용을 입력해주세요" ></textarea>
+                                            					
+                                   										
+                                                        <!-- 댓글 등록시 js 함수호출 -->
+                                                        <button class="btn color2-bg float-btn" id="commentBtn" onclick="commentWrite(${sessionScope.memberIndex})" style="color:rgba(124,150,255,1)">댓글 등록</button>
                                                     
                                                 </div>
                                                 <!-- Add Review Box / End -->
+                                                </form>   
                                             </div>
                                     	
                                             
@@ -183,11 +170,12 @@
               <script>
               // js 폴더 만들어서 했는데 템플릿에있는 js랑 겹쳐서 되지않아 일단 여기에 작성했습니둥
               // 댓글 작성 ajax
-              const commentWrite = () => {
+              const commentWrite = (memberIndex) => {
       			const commentContent = document.getElementById("commentContent").value;
       			const boardId = '${board.boardId}'
       			/* 게시물 작성자에게 알림을 보내기위해 작성자 Index를 보내야함 -건일 */
       			const memberIndex = '${boardMemberIndex.memberIndex}'
+      			
       			console.log("session값확인",memberIndex);
       			$.ajax ({
       				type: "post",
@@ -220,10 +208,10 @@
       					output += "<h3> 댓글 <span></span></h3>";
       					output += "</div>";
       					output += "<div class='reviews-comments-wrap'>";
-      					for (let i in commentList){
+      					for (let i in commentList) {
       					output += "<div class='reviews-comments-item'>";
       					output += "<div class='review-comments-avatar' id='replyImage'>";
-      					output += "<img src='../images/avatar/1.jpg' alt=''> ";
+      					output += "<img src='/communityBoardFile/d1fa1aea12bb6c5633762505152d9561' alt=''> ";
       					output += '</div>';
       					output += '<div class="reviews-comments-item-text" id="chatBox">';
       					output += '<h4 style=font-size:13px;>'+commentList[i].memberNickname+'</h4>';
@@ -231,9 +219,9 @@
       					output += '<div class="reviews-comments-item-date" id="replydateBox"><span id="replydate"><i class="far fa-calendar-check"></i>'+formatDate(commentList[i].commentRegisteDate)+'</span></div>';
       					
       					// 댓글작성자의 memberIndex와 로그인한 사용자의 memberIndex가 다르면 신고 버튼 보임
-      					/* if ( commentList[i].memberIndex !== memberIndex) {
-      						output += '<button type="button" id="danger"class="btn btn-danger">신고</button>';
-      					}    */
+      					 if ( commentList[i].memberIndex !== memberIndex) {
+      						output += '<button type="button" id="danger"class="btn btn-danger" onclick="commentReport()">신고</button>';
+      					}    
       					console.log("올라간댓글 memberIndex들 확인",commentList[i].memberIndex)
       					output += '</div>';
       					output += '</div>';
@@ -283,7 +271,7 @@
               	const boardId = '${board.boardId}';
               	
               	// 댓글 번호
-              	const commentId = '${commentId.commentId}'; 
+               	const commentId = '${commentId.commentId}';  
               	
               	// 해당 게시글의 댓글 신고자
               	const boardAndCommentReporter = '${sessionScope.memberIndex}';       	
@@ -293,12 +281,12 @@
   					  url:"/community/commentReportSave",
   					  data : {
   						  boardId : boardId,
-  						  commentId : commentId,
+  		 				  commentId : commentId, 
   						  boardAndCommentReporter : boardAndCommentReporter
   					  },
   					  dataType : "json",
   					  success : function(result){
-  						  console.log("신고되었습니다.")
+  						  console.log("신고되었습니다.",result);
   						  alert("정말로 신고하시겠습니까?")
   						  alert("신고가 접수되었습니다.")
   						  

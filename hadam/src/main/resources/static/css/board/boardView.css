@@ -1,162 +1,146 @@
 @charset "UTF-8";
-#danger{
-            		width:50px;
-            		height:20px;
-            		font-size:12px;
-            		margin-left:610px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				top:-70px;
-	 				right:-15px;
-            	}
-            	#comment{
-            		width:50px;
-            		height:20px;
-            		font-size:13px;
-            		margin-left:730px;
-            		text-align : center;
-	 				padding : 0 0;
+#danger {
+	width:50px;
+	height:20px;
+	font-size:12px;
+	margin-left:610px;
+	text-align : center;
+	padding : 0 0;
+	position:relative;
+	top:-70px;
+	right:-15px;
+}
+#comment {
+	width:50px;
+	height:20px;
+	font-size:13px;
+	margin-left:730px;
+	text-align : center;
+	padding : 0 0;      	
+}
             	
-            	}
-            	
-            	#box {
-            		margin-left:200px;
-            	
-            	}
+#box {
+	margin-left:200px;
 
-            	
-            	#boardlistpage {
-            		
-            		margin-bottom:-50px;
-            		font-size:13px;
-            		width:120px;
-            		height:30px;
-            	}
-            	
-            	
-            	
-            	#inforTab {
-            		position:relative;
-            		right:-430px;
-            		
-            		margin: 0 auto;
-            	}
-            	#userInfo {
-            		position:relative;
-            	
-            	}
-            	
-            	#sec5 {
-            		display: grid;
-    				grid-template-rows: 1fr;
-            	}
-            	
-            	#chatBox {
-            		height:100px;
-            		position:relative;
-            		left:-40px;
-            		top: -30px;
-            	}
-            	
-            	#chatBox h4{
-            		position:relative;
-            		top:-20px;
-            	}
-            	
-            	#chatBox p {
-            		position:relative;
-            		left:-40px;
-            		bottom:-10px;
-            	}
-            	
-            	#replyImage img{
-            		width:50px;
-            		height:50px;
-            		position:relative;
-            		top:-30px;
-            	
-            	}
-            	
-            	#replydateBox {
-            		position:relative;
-            		top:-60px;
-            		
-            	}
-            	#replydate {
-            		position:relative;
-            		bottom:-13px;
-            	}
-            	#COMMENT_CONTENT{
-            		height:80px;
-            	
-            	}
-            	
-            	#largeTitleTab{
-            		
-            		position:relative;
-            		bottom:0px;
-            	}
-            	
-            	#writeButton {
-            		width:60px;
-            		height:25px;
-            		font-size:13px;
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				right:-320px;
-	 				top:-8px;
-            	}
-            	#updateBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:13px;            
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-            		right:-330px;
-            		top:-8px;
-            	}
-            	#deleteBtn {
-            		width:60px;
-            		height:25px;
-            		font-size:13px;            
-            		text-align : center;
-	 				padding : 0 0;
-	 				position:relative;
-	 				top:-8px;
-	 				right:-340px;
-            	}
-            	
-            	#commentBtn{
-            		
-            		width:60px;
-            		height:25px;
-            		font-size:13px;
-            		text-align : center;
-            		padding : 0 0;
-	 				position:relative;
-					right:-355px;
-					bottom:-80px;
-            	}
-            	
-            	#commentContent {
-            		border-radius:6px;
-            		border:1px;
-            		background-color:#f9f9f9;
-            		font-weight:inherit;
-            		font-style:inherit;
-            		padding: 30px 20px;
-            		box-sizing: border-box;
-            		position:relative;
-            		left:-790px;
-            		bottom:-80px;
-            		width:780px;
-            		height:auto;
-            	}
-            	
-            	#sec6{
-            		
-            		margin-top:25px;	
-            	}
+}
+	
+#boardlistpage {
+	margin-bottom:-50px;
+	font-size:13px;
+	width:120px;
+	height:30px;
+}  	
+       	
+#inforTab {
+	position:relative;
+	right:-430px;
+	margin: 0 auto;
+}
+#userInfo {
+	position:relative;       	
+}
+       	
+#sec5 {
+    display: grid;
+	grid-template-rows: 1fr;
+}
+       	
+#chatBox {
+    height:100px;
+	position:relative;
+	left:-40px;
+	top: -30px;
+}
+       	
+#chatBox h4{
+	position:relative;
+	top:-20px;
+}
+       	
+#chatBox p {
+	position:relative;
+	left:-40px;
+	bottom:-10px;
+}
+       	
+#replyImage img{
+    width:50px;
+    height:50px;
+    position:relative;
+    top:-30px;       	
+}
+       	
+#replydateBox {
+    position:relative;
+    top:-60px;       		
+}
+#replydate {
+    position:relative;
+    bottom:-13px;
+}
+#COMMENT_CONTENT{
+    height:80px;  	
+}
+       	
+#largeTitleTab{      		
+    position:relative;
+    bottom:0px;
+}
+       	
+#writeButton {
+    width:60px;
+    height:25px;
+    font-size:13px;
+    text-align : center;
+	padding : 0 0;
+	position:relative;
+	right:-320px;
+	top:-8px;
+}
+#updateBtn {
+    width:60px;
+    height:25px;
+    font-size:13px;            
+    text-align : center;
+	padding : 0 0;
+	position:relative;
+    right:-330px;
+    top:-8px;
+}
+#deleteBtn {
+    width:60px;
+    height:25px;
+    font-size:13px;            
+    text-align : center;
+	padding : 0 0;
+	position:relative;
+	top:-8px;
+	right:-340px;
+}
+       	
+#commentBtn{
+    width:60px;
+    height:25px;
+    font-size:13px;
+    text-align : center;
+    padding : 0 0;
+	position:relative;
+    right:-730px;
+}
+       	
+#commentContent {
+    border-radius:6px;
+    border:1px;
+    background-color:#f9f9f9;
+    font-weight:inherit;
+    font-style:inherit;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    position:relative;
+    width:100%;
+    height:auto;
+}
+       	
+#sec6{      		
+    margin-top:25px;	
+}

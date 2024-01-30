@@ -25,4 +25,5 @@ public class CommentVO {
 	
 	// 댓글 작성시 작성자 가져오려고 추가함
 	private String memberNickname;
+	
 }

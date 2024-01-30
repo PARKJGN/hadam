@@ -104,4 +104,10 @@ public interface CommunityBoardService {
 	// 계정에서 작성한 댓글 조회
 	List<CommentVO> getAccountCommentList(Integer memberIndex);
 	
+	// 댓글 신고 삭제
+	void deleteCommentReport(int boardId);
+	
+	// 해당게시글 댓글 개수
+	CommentVO commentCount(int boardId);
+	
 }

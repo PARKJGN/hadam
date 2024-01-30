@@ -2,12 +2,14 @@
  * 
  */
 
+// 스케줄 불러오기 버튼 클릭시
   $('.scheduleSelectBtn').on('click', function() {
 			    var scheduleTableId = $(this).data('schedule-id');
 			    
 			    scheduleSelect(scheduleTableId);
 			});
-
+			
+			// 해당하는 scheduleTableId 들고오기
 			function scheduleSelect(scheduleTableId) {
 			    $.ajax({
 			        type: "post",
@@ -45,7 +47,7 @@
 				            output += "</article>";
 				            output += "</div>";
 				            
-				           	
+				           	// 마지막 화살표는 안보이게
 				           	if ( i !== result.length -1){
 								   output += "<div class='arrowBox'>";
 				            	   output += "<div class='arrow'></div>";
@@ -53,7 +55,9 @@
 							   }
 				           	
 				            }
-			            	 output += `<input name ='scheduleTableId' type='hidden' value=${scheduleTableId}>`
+				            
+				            // 스케줄 수정시 scheduleTableId form태그안에 설정
+			            	output += `<input name ='scheduleTableId' type='hidden' value=${scheduleTableId}>`
 				            output += "</div>";
 
 				            document.getElementById('modalScheduleTableList').innerHTML = output;

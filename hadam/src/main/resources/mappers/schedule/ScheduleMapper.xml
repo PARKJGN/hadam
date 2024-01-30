@@ -15,7 +15,7 @@
 		on l.LOCATION_ID = li.LOCATION_ID
 		where st.SCHEDULE_TABLE_ID = #{scheduleTableId}
 	</select>
-	
+	<!-- 스케줄 공유 게시판 스케줄 목록 출력 -->
 	<select id="getScheduleBoardList" resultType="ScheduleVO" parameterType="ScheduleTableVO">
 		select s.*,st.*,l.*,li.*,b.*
 		from schedule s

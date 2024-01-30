@@ -31,36 +31,36 @@
                                         </div>
                                         <div id="contact-form">
                                             <div id="message"></div>
+                                            
+                                            <!-- 게시글 수정 폼 시작 -->
                                             <form  class="custom-form" action="updateBoard" name="contactform" id="contactform" method="post" enctype="multipart/form-data">
                                                 <fieldset>
-                                                	<!-- 글 번호 -->                                              				
+                                                	<!-- 해당게시글 번호 -->                                              				
                                                 	<input name="boardId" type="hidden" value="${board.boardId}" readonly/>
-                                                	<input type="hidden" name="memberIndex" value="${board.memberIndex}" />
-                                                	
+                                                	<!-- 해당게시글 회원의 memberIndex -->
+                                                	<input type="hidden" name="memberIndex" value="${board.memberIndex}" />                                                	
+                                                	<!-- 해당게시글의 글 제목 -->
                                                 	<label for="validationCustom01" class="form-label">제목</label>
                                                     <input type="text" name="boardTitle" id="BOARD_TITLE" placeholder="Your Title *" value="${board.boardTitle }" /> <!-- 글 제목 -->
-                                                	
+                                                	<!-- 해당게시글의 작성자 -->
                                                 	<label for="validationCustom02" class="form-label">작성자</label>                                               
                                                     <input type="text" name="memberNickname" id="name" placeholder="Your Name *" value="${board.memberNickname }" disabled/><!-- 회원 별명 -->
                                                     <div class="clearfix"></div>
-                                                    
+                                                    <!-- 해당게시글의 글 내용 -->
                                                     <label for="validationTextarea" class="form-label">글 내용</label>
                                                     <textarea name="boardContent"  id="BOARD_CONTENT" cols="40" rows="3" placeholder="Your Message:" >${board.boardContent }</textarea><!-- 게시판 내용 -->
-                               						
+                               						<!-- 해당게시글의 파일첨부이미지 -->
                               						 <div class="single-slider fl-wrap"  >
                                                         <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}"></div><!-- 파일첨부한 경로 및 이미지 이름-->
                                                      
                                                     </div>
-                                                                        						
+                                                    <!-- 파일첨부  -->                    						
                                                 	<div class="filebox">
 													    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
 													    <label for="file">파일찾기</label> 
 													    <input type="file" id="file" name="file">
-													</div>
-                                                   
-                                              
+													</div>     
                                                 </fieldset>
-                  
                                             	 <div class="col-12">
                                             	 	<!-- 클릭 시 수정되며 지금페이지로 redirect  -->
     												<button class="btn btn-primary" type="submit" id="updateBtn">수정</button>
@@ -70,6 +70,7 @@
  												
  												 
                                             </form>
+                                            <!-- 게시글 수정 폼 끝 -->
                                         </div>
                                   
                                     </div>
