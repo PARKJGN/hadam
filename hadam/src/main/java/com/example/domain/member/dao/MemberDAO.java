@@ -22,7 +22,7 @@ public interface MemberDAO {
 	MemberVO getAccountInfo(String memberId);
 	
 	// 계정 정보 수정
-	MemberVO accountU(MemberVO vo);
+	Integer accountU(MemberVO vo);
 			
 	// 계정 삭제
 	void accountD(MemberVO vo);

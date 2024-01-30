@@ -39,8 +39,8 @@ public class MemberServiceImpl implements MemberService{
 
 	// 계정 정보 수정
 	@Override
-	public MemberVO accountU(MemberVO vo) {
-		return null;
+	public Integer accountU(MemberVO vo) {
+		return memberDAO.accountU(vo);
 	}
 
 	// 계정 삭제
@@ -48,5 +48,7 @@ public class MemberServiceImpl implements MemberService{
 	public void accountD(MemberVO vo) {
 		
 	}
+
+	
 
 }

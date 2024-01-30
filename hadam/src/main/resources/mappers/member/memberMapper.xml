@@ -11,12 +11,13 @@
 	
 	
 	<!-- 관리자 -->
+	
 	<!-- 모든 회원 정보 조회 -->
 	<select id="allMemberList" resultType="MemberVO">
 		select m.*,
-		 (select count(*) from board b where b.MEMBER_INDEX = m.MEMBER_INDEX ) as board_cnt,
-		 (select count(*) from comment c where c.MEMBER_INDEX = m.MEMBER_INDEX) as comment_cnt,
-		 (select count(*) from schedule s where s.MEMBER_INDEX = m.member_index) as schedule_cnt
+		 (select count(*) from board b where b.MEMBER_INDEX = m.MEMBER_INDEX ) as member_board_cnt,
+		 (select count(*) from comment c where c.MEMBER_INDEX = m.MEMBER_INDEX) as member_comment_cnt,
+		 (select count(*) from schedule s where s.MEMBER_INDEX = m.member_index) as member_schedule_cnt
 		from member m
 		order by m.MEMBER_INDEX desc
 	</select>
@@ -32,7 +33,7 @@
 		set admin_status = #{adminStatus},
 			member_nickname = #{memberNickname},
 			member_status = #{memberStatus}
-		where member_index = #{memberIndex}
+		where member_id = #{memberId}
 	</update>
 	
 	<!-- 계정 삭제 -->

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.domain.admin.service.AdminService;
+import com.example.domain.admin.vo.AdminVO;
 import com.example.domain.board.service.CommunityBoardService;
 import com.example.domain.board.vo.BoardVO;
 import com.example.domain.comment.vo.CommentVO;
@@ -19,6 +21,8 @@ import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
 import com.example.domain.member.service.MemberService;
 import com.example.domain.member.vo.MemberVO;
+import com.example.domain.report.service.ReportService;
+import com.example.domain.report.vo.BoardAndCommentReportVO;
 import com.example.domain.schedule.vo.PagingVO;
 
 @Controller
@@ -26,17 +30,33 @@ import com.example.domain.schedule.vo.PagingVO;
 public class AdminController {
 	
 	@Autowired
+	private AdminService adminService;
+	@Autowired
 	private MemberService memberService;
 	@Autowired
 	private CommunityBoardService boardService;
 	@Autowired
 	private LocationService locationService;
+	@Autowired
+	private ReportService reportService;
 	
 	@RequestMapping("/{step}")
 	public String admin(@PathVariable String step) {
 		return "/admin/"+step;
 	}
 
+	// ==========================================================
+	
+	// 대시보드
+	@RequestMapping("/adminDashboard")
+	public void adminDashBoard(Model m, AdminVO vo) {
+		
+		AdminVO dashboard = adminService.adminSelect();
+		
+		m.addAttribute("dashboard", dashboard);
+	}
+	
+	
 	// ==========================================================
 	
 	// 계정 관리
@@ -53,9 +73,7 @@ public class AdminController {
 	@RequestMapping("/getAccountInfo")
 	public MemberVO getAccountInfo(String memberId) {
 		
-		System.out.println("bbbbbbbbbb"+ memberId);
 		MemberVO account = memberService.getAccountInfo(memberId);
-		System.out.println("aaaaaaaaaaa" + account);
 		return account;
 	}
 
@@ -77,11 +95,18 @@ public class AdminController {
 		
 	
 	// 계정 정보 수정
+	@ResponseBody
 	@RequestMapping("/adminAccountU")
-	public MemberVO adminAccountU(MemberVO vo) {
+	public Integer adminAccountU(MemberVO vo, String modifyAccountNickname 
+		,Boolean modifyAccountAdminStatus, String modifyAccountStatus) {
 		
-		MemberVO updateA = memberService.accountU(vo);
+		vo.setMemberNickname(modifyAccountNickname);
+		vo.setAdminStatus(modifyAccountAdminStatus);
+		vo.setMemberStatus(modifyAccountStatus);
 		
+		Integer updateA = memberService.accountU(vo);
+		
+		System.out.println("cccccccccc" + updateA);
 		return updateA;
 	}
 	
@@ -134,6 +159,38 @@ public class AdminController {
 		
 		List<BoardVO> list = boardService.getScheduleTableShareList();
 		m.addAttribute("scheduleTableList",list);
+	}
+	
+	// ==========================================================
+	
+	// 신고 관리
+	@RequestMapping("/adminReportManagement")
+	public void adminReportManagement(Model m) {
+		
+		// 신고 리스트 출력
+		List<BoardAndCommentReportVO> list = reportService.reportSelect();
+		
+		m.addAttribute("reportList", list);
+	}
+	
+	// 회원 정지
+	@ResponseBody
+	@RequestMapping("/memberSuspend")
+	public Integer memberSuspend(BoardAndCommentReportVO vo) {
+		System.out.println("컨트롤러 들어오는지 확인"+vo);
+		Integer suspendM = reportService.suspendMember(vo);
+		System.out.println("컨트롤러 들어오는 값 ㅇ확인"+vo);
+		return suspendM;
+	}
+	
+	// 정지 해제
+	@ResponseBody
+	@RequestMapping("/memberRelease")
+	public Integer memberRelease(BoardAndCommentReportVO vo) {
+		System.out.println("컨트롤러 들어오는지 확인"+vo);
+		Integer releaseM = reportService.releaseMember(vo);
+		System.out.println("컨트롤러 들어오는 값 ㅇ확인"+vo);
+		return releaseM;
 	}
 	
 	// ==========================================================

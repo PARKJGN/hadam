@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.domain.admin.dao.AdminDAO">
+	
+	<select id="adminSelect" resultType="AdminVO">
+		select 
+		 (select count(*) from member m where m.ADMIN_STATUS = 0 ) as member_cnt,
+		 (select count(*) from schedule s) as schedule_cnt,
+		 (select count(*) from member m where m.MEMBER_REGISTE_DATE = CURDATE()) as today_member_cnt,
+		 (select count(*) from board b where b.BOARD_REGISTER_DATE = CURDATE()) as today_board_cnt,
+		 (select count(*) from board_comment_report r where r.BOARD_COMMENT_REPORT_REGISTE_DATE = CURDATE()) as today_report_cnt
+		from DUAL
+	</select>
+	
+</mapper>

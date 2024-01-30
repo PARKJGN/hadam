@@ -11,16 +11,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BoardAndCommentReportVO {
 
-	private Integer boardAndCommentReportId;
+	private Integer boardCommentReportId;
 	
 	private Integer boardId;
 	
 	private Integer commentId;
 	
-	private Integer boardAndCommentReporter;
+	private Integer boardCommentReporter;
 	
-	private Date boardAndCommentReportRegisteDate;
+	private Date boardCommentReportRegisteDate;
 	
-	private Integer boardAndCommentReportStatus;
+	private Integer boardCommentReportStatus;
+	
+	// 신고된 내용
+	private String commentContent;
+	// 신고된 회원
+	private String reportedMember;
 	
 }
