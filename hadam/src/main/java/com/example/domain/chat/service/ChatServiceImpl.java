@@ -82,7 +82,9 @@ public class ChatServiceImpl implements ChatService{
 	// 동행신청에서 수락 눌렀을 때 [최성익]
 	public String entryAcceptCheck(Integer boardId, Integer guestMemberIndex) {
 		// 채팅방 번호랑 최대인원수 확인
+		System.out.println("보드ID"+boardId+"/"+guestMemberIndex);
 		ChatRoomVO result = chatDAO.entryAcceptCheck(boardId, guestMemberIndex);
+		System.out.println(result.getChatRoomId()+"/"+result.getChatRoomMax());
 		Integer chatRoomId = result.getChatRoomId();
 		// 참석 가능한 채팅방인지 확인
 		Integer count = chatDAO.entryAcceptMaxCheck(chatRoomId);
@@ -92,6 +94,7 @@ public class ChatServiceImpl implements ChatService{
 		}else {
 			Integer entryAcceptResult =  chatDAO.entryAccept(chatRoomId, guestMemberIndex, boardId);
 			if(entryAcceptResult==1) {
+				
 				return "수락 되었습니다"; 
 			}else {
 				return "네트워크에 문제가 있습니다 잠시후 시도해 주세요";

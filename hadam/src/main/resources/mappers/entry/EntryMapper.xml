@@ -3,35 +3,60 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.domain.entry.dao.EntryDAO">
-	
+
 	<!-- 스케줄 참가하기 저장 -->
-	<insert id="scheduleAttendSave" parameterType="EntryApplicationVO">
-		insert into ENTRY_APPLICATION( MEMBER_INDEX, BOARD_ID, ENTRY_APPLICATION_CONTENT, ENTRY_APPLICATION_DATE)
-		VALUES (#{memberIndex}, #{boardId}, #{entryApplicationContent}, (current_date) )
+	<insert id="scheduleAttendSave"
+		parameterType="EntryApplicationVO">
+		insert into ENTRY_APPLICATION( MEMBER_INDEX, BOARD_ID,
+		ENTRY_APPLICATION_CONTENT, ENTRY_APPLICATION_DATE)
+		VALUES
+		(#{memberIndex}, #{boardId}, #{entryApplicationContent},
+		(current_date) )
 	</insert>
-	
+
 	<!-- 참가자 명단 삭제 -->
 	<delete id="deleteEntry" parameterType="Integer">
-		delete from entry_application
+		delete from
+		entry_application
 		where board_id = #{boardId}
 	</delete>
-	
+
 	<!-- 마이페이지 참가신청 리스트 가져오기 [최성익] -->
-	<select id="mypageEntry" parameterType="integer" resultType="com.example.domain.entry.vo.EntryApplicationVO">
-		SELECT * FROM entry_application ea JOIN board b 
+	<select id="mypageEntry" parameterType="integer"
+		resultType="com.example.domain.entry.vo.EntryApplicationVO">
+		SELECT ea.ENTRY_APPLICATION_DATE , ea.ENTRY_STATUS ,
+		ea.BOARD_ID , ea.MEMBER_INDEX , b.SCHEDULE_TABLE_ID ,
+		ea.ENTRY_APPLICATION_CONTENT , m.MEMBER_NICKNAME FROM
+		entry_application ea
+		JOIN board b
 		ON b.BOARD_ID = ea.BOARD_ID
-		JOIN `member` m 
-		ON b.MEMBER_INDEX = m.MEMBER_INDEX
-		WHERE b.MEMBER_INDEX = #{memberIndex} AND ea.ENTRY_STATUS IN (0, 1)
-		ORDER BY ea.ENTRY_APPLICATION_DATE ASC;
+		JOIN `member` m
+		ON ea.MEMBER_INDEX = m.MEMBER_INDEX
+		WHERE b.MEMBER_INDEX = ${memberIndex} AND ea.ENTRY_STATUS IN (0, 1, 2)
+		ORDER BY ea.ENTRY_APPLICATION_DATE DESC;
 	</select>
-	
+
 	<!-- 참가자 명단 확인 -->
-	<select id="checkEntry" parameterType="EntryApplicationVO" resultType="EntryApplicationVO">
-	    select MEMBER_INDEX
-	    from entry_application 
-	    where member_index = #{memberIndex} and board_id = #{boardId}
-	 
-    </select>
-    
+	<select id="checkEntry" parameterType="EntryApplicationVO"
+		resultType="EntryApplicationVO">
+		select MEMBER_INDEX
+		from entry_application
+		where member_index = #{memberIndex} and board_id = #{boardId}
+
+	</select>
+
+	<!-- 동행신청 수락 [최성익] -->
+	<update id="entryAccept" parameterType="integer">
+		UPDATE ENTRY_APPLICATION
+		SET ENTRY_STATUS = 1 WHERE MEMBER_INDEX =#{guestMemberIndex} AND
+		BOARD_ID = #{boardId}
+	</update>
+
+	<!-- 동행신청 거절 [최성익] -->
+	<update id="entryRejection" parameterType="integer">
+		UPDATE ENTRY_APPLICATION
+		SET ENTRY_STATUS = 2 WHERE MEMBER_INDEX =#{guestMemberIndex} AND
+		BOARD_ID = #{boardId}
+	</update>
+	
 </mapper>

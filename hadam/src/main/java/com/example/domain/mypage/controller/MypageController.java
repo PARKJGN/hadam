@@ -168,8 +168,6 @@ public class MypageController {
 		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
 		
 		List<EntryApplicationVO> result = entryService.mypageEntry(memberIndex);
-		System.out.println(result);
-		
 		model.addAttribute("entryList", result);
 	}
 	
@@ -244,12 +242,33 @@ public class MypageController {
 							@RequestParam("guestMemberIndex") Integer guestMemberIndex,
 							HttpSession session, Model model ) {
 		Integer hostMemberIndex = (Integer) session.getAttribute("memberIndex");
+		
 		String result = chatService.entryAcceptCheck(boardId, guestMemberIndex);
 		
+		if(result.equals("수락 되었습니다")) {
+			entryService.entryAccept(boardId, guestMemberIndex);
+		}
 		model.addAttribute("msg", result);
 		
-		return "/mypageEntry";
+		
+		return "redirect:/mypage/mypageEntry";
 	}
+	
+	@RequestMapping("/entryRejection")
+	public String entryRejection(@RequestParam("boardId") Integer boardId, 
+							@RequestParam("guestMemberIndex") Integer guestMemberIndex,
+							HttpSession session, Model model ) {
+		Integer hostMemberIndex = (Integer) session.getAttribute("memberIndex");
+		
+		
+		entryService.entryRejection(boardId, guestMemberIndex);
+		
+		model.addAttribute("msg", "거절 되었습니다");
+		
+		
+		return "redirect:/mypage/mypageEntry";
+	}
+	
 	
 	
 }

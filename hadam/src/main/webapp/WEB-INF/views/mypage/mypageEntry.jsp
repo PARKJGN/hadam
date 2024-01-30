@@ -17,7 +17,7 @@
 
 
 <c:if test="${msg != null}">
-    <div id="msg" hidden><%= request.getAttribute("msg") %></div>
+	<div id="msg" hidden><%=request.getAttribute("msg")%></div>
 </c:if>
 
 
@@ -50,22 +50,36 @@
 											<!-- 프로필 사진 경로 -->
 											<img src="/images/avatar/1.jpg" alt="">
 										</div>
-										<div class="dashboard-message-text">
+										<div class="dashboard-message-text entryContents">
 											<!-- 닉네임, 신청일 -->
 											<h4 class="h4_inline">${entry.memberNickname}
 												<span>${entry.entryApplicationDate}</span>
 											</h4>
-											<div>
-												<a id="entryRejection">거절</a> <a id="entryAccept"
-													href="/mypage/entryAccept?boardId=${entry.boardId}&guestMemberIndex=${entry.memberIndex}">수락</a>
+											<div class="entryDetail">
+												<div class="entryBtnWap">
+													<!-- 대기중인 신청 -->
+													<c:if test="${entry.entryStatus == 0}">
+														<a id="entryRejection"
+															href="/mypage/entryRejection?boardId=${entry.boardId}&guestMemberIndex=${entry.memberIndex}">거절</a>
+														<a id="entryAccept"
+															href="/mypage/entryAccept?boardId=${entry.boardId}&guestMemberIndex=${entry.memberIndex}">수락</a>
+													</c:if>
+													<!-- 수락한 신청 -->
+													<c:if test="${entry.entryStatus == 1}">
+														<a id="alreadyEntryAccept">수락된 신청</a>
+													</c:if>
+													<!-- 거절한 신청 -->
+													<c:if test="${entry.entryStatus == 2}">
+														<a id="alreadyEntryRejection">거절된 신청</a>
+													</c:if>
+												</div>
+												<div class="booking-details fl-wrap">
+													<span class="booking-title">동행 신청 스케줄</span> <span
+														class="booking-text"><a href="#">링크 걸어줘야
+															함${entry.scheduleTableId}</a></span>
+												</div>
 											</div>
-											<div class="booking-details fl-wrap">
-												<span class="booking-title">동행 신청 스케줄</span> <span
-													class="booking-text"><a href="#">링크 걸어줘야
-														함${entry.scheduleTableId}</a></span>
-											</div>
-											<span class="fw-separator"></span>
-											<p class="p_inline">${entry.entryApplicationContent}</p>
+											<span class="fw-separator"></span> <span class="p_inline">${entry.entryApplicationContent}</span>
 										</div>
 									</div>
 								</div>

@@ -13,4 +13,23 @@ $(function(){
 			
 		}
 	})
+	
+	
+	
+	/*프로필 수정 눌렀을 때*/
+	$("#profileModify").on('click', function(){
+		var profileModify = $("#profileModify").val();
+		/*프로필 수정하려고 눌렀을때*/
+		if(profileModify=='프로필 수정'){
+			$("#profileModify").text('저장');
+			$('#profileImage').submit();
+		/*저장하려고 눌렀을때*/	
+		}else{
+			$("#profileModify").text('수정');
+			
+		}
+	})
+	
+	
+	
 })

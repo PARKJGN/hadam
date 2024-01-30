@@ -32,7 +32,6 @@ public class EntryServiceImpl implements EntryService{
 
 	// entry 명단 확인
 	public EntryApplicationVO checkEntry(EntryApplicationVO vo) {
-		
 		return entryDAO.checkEntry(vo);
 	}
 	
@@ -40,6 +39,16 @@ public class EntryServiceImpl implements EntryService{
 	// 마이페이지 참가신청 리스트 가져오기 [최성익]
 	public List<EntryApplicationVO> mypageEntry(Integer memberIndex){
 		return entryDAO.mypageEntry(memberIndex);
+	}
+	
+	// 동행신청 수락 [최성익]
+	public Integer entryAccept(Integer boardId, Integer guestMemberIndex) {
+		return entryDAO.entryAccept(boardId, guestMemberIndex);
+	}
+	
+	// 동행신청 거절 [최성익]
+	public Integer entryRejection(Integer boardId, Integer guestMemberIndex) {
+		return entryDAO.entryRejection(boardId, guestMemberIndex);
 	}
 	
 	

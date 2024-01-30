@@ -2,37 +2,83 @@
 
 /* 동행 수락 버튼 */
 #entryAccept {
-	float : right;
+	float: right;
 	padding: 6px 15px;
 	border-radius: 4px;
 	color: #fff;
 	background: #000;
 	border: none;
-	margin : 5px;
+	margin: 5px;
 	cursor: pointer;
 }
 
 /* 동행 거절 버튼 */
 #entryRejection {
-	float : right;
+	float: right;
 	padding: 6px 15px;
 	border-radius: 4px;
 	color: #fff;
 	background: #000;
 	border: none;
-	margin : 5px;
+	margin: 5px;
 	cursor: pointer;
 }
 
-h4.h4_inline, p.p_inline {
-	display: inline;
+h4.h4_inline {
+	display: inline-block
 }
-
 
 #entryAccept:hover {
 	background: #3a91ed;
-} 
+}
 
 #entryRejection:hover {
 	background: #ff0505c7;
+}
+
+.entryAcceptMent {
+	float: right;
+	color: #165dcb;
+}
+
+#alreadyEntryAccept {
+	background: #3a91ed;
+	float: right;
+	padding: 6px 15px;
+	border-radius: 4px;
+	color: #fff;
+	border: none;
+	margin: 5px;
+	pointer-events: none;
+}
+
+#alreadyEntryRejection {
+	background: #ff0505c7;
+	float: right;
+	padding: 6px 15px;
+	border-radius: 4px;
+	color: #fff;
+	border: none;
+	margin: 5px;
+	pointer-events: none;
+}
+
+.entryBtnWap {
+	width: auto;
+	float: right;
+}
+
+.entryDetail .booking-details {
+	border-bottom: none !important;
+	width: auto;
+}
+
+.entryContents .p_inline {
+	float: left;
+	font-weight: 500;
+	font-size: 15px;
+}
+
+.entryContents .fw-separator {
+	margin: 15px;
 }

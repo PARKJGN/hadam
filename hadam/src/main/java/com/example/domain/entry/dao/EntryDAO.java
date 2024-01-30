@@ -23,4 +23,9 @@ public interface EntryDAO {
 	// entry 명단 확인
 	EntryApplicationVO checkEntry(EntryApplicationVO vo);
 	
+	// 동행신청 수락 [최성익]
+	Integer entryAccept(Integer boardId, Integer guestMemberIndex);
+	
+	// 동행신청 거절 [최성익]
+	Integer entryRejection(Integer boardId, Integer guestMemberIndex);
 }
