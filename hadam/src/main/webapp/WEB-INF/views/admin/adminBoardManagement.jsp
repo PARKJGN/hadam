@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!doctype html>
 <html lang="KO">
 <!-- header -->
@@ -50,10 +54,12 @@
 	                            	<c:forEach var="board" items="${boardList }">
 		                                <tr>
 		                                    <td>${board.boardId }</td>
-		                                    <td>${board.boardTitle }</td>
+		                                    <td><a class="boardModal" value="${board.boardId }">${board.boardTitle }</a></td>
 		                                    <td>${board.memberNickname }</td>
 		                                    <td>${board.boardViews }</td>
-		                                    <td>${board.boardRegisterDate }</td>
+		                                    <td>
+		                                    <fmt:formatDate value="${board.boardRegisterDate}" pattern="yyyy/MM/dd" />
+		                                    </td>
 		                                </tr>
 	                                </c:forEach>
 	                            </tbody>
@@ -65,3 +71,4 @@
 <!-- footer -->
 <jsp:include page="/WEB-INF/layout/adminFooter.jsp"></jsp:include>
 <!-- footer of end -->
+<script src="/js/admin/admins.js"></script>

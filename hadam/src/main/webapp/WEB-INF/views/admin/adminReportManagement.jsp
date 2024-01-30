@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="KO">
@@ -38,8 +41,9 @@
 	                        <table class="table">
 	                            <thead class="bg-light">
 	                                <tr class="border-0">
-	                                    <th class="border-0">번호</th>
-	                                    <th class="border-0">신고발생 컨텐츠</th>
+	                                	<th class="border-0">No</th>
+	                                    <th class="border-0">댓글번호</th>
+	                                    <th class="border-0">신고된 댓글 내용</th>
 	                                    <th class="border-0">신고대상자</th>
 	                                    <th class="border-0">신고자</th>
 	                                    <th class="border-0">신고일자</th>
@@ -47,15 +51,26 @@
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                            	forEach 작성하기
+	                            	<c:forEach var="report" items="${reportList }">
 	                                <tr>
-	                                    <td>1</td>
-	                                    <td>신고발생 컨텐츠 받아오기</td>
-	                                    <td>신고대상자 받아오기</td>
-	                                    <td>신고자 받아오기</td>
-	                                    <td>신고일자 받아오기</td>
-	                                    <td><span class="badge-dot badge-brand mr-1"></span><button>정지</button></td>
+	                                    <td>${report.boardCommentReportId }</td>
+	                                    <td>${report.commentId }</td>
+	                                    <td>${report.commentContent }</td>
+	                                    <td>${report.reportedMember }</td>
+	                                    <td>${report.boardCommentReporter }</td>
+	                                    <td>
+	                                    <fmt:formatDate value="${report.boardCommentReportRegisteDate }" pattern="yyyy/MM/dd" />
+	                                    </td>
+	                                    <c:choose>
+	                                    	<c:when test="${report.boardCommentReportStatus != 0 }">
+	                                    		<td><span class="badge-dot badge-success mr-1"></span><button class="suspendBtn" value="${report.commentId }">정지</button></td>
+	                                    	</c:when>
+	                                    	<c:when test="${report.boardCommentReportStatus == 0 }">
+	                                    		<td><span class="badge-dot badge-brand mr-1"></span><button class="releaseBtn" value="${report.commentId }">해제</button></td>
+	                                    	</c:when>
+	                                    </c:choose>
 	                                </tr>
+	                                </c:forEach>
 	                            </tbody>
 	                        </table>
                     	</div>
@@ -65,3 +80,4 @@
 <!-- footer -->
 <jsp:include page="/WEB-INF/layout/adminFooter.jsp"></jsp:include>
 <!-- footer of end -->
+<script src="/js/admin/admins.js"></script>

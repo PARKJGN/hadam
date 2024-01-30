@@ -267,4 +267,4 @@
             <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>  
             <!--footer end -->
             <script src="/js/favorites/favorites.js"></script>
-            <script src="/js/location/location.js"></script>
+            <script src="/js/location/locations.js"></script>

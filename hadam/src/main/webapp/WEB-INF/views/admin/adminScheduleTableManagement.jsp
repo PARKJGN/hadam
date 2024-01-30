@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="KO">
@@ -53,7 +56,9 @@
 		                                    <td>${scheduleTable.scheduleTableName }</td>
 		                                    <td>${scheduleTable.memberNickname }</td>
 		                                    <td>${scheduleTable.boardViews }</td>
-		                                    <td>${scheduleTable.scheduleTableRegisteDate }</td>
+		                                    <td>
+		                                    <fmt:formatDate value="${scheduleTable.scheduleTableRegisteDate }" pattern="yyyy/MM/dd" />
+		                                    </td>
 		                                </tr>
 	                                </c:forEach>
 	                            </tbody>
@@ -65,3 +70,4 @@
 <!-- footer -->
 <jsp:include page="/WEB-INF/layout/adminFooter.jsp"></jsp:include>
 <!-- footer of end -->
+<script src="/js/admin/admins.js"></script>

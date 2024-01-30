@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="KO">
@@ -59,10 +62,12 @@
 		                                    <td>${member.adminStatus}</td>
 		                                    <td>${member.memberNickname}</td>
 		                                    <td><a class="accountModal" value="${member.memberId}">${member.memberId}</a></td>
-		                                    <td>${member.memberRegisteDate}</td>
-		                                    <td>${member.scheduleCnt}</td>
-		                                    <td>${member.boardCnt}</td>
-		                                    <td>${member.commentCnt}</td> 
+		                                    <td>
+	                                    	<fmt:formatDate value="${member.memberRegisteDate}" pattern="yyyy/MM/dd" />
+	                                    	</td>
+		                                    <td>${member.memberScheduleCnt}</td>
+		                                    <td>${member.memberBoardCnt}</td>
+		                                    <td>${member.memberCommentCnt}</td> 
 		                                    <!-- <td>신고여부 boolean 받아오기</td> -->
 		                                    <td></td>
 	                                    	<td>
@@ -84,26 +89,55 @@
 
 <!-- 모달 창 -->
 <div id="accountModal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2 class="memInfo"></h2>
-    <form>
-      <label for="nickname">닉네임:</label>
-      <input type="text" name="nickname" id="nickname" readonly>
+	<div class="accountModal-header">
+		<span class="close">&times;</span>
+    	<h2 class="memInfo"></h2><button class="modifyAccountBtn">수정하기</button>
+	</div>
+	<div class="modal-content">	
+   		<form>
+		    <label for="accountNickname">닉네임:</label>
+		    <input type="text" id="accountNickname" readonly>
+		
+		    <label for="accountId">아이디:</label>
+		    <input type="text" id="accountId" readonly>
+		
+		    <label for="accountPhone">전화번호:</label>
+		    <input type="text" id="accountPhone" readonly>
+		    
+		    <label for="accountAdminStatus">관리자여부:</label>
+		    <input type="text" id="accountAdminStatus" readonly>
+		    
+		    <label for="accountStatus">회원상태:</label>
+		    <input type="text" id="accountStatus" readonly>
+   		</form>
+	</div>
+</div>
 
-      <label for="id">아이디:</label>
-      <input type="text" name="id" id="id" readonly>
-
-      <label for="phone">전화번호:</label>
-      <input type="text" name="phone" id="phone" readonly>
-      
-      <label for="adminStatus">관리자여부:</label>
-      <input type="text" name="adminStatus" id="adminStatus" readonly>
-      
-      <label for="memberStatus">회원상태:</label>
-      <input type="text" name="memberStatus" id="memberStatus" readonly>
-    </form>
-  </div>
+<!-- 수정 모달창 -->
+<div id="modifyModal">
+	<div class="accountModal-header">
+		<span class="close">&times;</span>
+    	<h2 class="memInfo"></h2><button class="modifyComBtn">수정완료</button> <button class="cancelBtn">취소</button>
+	</div>
+	<div class="modifyModal-content">	
+   		<form>
+		    <label for="modifyAccountNickname">닉네임:</label>
+		    <input type="text" id="modifyAccountNickname" placeholder="${member.memberNickname }">
+		
+		    <label for="modifyAccountAdminStatus">관리자여부:</label>
+		    <select id="modifyAccountAdminStatus" required>
+		    	<option value="" selected disabled hidden>선택</option>
+		    	<option value="0">회원</option>
+		    	<option value="1">관리자</option>
+		    </select>
+		    <label for="modifyAccountStatus">회원상태:</label>
+		    <select id="modifyAccountStatus" required>
+		    	<option value="" selected disabled hidden>선택</option>
+		    	<option value="정상">정상</option>
+		    	<option value="정지">정지</option>
+		    </select>
+   		</form>
+	</div>
 </div>
 
 <!-- footer -->

@@ -42,9 +42,10 @@ public class MemberVO {
 	
 	// 관리자
 	// 유저가 작성한 스케줄 수, 게시글 수, 댓글 수 서브쿼리로 불러오기
-	private Integer scheduleCnt;
+	private Integer memberScheduleCnt;
 	
-	private Integer boardCnt;
+	private Integer memberBoardCnt;
 	
-	private Integer commentCnt;
+	private Integer memberCommentCnt;
+	
 }

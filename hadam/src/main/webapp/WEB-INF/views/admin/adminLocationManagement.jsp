@@ -71,3 +71,4 @@
 <!-- footer -->
 <jsp:include page="/WEB-INF/layout/adminFooter.jsp"></jsp:include>
 <!-- footer of end -->
+<script src="/js/admin/admins.js"></script>
