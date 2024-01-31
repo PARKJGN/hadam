@@ -11,6 +11,6 @@ public interface SigninService {
 	public MemberVO loginCheck(String memberId, String memberPassword);
 	public MemberUploadImagesVO profileCheck(Integer memberIndex);
 
-	
+	public MemberVO getMemberId(String memberPhoneNumber);
 	
 }

@@ -28,6 +28,7 @@
 		<jsp:include page="/WEB-INF/views/mypage/mypageHeader.jsp"></jsp:include>
 		<!-- mypageheader end -->
 
+
 		<!-- section-->
 		<section class="middle-padding">
 			<div class="container">
@@ -38,7 +39,7 @@
 						<div class="box-widget-item-header">
 							<h3>당신의 취향을 선택해주세요</h3>
 						</div>
-
+						
 						<div class="row">
 							<div class="col-sm-6 hadam_category eating">
 								<label class='midlelabel'>먹기</label>
@@ -90,6 +91,12 @@
 										for="전,빈대떡">전,빈대떡</label></li>
 									<li><input type="checkbox" class="small" id="해물,생선요리"><label
 										for="해물,생선요리">해물,생선요리</label></li>
+									<li><input type="checkbox" class="small" id="뷔페"><label
+										for="뷔페">뷔페</label></li>
+									<li><input type="checkbox" class="small" id="분식"><label
+										for="분식">분식</label></li>
+									<li><input type="checkbox" class="small" id="덮밥,컵밥"><label
+										for="덮밥,컵밥">덮밥,컵밥</label></li>
 								</ul>
 							</div>
 							<div class="col-sm-6 hadam_category eating small 중식">
@@ -118,6 +125,8 @@
 										for="프랑스음식">프랑스음식</label></li>
 									<li><input type="checkbox" class="small" id="샌드위치" /><label
 										for="샌드위치">샌드위치</label></li>
+									<li><input type="checkbox" class="small" id="레스토랑" /><label
+										for="레스토랑">"레스토랑"</label></li>
 								</ul>
 							</div>
 							<div class="col-sm-6 hadam_category eating small 일식">
@@ -168,10 +177,19 @@
 							<div class="col-sm-6 hadam_category drinking">
 								<label class='midlelabel'>마시기</label>
 								<ul class="ks-cboxtags">
-									<li><input type="checkbox" class="middle small" id="카페" /><label
+									<li><input type="checkbox" class="middle" id="카페" /><label
 										for="카페">카페</label></li>
 									<li><input type="checkbox" class="middle" id="주류" /><label
 										for="주류">주류</label></li>
+								</ul>
+							</div>
+							<div class="col-sm-6 hadam_category drinking small 카페">
+								<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;카페</label>
+								<ul class="ks-cboxtags">
+									<li><input type="checkbox" class="small" id="카페,디저트" /><label
+										for="카페,디저트">카페,디저트</label></li>
+									<li><input type="checkbox" class="small" id="베이커리" /><label
+										for="베이커리">베이커리</label></li>
 								</ul>
 							</div>
 							<div class="col-sm-6 hadam_category drinking small 주류">
@@ -182,9 +200,11 @@
 									<li><input type="checkbox" class="small" id="맥주,호프" /><label
 										for="맥주,호프">맥주,호프</label></li>
 									<li><input type="checkbox" class="small" id="와인" /><label
-										for="태국음식">와인</label></li>
+										for="와인">와인</label></li>
 									<li><input type="checkbox" class="small" id="칵테일" /><label
 										for="칵테일">칵테일</label></li>
+									<li><input type="checkbox" class="small" id="바(BAR)" /><label
+										for="바(BAR)">바(BAR)</label></li>
 								</ul>
 							</div>
 							<div class="col-sm-6 hadam_category playing">
@@ -221,6 +241,8 @@
 										for="힐링카페">힐링카페</label></li>
 									<li><input type="checkbox" class="small" id="애견카페" /><label
 										for="애견카페">애견카페</label></li>
+									<li><input type="checkbox" class="small" id="키즈카페" /><label
+										for="키즈카페">키즈카페</label></li>
 								</ul>
 							</div>
 							<div class="col-sm-6 hadam_category playing small 실내활동">
@@ -298,12 +320,13 @@
 								</ul>
 							</div>
 							<div class="col-sm-6 hadam_category watching small 책방">
-								<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서점</label>
 								<ul class="ks-cboxtags">
 									<li><input type="checkbox" class="small" id="서점" /><label
 										for="서점">서점</label></li>
 									<li><input type="checkbox" class="small" id="만화카페" /><label
 										for="만화카페">만화카페</label></li>
+									<li><input type="checkbox" class="small" id="북카페" /><label
+										for="북카페">북카페</label></li>
 								</ul>
 							</div>
 							<div class="col-sm-6 hadam_category walking">

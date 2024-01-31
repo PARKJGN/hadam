@@ -1,12 +1,30 @@
 /* 
-	  파일명 	signup.js
-	페이지명	기본 회원가입 페이지 
-	용도		회원가입시 필요 조건충족 확인 등
+	파일명 	preference.js
+	페이지명	간편 로그인시 취향설정 페이지 
+	용도		간편 로그인시 취향설정 안되어 있으면 설정함
 	작성자 	최성익  
 
  */
 
 $(function() {
+
+/*키보드 새로고침은 막는데 브라우저창 새로고침 버튼은 못막음*/
+/*function NotReload(){
+    if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+        event.keyCode = 0;
+        event.cancelBubble = true;
+        event.returnValue = false;
+    } 
+}
+document.onkeydown = NotReload;*/
+
+/*키보드랑 브라우저 새로고침 막는 코드*/
+window.addEventListener('beforeunload', (event) => {
+	if (preventUnload) {
+		event.preventDefault();
+		event.returnValue='';
+	}
+})
 
 	/* 약관동의 하고 다음 버튼 누르는지 확인하는 로직  */
 	$('.custom-form').on('click', '#check-a', function() {
@@ -22,44 +40,52 @@ $(function() {
 		}
 	})
 
+	let id = $('#imsimemberId').val();
+	let password = $('#imsimemberPassword').val();
+	let phone = $('#imsimemberPhoneNumber').val();
+	let nickname = $('#imsimemberNickname').val();
+	let sex = $('#imsimemberSex').val();
+	let birth = $('#imsimemberBirth').val();
+	let memberType = $('#imsimemberType').val();
 
-	let form_id = null;
-	let form_password = null;
-	let form_phone = null;
-	let form_nickname = null;
-	let form_birth = null;
-
+	if(id=='') {
+		location.replace('/index')
+	}
 	
-
 	/* 회원가입 완료 번튼 눌렀을 때 */
 	$('#signup_completion').hide();
 	$('#hide_signup_completion').on('click', function() {
-
+		preventUnload = false;
 		let checkedCategory = [];
 		$('input:checkbox[class~=small]').each(function() {
 			if ($(this).is(':checked') == true) {
-				/*console.log($(this)[0].id);*/
+				
 				checkedCategory.push($(this)[0].id);
 			}
 		})
 		/*console.log(checkedcCtegory);*/
-
-
+		if(checkedCategory.length < 10){
+			alert('카테고리는 최소 10개이상 선택해야 합니다')
+			return false;
+		}
+		
 		$.ajax({
 			url: '/signup/signupCompletion',
 			type: 'post',
 			data: {
-				'memberId': form_id,
-				'memberPassword': form_password,
-				'memberPhoneNumber': form_phone,
-				'memberNickname': form_nickname,
-				'memberSex': $('input[name=member_sex]:checked').val(),
-				'memberBirth': form_birth,
+				'memberId': id,
+				'memberPassword': password,
+				'memberPhoneNumber': phone,
+				'memberNickname': nickname,
+				'memberSex': sex,
+				'memberBirth': birth,
+				'memberType': memberType,
 				'checkedCategory': checkedCategory
 			},
 			success: function(result) {
-				if (result == 1) {
-					$('#signup_completion').trigger("click");
+				if (result != 0) {
+					alert('가입을 감사드립니다 메인페이지로 이동합니다');
+					location.replace('/index')
 				} else {
 					alert('네트워크에 문제가 있습니다. 잠심 후 시도해주세요');
 				}
@@ -68,11 +94,7 @@ $(function() {
 			error: function(err) {
 				alert('네트워크에 문제가 있습니다. 잠심 후 시도해주세요');
 			}
-
-
 		})
-
-
 	})
 
 	/* 카테고리 탭에서 중분류 눌렀을때 소분류 태그 토글 */
@@ -88,13 +110,5 @@ $(function() {
 		if ($(`.${$(this)[0].id}`).find('input').is(':checked')) {
 			middle.prop('checked', true);
 		}
-
 	})
-
-
-
-
-
-
-
 })

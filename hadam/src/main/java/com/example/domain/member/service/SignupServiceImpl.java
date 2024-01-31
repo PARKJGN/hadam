@@ -209,7 +209,7 @@ public class SignupServiceImpl implements SignupService{
 
 		        
 		        JsonElement el = JsonParser.parseString(result);
-		        System.out.println(result);
+		        //System.out.println(result);
 		        String id =  (String) el.getAsJsonObject().get("id").getAsString();
 		        JsonObject properties = el.getAsJsonObject().get("properties").getAsJsonObject();
 		        JsonObject kakaoAccount = el.getAsJsonObject().get("kakao_account").getAsJsonObject();
@@ -228,7 +228,7 @@ public class SignupServiceImpl implements SignupService{
 				phoneTemp = phoneTemp.replaceAll("-", "");
 				String memberPhoneNumber = phoneTemp.substring(phoneTemp.length()-8);
 				memberPhoneNumber = "010"+memberPhoneNumber;
-				System.out.println("핸드폰 번호 가져오기 "+memberPhoneNumber);
+				// System.out.println("핸드폰 번호 가져오기 "+memberPhoneNumber);
 
 //				성별 
 				String memberSex = "";

@@ -24,18 +24,21 @@
 <!--  header end -->
 
 <!--  wrapper  -->
-<input type="hidden" value="${imsiMemberVO.memberId}">
-<input type="hidden" value="${imsiMemberVO.memberPassword}">
-<input type="hidden" value="${imsiMemberVO.memberPhoneNumber}">
-<input type="hidden" value="${imsiMemberVO.memberNickname}">
-<input type="hidden" value="${imsiMemberVO.memberSex}">
-<input type="hidden" value="${imsiMemberVO.memberBirth}">
+<input id="imsimemberId" type="hidden" value="${imsiMemberVO.memberId}">
+<input id="imsimemberPassword" type="hidden" value="${imsiMemberVO.memberPassword}">
+<input id="imsimemberPhoneNumber" type="hidden" value="${imsiMemberVO.memberPhoneNumber}">
+<input id="imsimemberNickname" type="hidden" value="${imsiMemberVO.memberNickname}">
+<input id="imsimemberSex" type="hidden" value="${imsiMemberVO.memberSex}">
+<input id="imsimemberBirth" type="hidden" value="${imsiMemberVO.memberBirth}">
+<input id="imsimemberType" type="hidden" value="${imsiMemberVO.memberType}">
+<input id="imsiMemberVO" type="hidden" value="${imsiMemberVO}">
+
 <div id="wrapper">
 	<!-- content-->
 	<div class="content">
 		<div class="breadcrumbs-fs fl-wrap">
 			<div class="container">
-			<!-- 	<div class="breadcrumbs fl-wrap">
+				<!-- 	<div class="breadcrumbs fl-wrap">
 					<a href="#">Home</a><a href="#">Pages</a><span>Booking Page</span>
 				</div> -->
 			</div>
@@ -44,8 +47,9 @@
 			<div class="container">
 				<div class="list-main-wrap-title single-main-wrap-title fl-wrap">
 					<h2>
-						당신의 하루를 담다 : <span>Hadam</span> ${imsiMemberVO.memberNickname}님 반갑습니다
+						당신의 하루를 담다 : <span>Hadam</span> 
 					</h2>
+					<h2><span>${imsiMemberVO.memberNickname}</span>님 반갑습니다</h2>
 				</div>
 				<div class="row">
 					<div class="col-md-8">
@@ -181,8 +185,8 @@
 												</a>
 											</fieldset>
 											<!-- 이용동의 약관 끝 -->
-											
-											
+
+
 											<!-- 카테고리 설정 시작 -->
 											<fieldset class="fl-wrap book_mdf">
 												<div class="list-single-main-item-title fl-wrap">
@@ -199,16 +203,15 @@
 															<li><input type="checkbox" class="middle" id="양식" /><label
 																for="양식">양식</label></li>
 															<li><input type="checkbox" class="middle" id="일식" /><label
-															
 																for="일식">일식</label></li>
-															<li><input type="checkbox" class="middle"
-																id="패스트푸드" /><label for="패스트푸드">패스트푸드</label></li>
+															<li><input type="checkbox" class="middle" id="패스트푸드" /><label
+																for="패스트푸드">패스트푸드</label></li>
 															<li><input type="checkbox" class="middle" id="세계음식" /><label
 																for="세계음식">세계음식</label></li>
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category eating small 한식">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한식</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한식</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="족발,보쌈"><label
 																for="족발,보쌈">족발,보쌈</label></li>
@@ -240,10 +243,16 @@
 																for="전,빈대떡">전,빈대떡</label></li>
 															<li><input type="checkbox" class="small"
 																id="해물,생선요리"><label for="해물,생선요리">해물,생선요리</label></li>
+															<li><input type="checkbox" class="small" id="뷔페"><label
+																for="뷔페">뷔페</label></li>
+															<li><input type="checkbox" class="small" id="분식"><label
+																for="분식">분식</label></li>
+															<li><input type="checkbox" class="small" id="덮밥,컵밥"><label
+																for="덮밥,컵밥">덮밥,컵밥</label></li>
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category eating small 중식">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중식</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중식</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="중식당" /><label
 																for="중식당">중식당</label></li>
@@ -256,7 +265,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category eating small 양식">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;양식</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;양식</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small"
 																id="스파게티,파스타전문" /><label for="스파게티,파스타전문">스파게티,파스타전문</label></li>
@@ -268,10 +277,12 @@
 																for="프랑스음식">프랑스음식</label></li>
 															<li><input type="checkbox" class="small" id="샌드위치" /><label
 																for="샌드위치">샌드위치</label></li>
+															<li><input type="checkbox" class="small" id="레스토랑" /><label
+																for="레스토랑">"레스토랑"</label></li>
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category eating small 일식">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일식</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일식</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="일식당" /><label
 																for="일식당">일식당</label></li>
@@ -290,7 +301,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category eating small 패스트푸드">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;패스트푸드</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;패스트푸드</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="햄버거" /><label
 																for="햄버거">햄버거</label></li>
@@ -301,7 +312,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category eating small 세계음식">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;세계음식</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;세계음식</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="베트남음식" /><label
 																for="베트남음식">베트남음식</label></li>
@@ -318,23 +329,34 @@
 													<div class="col-sm-6 hadam_category drinking">
 														<label class='midlelabel'>마시기</label>
 														<ul class="ks-cboxtags">
-															<li><input type="checkbox" class="middle small" id="카페" /><label
+															<li><input type="checkbox" class="middle" id="카페" /><label
 																for="카페">카페</label></li>
 															<li><input type="checkbox" class="middle" id="주류" /><label
 																for="주류">주류</label></li>
 														</ul>
 													</div>
+													<div class="col-sm-6 hadam_category drinking small 카페">
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;카페</label>
+														<ul class="ks-cboxtags">
+															<li><input type="checkbox" class="small" id="카페,디저트" /><label
+																for="카페,디저트">카페,디저트</label></li>
+															<li><input type="checkbox" class="small" id="베이커리" /><label
+																for="베이커리">베이커리</label></li>
+														</ul>
+													</div>
 													<div class="col-sm-6 hadam_category drinking small 주류">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주류</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주류</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small"
 																id="포장마차,요리주점" /><label for="포장마차,요리주점">포장마차,요리주점</label></li>
 															<li><input type="checkbox" class="small" id="맥주,호프" /><label
 																for="맥주,호프">맥주,호프</label></li>
 															<li><input type="checkbox" class="small" id="와인" /><label
-																for="태국음식">와인</label></li>
+																for="와인">와인</label></li>
 															<li><input type="checkbox" class="small" id="칵테일" /><label
 																for="칵테일">칵테일</label></li>
+															<li><input type="checkbox" class="small" id="바(BAR)" /><label
+																for="바(BAR)">바(BAR)</label></li>
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category playing">
@@ -349,7 +371,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category playing small 이색">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이색</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이색</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="테마카페" /><label
 																for="테마카페">테마카페</label></li>
@@ -371,17 +393,19 @@
 																for="힐링카페">힐링카페</label></li>
 															<li><input type="checkbox" class="small" id="애견카페" /><label
 																for="애견카페">애견카페</label></li>
+															<li><input type="checkbox" class="small" id="키즈카페" /><label
+																for="키즈카페">키즈카페</label></li>
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category playing small 실내활동">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;실내활동</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;실내활동</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="스케이트장" /><label
 																for="스케이트장">스케이트장</label></li>
 															<li><input type="checkbox" class="small" id="노래방" /><label
 																for="노래방">노래방</label></li>
 															<li><input type="checkbox" class="small" id="당구장" /><label
-																for="사주카페">당구장</label></li>
+																for="당구장">당구장</label></li>
 															<li><input type="checkbox" class="small" id="볼링장" /><label
 																for="볼링장">볼링장</label></li>
 															<li><input type="checkbox" class="small" id="스크린야구장" /><label
@@ -391,7 +415,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category playing small 실외활동">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;실외활동</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;실외활동</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small"
 																id="수상,해양레저" /><label for="수상,해양레저">수상,해양레저</label></li>
@@ -421,7 +445,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category watching small 영화">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영화</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영화</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="영화관" /><label
 																for="영화관">영화관</label></li>
@@ -430,7 +454,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category watching small 전시">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전시</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전시</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="전시회" /><label
 																for="전시회">전시회</label></li>
@@ -439,7 +463,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category watching small 공연">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="뮤지컬극장" /><label
 																for="뮤지컬극장">뮤지컬극장</label></li>
@@ -453,23 +477,25 @@
 																for="서점">서점</label></li>
 															<li><input type="checkbox" class="small" id="만화카페" /><label
 																for="만화카페">만화카페</label></li>
+															<li><input type="checkbox" class="small" id="북카페" /><label
+																for="북카페">북카페</label></li>
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category walking">
 														<label class='midlelabel'>걷기</label>
 														<ul class="ks-cboxtags">
-															<li><input type="checkbox" class="middle small" id="시장" /><label
-																for="시장">시장</label></li>
-															<li><input type="checkbox" class="middle small" id="공원" /><label
-																for="공원">공원</label></li>
+															<li><input type="checkbox" class="middle small"
+																id="시장" /><label for="시장">시장</label></li>
+															<li><input type="checkbox" class="middle small"
+																id="공원" /><label for="공원">공원</label></li>
 															<li><input type="checkbox" class="middle" id="산책" /><label
 																for="산책">산책</label></li>
-															<li><input type="checkbox" class="middle small" id="문화재" /><label
-																for="문화재">문화재</label></li>
+															<li><input type="checkbox" class="middle small"
+																id="문화재" /><label for="문화재">문화재</label></li>
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category walking small 산책">
-													<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;산책</label>
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;산책</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="도보코스" /><label
 																for="도보코스">도보코스</label></li>

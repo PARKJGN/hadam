@@ -26,4 +26,9 @@ public class SigninServiceImpl implements SigninService{
 	public MemberUploadImagesVO profileCheck(Integer memberIndex) {
 		return signDAO.profileCheck(memberIndex);
 	}
+	
+//	아이디 비밀번호 찾기 - 아이디 가져오기
+	public MemberVO getMemberId(String memberPhoneNumber) {
+		return signDAO.getMemberId(memberPhoneNumber);
+	}
 }

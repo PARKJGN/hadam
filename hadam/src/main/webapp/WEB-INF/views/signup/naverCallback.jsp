@@ -9,6 +9,18 @@
     
   </head>
   <body>
+  	<div hidden>
+  	<form action='/signup/naverSignup' method='post' id="naver">
+  		<input id='memberId' name='memberId' value=''>
+  		<input id='memberPassword' name='memberPassword' value=''>
+  		<input id='memberPhoneNumber' name='memberPhoneNumber' value=''>
+  		<input id='memberNickname' name='memberNickname' value=''>
+  		<input id='memberBirth' name='memberBirth' value=''>
+  		<input id='memberSex' name='memberSex' value=''>
+  		<input id='memberType' name='memberType' value=''>
+  		<input id='accesstoken' name='accesstoken' value=''>
+  	</form>
   
+  	</div>
   </body>
 </html>
