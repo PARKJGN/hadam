@@ -37,7 +37,7 @@ public class MemberVO {
 	
 	private Date memberLeaveDate;
 	
-	private Integer memberApi;
+	private Integer memberType;
 	
 	
 	// 관리자

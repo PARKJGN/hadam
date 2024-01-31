@@ -67,9 +67,10 @@
 					Dashboard Menu <i class="fal fa-bars"></i>
 				</div>
 				<ul class="dasboard-menu-wrap">
-					<li><a href="/mypage/mypagePassword" class="user-profile-act"><i
+					<li><a href="/mypage/mypagePreference" class="user-profile-act"><i
 							class="far fa-user"></i>개인정보수정</a>
 						<ul>
+							<li><a href="/mypage/mypagePreference">취향정보변경</a></li>
 							<li><a href="/mypage/mypagePassword">비밀번호변경</a></li>
 							<li><a href="/mypage/mypagePhoneNumber">전화번호변경</a></li>
 						</ul></li>

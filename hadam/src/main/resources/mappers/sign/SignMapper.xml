@@ -22,9 +22,22 @@
 	<!-- 회원정보 입력 -->
 	<insert id="signupCompletion" parameterType="com.example.domain.member.vo.MemberVO">
 		INSERT INTO MEMBER(MEMBER_ID, MEMBER_PASSWORD, MEMBER_PHONENUMBER
-							, MEMBER_NICKNAME, MEMBER_SEX, MEMBER_BIRTH, MEMBER_REGISTE_DATE) 
+							, MEMBER_NICKNAME, MEMBER_SEX, MEMBER_BIRTH, MEMBER_REGISTE_DATE, MEMBER_TYPE) 
 		VALUES(#{memberId}, #{memberPassword}, #{memberPhoneNumber}
-							, #{memberNickname}, #{memberSex}, #{memberBirth}, NOW())
+							, #{memberNickname}, #{memberSex}, #{memberBirth}, NOW(),
+							
+							<if test="memberType != null">
+							#{memberType}
+							</if>
+							<if test="memberType == null">
+							0
+							</if>
+				)
+		
+		<selectKey keyProperty="memberIndex" resultType="integer" order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+		
 	</insert>
 	
 	<!-- 카테고리 정보 입력시 필요 member 검색 -->
@@ -49,11 +62,20 @@
 		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId}
 	</select>
 
+	<!-- 네이버 회원가입 -->
 	<insert id="naverSignup" parameterType="com.example.domain.member.vo.MemberVO">
 		INSERT INTO MEMBER(MEMBER_ID, MEMBER_PASSWORD, MEMBER_PHONENUMBER
-							, MEMBER_NICKNAME, MEMBER_SEX, MEMBER_BIRTH, MEMBER_REGISTE_DATE , MEMBER_API)
+							, MEMBER_NICKNAME, MEMBER_SEX, MEMBER_BIRTH, MEMBER_REGISTE_DATE , MEMBER_TYPE)
 					VALUES (#{memberId}, #{memberPassword}, #{memberPhoneNumber}
-							, #{memberNickname}, #{memberSex}, #{memberBirth}, NOW(), #{memberApi})
+							, #{memberNickname}, #{memberSex}, #{memberBirth}, NOW(), #{memberType})
 	</insert>
 
+	<!-- 취향설정 -->
+	<select id="checkPreference" parameterType="integer">
+		SELECT * FROM PREFERENCE WHERE MEMBER_INDEX IN (SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = #{memberId})
+	</select>
+	
+	
+	
+	
 </mapper>

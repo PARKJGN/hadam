@@ -297,8 +297,12 @@ public class MypageController {
 		m_vo.setMemberNickname(memberNickname);
 		
 		// 닉네임 변경
-		mypageService.profileModifyNickname(m_vo);
-		session.setAttribute("memberNickname", memberNickname);
+		if(!memberNickname.isEmpty()) {
+			mypageService.profileModifyNickname(m_vo);
+			session.setAttribute("memberNickname", memberNickname);
+		}
+		
+		
 		// 프로필 사진 변경 
 		if(!profileImage.isEmpty()) {
 			String filename;

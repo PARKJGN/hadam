@@ -72,14 +72,16 @@ public class SigninController {
 		/* return "logout"; */
 	}
 	
-//	네이버 로그인
+//	네이버 로그인 
 	@RequestMapping(value="/naverLogin", method=RequestMethod.POST)
 	@ResponseBody
 	public void naverLogin(String memberId, String memberPassword, @RequestParam("accessToken") String accessToken,
 			HttpSession session, HttpServletRequest request ) {
+		System.out.println("네이버 로그인 들어오기 accessToken :"+accessToken);
+		
+//		로그인 정보 확인 후 로그인 페이지 이동
 		MemberVO vo = signinService.loginCheck(memberId, memberPassword);
-		System.out.println("네이버 로그인 들어오기");
-		System.out.println(accessToken);
+		
 		/* session.setAttribute("accessToken", accessToken); */
 		session.setAttribute("memberId", vo.getMemberId());
 		session.setAttribute("memberNickname", vo.getMemberNickname());
