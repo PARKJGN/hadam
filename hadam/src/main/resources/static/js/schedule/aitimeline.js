@@ -83,7 +83,7 @@ $(() => {
 			} else{
 			let scheduletd = $('.scheduleTable').find('td').eq(startIndex+1)
 			console.log(scheduletd)
-			scheduletd.append(createImage(loc.location))
+			scheduletd.append(createImage(locationListForCategories[i].location))
 			updateToImageForTimeline(scheduletd.children())
 			}
 			

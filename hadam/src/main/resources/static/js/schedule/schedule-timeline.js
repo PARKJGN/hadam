@@ -152,7 +152,6 @@ $(() => {
 		}
 		// 자식이 있으면 모달창에 해당 내용을 지울지 물어본다
 		else if (td.children().length) {
-
 			if (confirm("해당 장소를 일정에서 삭제 하시겠습니까?")) {
 				// 삭제 후 스케줄 크기만큼 드랍 풀기
 				for (var i = td.index(); i <= td.index() + td.children().width() / 90 - 1; i++) {
@@ -161,10 +160,6 @@ $(() => {
 				td.empty()
 				changemap()
 			}
-			else {
-				return false
-			}
-
 		}
 
 		clickprevent = 0
@@ -236,11 +231,11 @@ let changesummary = (totalTimelist) => {
 		let index = $(element).parents('td').index()
 		let locname = $(element).attr('alt')
 		let locid = $(element).attr('id')
+		let smallCategory = $(element).attr('name').split(',')[3] 
 
 		// 이미지가 들어가있는 td의 인덱스로 시작시간과 끝나는 시간 구하기
 		let starttime = index % 2 == 0 ? `${index / 2}:00` : `${Math.floor(index / 2)}:30`
 		let endtime = (index + $(element).width() / 90) % 2 == 0 ? `${(index + $(element).width() / 90) / 2}:00` : `${Math.floor((index + $(element).width() / 90) / 2)}:30`
-
 		let content = (`<div class="listing-item listItem summarySchedule">
 						<article class="geodir-category-listing fl-wrap">
 						<div class="geodir-category-img">
@@ -250,12 +245,14 @@ let changesummary = (totalTimelist) => {
 							<div class="geodir-category-opt"></div>
 						</div>
 						<div class="geodir-category-content fl-wrap title-sin_item">
-							<div class="geodir-category-content-title fl-wrap">
+							<div class="fl-wrap">
 								<div class="geodir-category-content-title-item">
 									<h3 class="scheduletime title-sin_map">${starttime} ~ ${endtime}</h3>
 									<div class="geodir-category-location fl-wrap">
-										<a href="#" class="map-item"><i
-										class="fas fa-map-marker-alt"></i>${locname}</a>
+									<span class = "summarycont">
+										<a class="map-item"><i
+										class="fas fa-map-marker-alt"></i>${locname}</a></span>
+										<span class = "summarycont"><a style = "margin-top : 10px" class="map-item">${smallCategory}</a></span>
 									</div>
 								</div>
 							</div>
@@ -281,7 +278,7 @@ let changesummary = (totalTimelist) => {
 	})
 
 	$(".listing-item-container").html(totcontent)
-
+	$(".loader-wrap").fadeOut(300)
 
 }
 

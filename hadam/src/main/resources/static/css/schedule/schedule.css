@@ -20,7 +20,7 @@
 	border-radius: 20%;
 	width: 180px;
 	height: 150px;
-	border: 1px solid black;
+	outline: 1px solid black;
 }
 
 .scheduleBtn{
@@ -368,4 +368,13 @@
 
 .scheduleinven .title-sin_map{
 	height: 57.56px;
+}
+
+.scheduleaddform{
+	height:857.69px
+}
+
+.summarycont{
+	width: 100%;
+	float: left;
 }

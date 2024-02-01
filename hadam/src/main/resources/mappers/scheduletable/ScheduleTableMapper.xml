@@ -147,10 +147,12 @@
 		<!-- 스케줄 생성하기 눌렀을때 insert하기 -->
 		<insert id="insertScheduleTable"
 			parameterType="ScheduleTableVO">
-			insert into schedule_table(MEMBER_INDEX, SCHEDULE_TABLE_NAME,
+			insert into schedule_table
+			(MEMBER_INDEX, SCHEDULE_TABLE_NAME,
 			SCHEDULE_TABLE_REGISTE_DATE, SCHEDULE_TABLE_START_DATE,
 			SCHEDULE_TABLE_START_MEMBER)
-			values(#{memberIndex},
+			values
+			(#{memberIndex},
 			#{scheduleTableName}, CURRENT_DATE(), '${scheduleTableStartDate}',
 			#{memberIndex})
 			<selectKey keyProperty="scheduleTableId" resultType="int"
@@ -165,9 +167,7 @@
 		</update>
 
 		<!-- 추천 알고리즘을 통해 얻은 정보로 장소select 후 스케줄표 생성 -->
-		<select id="aiCreateScheduleTable" parameterType="AiCreateVO"
-			resultType="LocationVO">
-
+		<select id="aiCreateScheduleTable" parameterType="AiCreateVO" resultType="LocationVO">
 			SELECT l.LOCATION_ID , l.LOCATION_NAME , l.AVERAGE_TIME ,
 			l.LOCATION_PLACE , l.LOCATION_OPENTIME , l.LOCATION_CLOSETIME ,
 			l.LOCATION_LATITUDE , l.LOCATION_LONGITUDE, c.SMALL_CATEGORY,
@@ -185,35 +185,26 @@
 			WHERE
 			<choose>
 				<when test="secondAi == 0">
-					(#{aivo.lat}-0.015 <![CDATA[<]]>
-					LOCATION_LATITUDE and LOCATION_LATITUDE <![CDATA[<]]>
-					#{aivo.lat}+0.015) AND
-					(#{aivo.lng}-0.015 <![CDATA[<]]>
-					LOCATION_LONGITUDE AND LOCATION_LONGITUDE <![CDATA[<]]>
-					#{aivo.lng}+0.015) AND
+					(LOCATION_LATITUDE BETWEEN #{aivo.lat}-0.015 AND #{aivo.lat}+0.015
+				AND
+					LOCATION_LONGITUDE BETWEEN #{aivo.lng}-0.015 AND #{aivo.lng}+0.015)
 				</when>
 				<when test="secondAi == 1">
-					(#{aivo.lat}-0.03 <![CDATA[<]]>LOCATION_LATITUDE
-					AND LOCATION_LATITUDE <![CDATA[<]]>
-					#{aivo.lat}-0.015 OR
-					#{aivo.lat}+0.015 <![CDATA[<]]>LOCATION_LATITUDE
-					AND LOCATION_LATITUDE <![CDATA[<]]>
-					#{aivo.lat}+0.03)
-					AND
-					(#{aivo.lng}-0.03 <![CDATA[<]]>LOCATION_LONGITUDE
-					AND LOCATION_LONGITUDE <![CDATA[<]]>
-					#{aivo.lng}-0.015 OR
-					#{aivo.lng}+0.015 <![CDATA[<]]>LOCATION_LONGITUDE
-					AND LOCATION_LONGITUDE <![CDATA[<]]>
-					#{aivo.lng}+0.03) AND
+					((LOCATION_LATITUDE BETWEEN #{aivo.lat}-0.03 AND #{aivo.lat}-0.015
+				OR
+					LOCATION_LATITUDE BETWEEN #{aivo.lat}+0.015 AND #{aivo.lat}+0.03)
+				AND
+					(LOCATION_LONGITUDE BETWEEN #{aivo.lng}-0.03 AND #{aivo.lng}-0.015
+				OR
+					LOCATION_LONGITUDE BETWEEN #{aivo.lng}+0.015 AND #{aivo.lng}+0.03))
 				</when>
 			</choose>
-			<foreach collection="aivo.memberIndexList" item='memberIndex'
+			<foreach collection="aivo.memberIndexList" open = "AND (" close= ")" item='memberIndex'
 				separator="OR">
-				(m.MEMBER_INDEX = #{memberIndex} AND
+				(m.MEMBER_INDEX = #{memberIndex} AND c.SMALL_CATEGORY IN
 				<foreach collection="preferenceList" item='category'
-					open="(" separator="OR" close="))">
-					c.SMALL_CATEGORY = #{category}
+					open="(" separator="," close="))">
+					 #{category}
 				</foreach>
 			</foreach>
 			ORDER BY RAND()
@@ -232,25 +223,27 @@
 			ON l.CATEGORY_ID =
 			c.CATEGORY_ID
 			WHERE
-			(#{aivo.lat}-0.03 <![CDATA[<]]>LOCATION_LATITUDE
-			AND LOCATION_LATITUDE <![CDATA[<]]>
-			#{aivo.lat}-0.015 OR
-			#{aivo.lat}+0.015 <![CDATA[<]]>LOCATION_LATITUDE
-			AND LOCATION_LATITUDE <![CDATA[<]]>
-			#{aivo.lat}+0.03)
+				((LOCATION_LATITUDE BETWEEN #{aivo.lat}-0.03 AND #{aivo.lat}-0.015)
+			OR
+				(LOCATION_LATITUDE BETWEEN #{aivo.lat}+0.015 AND #{aivo.lat}+0.03))
 			AND
-			(#{aivo.lng}-0.03 <![CDATA[<]]>LOCATION_LONGITUDE
-			AND LOCATION_LONGITUDE <![CDATA[<]]>
-			#{aivo.lng}-0.015 OR
-			#{aivo.lng}+0.015 <![CDATA[<]]>LOCATION_LONGITUDE
-			AND LOCATION_LONGITUDE <![CDATA[<]]>
-			#{aivo.lng}+0.03)
-			AND
-			<foreach collection="categoryList" item='category'
-				separator="OR">
-				c.LARGE_CATEGORY = #{category}
+				((LOCATION_LONGITUDE BETWEEN #{aivo.lng}-0.03 AND #{aivo.lng}-0.015)
+			OR
+				(LOCATION_LONGITUDE BETWEEN #{aivo.lng}+0.015 AND #{aivo.lng}+0.03))
+			AND 
+				(c.LARGE_CATEGORY IN
+			<foreach collection="categoryList" open="(" close="))" item='category' separator=",">
+				#{category}
 			</foreach>
+			<if test="submitList.size != 0">
+			AND
+				(l.LOCATION_ID NOT IN
+				<foreach collection="submitList" open="(" close="))" item='submitlocation' separator=",">
+					#{submitlocation.locationId}
+				</foreach>
+			</if>
 			ORDER BY RAND()
+			LIMIT 10
 		</select>
 		
 			<!-- 스케줄 공유게시판 최신순 조회 -->
