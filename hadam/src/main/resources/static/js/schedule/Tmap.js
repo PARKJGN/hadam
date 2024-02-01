@@ -1,19 +1,17 @@
 $(() => {
-	var map = new Tmapv2.Map("map-main", { // 지도가 생성될 div
+	let maps = new Tmapv2.Map("map-main", { // 지도가 생성될 div
 		center: new Tmapv2.LatLng(37.731636, 127.051142),
 		zoom: 17
 	});
 
 })
 
-
-
 // 이동시간 구하는 함수
 const DurationOfTime = async (imgcount) => {
 
 	// 이동시간 리스트
 	let totalTimelist = [];
-	
+
 	let imgc = Object.entries(imgcount)
 	console.log(imgc)
 	// entries하면 lenghth와 prevObject가 존재해서 그걸 빼는 작업
@@ -22,8 +20,6 @@ const DurationOfTime = async (imgcount) => {
 	for (const [idx, element] of imgc) {
 
 		// 마커와 마커에 해당하는 장소 정보를 보여주는 창 생성 함수
-
-
 		drawLocationMarkerAndInfoWindow(element, idx)
 
 		// 지도의 추가된 스케줄의 -1개만큼 이동시간 구하기		
@@ -147,7 +143,6 @@ const drawTmapPedestrianPolyLine = (data) => {
 	}
 }
 
-
 // 대중교통경로찍는 함수
 // 종류에 따라 선 커스텀
 const drawTmapTransitPolyLine = (data) => {
@@ -224,53 +219,52 @@ const drawTmapTransitPolyLine = (data) => {
 				strokeColor: '#003499',
 			});
 		}
-
-
 	}
 }
 
 // 스케줄이 바뀔때마다 맵을 바꿔주는 함수
 const changemap = async () => {
+
 	$('#map-main').empty()
-
 	let imgcount = $(".scheduleTable").find('img')
-	map = new Tmapv2.Map("map-main", { // 지도가 생성될 div
-		center: new Tmapv2.LatLng(37.731636, 127.051142),
-		zoom: 17
-	});
-
 
 	// 스케줄이 1개 남아있었는데 삭제했을 경우
 	if (imgcount.length == 0) {
 
 		$('#listBox').empty()
+
 		return false
 	}
 
+	let [lat, lng] = imgcount.attr('name').split(",")
+	
+	map = new Tmapv2.Map("map-main", { // 지도가 생성될 div
+			center: new Tmapv2.LatLng(lat, lng),
+			zoom: 17,
+			zIndexInfoWindow :11
+		})
 
 	// 스케줄이 하나일때는 대중교통API를 불러올 필요가 없다
 	if (imgcount.length == 1) {
-
-		drawLocationMarkerAndInfoWindow(imgcount, 1)
+		
+		drawLocationMarkerAndInfoWindow(imgcount, 0)
 		changesummary()
 	}
 	// 스케줄이 2개 이상일때
-	else {
+	else if (imgcount.length > 1) {
 
 		$(".loader-wrap").fadeIn(200)
-
-		$('#map-main').empty()
 
 		// 이동시간 구하는 함수 호출
 		DurationOfTime(imgcount)
 	}
-
 }
 
 // 장소 마커, 정보 생성 함수
 const drawLocationMarkerAndInfoWindow = (element, idx) => {
 
 	let [lat, lng] = $(element).attr('name').split(",")
+	console.log(idx)
 
 	// 마커안와 매핑되는 인포윈도우의 내용들
 	let content = "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px; box-shadow: 5px 5px 5px #00000040; border-radius: 10px; width : 400px; height:100px; background-color: #FFFFFF; align-items: center; padding: 5px;'>" +
@@ -286,13 +280,6 @@ const drawLocationMarkerAndInfoWindow = (element, idx) => {
 		`<a href='javascript:void(0)' onclick=$(this).parent().parent().css("visibility","hidden") class='btn-close' style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'></a>` +
 		"</div>";
 
-	// 마커생성
-	const maker = new Tmapv2.Marker({
-		position: new Tmapv2.LatLng(lat, lng), //Marker의 중심좌표 설정.
-		map: map, //Marker가 표시될 Map 설정..
-		icon: `http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_${Number(idx) + 1}.png`,
-	});
-
 	// 인포윈도우생성
 	const infoWindow = new Tmapv2.InfoWindow({
 		position: new Tmapv2.LatLng(lat, lng), //Popup 이 표출될 맵 좌표
@@ -301,6 +288,13 @@ const drawLocationMarkerAndInfoWindow = (element, idx) => {
 		type: 2, //Popup의 type 설정.
 		map: map, //Popup이 표시될 맵 객체
 		visible: false
+	});
+
+	// 마커생성
+	const maker = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(lat, lng), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		icon: `http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_${Number(idx) + 1}.png`,
 	});
 
 	// 마커를 클릭했을때 이벤트
@@ -328,13 +322,6 @@ const drawTransitMarkerAndInfoWindow = (startStation) => {
 		"<a href='javascript:void(0)' onclick = $(this).parent().parent().css('visibility','hidden') class='btn-close' style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'></a>" +
 		"</div>";
 
-	// 마커생성
-	const maker = new Tmapv2.Marker({
-		position: new Tmapv2.LatLng(startStation.start.lat, startStation.start.lon), //Marker의 중심좌표 설정.
-		map: map, //Marker가 표시될 Map 설정..
-		icon: `/images/marker/${startStation.mode}.png`,
-	});
-
 	// 인포윈도우생성
 	const infoWindow = new Tmapv2.InfoWindow({
 		position: new Tmapv2.LatLng(startStation.start.lat, startStation.start.lon), //Popup 이 표출될 맵 좌표
@@ -343,6 +330,13 @@ const drawTransitMarkerAndInfoWindow = (startStation) => {
 		type: 2, //Popup의 type 설정.
 		map: map, //Popup이 표시될 맵 객체
 		visible: false
+	});
+
+	// 마커생성
+	const maker = new Tmapv2.Marker({
+		position: new Tmapv2.LatLng(startStation.start.lat, startStation.start.lon), //Marker의 중심좌표 설정.
+		map: map, //Marker가 표시될 Map 설정..
+		icon: `/images/marker/${startStation.mode}.png`,
 	});
 
 	// 마커를 클릭했을때 이벤트
@@ -354,7 +348,3 @@ const drawTransitMarkerAndInfoWindow = (startStation) => {
 		}
 	});
 }
-
-
-
-

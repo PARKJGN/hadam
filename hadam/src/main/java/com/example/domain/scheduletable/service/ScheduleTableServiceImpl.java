@@ -130,11 +130,11 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 
 	@Override
 	@Transactional
+	// 추천 알고리즘으로 스케줄 생성하기
 	public List<LocationVO> aiCreateScheduleTable(AiCreateVO aivo, Integer memberIndex) {
 
 		// 유저가 추천받길 원하는 대분류 카테로리로 현재 유저의 취향 소분류 카테고리로 가지고오기
 		List<String> preferenceList = preferenceDao.SelectPreferenceByMemberIndex(memberIndex, aivo.getCategoryList());
-		System.out.println("선호도" + preferenceList);
 
 		// 유저가 추천받길 원하는 대분류 카테고리
 		List<String> largeCate = aivo.getCategoryList();
@@ -142,64 +142,41 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 		// 알고리즘을 통해 뽑아온 추천 리스트
 		List<LocationVO> aiList = scheduleTableDAO.aiCreateScheduleTable(aivo, preferenceList, 0);
 
-		System.out.println("리스트" + aiList);
-
 		// 뽑아온 추천 리스트에서 사용자가 선택한 태그들을 하나씩만 넣은 최종으로 넘겨줄 list
 		List<LocationVO> submitList = new ArrayList<LocationVO>();
 
-		System.out.println(submitList);
-		System.out.println(largeCate);
-		
 		// aiLISt중에서 유저가 선택한 대분류 카테고리를 가진 장소가 있는지 확인하는 함수
 		checkList(submitList, aiList, largeCate);
 		
-		System.out.println(submitList);
-		System.out.println(largeCate);
-
-		System.out.println("여기야?!!");
-
 		// 안나온 대분류 태그가 있으면
 		if (largeCate.size() != 0) {
 			// 안나온 대분류 카테고리로 유저의 취향 소분류 카테고리 다시 들고오기
-			System.out.println(largeCate);
 			preferenceList = preferenceDao.SelectPreferenceByMemberIndex(memberIndex, largeCate);
-			System.out.println("여기야!" + preferenceList);
 			// 위도 경도에 +- 0.015내에서 찾던 것을 +- 0.03 넓혀서 찾는데 기존 범위는 제외 그래야 중복 장소가 나오지 않는다.
 			aiList = scheduleTableDAO.aiCreateScheduleTable(aivo, preferenceList, 1);
-			System.out.println(aiList);
 			// 다시 찾은 것중에서 대분류 태그 확인
 			checkList(submitList, aiList, largeCate);
 
 			// 두번째 알고리즘 추천 후에도 안나온 대분류 태그가 있으면 그때는 대분류카테고리로 셀렉
 			if (largeCate.size() != 0) {
-				System.out.println(largeCate);
-				System.out.println(submitList);
 				aiList = scheduleTableDAO.CreateScheduleTable(aivo, largeCate, submitList);
-				System.out.println("유사도 없는 list" + aiList);
 				checkList(submitList, aiList, largeCate);
+				
 				if (largeCate.size() != 0) {
 					// 끝까지 없으면 빈 리스트 보낸 후 사용자에게 추천 장소가 없습니다 띄워주기
-					System.out.println("진짜 끝까지 없어?");
 					submitList.clear();
 					return submitList;
 				}
-
-			} else {
-				return submitList;
-			}
+			} 
 
 		} // end of if 안나온 태그있으면 다시 리스트 추천
-
-		else {
-			// 한번에 다 나왔으면
-			return submitList;
-		} // end of else 안나온 대분류 태그
 
 		return submitList;
 
 	} // end of aiCreateScheduleTable
 
-	Boolean checkList(List<LocationVO> submitList, List<LocationVO> aiList, List<String> largeCate) {
+	// 대분류태그에 해당하는 리스트를 찾는 함수
+	void checkList(List<LocationVO> submitList, List<LocationVO> aiList, List<String> largeCate) {
 		for (int i = 0; i < largeCate.size(); i++) {
 			for (int j = 0; j < aiList.size(); j++) {
 				if (largeCate.get(i).equals(aiList.get(j).getLargeCategory())) {
@@ -211,6 +188,5 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 				}
 			}
 		}
-		return true;
 	}
 }
