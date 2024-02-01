@@ -4,8 +4,7 @@
 <mapper namespace="com.example.domain.location.dao.LocationDAO">
 
 	<!-- 장소 페이지 출력하는 쿼리 -->
-	<select id="locationList" 
-	resultType="LocationVO">
+	<select id="locationList" resultType="LocationVO">
 		SELECT l.*, li.*
 		FROM location l
 		JOIN location_image li
