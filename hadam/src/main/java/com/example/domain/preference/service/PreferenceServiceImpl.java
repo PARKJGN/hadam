@@ -19,6 +19,8 @@ public class PreferenceServiceImpl implements PreferenceService{
 		preferenceDAO.SignupPreference(memberIndex, checkedcCtegory);
 	}
 	
-	
+	public Integer preferenceDelete(Integer memberIndex) {
+		return preferenceDAO.preferenceDelete(memberIndex);
+	}
 	
 }

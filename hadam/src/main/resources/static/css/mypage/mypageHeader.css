@@ -12,3 +12,11 @@
 #member_nickname {
 	height: 30px;
 }
+
+#profileImage {
+	min-height: 110px;
+		
+}
+.dasboard-menu li a {
+	font-size: 13px !important;
+}

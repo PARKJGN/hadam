@@ -71,7 +71,7 @@ public class SignupController {
 	/* 핸드폰 인증 */
 	@RequestMapping(value = "/memberPhoneCheck", method = RequestMethod.POST)
 	@ResponseBody
-	public String memberPhoneCheck(@RequestParam("phone") String phone, @RequestParam("findInfo") Integer findInfo) {
+	public String memberPhoneCheck(@RequestParam("phone") String phone, @RequestParam(value="findInfo", required = false) Integer findInfo) {
 //		System.out.println(phone);
 
 //		6자리 인증번호 생성 

@@ -14,7 +14,12 @@ $(function() {
 		}
 	})
 
-
+	// 현재 url 확인해서 맞는 li 클래스 추가 
+	let currentUrl = window.location.pathname
+	$(`a[href="${currentUrl}"]`).addClass('user-profile-act')
+	/*console.log($(`a[href="${currentUrl}"]`))*/
+	
+	
 	$(".modifyProfile").hide();
 
 	/*프로필*/

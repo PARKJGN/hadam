@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!--
- 	파일명 	mypageEntry
-	페이지명	동행신청 받는 페이지
+ 	파일명 	mypageEntryRequest
+	페이지명	보낸 동행신청 페이지
 	작성자 	최성익  
 -->
 
@@ -37,7 +37,7 @@
 					<div class="dashboard-content fl-wrap">
 						<div class="dashboard-list-box fl-wrap">
 							<div class="dashboard-header fl-wrap">
-								<h3>동행신청</h3>
+								<h3>보낸 동행 신청</h3>
 							</div>
 
 							<c:forEach var="entry" items="${entryList}">
@@ -48,7 +48,7 @@
 										<!-- <span class="new-dashboard-item">New</span> -->
 										<div class="dashboard-message-avatar">
 											<!-- 프로필 사진 경로 -->
-											<img src="/images/avatar/1.jpg" alt="">
+											<img src="/images/profile/${entry.memberUploadImageName}" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';">
 										</div>
 										<div class="dashboard-message-text entryContents">
 											<!-- 닉네임, 신청일 -->
@@ -60,9 +60,7 @@
 													<!-- 대기중인 신청 -->
 													<c:if test="${entry.entryStatus == 0}">
 														<a id="entryRejection"
-															href="/mypage/entryRejection?boardId=${entry.boardId}&guestMemberIndex=${entry.memberIndex}">거절</a>
-														<a id="entryAccept"
-															href="/mypage/entryAccept?boardId=${entry.boardId}&guestMemberIndex=${entry.memberIndex}">수락</a>
+															href="/mypage/entryCancel?boardId=${entry.boardId}&guestMemberIndex=${entry.memberIndex}">취소</a>
 													</c:if>
 													<!-- 수락한 신청 -->
 													<c:if test="${entry.entryStatus == 1}">
@@ -75,8 +73,7 @@
 												</div>
 												<div class="booking-details fl-wrap">
 													<span class="booking-title">동행 신청 스케줄</span> <span
-														class="booking-text"><a href="#">링크 걸어줘야
-															함${entry.scheduleTableId}</a></span>
+														class="booking-text"><a href="#">${entry.boardId}</a></span>
 												</div>
 											</div>
 											<span class="fw-separator"></span> <span class="p_inline">${entry.entryApplicationContent}</span>

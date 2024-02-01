@@ -27,4 +27,7 @@ public class EntryApplicationVO {
 	
 	// 신청 현황 0대기 1수락 2거절 [최성익]
 	private Integer entryStatus;
+	
+	// 신청한 유저 프로필 사진 [최성익]
+	private String memberUploadImageName;
 }

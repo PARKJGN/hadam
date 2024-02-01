@@ -20,6 +20,7 @@ $(function() {
 				success: function(result) {
 					/*문자보내기 성공*/
 					if (result != "0") {
+						alert('인증번호를 전송하였습니다. 임증번호 입력 후에 확인버튼을 눌러주세요')
 						$('#member_phone_checknum').focus();
 						clearInterval(countdown);
 						seconds = 180; // 3분(180초)
@@ -37,12 +38,14 @@ $(function() {
 									},
 									success: function(result) {
 										$('#memberId').val(result)
+										$('#form_memberId').val(result)
 									},
 									error : function(error){
 										console.log('오류')
 									}
 								})
-								alert("인증번호가 확인되었습니다 완료하기를 눌러주세요");
+								alert("인증번호가 확인되었습니다 아이디를 확인해주세요");
+								clearInterval(countdown);
 								$('#btn_phonenumber_change_completion').removeClass('disa');
 								$('#btn_phonenumber_change_completion').css("background-color", "#F9B90F");
 							} else {
@@ -87,18 +90,12 @@ $(function() {
 	$('#btn_phonenumber_change_completion').on('click', function() {
 		$('#phoneField').hide();
 		$('#passwordField').show();
+		
 	})
 
 
 
 	$(".password_comment").removeAttr("style")
-
-	/* 비밀번호 변경버튼 클릭 후 메세지 */
-	var msg = $('#msg').text()
-	if (msg.length > 0) {
-		alert($('#msg').text());
-		$('#msg').text('');
-	}
 
 
 	/* 비밀번호 정규식 및 일치 확인 */

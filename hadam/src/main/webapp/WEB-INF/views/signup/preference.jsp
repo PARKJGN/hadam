@@ -3,21 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!--
- 	파일명 	signup.jsp 
-	페이지명	회원가입 페이지 
-	용도		화면구성	
+ 	파일명 	preference.jsp 
+	페이지명	약관동의, 취향설정 페이지 
+	용도		간편 로그인 시 약관동의와 취향설정을 위함
 	작성자 	최성익  
 -->
 
 <!--=============== 개인 css  ===============-->
-<!-- <link type="text/css" rel="stylesheet" href="/css/sign/signup.css"> -->
 <link type="text/css" rel="stylesheet" href="/css/sign/preference.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-
-
-
 
 <!-- header-->
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
@@ -38,18 +33,13 @@
 	<div class="content">
 		<div class="breadcrumbs-fs fl-wrap">
 			<div class="container">
-				<!-- 	<div class="breadcrumbs fl-wrap">
-					<a href="#">Home</a><a href="#">Pages</a><span>Booking Page</span>
-				</div> -->
 			</div>
 		</div>
 		<section class="middle-padding gre y-blue-bg">
 			<div class="container">
 				<div class="list-main-wrap-title single-main-wrap-title fl-wrap">
-					<h2>
-						당신의 하루를 담다 : <span>Hadam</span> 
-					</h2>
 					<h2><span>${imsiMemberVO.memberNickname}</span>님 반갑습니다</h2>
+					
 				</div>
 				<div class="row">
 					<div class="col-md-8">
@@ -472,6 +462,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category watching small 책방">
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;책방</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="서점" /><label
 																for="서점">서점</label></li>
@@ -558,5 +549,4 @@
 
 
 <!--=============== 개인 js  ===============-->
-<!-- <script type="text/javascript" src="/js/sign/signup.js"></script> -->
 <script type="text/javascript" src="/js/sign/preference.js"></script>

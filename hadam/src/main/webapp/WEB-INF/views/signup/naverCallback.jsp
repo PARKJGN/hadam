@@ -1,5 +1,9 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!--
+ 	파일명 	naverCallback.jsp 
+	페이지명	네이버 SDK 콜백 페이지 
+	작성자 	최성익
+-->
 <html>
   <head>
     <title>네이버로그인</title>

@@ -54,7 +54,9 @@
 	
 }
 
-
+.pass-input-wrap.fl-wrap label span {
+	display: contents;
+}
 
 ul.ks-cboxtags li label {
 	width: auto;

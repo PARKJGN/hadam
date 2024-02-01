@@ -39,7 +39,7 @@
 						<div class="box-widget-item-header">
 							<h3>당신의 취향을 선택해주세요</h3>
 						</div>
-						
+
 						<div class="row">
 							<div class="col-sm-6 hadam_category eating">
 								<label class='midlelabel'>먹기</label>
@@ -313,13 +313,12 @@
 							<div class="col-sm-6 hadam_category watching small 공연">
 								<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연</label>
 								<ul class="ks-cboxtags">
-									<li><input type="checkbox" class="small" id="뮤지컬극장" /><label
-										for="뮤지컬극장">뮤지컬극장</label></li>
-									<li><input type="checkbox" class="small" id="연극" /><label
-										for="연극">연극</label></li>
+									<li><input type="checkbox" class="small" id="뮤지컬,극장" /><label
+										for="뮤지컬,극장">뮤지컬,극장</label></li>
 								</ul>
 							</div>
 							<div class="col-sm-6 hadam_category watching small 책방">
+								<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;책방</label>
 								<ul class="ks-cboxtags">
 									<li><input type="checkbox" class="small" id="서점" /><label
 										for="서점">서점</label></li>
@@ -355,7 +354,7 @@
 
 						<div>
 							<span class="fw-separator"></span> <a href="#"
-								id="signup_completion"
+								id="preferenceModefy"
 								class="action-button btn color2-bg no-shdow-btn">눌러야 완료!<i
 								class="fal fa-angle-right"></i></a>
 						</div>

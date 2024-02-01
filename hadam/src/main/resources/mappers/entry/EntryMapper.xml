@@ -22,18 +22,32 @@
 	</delete>
 
 	<!-- 마이페이지 참가신청 리스트 가져오기 [최성익] -->
-	<select id="mypageEntry" parameterType="integer"
+	<select id="mypageEntryResponse" parameterType="integer"
 		resultType="com.example.domain.entry.vo.EntryApplicationVO">
 		SELECT ea.ENTRY_APPLICATION_DATE , ea.ENTRY_STATUS ,
 		ea.BOARD_ID , ea.MEMBER_INDEX , b.SCHEDULE_TABLE_ID ,
-		ea.ENTRY_APPLICATION_CONTENT , m.MEMBER_NICKNAME FROM
+		ea.ENTRY_APPLICATION_CONTENT , m.MEMBER_NICKNAME, mui.MEMBER_UPLOAD_IMAGE_NAME FROM
 		entry_application ea
 		JOIN board b
 		ON b.BOARD_ID = ea.BOARD_ID
 		JOIN `member` m
 		ON ea.MEMBER_INDEX = m.MEMBER_INDEX
-		WHERE b.MEMBER_INDEX = ${memberIndex} AND ea.ENTRY_STATUS IN (0, 1, 2)
+		JOIN member_upload_image mui
+		ON mui.MEMBER_INDEX = ea.MEMBER_INDEX
+		WHERE b.MEMBER_INDEX = #{memberIndex}
+		AND ea.ENTRY_STATUS IN (0, 1, 2) 
+		AND mui.MEMBER_UPLOAD_IMAGE_PATH = 'images/profile'
 		ORDER BY ea.ENTRY_APPLICATION_DATE DESC;
+	</select>
+	
+	<select id="mypageEntryRequest" parameterType="integer"
+		resultType="com.example.domain.entry.vo.EntryApplicationVO">
+		SELECT e.*, mui.MEMBER_UPLOAD_IMAGE_NAME FROM entry_application e
+		JOIN member_upload_image mui
+		ON mui.MEMBER_INDEX = e.MEMBER_INDEX
+		WHERE e.MEMBER_INDEX = #{memberIndex}
+		AND mui.MEMBER_INDEX = e.MEMBER_INDEX
+		AND mui.MEMBER_UPLOAD_IMAGE_PATH = 'images/profile'
 	</select>
 
 	<!-- 참가자 명단 확인 -->
@@ -59,4 +73,7 @@
 		BOARD_ID = #{boardId}
 	</update>
 	
+	<delete id="entryCancel" parameterType="integer">
+		DELETE FROM ENTRY_APPLICATION WHERE MEMBER_INDEX = #{memberIndex} AND BOARD_ID = #{boardId}
+	</delete>
 </mapper>

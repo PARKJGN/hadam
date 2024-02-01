@@ -12,8 +12,11 @@ public interface EntryService {
 	// 명단 삭제
 	void deleteEntry(Integer boardId);
 	
-	// 마이페이지 참가신청 리스트 가져오기 [최성익]
-	List<EntryApplicationVO> mypageEntry(Integer memberIndex);
+	// 마이페이지 참가신청 받은 리스트 가져오기 [최성익]
+	List<EntryApplicationVO> mypageEntryResponse(Integer memberIndex);
+	
+	// 마이페이지 참가신청 보낸 리스트 가져오기 [최성익]
+	List<EntryApplicationVO> mypageEntryRequest(Integer memberIndex);
 	
 	// 명단 리스트 확인
 	EntryApplicationVO checkEntry(EntryApplicationVO vo);
@@ -23,4 +26,7 @@ public interface EntryService {
 	
 	// 동행신청 거절 [최성익]
 	Integer entryRejection(Integer boardId, Integer guestMemberIndex);
+	
+	// 동행신청 취소 [최성익]
+	Integer entryCancel(Integer boardId, Integer memberIndex);
 }

@@ -89,7 +89,7 @@
 								</div>
 								<form action="/mypage/passwordChange" method="post">
 									<div class="custom-form no-icons">
-										<input type="hidden" name="memberid">
+										<input type="hidden" name="memberId" id="form_memberId">
 										<div class="pass-input-wrap fl-wrap">
 											<label>새 비밀번호 <span class="password_comment"></span></label>
 											<input type="password" class="pass-input"

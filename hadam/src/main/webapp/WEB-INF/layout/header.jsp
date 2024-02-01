@@ -97,7 +97,7 @@
                             <ul>
                                 <li><a href="/mypage/mypagePreference"> 개인정보수정 </a></li>
                                 <li><a href="/mypage/mypageFavorites"> 찜 장소 </a></li>
-                                <li><a href="/mypage/mypageEntry">  동행신청  </a></li>
+                                <li><a href="/mypage/mypageEntryResponse">  동행신청  </a></li>
                                 <li><a href="/mypage/mypageSchedule">  내 스케줄  </a></li>
                                 <li><a href="/mypage/mypageBoard"> 내 게시글 </a></li>
                             </ul>
