@@ -37,4 +37,10 @@ public class ScheduleVO {
 	private String  scheduleTableStartDate;
 	
 	private Integer boardId;
+	
+	
+	// 관리자
+	// 스케줄별 선호 카테고리 차트
+	private Integer scheduleCateCnt;
+	private String scheduleCategory;
 }

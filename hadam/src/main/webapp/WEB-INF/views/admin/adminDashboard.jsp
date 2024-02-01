@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="KO">
@@ -128,56 +131,42 @@
                             
                         </div>
                         <div class="row">
+                        	
+                        	<!-- ============================================================== -->
+              				<!-- product category  -->
                             <!-- ============================================================== -->
-                            <!-- customer acquistion  -->
-                            <!-- ============================================================== -->
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <h5 class="card-header">접속 수</h5>
-                                    <div class="card-body">
-                                        <div class="ct-chart ct-golden-section" style="height: 354px;"></div>
-                                        <div class="text-center">
-                                            <span class="legend-item mr-2">
-                                                    <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                            <span class="legend-text">회원 접속</span>
-                                            </span>
-                                            <span class="legend-item mr-2">
-                                                    <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                            <span class="legend-text">비회원 접속</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ============================================================== -->
-                            <!-- end customer acquistion  -->
-                            <!-- ============================================================== -->
-                            
-                            <!-- ============================================================== -->
-                            <!-- product sales  -->
-                            <!-- ============================================================== -->
-                            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <div class="float-right">
-                                                <select class="custom-select">
-                                                    <option selected>Today</option>
-                                                    <option value="1">Weekly</option>
-                                                    <option value="2">Monthly</option>
-                                                    <option value="3">Yearly</option>
-                                                </select>
-                                            </div>
-                                        <h5 class="mb-0"> 생성된 게시글</h5>
+                                		<h5 class="mb-0">성비 통계</h5>
+                                	</div>
+                                    <div class="card-body" style="height:400px">
+                                    	<canvas id="sexChart"></canvas>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="ct-chart-product ct-golden-section"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- ============================================================== -->
+                            <!-- end product category  -->
+                            <!-- ============================================================== -->
+                        	
+                        	
+                        	<!-- ============================================================== -->
+                            <!-- category revenue  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                		<h5 class="mb-0">스케줄별 선호 카테고리</h5>
+                                	</div>
+                                    <div class="card-body" style="height:400px">
+                                    	<canvas id="cateChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                             <!-- ============================================================== -->
-                            <!-- end product sales  -->
+                            <!-- end category revenue  -->
                             <!-- ============================================================== -->
-                            
                             
                         </div>
                         <div class="row">
@@ -186,80 +175,35 @@
                             <!-- ============================================================== -->
                             <div class="col-xl-6 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">미확인 신고건</h5>
-                                    <div class="card-body p-0">
+                                    <div class="card-header">
+                                    <a href="/admin/adminReportManagement" class="btn btn-outline-light float-right" style="padding: 0px 7px">상세 보기</a>
+                                        <h5 class="mb-0"> 미확인 신고건</h5>
+                                    </div>
+                                    <div class="card-body p-0" style="height:400px">
                                         <div class="table-responsive">
                                             <table class="table">
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">#</th>
-                                                        <th class="border-0">Image</th>
-                                                        <th class="border-0">Product Name</th>
-                                                        <th class="border-0">Product Id</th>
-                                                        <th class="border-0">Quantity</th>
-                                                        <th class="border-0">Price</th>
-                                                        <th class="border-0">Order Time</th>
-                                                        <th class="border-0">Customer</th>
-                                                        <th class="border-0">Status</th>
+                                                        <th class="border-0">No</th>
+					                                    <th class="border-0">댓글번호</th>
+					                                    <th class="border-0">신고대상자</th>
+					                                    <th class="border-0">신고자</th>
+					                                    <th class="border-0">신고일자</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>
-                                                            <div class="m-r-10"><img src="${pageContext.request.contextPath}/assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
-                                                        </td>
-                                                        <td>Product #1 </td>
-                                                        <td>id000001 </td>
-                                                        <td>20</td>
-                                                        <td>$80.00</td>
-                                                        <td>27-08-2018 01:22:12</td>
-                                                        <td>Patricia J. King </td>
-                                                        <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>
-                                                            <div class="m-r-10"><img src="${pageContext.request.contextPath}/assets/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
-                                                        </td>
-                                                        <td>Product #2 </td>
-                                                        <td>id000002 </td>
-                                                        <td>12</td>
-                                                        <td>$180.00</td>
-                                                        <td>25-08-2018 21:12:56</td>
-                                                        <td>Rachel J. Wicker </td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>
-                                                            <div class="m-r-10"><img src="${pageContext.request.contextPath}/assets/images/product-pic-3.jpg" alt="user" class="rounded" width="45"></div>
-                                                        </td>
-                                                        <td>Product #3 </td>
-                                                        <td>id000003 </td>
-                                                        <td>23</td>
-                                                        <td>$820.00</td>
-                                                        <td>24-08-2018 14:12:77</td>
-                                                        <td>Michael K. Ledford </td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>4</td>
-                                                        <td>
-                                                            <div class="m-r-10"><img src="${pageContext.request.contextPath}/assets/images/product-pic-4.jpg" alt="user" class="rounded" width="45"></div>
-                                                        </td>
-                                                        <td>Product #4 </td>
-                                                        <td>id000004 </td>
-                                                        <td>34</td>
-                                                        <td>$340.00</td>
-                                                        <td>23-08-2018 09:12:35</td>
-                                                        <td>Michael K. Ledford </td>
-                                                        <td><span class="badge-dot badge-success mr-1"></span>Delivered </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="9"><a href="#" class="btn btn-outline-light float-right">View Details</a></td>
-                                                    </tr>
-                                                </tbody>
+					                            	<c:forEach var="uReport" items="${uReportList }">
+					                                <tr>
+					                                    <td>${uReport.boardCommentReportId }</td>
+					                                    <td>${uReport.commentId }</td>
+					                                    <td>${uReport.reportedMember }</td>
+					                                    <td>${uReport.reporterMember }</td>
+					                                    <td>
+					                                    <fmt:formatDate value="${uReport.boardCommentReportRegisteDate }" pattern="yyyy/MM/dd" />
+					                                    </td>
+					                                </tr>
+					                                </c:forEach>
+					                            </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -270,46 +214,23 @@
                             <!-- ============================================================== -->
                             
                             <!-- ============================================================== -->
-              				<!-- product category  -->
+                            <!-- product sales  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">성비 통계</h5>
-                                    <div class="card-body">
-                                        <div class="ct-chart-category ct-golden-section" style="height: 315px;"></div>
-                                        <div class="text-center m-t-40">
-                                            <span class="legend-item mr-3">
-                                                    <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full "></i></span><span class="legend-text">Man</span>
-                                            </span>
-                                            <span class="legend-item mr-3">
-                                                <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                            <span class="legend-text">Woman</span>
-                                            </span>
-                                        </div>
+                                    <div class="card-header">
+                                        <h5 class="mb-0"> 생성된 게시글</h5>
+                                    </div>
+                                    <div class="card-body" style="height:400px">
+                                    	<canvas id="boardChart" ></canvas>
                                     </div>
                                 </div>
                             </div>
                             <!-- ============================================================== -->
-                            <!-- end product category  -->
-                            <!-- ============================================================== -->
-                            
-                            <!-- ============================================================== -->
-                            <!-- category revenue  -->
-                            <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-5 col-md-12 col-sm-12 col-12">
-                                <div class="card">
-                                    <h5 class="card-header">연령별 선호 카테고리</h5>
-                                    <div class="card-body">
-                                        <div id="c3chart_category" style="height: 420px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- ============================================================== -->
-                            <!-- end category revenue  -->
+                            <!-- end product sales  -->
                             <!-- ============================================================== -->
                             
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -317,3 +238,6 @@
 <jsp:include page="/WEB-INF/layout/adminFooter.jsp"></jsp:include>
 <!-- footer of end -->
 <script src="/js/admin/admins.js"></script>
+<script src="/js/charts.js"></script>
+<!-- 차트 날짜형식 변경 위해 추가 -->
+<script src="https://cdn.jsdelivr.net/npm/moment/moment.min.js"></script>

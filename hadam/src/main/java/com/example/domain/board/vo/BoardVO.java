@@ -136,7 +136,9 @@ public class BoardVO {
 	}
 	
 	
-	
+	// 관리자
+	// 날짜별 게시글 수
+	private Integer dateBoardCount;
 	
 	
 }

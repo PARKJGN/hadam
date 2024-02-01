@@ -14,7 +14,7 @@
 		<if test ="middleCategory != null">
 			AND c.MIDDLE_CATEGORY = #{middleCategory} 
 		</if>
-		ORDER BY l.LOCATION_ID DESC
+		ORDER BY l.LOCATION_REVIEW_COUNT DESC
 	</select>
 	
 	<!-- 회원가입시 입력한 카테고리리스트로 해당 categoryId 가져오기  [최성익] -->

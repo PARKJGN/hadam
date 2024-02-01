@@ -94,10 +94,6 @@ public interface CommunityBoardService {
 	// boardList 검색
 	List<BoardVO> searchBoards(BoardVO vo);
 	
-	// 관리자
-	// 게시글 삭제
-	void boardD(BoardVO vo);
-	
 	// 계정에서 작성한 게시글 조회
 	List<BoardVO> getAccountBoardList(Integer memberIndex);
 	
@@ -111,10 +107,17 @@ public interface CommunityBoardService {
 	CommentVO commentCount(int boardId);
 	
 	BoardVO getBoardTitle(BoardVO vo);
+	
 	// 해당게시글 포사 출력
 	BoardVO findProfileByBoardId(BoardVO vo);
 	
 	// 각 댓글의 회원정보 이미지 가져오기
 	MemberUploadImagesVO getMemberImageByMemberIndex(Integer memberIndex);
 	
+	// 관리자
+	// 게시글 삭제
+	void boardD(BoardVO vo);
+	
+	// 스케줄 테이블 id 순으로 출력
+	List<BoardVO> getSTShareList();
 }

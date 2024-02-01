@@ -4,9 +4,24 @@
 
 <mapper namespace="com.example.domain.report.dao.ReportDAO">
 	
+	<!-- 읽지 않은 신고 리스트 5개 출력 -->
+	<select id="unProcessedReportList" resultType="BoardAndCommentReportVO">
+		select r.* , m.MEMBER_ID as reported_member,
+		(select m.MEMBER_ID from member m
+		where m.MEMBER_INDEX = r.BOARD_COMMENT_REPORTER) as reporter_member
+		from board_comment_report r 
+		inner join comment c on r.COMMENT_ID = c.COMMENT_ID
+		inner join member m on c.MEMBER_INDEX  = m.MEMBER_INDEX
+		where r.BOARD_COMMENT_REPORT_STATUS = 1
+		order by r.BOARD_COMMENT_REPORT_ID desc
+		limit 5
+	</select>
+	
 	<!-- 신고 리스트 출력 -->
-	<select id="reportSelect" resultType="BoardAndCommentReportVO">
-		select r.*, c.COMMENT_CONTENT as comment_content, m.MEMBER_ID as reported_member 
+	<select id="reportList" resultType="BoardAndCommentReportVO">
+		select r.*, c.COMMENT_CONTENT as comment_content, m.MEMBER_ID as reported_member,
+		(select m.MEMBER_ID from member m
+		where m.MEMBER_INDEX = r.BOARD_COMMENT_REPORTER) as reporter_member 
 		from board_comment_report r 
 		inner join comment c on r.COMMENT_ID = c.COMMENT_ID
 		inner join member m on c.MEMBER_INDEX  = m.MEMBER_INDEX 

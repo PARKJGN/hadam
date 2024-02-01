@@ -50,7 +50,6 @@
 	                                    <th class="border-0">작성스케줄 수</th>
 	                                    <th class="border-0">작성글 수</th>
 	                                    <th class="border-0">작성댓글 수</th>
-	                                    <th class="border-0">신고여부</th>
 	                                    <th class="border-0">상태</th>
 	                                </tr>
 	                            </thead>
@@ -68,8 +67,6 @@
 		                                    <td>${member.memberScheduleCnt}</td>
 		                                    <td>${member.memberBoardCnt}</td>
 		                                    <td>${member.memberCommentCnt}</td> 
-		                                    <!-- <td>신고여부 boolean 받아오기</td> -->
-		                                    <td></td>
 	                                    	<td>
 	                                    	<c:choose>
 	                                    		<c:when test="${member.memberStatus == '정상' }"><span class="badge-dot badge-success mr-1"></span></c:when>
@@ -86,6 +83,17 @@
                     </div>
                 </div>
             </div>
+            <!-- 페이지 설정 -->
+			<div class="pagination" id="page">
+				<a href="/admin/adminAccountManagement?page=1" class="prevposts-link"><i class="fa fa-angle-double-left"></i></a>
+				<a href="/admin/adminAccountManagement?page=${prevMax}" class="prevposts-link"><i class="fa fa-angle-left"></i></a>
+				<c:forEach items="${numList}" var="num">
+					<a href="/admin/adminAccountManagement?page=${num}">${num}</a>
+				</c:forEach>
+				<a href="/admin/adminAccountManagement?page=${nextMin}" class="nextposts-link"><i class="fa fa-angle-right"></i></a>
+				<a href="/admin/adminAccountManagement?page=${lastPage}" class="nextposts-link"><i class="fa fa-angle-double-right"></i></a>
+			</div>									                                          
+			<!-- 페이지 설정 end--> 
 
 <!-- 모달 창 -->
 <div id="accountModal">

@@ -27,5 +27,7 @@ public class BoardAndCommentReportVO {
 	private String commentContent;
 	// 신고된 회원
 	private String reportedMember;
+	// 신고한 회원 id
+	private String reporterMember;
 	
 }

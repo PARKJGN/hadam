@@ -265,7 +265,12 @@
 		</choose>
 	</select>
 	
-	
+	<!-- 해당 게시글 댓글 개수 -->
+	<select id="commentCount" parameterType="int" resultType="CommentVO">
+		select count(*) as count
+        from comment
+        where board_id = #{boardId}
+	</select>
 	
 	<!-- 관리자 -->
 	<!-- 게시글 삭제 -->
@@ -274,11 +279,18 @@
 		where board_id = #{boardId}
 	</delete>
 	
-	<!-- 해당 게시글 댓글 개수 -->
-	<select id="commentCount" parameterType="int" resultType="CommentVO">
-		select count(*) as count
-        from comment
-        where board_id = #{boardId}
+	<!-- 스케줄 테이블 id 순으로 출력 -->
+	<select id="getSTShareList" resultType="BoardVO">
+		select
+		st.*,b.*,m.*
+		from board b
+		inner join schedule_table st
+		on
+		b.SCHEDULE_TABLE_ID = st.SCHEDULE_TABLE_ID
+		inner join member m
+		on
+		m.MEMBER_INDEX = b.MEMBER_INDEX
+		order by st.SCHEDULE_TABLE_ID desc
 	</select>
 	
 		<!-- 해당 게시글 정보 불러오기 -->

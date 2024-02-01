@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.domain.location.dao.LocationDAO">
+
+	<!-- 장소 페이지 출력하는 쿼리 -->
+	<select id="locationList" 
+	resultType="LocationVO">
+		SELECT l.*, li.*
+		FROM location l
+		JOIN location_image li
+		ON l.LOCATION_ID = li.LOCATION_ID
+		ORDER BY l.LOCATION_REVIEW_COUNT DESC
+	</select>
+
+	<!-- 클릭된 장소 id 받아서 상세 정보 출력하는 쿼리 -->
+	<select id="getLocationDetail" parameterType="LocationVO"
+		resultType="LocationVO">
+		SELECT l.*, li.*, lr.LOCATION_REVIEW_CONTENT1, lr.LOCATION_REVIEW_CONTENT2,
+		 lr.LOCATION_REVIEW_CONTENT3, lr.LOCATION_REVIEW_CONTENT4, lr.LOCATION_REVIEW_CONTENT5
+		FROM location l
+		LEFT OUTER JOIN location_image li ON l.LOCATION_ID = li.LOCATION_ID
+		LEFT OUTER JOIN location_review lr ON l.LOCATION_ID = lr.LOCATION_ID
+		WHERE l.LOCATION_ID = #{locationId}
+	</select>
+
+	<select id="locationscheduleList" parameterType="PagingVO"
+		resultType="LocationVO">
+		SELECT l.LOCATION_ID, l.LOCATION_NAME, l.LOCATION_PLACE,
+		LOCATION_OPENTIME, LOCATION_CLOSETIME, c.SMALL_CATEGORY,
+		li.LOCATION_IMAGE_PATH, l.LOCATION_LATITUDE, l.LOCATION_LONGITUDE,
+		l.LOCATION_REVIEW_COUNT, li.LOCATION_IMAGE_ORIGINALNAME
+		FROM location l
+		INNER JOIN location_image li
+		ON l.LOCATION_ID = li.LOCATION_ID
+		INNER JOIN category c
+		ON l.CATEGORY_ID = c.CATEGORY_ID
+		WHERE l.LOCATION_PLACE LIKE CONCAT('%',#{addrName},'%')
+		AND c.LARGE_CATEGORY = #{largeCate}
+		<if test="middleCate != '전체'">
+			AND c.MIDDLE_CATEGORY = #{middleCate}
+		</if>
+		<if test="locationName != null">
+			AND l.LOCATION_NAME LIKE CONCAT('%',#{locationName},'%')
+		</if>
+		ORDER BY l.LOCATION_REVIEW_COUNT DESC
+		LIMIT #{pageSize} OFFSET #{recordIndex}
+		
+	</select>
+
+	<select id="locationscheduleListSize" parameterType="PagingVO" resultType="int">
+		SELECT count(*)
+		FROM location l
+		INNER JOIN location_image li
+		ON l.LOCATION_ID = li.LOCATION_ID
+		INNER JOIN category c
+		ON l.CATEGORY_ID = c.CATEGORY_ID
+		WHERE l.LOCATION_PLACE LIKE CONCAT('%',#{addrName},'%')
+		AND c.LARGE_CATEGORY = #{largeCate}
+		<if test="middleCate != '전체'">
+			AND c.MIDDLE_CATEGORY = #{middleCate}
+		</if>
+		<if test="locationName != null">
+			AND l.LOCATION_NAME LIKE CONCAT('%',#{locationName},'%')
+		</if>
+	</select>
+	
+	<!-- 찜한 장소 목록 출력 -->
+	<select id="mypageFavoritesList" parameterType="java.util.List">
+		SELECT l.*, li.*
+		FROM location l
+		LEFT JOIN location_image li
+		ON l.LOCATION_ID = li.LOCATION_ID
+		WHERE l.LOCATION_ID IN
+		<foreach collection="list" item="locationId" open="(" separator="," close=")">
+		#{locationId}
+		</foreach>
+		ORDER BY l.LOCATION_ID DESC
+	</select>
+
+</mapper>

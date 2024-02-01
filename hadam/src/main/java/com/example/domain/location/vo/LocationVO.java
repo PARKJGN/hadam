@@ -68,5 +68,7 @@ public class LocationVO{
 	// 장소 대분류
 	private String largeCategory;
 	
+	// 장소 검색시 검색어
+	private String locKeyword;
 	
 }

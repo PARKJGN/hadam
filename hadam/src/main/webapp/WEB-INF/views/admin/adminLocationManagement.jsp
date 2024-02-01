@@ -9,6 +9,7 @@
 <!-- sidebar -->
 <jsp:include page="/WEB-INF/layout/adminSidebar.jsp"></jsp:include>
 <!-- sidebar of end -->
+<link type="text/css" rel="stylesheet" href="/css/admin/admins.css">
 
         <!-- ============================================================== -->
         <!-- wrapper  -->
@@ -48,16 +49,16 @@
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                            	<c:forEach var="location" items="${locationList }">
+	                            	<c:forEach var="alocation" items="${aLocationList }">
 		                                <tr>
-		                                    <td>${location.locationId }</td>
-		                                    <td><img src="${pageContext.request.contextPath}/images/location/${location.locationImageOriginalname}"
-		                                    	onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></td>
-		                                    <td>${location.locationName }</td>
-		                                    <td>${location.locationPlace }</td>
-		                                    <td>${location.locationRating }</td>
-		                                    <td>${location.locationReviewCount }</td>
-		                                    <td>${location.smallCategory }</td>
+		                                    <td>${alocation.locationId }</td>
+		                                    <td><img class="locationImg" src="${pageContext.request.contextPath}/images/location/${alocation.locationImageOriginalname}"
+		                                    	onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image2.jpg'"></td>
+		                                    <td>${alocation.locationName }</td>
+		                                    <td>${alocation.locationPlace }</td>
+		                                    <td>${alocation.locationRating }</td>
+		                                    <td>${alocation.locationReviewCount }</td>
+		                                    <td>${alocation.smallCategory }</td>
 		                                </tr>
 	                                </c:forEach>
 	                            </tbody>
@@ -67,6 +68,17 @@
                     </div>
                 </div>
             </div>
+            <!-- 페이지 설정 -->
+			<div class="pagination" id="page">
+				<a href="/admin/adminLocationManagement?page=1" class="prevposts-link"><i class="fa fa-angle-double-left"></i></a>
+				<a href="/admin/adminLocationManagement?page=${prevMax}" class="prevposts-link"><i class="fa fa-angle-left"></i></a>
+				<c:forEach items="${numList}" var="num">
+					<a href="/admin/adminLocationManagement?page=${num}">${num}</a>
+				</c:forEach>
+				<a href="/admin/adminLocationManagement?page=${nextMin}" class="nextposts-link"><i class="fa fa-angle-right"></i></a>
+				<a href="/admin/adminLocationManagement?page=${lastPage}" class="nextposts-link"><i class="fa fa-angle-double-right"></i></a>
+			</div>									                                          
+			<!-- 페이지 설정 end--> 
 
 <!-- footer -->
 <jsp:include page="/WEB-INF/layout/adminFooter.jsp"></jsp:include>

@@ -16,12 +16,19 @@ public class ReportServiceImpl implements ReportService{
 	
 	@Autowired
 	private ReportDAO reportDAO;
+	
+	// 읽지 않은 신고 리스트 5개만 출력
+	@Override
+	public List<BoardAndCommentReportVO> unProcessedReportList() {
+		// TODO Auto-generated method stub
+		return reportDAO.unProcessedReportList();
+	};
 
 	// 신고 리스트 출력
 	@Override
-	public List<BoardAndCommentReportVO> reportSelect() {
+	public List<BoardAndCommentReportVO> reportList() {
 
-		return reportDAO.reportSelect();
+		return reportDAO.reportList();
 	}
 	
 	// 회원 정지
@@ -38,5 +45,6 @@ public class ReportServiceImpl implements ReportService{
 		System.out.println(vo);
 		
 		return reportDAO.releaseMember(vo);
-	};
+	}
+	
 }

@@ -12,7 +12,7 @@ import com.example.domain.schedule.vo.PagingVO;
 public interface LocationDAO {
 	
 	// 모든 장소 목록 출력
-	public List<LocationVO> locationList(PagingVO vo);
+	public List<LocationVO> locationList();
 	
 	// 장소 상세 조회
 	public LocationVO getLocationDetail(LocationVO vo);
