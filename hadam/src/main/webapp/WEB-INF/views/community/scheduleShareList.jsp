@@ -14,7 +14,6 @@
 <link type="text/css" rel="stylesheet"
 	href="/css/board/scheduleShareList.css">
 </head>
-
 <!--  header end -->
 <!--  wrapper  -->
 <div id="wrapper">
@@ -42,15 +41,17 @@
 				<div class="breadcrumbs fl-wrap">
 					<a href="#" style="text-decoration:none; font-size:16px;">커뮤니티</a><span style="font-size:16px;">스케줄 공유 게시판</span>
 				</div>
-
 			</div>
 		</div>
 		<div class="container" id="full">
 		<div class="list-main-wrap fl-wrap card-listing" id="box">
+			<!-- 로그인한 사용자의 memberIndex가 있을 때만 스케줄 공유하기 버튼 활성화 -->
+			<c:if test="${not empty sessionScope.memberIndex}">
 			<div class="shareBtnBox">
 				<a class="btn btn-primary" href="/community/scheduleShareWrite"
 					role="button" id="shareBtn">스케줄 공유하기</a>
 			</div>
+			</c:if>
 			<!-- 최신순,오래된순으로 게시판 조회 -->
 		    <form action="/community/searchScheduleBoards/1" name="searchForm" method="get" style="text-align:left;">
                 <div class="fields">
@@ -65,7 +66,7 @@
                     </div>
                 </div>	
 			</form> 
-			<!-- 공유게시판 목록 출력 시작 -->
+			<!-- 공유게시판 목록 출력 시작 스케줄테이블에 대한 리스트-->
 			<c:forEach items="${map}" var="map" varStatus="outerIndex">
 				<div class="scheduleTitle" id="scheduleTitle">
 					<h5>		
@@ -76,6 +77,7 @@
 					</h5>
 				</div>			
 				<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox">
+				<!-- 스케줄에 대한 리스트 시작 -->
 					<c:forEach items="${map.value}" var="schedule" varStatus="innerIndex">
 						<div class="listing-item" id="listItem">
 							<article class="geodir-category-listing fl-wrap" style="width: 150px">
@@ -99,7 +101,6 @@
 											</div>
 										</div>
 									</div>
-
 								</div>
 							</article>							
 						</div>
@@ -110,23 +111,27 @@
 								</div>
 						</c:if>
 					</c:forEach>
+					<!-- 스케줄 리스트 끝 -->
 					<!-- 게시글 작성시 입력한 조건들 출력 -->
 					<div class="infor">
 						<p style="font-size:14px; color:black"><strong>희망성별 : ${map.key.boardSex}</strong></p>
 						<p style="font-size:14px; color:black"><strong>희망나이 : ${map.key.boardAge}</strong></p>
+						<!-- 최대인원보다 참가인원이 작을때만 보여줌 -->
 						<c:if test="${map.key.chatRoomCount lt map.key.chatRoomMax}">
+																						<!-- 참가인원 수/최대인원 수 -->
 						<p style="font-size:14px; color:black"><strong>참가인원 : ${map.key.chatRoomCount}/${map.key.chatRoomMax} </strong></p>
 						</c:if>
+						
+						<!-- 참가인원수가 다찼을 때 보여줌 -->
 						<c:if test="${map.key.chatRoomCount ge map.key.chatRoomMax}">
 						<p style="font-size:14px; color:black"><strong>참가인원 : Max </strong></p>
 						</c:if>
-					</div>
-					
+					</div>					
 				</div>
-				<!-- 상세보기 클릭시 모달창 띄우기 openDetailModal함수호출 -->
+				<!-- 상세보기 클릭시 모달창 띄우기 openDetailModal함수호출 호출시 인자에 해당 게시글의 boardId와 로그인한 사용자의 memberIndex를 돌고감-->
 				<button type="button" class="btn btn-primary modalBtn"
 					data-bs-toggle="modal" data-bs-target="#staticBackdrop2"
-					onclick="openDetailModal(${map.key.boardId},${sessionScope.memberIndex})">상세보기</button>
+					onclick="openDetailModal(${map.key.boardId},${sessionScope.memberIndex})">상세보기</button>				
 			</c:forEach>
 			<!-- 공유게시판 목록 출력 끝 -->
 			<!-- 페이징 처리-->
@@ -140,7 +145,6 @@
 <!--wrapper end -->
 <!--footer -->
 <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
-
 <!-- 상세보기 모달창(첫번째) -->
 <div class="modal fade " id="staticBackdrop2" data-bs-backdrop="static"
 	data-bs-keyboard="false" tabindex="-1"
@@ -162,7 +166,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- 스케줄 참가하기 모달창 (두번째)-->
 <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static"
 	data-bs-keyboard="false" tabindex="-1"
@@ -178,7 +181,8 @@
 				<div id="scheduleAttend"></div>
 				<!-- 사용자 프로필사진, 이름 출력 -->
 				<div class="post-author" id="userInfo1">
-					<a href="#"><img src="/communityBoardFile/d1fa1aea12bb6c5633762505152d9561" alt=""><span>${sessionScope.memberNickname}</span></a>
+													<!-- 로그인한 사용자의 프로필사진 -->																										<!-- 로그인한 사용자의 닉네임 -->
+					<a href="#"><img src="/images/profile/${sessionScope.memberUploadImageName}.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';" alt=""><span>${sessionScope.memberNickname}</span></a>
 				</div>
 				<!-- 참가신청서 작성 -->
 				<form class="custom-form" action="/community/scheduleAttendWrite" id="contactform" method="post">							
@@ -205,10 +209,7 @@
 	var pageLastPage = "${pvo.lastPage}"
 	var pageEndPage = "${pvo.endpage}"
 	var pageStartPage = "${pvo.startpage}"
-	
-
 </script>
 
 <script type="text/javascript" src="/js/board/scheduleShareList.js"></script>
 <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
-

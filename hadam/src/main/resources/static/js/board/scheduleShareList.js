@@ -1,7 +1,8 @@
 /**
  * 
  */
-// 모달창 상세페이지           
+// 모달창 스케줄 공유 게시판 상세페이지 
+// 함수호출하며 session의 memberIndex, 해당 게시글 boardId 들고옴          
 function openDetailModal(boardId,memberIndex) {
 	 $.ajax({
 		   
@@ -10,11 +11,12 @@ function openDetailModal(boardId,memberIndex) {
 		 data: { 
 			 boardId: boardId
 		 }, 
-		 success: function (data){ 
-			console.log('성공',data);
-			console.log('data[0].memberIndex', data[0].memberIndex);
+		 success: function (datas){ 
+			console.log('성공',datas);
 			console.log('memberIndex', memberIndex);
-			 
+			console.log(Object.keys(datas)[0])
+			let image = Object.keys(datas)[0]
+			let data = datas[image]
 			 // 날짜 문자형으로 변환
 			function formatDate(dateString) {
 			    const options = { year: 'numeric', month: '2-digit', day: '2-digit'};
@@ -24,28 +26,38 @@ function openDetailModal(boardId,memberIndex) {
 			 
 			 
 			let output  = "</div>";
+				output += '<div class="container" id="full">';
 			    output += '<div class="list-main-wrap fl-wrap card-listing" id="box1">';
 			    output += '<div class="list-main-wrap-title fl-wrap col-title" id="scheduleTitle">';
-			    output += '<h2>Schedule :<span>'+data[0].boardTitle+'  </span></h2>';
+			    								// 게시글 제목 
+			    output += '<h2>Schedule :<span>'+data[0].boardTitle+'  </span></h2>';                                                                                                  // 게시글 작성일
 			    output += '<span><i class="fa-solid fa-calendar-days" style="margin-left:20px; position:relative; top:-3px" ><strong style="font-size:14px; color:#46649B ">'+formatDate(data[0].boardRegisterDate)+'</strong></i></span>'
 			    output += '</div>';
-			    output += '<div class="post-author" id="userInfo"><a href="#"><img src="/communityBoardFile/d1fa1aea12bb6c5633762505152d9561" alt=""><span>'+data[0].memberNickname+'</span></a></div>'
-			   	  
-			   	  if (data[0].memberIndex == memberIndex) {
-			    output += '<div class="buttonBox">'
-			    output += '<a style="text-decoration:none; color:black;"  href="/community/scheduleShareUpdate?boardId= '+boardId +'"  id="updateBtn" ><i style="color:#28AEFF"class="fa-solid fa-pencil">수정</i></a>';
-			    output += '<a style="text-decoration:none; color:black;" id="deleteBtn" href="/community/scheduleShareDelete?boardId='+boardId+'"><i  style="color:#DC6089"class="fa-solid fa-xmark">삭제</i></a>'
+			    output += '<div class="post-author" id="userInfo"><a href="#">';
+			    output += `<img src='/images/profile/${image}.jpg'`;
+			    output += 'onerror="this.onerror=null; this.src=\'/images/gal/no_image2.jpg\';">'
+			    	                 // 게시글 별명
+			    output += '<span>'+data[0].memberNickname+'</span></a></div>';
+			   	           // 내가 쓴 게시글일 경우 수정,삭제 버튼 활성화
+			   	  if (data[0].memberIndex == memberIndex || data[0].adminStatus != 0) {
+			    output += '<div class="buttonBox">'                                                                // 수정 클릭시 해당게시글 수정 페이지로 이동
+			    output += '<a style="text-decoration:none; color:black;"  href="/community/scheduleShareUpdate?boardId= '+ boardId +'"  id="updateBtn" ><i style="color:#28AEFF"class="fa-solid fa-pencil">수정</i></a>';
+			    																					// 삭제 클릭시 해당게시글 삭제
+			    output += '<a style="text-decoration:none; color:black;" id="deleteBtn" href="/community/scheduleShareDelete?boardId='+ boardId+'"><i  style="color:#DC6089"class="fa-solid fa-xmark">삭제</i></a>'
 			    output += '</div>';
 			    }
 			    	
 			    output += '<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox1">';
+			    // 스케줄표안에 스케줄 리스트 출력
 			    for ( let i in data ) {
 			    output += '<div class="listing-item" id="listItem">';
 			    output += '<article class="geodir-category-listing fl-wrap" style="width:150px;">';
-			    output += '<div class="geodir-category-img listImg">';
+			    output += '<div class="geodir-category-img listImg">';     
+			    // 이미지 클릭시 해당 장소 상세페이지로 이동
 			    output += '<a href="/location/locationDetail?locationId=' + data[i].locationId + '">';
+			    // 해당 게시글의 장소 이미지 출력
 				output += '<img src="/images/location/' + data[i].locationName + '.jpg" alt="" ';
-				output += 'onerror="this.onerror=null;this.src=\'/images/gal/girlfriend.jpg\';">';
+				output += 'onerror="this.onerror=null;this.src=\'/images/gal/no_image2.jpg\';">';
 				output += '</a>';
 			    output += '<div class="geodir-category-opt">';
 			    output += '</div>';
@@ -53,7 +65,9 @@ function openDetailModal(boardId,memberIndex) {
 			    output += '<div class="geodir-category-content fl-wrap title-sin_item" style="height:90px;">';
 			    output += '<div class="geodir-category-content-title fl-wrap">';
 			    output += '<div class="geodir-category-content-title-item">';
+			    																					// 해당 게시글의 시작시간 끝시간 출력
 			    output += '<h3 class="title-sin_map" style="white-space:nowrap; margin-left:-10px;">'+data[i].scheduleStartTime+"~"+data[i].scheduleEndTime+'</h3>';
+			    																// 해당 게시글의 스케줄 장소 제목클릭시 해당 장소상세페이지로 이동                                                                // 해당 게시글의 장소명 출력
 			    output += '<div class="geodir-category-location fl-wrap"><a href="/location/locationDetail?locationId='+data[i].locationId+'" class="map-item"><i class="fas fa-map-marker-alt"></i>'+data[i].locationName+'</a></div>'
 		        output += '</div>';
 		        output += '</div>';
@@ -61,6 +75,7 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '</article>';		       
 		        output += '</div>';
 		        
+		        // 마지막 화살표는 안보이게
 		         if( i< data.length -1){
 		        output += '<div class="arrowBox1">';
 		        output += '<div class="arrow"></div>';
@@ -68,23 +83,25 @@ function openDetailModal(boardId,memberIndex) {
 		        }
 		        }
 		        output += '<div class="infor">';
+		        														// 해당 게시글의 희망 성별 출력
 		        output += '<p style="font-size:14px; color:black"><strong>희망성별 : '+data[0].boardSex+'</strong></p>';
+		        													    // 해당 게시글의 희망 나이 출력
 		        output += '<p style="font-size:14px; color:black"><strong>희망나이 : '+data[0].boardAge+'</strong></p>';
-		         
+		         // 참가인원 수 가 최대인원 수 보다 작을 때 -> ex)참가인원 : 2/5
 		         if (data[0].chatRoomCount < data[0].chatRoomMax){
 					output += '<div><strong style="font-size:14px;">참가인원 :'+data[0].chatRoomCount+'/'+data[0].chatRoomMax+'<strong/></div>'
 				}
 				
-				// 참가인원수가 다차면 스케줄마감버튼바뀜, 참가인원: max로 바뀜
-				 
+				// 참가인원수가 다차면 참가인원: max로 바뀜
 				 if (data[0].chatRoomCount >= data[0].chatRoomMax){
 					output += '<div><strong style="font-size:14px;">참가인원 : max<strong/> </div>' 
 				 }
 				 
 		        output += '</div>';
 		        output += '</div>';
-		           if (data[0].memberIndex !== memberIndex) {
-			    output += '<div class="shareBtnBox1">';																														   // 스케줄 참가하기 버튼
+		        	// 게시글을 올린 사용자와 로그인한 사용자가 다르고 로그인한 사용자가 없을 때 스케줄 참가하기 버튼이 보임
+		           if (data[0].memberIndex !== memberIndex && memberIndex !== undefined) {
+			    output += '<div class="shareBtnBox1">';																														   // 스케줄 참가하기 버튼클릭시 scheduleAttend함수 호출, 함수 호출시 해당 게시글 boardId,memberIndex,scheduleTableId 들고감
 			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" role="button" id="shareBtn1" onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + data[0].memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
 			    output += '</div>';
 				}
@@ -95,13 +112,17 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '<div id="contact-form">';
 		        output += '<div id="message"></div>';
 		        output += '<form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">';
+		        // 게시글 내용 출력
 		        output += '<p>'+data[0].boardContent+'</p>';
 		        output += '</form>';
 		        output += '</div></div>';
-		        output += '<div id="scheduleCommentList">';		     		        
+		        output += '<div id="scheduleCommentList">';	
+		        	     		        
 			 	output += '</div>';
 		        output += '</div>';
 				output += '</div>';
+				// 사용자가 로그인하지 않은경우 댓글 등록 태그들 안보임
+				if (memberIndex !== null && memberIndex !== undefined && memberIndex !== ''){
 		        output += '<div class="list-single-main-item fl-wrap modalBoxshadow" id="replyWriteBox">';
 		        output += '<div class="list-single-main-item-title fl-wrap">';
 		        output += '<h3>댓글 등록</h3>';
@@ -116,17 +137,19 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '</fieldset>';
 		        output += '<div class="commentBtn">';
 		        
-		        // 댓글 등록 버튼 클릭시 함수 호출
+		        // 댓글 등록 버튼 클릭시 함수 호출, 호출시 해당게시글 boardId, 로그인한 사용자 memberIndex가 들고감
 		        output += '<button class="btn btn-primary" id="comment" onclick="scheduleCommentWrite(\'' + boardId + '\', \'' + memberIndex + '\')">등록</button>';
 		        output += '</div>';
 
 		        output += '</div>';
 		        output += '</div>';
+		        }
 		        output += '<div id="scheduleAttend"></div>';
 		        output += '<div class="pagination" id="page">';
 		        output += '</div>';
 		        output += '</div>';
-		 		
+		 		output += '</div>';
+		 		// modalScheduleDetail태그로 위 내용 삽입
 		 		document.getElementById('modalScheduleDetail').innerHTML = output;
 		 		
 		 		// 스케줄 참가 최대인원이 다 찼을경우 스케줄마감으로 버튼변경
@@ -162,7 +185,7 @@ function openDetailModal(boardId,memberIndex) {
 					 }
 				 })   
 				
-		 		// 모달상세페이지 댓글 목록 띄우기 
+		 		// 모달상세페이지 댓글 목록 띄우기 (댓글 작성 후 리스트 출력)
 		 		$.ajax({				
 					 type:'get',
 					 url :'/community/getScheduleCommentList',
@@ -179,7 +202,7 @@ function openDetailModal(boardId,memberIndex) {
 						}
 						 
 							 let output = "<div/>";
-							
+							 // 댓글 리스트 출력
 							 for (let i in commentData) {
 	                            output += '<div class="list-single-main-item fl-wrap modalBoxshadow" id="replyBox">';
 								output += '<div class="list-single-main-item-title fl-wrap">';
@@ -187,12 +210,16 @@ function openDetailModal(boardId,memberIndex) {
 								output += '</div>';			
 								output += '<div class="reviews-comments-wrap">';		
 								output += '<div class="review-comments-avatar" id="replyImage">';
-								output += '<img src="/communityBoardFile/d1fa1aea12bb6c5633762505152d9561" alt="">';
+								output += "<img src='/images/profile/"+commentData[i].memberUploadImageName+".jpg'";
+			    				output += 'onerror="this.onerror=null; this.src=\'/images/gal/no_image2.jpg\';">'
 								output += '</div>';
 								output += '<div class="reviews-comments-item" id="replyinnerBox">';
 								output += '<div class="reviews-comments-item-text" id="chatBox">';
+																					// 댓글을 올린 사용자 닉네임 출력
 								output += '<h4 style=font-size:13px;><a href="#">'+commentData[i].memberNickname+'</a></h4>';
+																	  // 댓글 내용 출력
 								output += '<p style=font-size:11px;>'+commentData[i].commentContent+'</p>';
+																																					// 댓글 등록일 출력
 								output += '<div class="reviews-comments-item-date" id="replydateBox"><span><i class="far fa-calendar-check"></i>'+formatDate(commentData[i].commentRegisteDate)+'</span> </div>';
 								output += '';
 								/*if( commentData[i].memberIndex !== memberIndex){
@@ -252,6 +279,7 @@ const scheduleCommentWrite = (boardId,memberIndex) => {
 			}
 			
 			let output = "<div/>";
+			// 댓글 작성 시 리스트 출력
 			for ( let i in commentList ) {
 				console.log("data의 memberIndex",commentList[i].memberIndex);
 			output += '<div class="list-single-main-item fl-wrap modalBoxshadow" id="replyBox">';
@@ -260,12 +288,17 @@ const scheduleCommentWrite = (boardId,memberIndex) => {
 			output += '</div>';			
 			output += '<div class="reviews-comments-wrap">';		
 			output += '<div class="review-comments-avatar" id="replyImage">';
-			output += '<img src="/communityBoardFile/d1fa1aea12bb6c5633762505152d9561" alt="">';
+			// 댓글 작성자 프로필 사진 출력
+			output += '<img src="/images/profile/'+commentList[i].memberUploadImageName+'.jpg" alt="" ';
+			output += 'onerror="this.onerror=null;this.src=\'/images/gal/no_image2.jpg\';">';
 			output += '</div>';
 			output += '<div class="reviews-comments-item" id="replyinnerBox">';
 			output += '<div class="reviews-comments-item-text" id="chatBox">';
+															// 댓글 작성자 닉네임 출력
 			output += '<h4 style=font-size:13px;><a href="#">'+commentList[i].memberNickname+'</a></h4>';
+													// 댓글 작성 내용
 			output += '<p style=font-size:11px;>'+commentList[i].commentContent+'</p>';
+																															// 댓글 등록일 출력
 			output += '<div class="reviews-comments-item-date" id="replydateBox"><span><i class="far fa-calendar-check"></i>'+formatDate(commentList[i].commentRegisteDate)+'</span> </div>';
 			/*if( commentList[i].memberIndex !== memberIndex){
 			output += '<div class="dangerBox">';

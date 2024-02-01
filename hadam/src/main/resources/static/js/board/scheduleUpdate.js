@@ -19,8 +19,7 @@
 			        },
 			        dataType: "json",
 			        success: function(result) {
-						
-						
+										
 			            console.log("작성 성공");
 	
 			            let output = "<div/>"
@@ -32,6 +31,7 @@
 				            output += "<div class='listing-item' id='listItem'>";
 				            output += "<article class='geodir-category-listing fl-wrap'>";
 				            output += "<div class='geodir-category-img imgSize'>";
+				            																	// 불러온 스케줄 장소 이미지 출력
 				            output += "<a href='listing-single.html'><img src='/images/location/"+result[i].locationName+".jpg' alt=''></a>";
 				            output += "<div class='geodir-category-opt'>";
 				            output += "</div>";
@@ -39,7 +39,9 @@
 				            output += "<div class='geodir-category-content fl-wrap title-sin_item'>";
 				            output += "<div class='geodir-category-content-title fl-wrap'>";
 				            output += "<div class='geodir-category-content-title-item'>";
+				            										// 불러온 스케줄 시작시간 끝시간 출력
 				            output += "<h3 class='title-sin_map'>"+result[i].scheduleStartTime+"~"+result[i].scheduleEndTime+"</h3>";
+				            																														// 불러온 스케줄 장소명 출력
 				            output += "<div class='geodir-category-location fl-wrap'><a href='#' class='map-item'><i class='fas fa-map-marker-alt'>"+result[i].locationName+"</i></a></div>";
 				            output += "</div>";
 				            output += "</div>";
@@ -48,21 +50,18 @@
 				            output += "</div>";
 				            
 				           	// 마지막 화살표는 안보이게
-				           	if ( i !== result.length -1){
+				           		if ( i < result.length -1){
 								   output += "<div class='arrowBox'>";
 				            	   output += "<div class='arrow'></div>";
 				                   output += "</div>";
-							   }
-				           	
+							   }			           	
 				            }
 				            
 				            // 스케줄 수정시 scheduleTableId form태그안에 설정
-			            	output += `<input name ='scheduleTableId' type='hidden' value=${scheduleTableId}>`
+			            	output += `<input name ='scheduleTableId' type='hidden' value=${scheduleTableId}>`;
 				            output += "</div>";
 
-				            document.getElementById('modalScheduleTableList').innerHTML = output;
-			           		
-			           		
+				            document.getElementById('modalScheduleTableList').innerHTML = output;	
 			        },
 			        error: function() {
 			            console.log("실패");

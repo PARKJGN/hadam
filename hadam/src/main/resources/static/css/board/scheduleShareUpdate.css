@@ -1,1 +1,369 @@
 @charset "UTF-8";
+
+#box {
+	margin-left: 300px;
+}
+
+#backBtn {
+	width: 50px;
+	height: 20px;
+	font-size: 14px;
+	text-align: center;
+	padding: 0 0;
+	position: relative;
+	right: -445px;
+	top: -14px;
+}
+
+#comment {
+	width: 50px;
+	height: 20px;
+	position: relative;
+	text-align: center;
+	padding: 0 0;
+	font-size: 14px;
+	right: -390px;
+	bottom: -30px;
+}
+
+.imgSize {
+	
+	height:100px;
+}
+
+#listBox {
+	display: flex;
+	background-color: white;
+	border-radius: 10px;
+	height: 250px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+#modalListBox {
+	display: flex;
+	justify-content: space-between;
+	background-color: white;
+	border-radius: 10px;
+	height: 320px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: relative;
+	right: -90px;
+	width: 1490px;
+	top: -20px;
+	height: 300px;
+}
+
+#listItem {
+	height: auto !important;
+	width: 280px;
+	position: relative;
+	box-sizing: border-box;
+	text-align: center;
+	margin-top:20px;
+}
+
+#box {
+	width: 1000px;
+	position: relative;
+	right: -100px;
+}
+
+#writeBox {
+	width: 1000px;
+	margin-left:190px;
+}
+
+#information {
+	position: relative;
+	bottom: -100px;
+	width: 300px;
+}
+
+#modalInformation {
+	/* position: relative;
+     				bottom:-100px;
+     				width:300px; */
+	
+}
+
+#shareBtn {
+	width: 130px;
+	height: 25px;
+	font-size: 14px;
+	text-align: center;
+	padding: 0 0;
+	position: relative;
+	margin-top:-2280px;
+	right: -435px;
+}
+
+.pagination {
+	position: relative;
+	right: -550px;
+}
+
+.arrowBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+	margin: 5;
+}
+
+.arrow {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 20px solid lightblue; /* 화살표의 색상을 여기서 조정하세요 */
+	position: relative;
+}
+
+.timeTaken {
+	position: relative;
+	white-space: nowrap;
+	top: 15px;
+}
+
+#scheduleTitle {
+	position: relative;
+}
+
+#modalScheduleTitle {
+	
+}
+
+#timeBox h3 {
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+#moveTab {
+	position: relative;
+	left: -90px;
+}
+
+#writeForm {
+	width: 1600px;
+	position: relative;
+	top: -200px;
+	left: -1014px;
+}
+
+#replyBox {
+	width: 1600px;
+	position: relative;
+	top: -500px;
+	right: -600px;
+	height: 250px;
+}
+
+#replyBox h4 {
+	position: relative;
+	top: -20px;
+}
+
+#replyBox p {
+	position: relative;
+	left: -40px;
+}
+
+#replyinnerBox {
+	width: 1650px;
+	position: relative;
+	left: -100px;
+}
+
+#replyinnerBox span {
+	position: relative;
+	top: -100px;
+}
+
+#danger {
+	width: 50px;
+	height: 20px;
+	font-size: 12px;
+	margin-left: 610px;
+	text-align: center;
+	padding: 0 0;
+	position: relative;
+	right: -420px;
+	top: -70px;
+}
+
+#replydateBox {
+	position: relative;
+	bottom: -50px;
+}
+
+#replyWriteBox {
+	width: 1600px;
+	position: relative;
+	right: -600px;
+	top: -500px;
+	height: 220px;
+}
+
+.asdf {
+	position: relative;
+	right: -1150px;
+	max-width: 27vw; /* 원하는 가로 크기로 조절 */
+	max-height: 60vh; /* 원하는 세로 크기로 조절 */
+	overflow-y: auto;
+	border-radius: 10px;
+	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+}
+
+.scheduleSelectBtn {
+	position: relative;
+	right: -300px;
+	top: -100px;
+	width: 50px;
+	height: 25px;
+	padding: 0 0;
+}
+
+#modalScheduleTime {
+	position: relative;
+	right: -300px;
+	top: -70px;
+}
+
+#modalpadding {
+	margin-bottom: -60px;
+	position: relative;
+	top: -20px;
+}
+
+#chatBox {
+	position: relative;
+	top: -50px;
+	height: 100px;
+}
+
+.form-label > fieldset > label {
+    font-size: 18px;
+    line-height: 2rem;
+    padding: 0.2em 0.4em;
+	
+}
+
+.form-label > fieldset > label  span {
+	
+	color:#64A0FF;
+}
+
+[type="radio"], span {
+  	vertical-align: middle;
+}
+
+[type="radio"] {
+    appearance: none;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+    transition: border 0.5s ease-in-out;
+}
+
+[type="radio"]:checked {
+  border: 0.4em solid tomato;
+}
+
+[type="radio"]:focus-visible {
+  outline-offset: max(2px, 0.1em);
+  outline: max(2px, 0.1em) dotted tomato;
+}
+
+[type="radio"]:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+  cursor: pointer;
+}
+
+[type="radio"]:hover + span {
+  cursor: pointer;
+}
+
+[type="radio"]:disabled {
+  background-color: lightgray;
+  box-shadow: none;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+[type="radio"]:disabled + span {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Global CSS */
+fieldset {
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.selectBox {
+  position: relative;
+  width: 150px;
+  height: 35px;
+  border-radius: 4px;
+  border: 2px solid lightcoral;
+  margin-bottom:30px;
+}
+.selectBox .select {
+  width: 130px;
+  height: inherit;
+  background: transparent;
+  border: 0 none;
+  outline: 0 none;
+  padding: 0 5px;
+  position: relative;
+  z-index: 3; 
+}
+.selectBox .select option {
+  background: lightcoral;
+  color: #fff;
+  padding: 3px 0;
+  font-size: 16px;
+}
+.selectBox .icoArrow {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  z-index: 1; 
+  width: 35px; 
+  height: inherit;
+  border-left: 2px solid lightcoral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectBox .icoArrow img {
+  width: 50%;
+  transition: .3s;
+}
+
+.selectBox .select:focus + .icoArrow img {
+  transform: rotate(180deg);
+}
+
+.titleFont h3{
+	font-size:23px;
+}
+
+.custom-form label {
+	font-size:17px;
+}
+
+.modal-fullscreen .modal-content {
+	border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+}

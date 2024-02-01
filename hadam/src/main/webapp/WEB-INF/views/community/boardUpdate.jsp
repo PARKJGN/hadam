@@ -6,8 +6,6 @@
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
             <link type="text/css" rel="stylesheet" href="/css/board/boardUpdate.css">
-       
-
             <div id="wrapper">
                 <div class="content">  
                     <div class="map-view-wrap">
@@ -38,7 +36,7 @@
                                                 	<!-- 해당게시글 번호 -->                                              				
                                                 	<input name="boardId" type="hidden" value="${board.boardId}" readonly/>
                                                 	<!-- 해당게시글 회원의 memberIndex -->
-                                                	<input type="hidden" name="memberIndex" value="${board.memberIndex}" />                                                	
+                                                	<input type="hidden" name="memberIndex" value="${sessionScope.memberIndex}" />                                                	
                                                 	<!-- 해당게시글의 글 제목 -->
                                                 	<label for="validationCustom01" class="form-label">제목</label>
                                                     <input type="text" name="boardTitle" id="BOARD_TITLE" placeholder="Your Title *" value="${board.boardTitle }" /> <!-- 글 제목 -->
@@ -51,8 +49,7 @@
                                                     <textarea name="boardContent"  id="BOARD_CONTENT" cols="40" rows="3" placeholder="Your Message:" >${board.boardContent }</textarea><!-- 게시판 내용 -->
                                						<!-- 해당게시글의 파일첨부이미지 -->
                               						 <div class="single-slider fl-wrap"  >
-                                                        <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}"></div><!-- 파일첨부한 경로 및 이미지 이름-->
-                                                     
+                                                        <div class="slick-slide-item"><img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}"></div><!-- 파일첨부한 경로 및 이미지 이름-->                                                     
                                                     </div>
                                                     <!-- 파일첨부  -->                    						
                                                 	<div class="filebox">
@@ -66,13 +63,10 @@
     												<button class="btn btn-primary" type="submit" id="updateBtn">수정</button>
     												<!-- 이전 페이지인 상세 페이지로 이동 -->
     												 <a class="btn btn-primary" href="boardView?boardId=${board.boardId}" role="button" id="backBtn">이전</a>
- 												 </div>
- 												
- 												 
+ 												 </div>									 
                                             </form>
                                             <!-- 게시글 수정 폼 끝 -->
-                                        </div>
-                                  
+                                        </div>                                 
                                     </div>
                                 </div>
                             </div>
@@ -81,8 +75,7 @@
                     </section>
                 </div>
             </div>
-             <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
-             
+             <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>            
              <script  src="https://code.jquery.com/jquery-3.7.1.js"	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
              <script type="text/javascript" src="/js/board/boardUpdate.js"></script>
              <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>

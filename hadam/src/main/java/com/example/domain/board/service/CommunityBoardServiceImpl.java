@@ -289,12 +289,23 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	}
 
 	
-	
 	//건일 그냥 게시물 정보 따오는
 	@Override
 	public BoardVO getBoardTitle(BoardVO vo) {
-		// TODO Auto-generated method stub
 		return communityBoardDAO.getBoardTitle(vo);
+}
+	
+	// 해당 게시글 프로필 사진 출력
+	public BoardVO findProfileByBoardId(BoardVO vo) {
+		
+		return communityBoardDAO.findProfileByBoardId(vo);
+	}
+
+
+	// 각 댓글의 회원정보 이미지 가져오기
+	public MemberUploadImagesVO getMemberImageByMemberIndex(Integer memberIndex) {
+		
+		return communityBoardDAO.getMemberImageByMemberIndex(memberIndex);
 	};
 
 

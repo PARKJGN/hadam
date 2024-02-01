@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   
-   <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-          
+   <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>          
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
             <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
             <link type="text/css" rel="stylesheet" href="/css/board/boardWrite.css">
@@ -23,8 +22,7 @@
                     </div>
                     <section  id="sec1" class="grey-b lue-bg middle-padding">
                         <div class="container">
-                            <div class="row">
-                                
+                            <div class="row">                   
                                 <div class="col-md-8">
                                     <div class="list-single-main-item fl-wrap" id="box">
                                         <div class="list-single-main-item-title fl-wrap">                           
@@ -48,8 +46,7 @@
 													    <input type="file" id="file" name="file" required>
 													</div>
                                          			<!-- 등록버튼 -->
-    												<input type="submit" class="btn btn-primary" id="updateBtn" value="등록" />
-				 
+    												<input type="submit" class="btn btn-primary" id="updateBtn" value="등록" />		 
                                             </form>
                                             <!-- 자유게시판목록으로 이동-->
                                             <a class="btn btn-primary" href="boardList" role="button" id="backBtn">취소</a> 
@@ -66,8 +63,7 @@
             </div>
             <!--wrapper end -->
             <!--footer -->
-             <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
-             
+             <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include> 
              <script type="text/javascript" src="/js/board/boardWrite.js"></script>
              <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
              <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
