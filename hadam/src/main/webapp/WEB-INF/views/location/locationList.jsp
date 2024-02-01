@@ -88,25 +88,13 @@
                                                 <div class="list-main-wrap-title fl-wrap col-title">
                                                     <h2>검색 결과</h2>
                                                 </div>
-                                                <!-- 검색 결과 필터-->
-                                                <div class="price-opt">
-                                                    <span class="price-opt-title">정렬순 :</span>
-                                                    <div class="listsearch-input-item">
-                                                        <select data-placeholder="최신순" class="chosen-select no-search-select" >
-                                                            <option value="최신순">최신순</option>
-                                                            <option value="인기순">인기순</option>
-                                                            <option value="별점순">별점순</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!-- 검색 결과 필터 end-->                            
                                             </div>
                                             <!-- list-main-wrap-opt end-->                                           
 
-                                            <!-- 검색 결과 목록 container -->
+                                            <!-- 결과 목록 container -->
                                             <div class="listing-item-container init-grid-items fl-wrap three-columns-grid">
                                             	             
-                                                <!-- 검색 결과 목록  -->
+                                                <!-- 검결과 목록  -->
                                                 <c:forEach var="location" items="${locationList}">
 	                                                <div class="listing-item">
 	                                                    <article class="geodir-category-listing fl-wrap">
@@ -114,7 +102,7 @@
 	                                                            <a href="/location/locationDetail?locationId=${location.locationId }">
 	                                                            <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
 	                                                            <img style="width:100%; height:270px;" src="${pageContext.request.contextPath}/images/location/${location.locationImageOriginalname}" 
-	                                                            onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
+	                                                            onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image2.jpg'"></a>
 	                                                            <div class="geodir-category-opt">
 	                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="${location.locationRating }"></div>
 	                                                                <div class="rate-class-name"> 
@@ -131,21 +119,36 @@
 	                                                    </article>
 	                                                </div>
 	                                            </c:forEach>
-                                                <!-- 검색결과 목록 end -->                                     
+                                                <!-- 결과 목록 end -->                                     
                                             </div>
-                                            <!-- 검색결과 목록 container end-->
+                                            <!-- 결과 목록 container end-->
                                             
                                             <!-- 페이지 설정 -->
-                                            <div class="pagination" id="page">
-		                                        <a href="/location/locationList?page=1" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-		                                        <a href="/location/locationList?page=${prevMax}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-		                                        <c:forEach items="${numList}" var="num">
-		                                        	<a href="/location/locationList?page=${num}">${num}</a>
-		                                       
-		                                        </c:forEach>
-		                                        <a href="/location/locationList?page=${nextMin}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-		                                        <a href="/location/locationList?page=${lastPage}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-		                                    </div>									                                          
+                                            <c:choose>
+                                            <c:when test="${locKeyword == null }">
+	                                            <div class="pagination" id="page">
+			                                        <a href="/location/locationList?page=1" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+			                                        <a href="/location/locationList?page=${prevMax}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+			                                        <c:forEach items="${numList}" var="num">
+			                                        	<a href="/location/locationList?page=${num}">${num}</a>
+			                                       
+			                                        </c:forEach>
+			                                        <a href="/location/locationList?page=${nextMin}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+			                                        <a href="/location/locationList?page=${lastPage}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+			                                    </div>
+		                                    </c:when>
+		                                    <c:when test="${locKeyword != null }">
+			                                    <div class="pagination" id="page">
+			                                        <a href="/searchLoc?locKeyword=${locKeyword}&page=1" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+			                                        <a href="/searchLoc?locKeyword=${locKeyword}&page=${prevMax}" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
+			                                        <c:forEach items="${numList}" var="num">
+			                                        	<a href="/searchLoc?locKeyword=${locKeyword}&page=${num}">${num}</a>
+			                                        </c:forEach>
+			                                        <a href="/searchLoc?locKeyword=${locKeyword}&page=${nextMin}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+			                                        <a href="/searchLoc?locKeyword=${locKeyword}&page=${lastPage}" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
+			                                    </div>
+		                                    </c:when>
+		                                    </c:choose>							                                          
                                             <!-- 페이지 설정 end-->                                           
                                         </div>
                                         <!-- list-main-wrap end-->

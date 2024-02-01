@@ -253,15 +253,6 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 		return communityBoardDAO.searchBoards(vo);
 	}
 
-
-
-	// 관리자
-	// 게시글 삭제
-	public void boardD(BoardVO vo) {
-		
-		communityBoardDAO.boardD(vo);
-	};
-
 	// 계정에서 작성한 게시글 조회
 	public List<BoardVO> getAccountBoardList(Integer memberIndex){
 	
@@ -290,5 +281,17 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 
 
 
+	// 관리자
+	// 게시글 삭제
+	public void boardD(BoardVO vo) {
+		
+		communityBoardDAO.boardD(vo);
+	};
+
+	// 스케줄 테이블 id 순으로 출력
+	public List<BoardVO> getSTShareList() {
+		
+		return communityBoardDAO.getSTShareList();
+	}
 
 }

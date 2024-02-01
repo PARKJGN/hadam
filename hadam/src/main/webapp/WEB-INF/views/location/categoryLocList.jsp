@@ -89,24 +89,12 @@
                                                 <div class="list-main-wrap-title fl-wrap col-title">
                                                     <h2>검색 결과</h2>
                                                 </div>
-                                                <!-- 검색 결과 필터-->
-                                                <div class="price-opt">
-                                                    <span class="price-opt-title">정렬순 :</span>
-                                                    <div class="listsearch-input-item">
-                                                        <select data-placeholder="Popularity" class="chosen-select no-search-select" >
-                                                            <option>최신순</option>
-                                                            <option>인기순</option>
-                                                            <option>별점순</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <!-- 검색 결과 필터 end-->
                                             </div>
                                             <!-- list-main-wrap-opt end-->
                                             <!-- 검색 결과 목록 container -->
                                             <div class="listing-item-container init-grid-items fl-wrap three-columns-grid">
                                             	             
-                                                <!-- 검색 결과 목록  -->
+                                                <!-- 결과 목록  -->
                                                 <c:forEach var="categoryLoc" items="${categoryLocList}">
 	                                                <div class="listing-item">
 	                                                    <article class="geodir-category-listing fl-wrap">
@@ -115,7 +103,7 @@
 	                                                            <!-- 이미지 경로 찾아서 출력, 이미지 없을 시 디폴트 이미지도 설정 -->
 	                                                           
 	                                                            <img style="width:100%;  height:270px;" src="${pageContext.request.contextPath}/images/location/${categoryLoc.locationImageOriginalname}"
-	                                                            onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></a>
+	                                                            onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image2.jpg'"></a>
 	                                                            <div class="geodir-category-opt">
 	                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="${categoryLoc.locationRating }"></div>
 	                                                                <div class="rate-class-name"> 
@@ -133,9 +121,9 @@
 	                                                    </article>
 	                                                </div>
 	                                            </c:forEach>
-                                                <!-- 검색결과 목록 end -->                                     
+                                                <!-- 결과 목록 end -->                                     
                                             </div>
-                                            <!-- 검색결과 목록 container end-->
+                                            <!-- 결과 목록 container end-->
                                             
                                             <!-- 페이지 설정 -->
                                             <div class="pagination" id="page" >

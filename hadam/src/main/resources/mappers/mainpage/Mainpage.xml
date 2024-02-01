@@ -17,4 +17,17 @@
 		
 	</select>
 	
+	<!-- 장소 검색 -->
+	<select id="searchLoc" resultType="LocationVO" parameterType="LocationVO">
+		SELECT l.*, c.*, li.*
+		FROM location l INNER JOIN location_image li
+		on l.LOCATION_ID = li.LOCATION_ID
+		INNER JOIN category c
+		on l.CATEGORY_ID = c.CATEGORY_ID
+		WHERE l.LOCATION_NAME LIKE CONCAT('%', #{locKeyword}, '%') 
+		OR c.SMALL_CATEGORY LIKE CONCAT('%', #{locKeyword}, '%') 
+		OR c.MIDDLE_CATEGORY LIKE CONCAT('%', #{locKeyword}, '%')
+		ORDER BY l.LOCATION_REVIEW_COUNT desc
+	</select>
+	
 </mapper>

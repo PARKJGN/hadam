@@ -12,6 +12,7 @@
 <!-- sidebar -->
 <jsp:include page="/WEB-INF/layout/adminSidebar.jsp"></jsp:include>
 <!-- sidebar of end -->
+<link type="text/css" rel="stylesheet" href="/css/admin/admins.css">
 
         <!-- ============================================================== -->
         <!-- wrapper  -->
@@ -57,7 +58,7 @@
 	                                    <td>${report.commentId }</td>
 	                                    <td>${report.commentContent }</td>
 	                                    <td>${report.reportedMember }</td>
-	                                    <td>${report.boardCommentReporter }</td>
+	                                    <td>${report.reporterMember }</td>
 	                                    <td>
 	                                    <fmt:formatDate value="${report.boardCommentReportRegisteDate }" pattern="yyyy/MM/dd" />
 	                                    </td>
@@ -77,6 +78,17 @@
                     </div>
                 </div>
             </div>
+            <!-- 페이지 설정 -->
+			<div class="pagination" id="page">
+				<a href="/admin/adminReportManagement?page=1" class="prevposts-link"><i class="fa fa-angle-double-left"></i></a>
+				<a href="/admin/adminReportManagement?page=${prevMax}" class="prevposts-link"><i class="fa fa-angle-left"></i></a>
+				<c:forEach items="${numList}" var="num">
+					<a href="/admin/adminReportManagement?page=${num}">${num}</a>
+				</c:forEach>
+				<a href="/admin/adminReportManagement?page=${nextMin}" class="nextposts-link"><i class="fa fa-angle-right"></i></a>
+				<a href="/admin/adminReportManagement?page=${lastPage}" class="nextposts-link"><i class="fa fa-angle-double-right"></i></a>
+			</div>									                                          
+			<!-- 페이지 설정 end--> 
 <!-- footer -->
 <jsp:include page="/WEB-INF/layout/adminFooter.jsp"></jsp:include>
 <!-- footer of end -->

@@ -48,4 +48,8 @@ public class MemberVO {
 	
 	private Integer memberCommentCnt;
 	
+	// 남녀 유저 수
+	private Integer maleCnt;
+	
+	private Integer femaleCnt;
 }

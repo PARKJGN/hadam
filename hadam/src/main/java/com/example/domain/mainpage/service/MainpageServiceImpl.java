@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.domain.location.vo.LocationVO;
 import com.example.domain.mainpage.dao.MainpageDAO;
 import com.example.domain.mainpage.vo.LocationInfoVO;
 
@@ -19,5 +20,13 @@ public class MainpageServiceImpl implements MainpageService{
 		List<LocationInfoVO> list = mainpageDAO.getLocationList();
 		return mainpageDAO.getLocationList();
 	}
+
+	@Override
+	public List<LocationVO> searchLoc(LocationVO vo) {
+		
+		return mainpageDAO.searchLoc(vo);
+	}
+	
+	
 
 }

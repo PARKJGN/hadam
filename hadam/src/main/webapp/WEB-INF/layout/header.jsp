@@ -210,19 +210,50 @@
                 </div>
                 <!-- header-inner end-->
                 <!-- header-search -->
+                
                 <div class="header-search vis-search">
                     <div class="container">
                         <div class="row">
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-10">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>location search</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
-                                    <input type="text" placeholder="장소를 입력하세요." class="autocomplete-input" id="autocompleteid" value=""/>
-                                    <a href="#"><i class="fal fa-dot-circle"></i></a>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
+	                        <form action="/searchLoc" method="get">
+	                            <!-- header-search-input-item -->
+	                            <div class="col-sm-10">
+	                                <div class="header-search-input-item fl-wrap location autocomplete-container">
+	                                    <label>location search</label>
+	                                    <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
+	                                    <input type="text" name="locKeyword" placeholder="장소를 입력하세요." class="autocomplete-input" id="autocompleteid" value=""/>
+	                                </div>
+	                            </div>
+	                            <div class="col-sm-2">
+	                                <div class="header-search-input-item fl-wrap">
+	                                    <button class="header-search-button" type="submit">Search </button>
+	                                </div>
+	                            </div>
+	                        </form>
+                        </div>
+                    </div>
+                    <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
+                </div>
+                <input type="hidden" id="hidden_session_idxvalue" value="${sessionScope.memberIndex}"/>
+                <input type="hidden" id="hidden_session_nicknamevalue" value="${sessionScope.memberNickname}"/>
+                
+                <!-- header-search  end -->
+                <!-- 채팅방 모달창 입니다. -정건일 -->
+                
+	                  <div class="chattinglistmodal" id="chatRoomList">채팅창
+			            
+	                 
+	                </div>
+	                <div class="chattingmodalplace">
+	         
+	                </div>  
+				<!-- end of 채팅방 모달창 입니다. -정건일 -->
+				
+				
+				
+			
+            </header>
+            
+                                        <!-- header-search-input-item end -->
                             <!-- header-search-input-item -->
 <!--                             <div class="col-sm-3">
                                 <div class="header-search-input-item fl-wrap date-parent">
@@ -257,32 +288,4 @@
                             </div> -->
                             <!-- header-search-input-item end -->                             
                             <!-- header-search-input-item -->
-                            <div class="col-sm-2">
-                                <div class="header-search-input-item fl-wrap">
-                                    <button class="header-search-button" onclick="window.location.href='listing.html'">Search <i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->                                                          
-                        </div>
-                    </div>
-                    <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
-                </div>
-                <input type="hidden" id="hidden_session_idxvalue" value="${sessionScope.memberIndex}"/>
-                <input type="hidden" id="hidden_session_nicknamevalue" value="${sessionScope.memberNickname}"/>
-                
-                <!-- header-search  end -->
-                <!-- 채팅방 모달창 입니다. -정건일 -->
-                
-	                  <div class="chattinglistmodal" id="chatRoomList">채팅창
-			            
-	                 
-	                </div>
-	                <div class="chattingmodalplace">
-	         
-	                </div>  
-				<!-- end of 채팅방 모달창 입니다. -정건일 -->
-				
-				
-				
-			
-            </header>
+            

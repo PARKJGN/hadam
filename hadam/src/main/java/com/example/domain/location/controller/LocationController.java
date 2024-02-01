@@ -46,10 +46,10 @@ public class LocationController {
 	
 	// 모든 장소 목록 띄우는 페이지
 	@RequestMapping("/locationList")
-	public String locationList(Model m, PagingVO vo, @RequestParam(
+	public String locationList(Model m, @RequestParam(
 			value = "page", required = false, defaultValue = "1") int page) {
 	    
-	    List<LocationVO> list = locationService.locationList(vo);
+	    List<LocationVO> list = locationService.locationList();
 	    
 	    // 장소게시판 12개씩 페이징 처리
 	    int pagingSize = 12;
@@ -107,19 +107,17 @@ public class LocationController {
 		
 		// 로그인한 회원인지 확인하기 위해 session에 저장
 		Integer memberIndex = (Integer)session.getAttribute("memberIndex");
-//		System.out.println("세션값 확인 " + memberIndex);
 		
 		LocationVO locationDetail = locationService.getLocationDetail(lvo);
 		
+		// 받아온 세션값을 찜목록에 있는 memberIndex에 세팅
 		fvo.setMemberIndex(memberIndex);
 		
-//		System.out.println("들고오는 값 확인"+fvo);
-		
+		// favorites 테이블에 저장돼있는 정보(favoritesId, memberIndex, locationId) 들고오기
 		FavoritesVO getFavorites = favoritesService.getFavorites(fvo);
 		
-//		System.out.println("들고온 값 확인" + getFavorites);
-		
-		// 메뉴 정보를 파싱하여 리스트로 설정 List<String> menus =
+		// 메뉴 정보를 파싱하여 리스트로 설정
+		// 가져온 메뉴 레코드를 "/" 로 나누기
 		List<String> menus 	= Arrays.asList(locationDetail.getLocationMenusName().split("/"));
 		System.out.println(locationDetail.getLocationMenusName());
 	    List<String> prices = Arrays.asList(locationDetail.getLocationMenusPrice().split("/"));
@@ -150,8 +148,8 @@ public class LocationController {
 			, @RequestParam(name="middleCategory", required = false) String middleCategory
 			, @RequestParam(name="largeCategory") String largeCategory) {
 		
+		// 카테고리에 해당하는 장소 리스트 출력
 		List<LocationVO> list = categoryService.getCategoryLocList(vo);
-		
 		
 		// 장소 12개씩 페이징 처리
 	    int pagingSize = 12;

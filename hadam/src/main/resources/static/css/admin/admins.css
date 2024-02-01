@@ -1,3 +1,4 @@
+/* 계정 관리 */
 #accountModal {
 	display: none;
 	position: fixed;
@@ -48,10 +49,74 @@ a {
 	cursor:pointer;
 }
 
-button{
+/* 신고 관리 */
+
+.suspendBtn {
+	margin-left: 20px;
+	border-radius: 4px;
+	border-style:hidden;
+	background:#F2F5A9;
+	font-weight:bold;
+}
+
+.releaseBtn {
+	margin-left: 20px;
+	border-radius: 4px;
+	border-style:hidden;
+	background:#A9F5A9;
+	font-weight:bold;
+}
+
+.modifyAccountBtn{
+	border-color:#A4A4A4;
 	margin-left: 30px;
+	margin-bottom: 5px;
+}
+
+.modifyComBtn{
+	border-color:#A4A4A4;
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+
+.cancelBtn{
+	border-color:#A4A4A4;
+	margin-left: 30px;
+	margin-bottom: 10px;
 }
 
 h2 {
 	display:inline;
 }
+
+.pagination{
+	text-align: center;
+    display: block;
+}
+
+.pagination a{
+	padding:15px;
+}
+
+.locationImg{
+	width: 40px;
+	height: 40px;
+	
+}
+
+/* 게시글 관리 */
+
+/* #boardModal {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 30%;
+	transform: translate(-10%, -50%);
+	background-color: #fefefe;
+	padding: 10px;
+	border: 1px solid #888;
+	z-index: 1;
+	vertical-align: middle;
+	height: 50%;
+	width: 50%;
+} */
