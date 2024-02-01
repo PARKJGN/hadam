@@ -333,20 +333,6 @@ $(()=>{
 	var pagenextNum = Number(pageNum) + 1 > pageLastPage ? pageLastPage : Number(pageNum) + 1;
 	var paging = '';
 	
-					
-					`<a href="/community/scheduleShareList/1" class="prevposts-link"><i
-					class="fa fa-caret-left"></i></a>
-				<!-- 전페이지로 이동 -->
-				<a href="/community/scheduleShareList/${pageprevNum}"
-					class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-				<!-- 페이지 리스트 3으로 설정하면 3개나옴 -->
-				<!-- 다음페이지 이동 -->
-				<a href="/community/scheduleShareList/${pagenextNum}"
-					class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-				<!-- 마지마페이지 이동 -->
-				<a href="/community/scheduleShareList/${pageLastPage}"
-					class="nextposts-link"><i class="fa fa-caret-right"></i></a>`
-					
 	paging += `<a href="/community/scheduleShareList/1" class="prevposts-link"><i
 					class="fa fa-caret-left"></i></a>
 					<a href="/community/scheduleShareList/${pageprevNum}"

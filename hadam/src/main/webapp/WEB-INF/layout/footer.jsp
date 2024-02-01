@@ -167,7 +167,7 @@
                                         </div> -->
 
 							<div class="lost_password">
-								<a href="#">아이디 찾기&nbsp;</a> <a href="#">&nbsp;비밀번호 찾기</a>
+								<a href="/signup/findInfo">아이디&nbsp;|&nbsp;비밀번호 찾기</a>
 							</div>
 
 

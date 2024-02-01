@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+/* 카테고리 */
+.row .hadam_category {
+	width: 100%; /* 카테고리 중분류 한줄에 넣기 */
+	display: flex;
+	flex-wrap: wrap;
+}
+
+label.midlelabel{
+	/* background-color : #61bdf121; */ /* 구려.. */	
+	width: 39px;
+}
+
+ul.ks-cboxtags {
+	list-style: none;
+	padding: 20px;
+}
+
+ul.ks-cboxtags li {
+	display: inline;
+}
+
+ul.ks-cboxtags li label {
+	width: auto;
+	height: 40px;
+	
+	display: inline-block;
+	background-color: rgba(255, 255, 255, .9);
+	border: 2px solid #2196f352;
+	border-radius: 10px;
+	white-space: nowrap;
+	margin: 3px 3px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+	padding: 8px 12px;
+	cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 12px;
+	padding: 2px 6px 2px 2px;
+	content: "\f067";
+	transition: transform .3s ease-in-out;
+}
+
+
+
+ul.ks-cboxtags li input[type="checkbox"]:checked+label::before {
+	content: "\f00c";
+	transform: rotate(-360deg);
+	transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked+label {
+	border: 2px solid #1bdbf8;
+	background-color: #3aaced;
+	color: #fff;
+	transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"][class='middle']:checked+label {
+	border: 3px solid #1bdbf8;
+	background-color: #fff;
+	color: #878C9F;
+	transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+	display: absolute;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:focus+label {
+	border: 2px solid #e9a1ff;
+}
+
+#preferenceModefy {
+    float: right;	
+}

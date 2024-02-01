@@ -219,6 +219,7 @@
 	<select id="mypageBoard">
 		SELECT * FROM BOARD WHERE MEMBER_INDEX =
 		#{memberIndex}
+		ORDER BY BOARD_REGISTER_DATE DESC
 	</select>
 
 	<!-- 참가자 명단 확인 -->

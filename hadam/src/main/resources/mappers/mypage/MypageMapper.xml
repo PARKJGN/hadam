@@ -21,8 +21,13 @@
 
 	<update id="phoneNumberChange"
 		parameterType="com.example.domain.member.vo.MemberVO">
-		UPDATE MEMBER SET MEMBER_PHONENUMBER =
-		#{memberPhoneNumber} WHERE MEMBER_INDEX = #{memberIndex}
+		UPDATE MEMBER SET MEMBER_PHONENUMBER = #{memberPhoneNumber} WHERE 
+		<if test="memberId == null">
+			MEMBER_INDEX = #{memberIndex}
+		</if>
+		<if test="memberIndex == null">
+			MEMBER_ID = #{memberId}
+		</if>
 	</update>
 
 	<select id="scheduleNum" parameterType="integer">

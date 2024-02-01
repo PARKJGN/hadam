@@ -3,51 +3,51 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!--
- 	파일명 	signup.jsp 
-	페이지명	회원가입 페이지 
-	용도		화면구성	
+ 	파일명 	preference.jsp 
+	페이지명	약관동의, 취향설정 페이지 
+	용도		간편 로그인 시 약관동의와 취향설정을 위함
 	작성자 	최성익  
 -->
 
 <!--=============== 개인 css  ===============-->
-<link type="text/css" rel="stylesheet" href="/css/sign/signup.css">
+<link type="text/css" rel="stylesheet" href="/css/sign/preference.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-
-
-
 
 <!-- header-->
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
 <!--  header end -->
 
 <!--  wrapper  -->
+<input id="imsimemberId" type="hidden" value="${imsiMemberVO.memberId}">
+<input id="imsimemberPassword" type="hidden" value="${imsiMemberVO.memberPassword}">
+<input id="imsimemberPhoneNumber" type="hidden" value="${imsiMemberVO.memberPhoneNumber}">
+<input id="imsimemberNickname" type="hidden" value="${imsiMemberVO.memberNickname}">
+<input id="imsimemberSex" type="hidden" value="${imsiMemberVO.memberSex}">
+<input id="imsimemberBirth" type="hidden" value="${imsiMemberVO.memberBirth}">
+<input id="imsimemberType" type="hidden" value="${imsiMemberVO.memberType}">
+<input id="imsiMemberVO" type="hidden" value="${imsiMemberVO}">
+
 <div id="wrapper">
 	<!-- content-->
 	<div class="content">
 		<div class="breadcrumbs-fs fl-wrap">
 			<div class="container">
-				<div class="breadcrumbs fl-wrap">
-					<a href="#">Home</a><a href="#">Pages</a><span>Booking Page</span>
-				</div>
 			</div>
 		</div>
 		<section class="middle-padding gre y-blue-bg">
 			<div class="container">
 				<div class="list-main-wrap-title single-main-wrap-title fl-wrap">
-					<h2>
-						당신의 하루를 담다 : <span>Hadam</span>
-					</h2>
+					<h2><span>${imsiMemberVO.memberNickname}</span>님 반갑습니다</h2>
+					
 				</div>
 				<div class="row">
 					<div class="col-md-8">
 						<div class="bookiing-form-wrap">
 							<ul id="progressbar">
-								<li class="active"><span>01.</span>이용약관동의</li>
-								<li><span>02.</span>회원정보입력</li>
-								<li><span>03.</span>취향설정</li>
-								<li><span>04.</span>완료</li>
+								<li class="active sequence"><span>01.</span>이용약관동의</li>
+								<li class="sequence"><span>02.</span>취향설정</li>
+								<li class="sequence"><span>03.</span>완료</li>
 							</ul>
 							<!--   list-single-main-item -->
 							<div class="list-single-main-item fl-wrap hidden-section tr-sec">
@@ -175,95 +175,8 @@
 												</a>
 											</fieldset>
 											<!-- 이용동의 약관 끝 -->
-											<!-- 개인정보 입력 시작 -->
-											<fieldset class="fl-wrap book_mdf">
-												<div class="list-single-main-item-title fl-wrap">
-													<h3>회원정보를 입력해주세요</h3>
-												</div>
-
-												<div class="row">
-													<div class="col-sm-6">
-
-														<label>아이디<span class="confirm_id_comment"></span>
-															<i class="far fa-user"></i>
-														</label> <input type="text" id="member_id" placeholder="Your Id"
-															value="" class="check_input" /> <input type="button"
-															id="member_id_check" class="check_button" value="중복확인" />
-
-													</div>
-													<div class="col-sm-6">
-														<label>전화번호<span class="phone_comment"></span> <i
-															class="far fa-phone"></i></label> <input type="number"
-															id="member_phone" placeholder="Only Number" value=""
-															class="check_input" /> <input type="button"
-															id="member_phone_check" class="check_button" value="인증하기" />
-														<!-- oninput="this.value = 
-														this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
 
 
-
-
-													</div>
-												</div>
-
-												<div class="row">
-													<div class="col-sm-6">
-														<label>비밀번호<i class="fal fa-key"></i><span
-															class="password_comment"></span>
-														</label> <input type="password" id="member_password"
-															placeholder="Password" value="" />
-
-													</div>
-													<div class="col-sm-6">
-														<label>닉네임 <i class="far fa-user"></i><span
-															class="nickname_comment"></span></label> <input type="text"
-															id="member_nickname" placeholder="Your NickName" value=""
-															class="check_input" /> <input type="button"
-															id="member_nickname_check" class="check_button"
-															value="중복확인" />
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-sm-6">
-														<label>비밀번호 확인 <i class="fal fa-key"></i><span
-															class="confirm_password_comment"></span>
-														</label> <input type="password" id="confirm_member_password"
-															placeholder="Confirm Password" class="confirm_password"
-															value="" />
-													</div>
-
-													<div class="col-sm-6">
-														<label>생년월일/성별<i class="fal fa-calendar"></i></label> <input
-															type="number" id="member_birth" maxlength='8'
-															placeholder="YYYYMMDD" />
-														<!-- oninput="this.value = 
-																this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" -->
-														<div class="select">
-															<input type="radio" name="member_sex" value="남자"
-																id="select1"> <label for="select1">남자</label> <input
-																type="radio" name="member_sex" value="여자" id="select2">
-															<label for="select2">여자</label>
-														</div>
-													</div>
-												</div>
-
-
-												<div class="filter-tags"></div>
-												<span class="fw-separator"></span> <a href="#"
-													class="previous-form action-button back-form   color-bg"><i
-													class="fal fa-angle-left"></i> 뒤로</a> <a href="#"
-													id="signup_basicform"
-													class="next-form back-form action-button btn no-shdow-btn color-bg">취향
-													설정<i class="fal fa-angle-right"></i>
-												</a> <a href="#" id="hide_signup_basicform"
-													class="action-button btn no-shdow-btn color-bg">취향 설정<i
-													class="fal fa-angle-right"></i>
-												</a>
-											</fieldset>
-
-
-
-											<!-- 개인정보 입력 끝 -->
 											<!-- 카테고리 설정 시작 -->
 											<fieldset class="fl-wrap book_mdf">
 												<div class="list-single-main-item-title fl-wrap">
@@ -549,6 +462,7 @@
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category watching small 책방">
+														<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;책방</label>
 														<ul class="ks-cboxtags">
 															<li><input type="checkbox" class="small" id="서점" /><label
 																for="서점">서점</label></li>
@@ -633,34 +547,6 @@
 <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
 <!--footer end -->
 
-<!-- 인증번호 받는 모달 -->
-<div class="main-register-wrap reg-modal">
-	<!-- main-register-wrap -->
-	<div class="reg-overlay2"></div>
-	<div class="main-register-holder">
-		<div class="main-register fl-wrap auth">
-			<!--tabs -->
-			<div id="tabs-container">
-				<div class="tab">
-					<!--tab -->
-					<div id="tab-1" class="tab-content">
-						<h3 id="check_phone_coment">인증번호를 입력해주세요</h3>
-						<div class="custom-form">
-							<span id="check_phone_count"></span> <input type="text"
-								id="input_check_phone"> <input type="button"
-								id="btn_check_phone" value="확인" /> <input type="button"
-								id="btn_cancel_check_phone" value="취소" />
-						</div>
-					</div>
-				</div>
-				<!--tabs end -->
-				<div class="log-separator fl-wrap">
-					<!-- <span>or</span> -->
-				</div>
 
-			</div>
-		</div>
-	</div>
-</div>
 <!--=============== 개인 js  ===============-->
-<script type="text/javascript" src="/js/sign/signup.js"></script>
+<script type="text/javascript" src="/js/sign/preference.js"></script>

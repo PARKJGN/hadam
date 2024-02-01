@@ -12,11 +12,11 @@ public interface SignupService {
 	Integer signupCompletion(MemberVO vo);									// 회원가입 정보 입력
 	Integer getMemberIndex(String memberId);								// 회원가입한 회원 index 조회
 	
-	Integer naverSignup(MemberVO vo);										// 네이버 회원정보 입력
+	String naverSignup(MemberVO vo);										// 네이버 회원정보 입력
 	
 	String getKakaoAccessToken(String code);								// 카카오 accesstoken 가져오기
 	MemberVO getKakaoUserInfo(String accessToken);							// 카카오 사용자 정보 받아오기
 	
-	Integer checkPreference(String memberId);								// 취향 설정했는지 확인
+	Integer checkPreference(String memberId);							// 간편 로그인 후 카테고리 설정 했는지 확인
 	
 }

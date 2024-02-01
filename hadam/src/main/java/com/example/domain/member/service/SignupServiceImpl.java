@@ -26,22 +26,22 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class SignupServiceImpl implements SignupService{
 
 	@Autowired
-	private SignDAO signupDAO;
+	private SignDAO signDAO;
 	
 //	아이디 중복확인
 	public String memberIdCheck(String id) {
-		return signupDAO.memberIdCheck(id);
+		return signDAO.memberIdCheck(id);
 	}
 	
 //	닉네임 중복확인
 	public String memberNicknameCheck(String nickname) {
-		return signupDAO.memberNicknameCheck(nickname);
+		return signDAO.memberNicknameCheck(nickname);
 	}
 
 //	회원가입시 인증번호 보내기
 	public String phoneCheckSMS(String phone, String randomSum) {
 		
-		String phoneCheck = signupDAO.memberCheckSMS(phone);
+		String phoneCheck = signDAO.memberCheckSMS(phone);
 //		존재하는 전화번호인지 확인
 //		존재하지 않을때
 		if(phoneCheck==null) {
@@ -90,29 +90,23 @@ public class SignupServiceImpl implements SignupService{
 	
 //	회원가입 정보입력
 	public Integer signupCompletion(MemberVO vo) {
-		return signupDAO.signupCompletion(vo);
+		return signDAO.signupCompletion(vo);
 	}
 
 //	회원가입한 회원 index 조회
 	public Integer getMemberIndex(String memberId) {
-		return signupDAO.getMemberIndex(memberId);
+		return signDAO.getMemberIndex(memberId);
 	}
 	
 	
 	
 //	네이버 회원정보 입력
-	public Integer naverSignup(MemberVO vo) {
-//		네이버 기가입한 회원인지 확인
-		String naver = signupDAO.naverMemberCheck(vo.getMemberId());
-//		가입안된 회원이면 가입시켜	
-		if(naver == null ) {
-			signupDAO.naverSignup(vo);
-			return 1;
-//		기가입된 경우
-		}else {
-			return 0;
-			
-		}
+	public String naverSignup(MemberVO vo) {
+//		네이버 기가입 회원인지 확인
+		String naver = signDAO.naverMemberCheck(vo.getMemberId());
+		
+		return naver;
+		
 	}
 	
 	
@@ -215,7 +209,7 @@ public class SignupServiceImpl implements SignupService{
 
 		        
 		        JsonElement el = JsonParser.parseString(result);
-		        System.out.println(result);
+		        //System.out.println(result);
 		        String id =  (String) el.getAsJsonObject().get("id").getAsString();
 		        JsonObject properties = el.getAsJsonObject().get("properties").getAsJsonObject();
 		        JsonObject kakaoAccount = el.getAsJsonObject().get("kakao_account").getAsJsonObject();
@@ -225,11 +219,23 @@ public class SignupServiceImpl implements SignupService{
 		        
 		        String memberId = id;
 		        String memberNickname = properties.getAsJsonObject().get("nickname").getAsString();
-				String memberSex = kakaoAccount.getAsJsonObject().get("gender").getAsString();
+				String memberTemp = kakaoAccount.getAsJsonObject().get("gender").getAsString();
 				String birthyear = kakaoAccount.getAsJsonObject().get("birthyear").getAsString();
 				String birthday = kakaoAccount.getAsJsonObject().get("birthday").getAsString();
-				String memberPhoneNumber = kakaoAccount.getAsJsonObject().get("phone_number").getAsString();
+				String phoneTemp = kakaoAccount.getAsJsonObject().get("phone_number").getAsString();
+				
+//				핸드폰번호
+				phoneTemp = phoneTemp.replaceAll("-", "");
+				String memberPhoneNumber = phoneTemp.substring(phoneTemp.length()-8);
+				memberPhoneNumber = "010"+memberPhoneNumber;
+				// System.out.println("핸드폰 번호 가져오기 "+memberPhoneNumber);
 
+//				성별 
+				String memberSex = "";
+				if(memberTemp.equals("female")) memberSex = "여자";
+				if(memberTemp.equals("male")) memberSex = "남자";
+					
+					
 				vo.setMemberId(memberId);
 				vo.setMemberPassword(memberId);
 		        vo.setMemberNickname(memberNickname);
@@ -249,9 +255,7 @@ public class SignupServiceImpl implements SignupService{
 	
 	/*취향 설정했는지 확인 */
 	public Integer checkPreference(String memberId) {
-		
-		
-		return null;
+		return signDAO.checkPreference(memberId);
 	}
 	
 }

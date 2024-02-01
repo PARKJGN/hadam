@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!--
  	파일명 	mypageBoard
@@ -56,7 +57,7 @@
 													<td class="boardTitle"><a
 														href="/community/boardView?boardId=${board.boardId}">
 														<div class="boardTitle">${board.boardTitle}</div></a></td>
-													<td class="boardDate">2022-13-54</td>
+													<td class="boardDate"><fmt:formatDate value="${board.boardRegisterDate}" pattern="yyyy/MM/dd" /></td>
 													<td class="boardCount">${board.boardViews}</td>
 												</tr>
 												<tr>

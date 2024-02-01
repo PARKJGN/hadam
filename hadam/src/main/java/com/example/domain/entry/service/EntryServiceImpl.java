@@ -36,9 +36,14 @@ public class EntryServiceImpl implements EntryService{
 	}
 	
 	
-	// 마이페이지 참가신청 리스트 가져오기 [최성익]
-	public List<EntryApplicationVO> mypageEntry(Integer memberIndex){
-		return entryDAO.mypageEntry(memberIndex);
+	// 마이페이지 참가신청 받은 리스트 가져오기 [최성익]
+	public List<EntryApplicationVO> mypageEntryResponse(Integer memberIndex){
+		return entryDAO.mypageEntryResponse(memberIndex);
+	}
+	
+	// 마이페이지 참가신청 보낸 리스트 가져오기 [최성익]
+	public List<EntryApplicationVO> mypageEntryRequest(Integer memberIndex){
+		return entryDAO.mypageEntryRequest(memberIndex);
 	}
 	
 	// 동행신청 수락 [최성익]
@@ -51,5 +56,9 @@ public class EntryServiceImpl implements EntryService{
 		return entryDAO.entryRejection(boardId, guestMemberIndex);
 	}
 	
+	// 동행신청 취소 [최성익]
+	public Integer entryCancel(Integer boardId, Integer memberIndex) {
+		return entryDAO.entryCancel(boardId, memberIndex);
+	}
 	
 }

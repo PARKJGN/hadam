@@ -44,4 +44,14 @@ public interface SignDAO {
 	Integer naverSignup(MemberVO vo);
 	
 	
+	
+//	간편 로그인 후 카테고리 설정 했는지 확인
+	Integer checkPreference(String memberId);
+	
+
+//	아이디 비밀번호 찾기 - 아이디 가져오기
+	MemberVO getMemberId(String memberPhoneNumber);
+	
+	
+	
 }

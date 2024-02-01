@@ -14,7 +14,12 @@ $(function() {
 		}
 	})
 
-
+	// 현재 url 확인해서 맞는 li 클래스 추가 
+	let currentUrl = window.location.pathname
+	$(`a[href="${currentUrl}"]`).addClass('user-profile-act')
+	/*console.log($(`a[href="${currentUrl}"]`))*/
+	
+	
 	$(".modifyProfile").hide();
 
 	/*프로필*/
@@ -26,7 +31,7 @@ $(function() {
 			$("#profileModify").text('저장');
 			$(".modifyProfile").show();
 			$(".saveProfile").hide();
-			
+
 			return false;
 
 			/*저장눌렀을 때*/
@@ -34,6 +39,7 @@ $(function() {
 
 			/* 닉네임 중복검사 */
 			var member_nickname = $('#member_nickname').val();
+			$('.nickname_comment').text("빈칸으로 두시면 기존 닉네임이 유지됩니다");
 			if (member_nickname.length > 2) {
 				$.ajax({
 					url: '/signup/memberNicknameCheck',
@@ -58,6 +64,12 @@ $(function() {
 						console.log('닉네임 오류')
 					}
 				})
+			} else if (member_nickname.length == 0) {
+				$('.nickname_comment').text("");
+				$("#profileModify").text('수정');
+				$(".modifyProfile").hide();
+				$(".saveProfile").show();
+				$('#profileImageUpload').submit();
 			} else {
 				$('.nickname_comment').text("2글자 이상이여야 합니다");
 				$('.nickname_comment').css("color", "red");
@@ -65,7 +77,7 @@ $(function() {
 		}
 	})
 
-	$('#profileModifyCancel').on('click', function(){
+	$('#profileModifyCancel').on('click', function() {
 		$('#memberNickname_hidden').val(member_nickname);
 		$('.nickname_comment').text("");
 		$("#profileModify").text('수정');

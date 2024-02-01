@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+
+
+.custom-form input[type="number"] {
+	/* input 태그 type number는 템플릿 적용안되서 복사해옴 */
+	float: left;
+	border: 1px solid #eee;
+	background: #F7F9FB;
+	width: 50%;
+	padding: 14px 20px 14px 45px;
+	border-radius: 6px;
+	color: #666;
+	font-size: 13px;
+	-webkit-appearance: none;
+	margin : 10px;
+}
+.custom-form input[type="button"] {
+	width: 20% !important;
+	margin : 10px;
+}
+
+.custom-form input[type="text"] {
+	width: 50% !important;
+	margin : 10px;
+}
+
+.custom-form input[type="number"]:focus {
+	/* input 태그 type number는 템플릿 적용안되서 복사해옴 */
+	background: #fff;
+}
+
+#btn_phonenumber_change_completion {
+	margin-top : 100px;
+	margin-bottom: 100px;
+	float: right
+	
+}
+
+.fl-wrap .disa {
+	pointer-events: none; /* 동의 안하면 다음 못누르게 하는 클래스 */
+	background-color: #3aaced5e;
+}
+
+
+
+
+.btn.float-btn {
+	float : right !important;
+}
+
+#check_phone_count {
+	position: static;
+	
+}
+
+.pass-input-wrap.fl-wrap label span {
+	display: contents;
+}
+
+ul.ks-cboxtags li label {
+	width: auto;
+	height: 40px;
+	
+	display: inline-block;
+	background-color: rgba(255, 255, 255, .9);
+	border: 2px solid #2196f352;
+	border-radius: 10px;
+	white-space: nowrap;
+	margin: 3px 3px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+	padding: 8px 12px;
+	cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: 12px;
+	padding: 2px 6px 2px 2px;
+	content: "\f067";
+	transition: transform .3s ease-in-out;
+}
+
+
+
+
+
+/* 나중에 js에 아이콘 fa-bounce 클래스 넣기 */

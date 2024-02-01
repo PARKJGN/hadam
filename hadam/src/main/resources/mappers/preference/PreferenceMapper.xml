@@ -23,6 +23,10 @@
 		c.LARGE_CATEGORY = #{category}
 		</foreach>
 	</select>
-
+	
+	<delete id="preferenceDelete" parameterType="integer">
+		DELETE FROM PREFERENCE WHERE MEMBER_INDEX = #{memberIndex}
+	</delete>
+	
 	
 </mapper>

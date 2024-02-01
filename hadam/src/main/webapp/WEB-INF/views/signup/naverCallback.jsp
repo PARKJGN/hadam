@@ -1,5 +1,9 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!--
+ 	파일명 	naverCallback.jsp 
+	페이지명	네이버 SDK 콜백 페이지 
+	작성자 	최성익
+-->
 <html>
   <head>
     <title>네이버로그인</title>
@@ -9,6 +13,18 @@
     
   </head>
   <body>
+  	<div hidden>
+  	<form action='/signup/naverSignup' method='post' id="naver">
+  		<input id='memberId' name='memberId' value=''>
+  		<input id='memberPassword' name='memberPassword' value=''>
+  		<input id='memberPhoneNumber' name='memberPhoneNumber' value=''>
+  		<input id='memberNickname' name='memberNickname' value=''>
+  		<input id='memberBirth' name='memberBirth' value=''>
+  		<input id='memberSex' name='memberSex' value=''>
+  		<input id='memberType' name='memberType' value=''>
+  		<input id='accesstoken' name='accesstoken' value=''>
+  	</form>
   
+  	</div>
   </body>
 </html>
