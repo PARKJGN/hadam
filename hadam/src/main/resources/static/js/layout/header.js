@@ -35,9 +35,10 @@ function getChatRoomList() {
                 chatRoomItem.attr('onclick', 'addmodal(' + ChatRoomList.chatRoomId + ', \'' + ChatRoomList.chatRoomName + '\')');
                 // 생성된 목록을 chatRoomListDiv에 추가 */
                  
-                var avatarSrc = "images/chattingroom.jpg";
+                var avatarSrc = "/images/chattingroom.jpg";
 				var titleText = ChatRoomList.chatRoomName;
-				var lastChatDate = ChatRoomList.chatRoomLastSendTime
+				var lastChatDate = ""
+				if(ChatRoomList.chatRoomLastMsg == null) ChatRoomList.chatRoomLastMsg="";
 				var lastChatContent = ChatRoomList.chatRoomLastMsg
                 //memberUploadImageName
                 var chatItem = $('<a class="chat-contacts-item"></a>');
@@ -234,7 +235,7 @@ function showGreeting(memberNickname1,RoomId,message,sendTime,UploadImageName) {
 	
 	console.log("게스트 채팅칸");
 	//게스트 채팅칸 틀만들기
-	var guestavatarSrc = "images/profile/"+UploadImageName+".jpg";	
+	var guestavatarSrc = "/images/profile/"+UploadImageName+".jpg";	
 	var guestmessageDate = formattedDate;
 	var guestmessageTime = formattedTime;
 	// 새로운 채팅 메시지 생성
@@ -278,7 +279,7 @@ function showGreeting(memberNickname1,RoomId,message,sendTime,UploadImageName) {
 	
 	
 	//user 프로필사진 uploadname
-	var useravatarSrc = "images/profile/"+UploadImageName+".jpg";
+	var useravatarSrc = "/images/profile/"+UploadImageName+".jpg";
 	//src="/images/profile/memberUploadImageName.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';"
 	var usermessageDate = formattedDate;
 	var usermessageTime =formattedTime;

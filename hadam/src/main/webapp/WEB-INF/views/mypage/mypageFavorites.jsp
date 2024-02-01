@@ -34,7 +34,7 @@
 							</div>
 							
 							<c:if test="${favoritesList == null}">
-								<div class="dashboard-message">
+								<div class="dashboard-message" style='min-height: 200px;'>
 									<div class="favoritesNull">
 										찜한 장소가 없습니다
 									</div>

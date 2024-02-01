@@ -337,7 +337,7 @@ public class MypageController {
 		}
 		model.addAttribute("msg", result);
 
-		return "redirect:/mypage/mypageEntry";
+		return "redirect:/mypage/mypageEntryResponse";
 	}
 
 	/*동행신청에서 거절 눌렀을때*/
@@ -363,7 +363,7 @@ public class MypageController {
 
 		model.addAttribute("msg", "거절 되었습니다");
 
-		return "redirect:/mypage/mypageEntry";
+		return "redirect:/mypage/mypageEntryResponse";
 	}
 
 	/*프로필 수정*/

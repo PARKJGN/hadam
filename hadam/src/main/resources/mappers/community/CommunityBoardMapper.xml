@@ -227,14 +227,6 @@
 		#{memberIndex}
 		ORDER BY BOARD_REGISTER_DATE DESC
 	</select>
-
-	<!-- 참가자 명단 확인 -->
-	<select id="checkEntry" parameterType="Integer"
-		resultType="EntryApplicationVO">
-		select member_index
-		from entry_application
-		where member_index = #{memberIndex} AND BOARD_ID = #{boardId}
-	</select>
 	
 	<!-- 자유게시판 검색 -->
 	<select id="searchBoards" parameterType="BoardVO"

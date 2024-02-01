@@ -52,20 +52,6 @@ $(function() {
 		location.replace('/index')
 	}
 
-
-	/* 카테고리 별로 각 1개씩 선택해야 함 */
-	var eating = $(".eating input:checked").length()
-	var drinking = $(".drinking input:checked").length()
-	var playing = $(".playing input:checked").length()
-	var watching = $(".watching input:checked").length()
-	var walking = $(".walking input:checked").length()
-
-	if (eating == 0 || drinking == 0 || playing == 0 || watching == 0 || walking == 0) {
-		alert('먹기, 마시기, 놀기, 보기, 걷기의 카테고리는 각각 최소 1개이상 선택하셔야 합니다')
-		return false;
-	}
-
-
 	/* 회원가입 완료 번튼 눌렀을 때 */
 	$('#signup_completion').hide();
 	$('#hide_signup_completion').on('click', function() {
@@ -80,6 +66,17 @@ $(function() {
 		/*console.log(checkedcCtegory);*/
 		if (checkedCategory.length < 10) {
 			alert('카테고리는 최소 10개이상 선택해야 합니다')
+			return false;
+		} 
+		
+		var eating = $(".eating input:checked").length
+		var drinking = $(".drinking input:checked").length
+		var playing = $(".playing input:checked").length
+		var watching = $(".watching input:checked").length
+		var walking = $(".walking input:checked").length
+
+		if (eating == 0 || drinking == 0 || playing == 0 || watching == 0 || walking == 0) {
+			alert('먹기, 마시기, 놀기, 보기, 걷기의 카테고리는 각각 최소 1개이상 선택하셔야 합니다')
 			return false;
 		}
 

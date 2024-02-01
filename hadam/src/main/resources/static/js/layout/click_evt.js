@@ -42,16 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		    newLink.textContent=alarm.alarmContent;
 		    break;
 		  case "새로운 참가 신청이 들어왔습니다.":
-			aTageHref =`/mypage/mypageEntry`;
+			aTageHref =`/mypage/mypageEntryResponse`;
 			newLink.textContent = alarm.boardName+" 게시물의 "+alarm.alarmContent;
 		    break;
 		    //추후에 수정 (어떤 페이지로 보낼지)-건일
 		  case "참가신청이 거절되었습니다.":
-			aTageHref ="/mypage/mypageEntry";
+			aTageHref ="/mypage/mypageEntryRequest";
 			newLink.textContent = alarm.boardName+" 게시물의 "+alarm.alarmContent;
 		    break;
 		  case "참가신청이 수락되었습니다.":
-			aTageHref ="/mypage/mypageEntry";
+			aTageHref ="/mypage/mypageEntryRequest";
 			newLink.textContent = alarm.boardName+" 게시물의 "+alarm.alarmContent;
 		    break;
 		  // 추가적인 case 문들
@@ -144,18 +144,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		    break;
 		  case "새로운 참가 신청이 들어왔습니다.":
 			  newLink.textContent = splitFirst+" 게시글의 "+splitSecond;
-			aTageHref =`/mypage/mypageEntry`;
+			aTageHref =`/mypage/mypageEntryResponse`;
 
 		    break;
-		    //추후에 어떤 페이지로 던져질지 고민(-건일)
 		  case "참가신청이 거절되었습니다.":
 			  newLink.textContent = splitFirst+" 게시글의 "+splitSecond;
-			aTageHref ="/mypage/mypageEntry";
+			aTageHref ="/mypage/mypageEntryRequest";
 
 		    break;
 		  case "참가신청이 수락되었습니다.":
 			  newLink.textContent = splitFirst+" 게시글의 "+splitSecond;
-			aTageHref ="/mypage/mypageEntry";
+			aTageHref ="/mypage/mypageEntryRequest";
 
 		    break;
 		  // 추가적인 case 문들

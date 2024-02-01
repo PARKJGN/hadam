@@ -29,9 +29,10 @@
 							for (let i in result) {
 				            output += "<div class='listing-item' id='listItem'>";
 				            output += "<article class='geodir-category-listing fl-wrap'>";
-				            output += "<div class='geodir-category-img imgSize'>";
+				            output += "<div class='boardScheduleList imgSize'>";
 				            																// 불러온 스케줄 장소이미지 출력 
-				            output += "<a href='listing-single.html'><img src='/images/location/"+result[i].locationName+".jpg' alt=''></a>";
+				           	output += '<img src="/images/location/' + result[i].locationName + '.jpg" alt="" ';
+							output += 'onerror="this.onerror=null;this.src=\'/images/gal/no_image2.jpg\';">';
 				            output += "<div class='geodir-category-opt'>";
 				            output += "</div>";
 				            output += "</div>";

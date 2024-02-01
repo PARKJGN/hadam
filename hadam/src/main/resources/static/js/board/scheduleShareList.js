@@ -39,7 +39,7 @@ function openDetailModal(boardId,memberIndex) {
 			    	                 // 게시글 별명
 			    output += '<span>'+data[0].memberNickname+'</span></a></div>';
 			   	           // 내가 쓴 게시글일 경우 수정,삭제 버튼 활성화
-			   	  if (data[0].memberIndex == memberIndex || data[0].adminStatus != 0) {
+			   	  if (data[0].memberIndex == memberIndex) {
 			    output += '<div class="buttonBox">'                                                                // 수정 클릭시 해당게시글 수정 페이지로 이동
 			    output += '<a style="text-decoration:none; color:black;"  href="/community/scheduleShareUpdate?boardId= '+ boardId +'"  id="updateBtn" ><i style="color:#28AEFF"class="fa-solid fa-pencil">수정</i></a>';
 			    																					// 삭제 클릭시 해당게시글 삭제

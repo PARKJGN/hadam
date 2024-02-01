@@ -531,12 +531,6 @@ $(document).ready(function () {
         el.empty();
     }
     
-        document.getElementById('autocomplete-container2').addEventListener('click', function () {
-        document.getElementById('myModal2').classList.add('show');
-        document.getElementById('modalOverlay2').style.display = 'block';
-        map.relayout();
-    });
-
     document.getElementById('closeModalBtn2').addEventListener('click', function () {
     document.getElementById('myModal2').classList.remove('show');
         document.getElementById('modalOverlay2').style.display = 'none';
@@ -571,10 +565,14 @@ $(document).ready(function () {
     
     
 });
+
     /*인풋필드에 선택한 날짜의 범위를 입력해주는 부분*/
     $('input[name="main-input-search77"]').on('apply.daterangepicker', function (ev, picker) {
-    $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm'));
+	let [aa,bb] = picker.startDate.format('YYYY-MM-DD HH:mm').split(':')
+	let minute = Number(bb) < 30? "00" : "30"
+    $(this).val(`${aa}:${minute}`);
     });
+    
     /*캔슬이 발생하면 인풋 필드를 비워주는 함수*/
     $('input[name="main-input-search77"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');

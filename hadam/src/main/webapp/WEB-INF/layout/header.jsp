@@ -6,7 +6,7 @@
     <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
-        <title>Easybook - Hotel Booking Directory Listing Template </title>
+        <title>ha:dam </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
@@ -46,7 +46,7 @@
                             <a href="/index"><img src="/images/main_logo.png" alt=""></a>
                         <!-- 로고 이미지 변경했습니다 01.11 -정건일 -->
                         </div>
-                        <a href="dashboard-add-listing.html" class="add-hotel">스케즐 추가하기<span><i class="far fa-plus"></i></span></a>                     
+                        <a href="/schedule/schedulepage" class="add-hotel">스케즐 추가하기<span><i class="far fa-plus"></i></span></a>                     
                         <!-- 로그인 상태 확인 후 헤더 변경 [최성익] -->
                         <c:if test="${sessionScope.memberNickname == null}">
                         	<div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>로그인</div>
@@ -116,7 +116,7 @@
                                 <ul>
                                     <li>                        
                                     <!-- 메뉴탭 이름 변경했습니다. 01.11 -정건일 -->                           
-                                        <a href="#">A.I스케줄<i class="fas "></i></a>
+                                        <!-- <a href="#">A.I스케줄<i class="fas "></i></a> -->
 <!--                                         second level
                                         <ul>
                                             <li><a href="index.html">Parallax Image</a></li>
@@ -234,73 +234,7 @@
                 </div>
                 <input type="hidden" id="hidden_session_idxvalue" value="${sessionScope.memberIndex}"/>
                 <input type="hidden" id="hidden_session_nicknamevalue" value="${sessionScope.memberNickname}"/>
-                
-                <!-- header-search  end -->
-                <!-- 채팅방 모달창 입니다. -정건일 -->
-                
-	                  <div class="chattinglistmodal" id="chatRoomList">채팅창
-			            
-	                 
-	                </div>
-	                <div class="chattingmodalplace">
-	         
-	                </div>  
-				<!-- end of 채팅방 모달창 입니다. -정건일 -->
-				
-				
-				
-			
-            </header>
-            
-                                        <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-<!--                             <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap date-parent">
-                                    <label>Date In-Out </label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div>
-                            </div> -->
-                            <!-- header-search-input-item end -->                             
-                            <!-- header-search-input-item -->
-                  <!--           <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap">
-                                    <div class="quantity-item">
-                                        <label>Rooms</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Adults</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Children</label>
-                                        <div class="quantity">
-                                            <input type="number" min="0" max="3" step="1" value="0">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- header-search-input-item end -->                             
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-2">
-                                <div class="header-search-input-item fl-wrap">
-                                    <button class="header-search-button" onclick="window.location.href='listing.html'">Search <i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->                                                          
-                        </div>
-                    </div>
-                    <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
-                </div>
-                <input type="hidden" id="hidden_session_idxvalue" value="${sessionScope.memberIndex}"/>
-                <input type="hidden" id="hidden_session_nicknamevalue" value="${sessionScope.memberNickname}"/>
                 <input type="hidden" id="hidden_session_memberUploadImageNamevalue" value="${sessionScope.memberUploadImageName}"/>
-                
                 <!-- header-search  end -->
                 <!-- 채팅방 모달창 입니다. -정건일 -->
                 
