@@ -81,4 +81,10 @@ public class ScheduleTableVO {
 	
 	// 스케줄 공유게시판 목록 조회시 필요
 	private  Date boardRegisterDate;
+	
+	// 스케줄 공유 게시판 프로필 사진 필요
+	private String memberUploadImageName;
+	
+	// 스케줄 공유 게시판 상세 페이지에서 관리자 계정권한 판단할때 필요
+	private Integer adminStatus;
 }

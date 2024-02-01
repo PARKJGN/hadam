@@ -286,6 +286,20 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	public CommentVO commentCount(int boardId) {
 		
 		return communityBoardDAO.commentCount(boardId);
+	}
+
+
+	// 해당 게시글 프로필 사진 출력
+	public BoardVO findProfileByBoardId(BoardVO vo) {
+		
+		return communityBoardDAO.findProfileByBoardId(vo);
+	}
+
+
+	// 각 댓글의 회원정보 이미지 가져오기
+	public MemberUploadImagesVO getMemberImageByMemberIndex(Integer memberIndex) {
+		
+		return communityBoardDAO.getMemberImageByMemberIndex(memberIndex);
 	};
 
 

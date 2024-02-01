@@ -83,6 +83,9 @@ public class BoardVO {
 	// 게시판 검색시 검색어
 	private String keyword;
 	
+	// 스케줄 공유 게시판 상세 페이지에서 관리자 계정권한 판단할때 필요
+	private Integer adminStatus;
+	
 	
 	// 스케줄 공유 게시판 검색시 사용할 페이징 
 	private int pageNum;

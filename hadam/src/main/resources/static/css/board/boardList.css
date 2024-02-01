@@ -65,7 +65,7 @@
 	opacity:0.8;
 	font-size:13px;
 }
-     
+
 .search {
   	position: relative;
   	width: 300px;
@@ -73,7 +73,7 @@
   	top:-50px;
 }
 
-input {
+.search > input {
   	width: 100%;
   	border: 1px solid #bbb;
   	border-radius: 8px;
@@ -81,7 +81,7 @@ input {
   	font-size: 14px;
 }
 
-img {
+.search > button img {
   	position : absolute;
   	width: 17px;
   	top: 10px;

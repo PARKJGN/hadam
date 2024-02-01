@@ -27,7 +27,7 @@
                                 <h4>당신의 완벽한 하루를 작성하세요!</h4>
                             </div>                            
                         </div> 
-                         <!-- 자유게시판 배경글 끝 -->                 
+                         <!-- 자유게시판 배경글 끝 -->                                        
                     </section>
                     <section class="flat-header color-bg adm-header" style="background-color:white">          
                         <div class="container" id="full">
@@ -43,7 +43,7 @@
                             <div class="dasboard-wrap fl-wrap">                          
                                 <div class="dasboard-menu">
                                     <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i></div>
-                                    <ul class="dasboard-menu-wrap" >         
+                                    <ul class="dasboard-menu-wrap">         
                                         <li><a href="/community/boardList" class="user-profile-act" id="boardTap"><i class="far fa-comments"></i> 자유게시판 </a></li>
                                     </ul>
                                 </div>                               
@@ -119,9 +119,10 @@
                                        </c:forEach>  
                                        <!-- 게시판 목록 출력 끝 -->
                                        
-                                       	  <!-- 글 작성 페이지 이동 -->
+                                       	  <!-- 로그인한 사용자의 memberIndex가 있을때만 글 작성 버튼이 보임 -->
+                                       	  <c:if test="${not empty sessionScope.memberIndex}">
                                           <a style="text-decoration:none; color:black;" href="/community/boardWrite"  id="writeButton" style=color:blue;> <i class="fa-solid fa-pen-to-square" style=color:rgba(124,150,255,1)>글 작성</i></a>
-                                   
+                                   		  </c:if>
                                     <!-- 페이징 처리-->
                                     <div class="pagination" id="page">
                                     	<!-- 페이지 맨처음으로 이동 -->
@@ -152,7 +153,7 @@
             <!--wrapper end -->
             <!--footer -->
              <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
- 
+
              <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
 			 <script type="text/javascript" src="/js/board/boardList.js"></script>
             

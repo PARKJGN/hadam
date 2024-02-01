@@ -23,8 +23,7 @@
 		#{boardContent},now(), 0, #{memberIndex}, now())
 	</insert>
 
-	<!-- 자유게시판 상세 페이지 사진과 글정보 -->
-	
+	<!-- 자유게시판 상세 페이지 사진과 글정보 -->	
 	<select id="getBoard" parameterType="BoardVO"
 		resultType="BoardVO">
 		SELECT b.*, m.*, i.*
@@ -37,8 +36,7 @@
 		WHERE b.BOARD_ID = #{boardId}
 	</select>
 
-	<!-- boardId에 해당하는 게시글 정보 가져오기 근데 수정하면 파일이 삭제된후 다시생성되는과정에서 하나만 안찾아와서 limit 
-		1을 붙임 -->
+	<!-- 해당게시글 정보 출력 -->
 	<select id="findByboardId" parameterType="int"
 		resultType="BoardVO">
 		SELECT b.*,m.*,i.*
@@ -50,6 +48,7 @@
 		b.BOARD_ID = i.BOARD_ID
 		WHERE b.BOARD_ID = #{boardId}
 	</select>
+	
 	<!-- boardId select -->
 	<select id="selectId" resultType="int">
 		SELECT BOARD_ID FROM board
@@ -63,7 +62,7 @@
 		BOARD_TITLE = #{boardTitle},
 		BOARD_CONTENT = #{boardContent},
 		BOARD_UPDATE_DATE = (current_date)
-		WHERE BOARD_ID = #{boardId}
+		WHERE BOARD_ID = #{boardId} 
 	</update>
 
 	<!-- 게시글 삭제 -->
@@ -71,12 +70,14 @@
 		DELETE FROM board
 		WHERE BOARD_ID = #{boardId}
 	</delete>
-
+	
+	<!-- 댓글 삭제 -->
 	<delete id="deleteComment" parameterType="int">
 		DELETE FROM comment
 		WHERE BOARD_ID = #{boardId}
 	</delete>
 	
+	<!-- 신고한 댓글 삭제 -->
 	<delete id="deleteCommentReport" parameterType="int">
 		DELETE FROM board_comment_report
 		WHERE BOARD_ID = #{boardId}
@@ -86,7 +87,6 @@
 	<update id="boardHits" parameterType="int">
 		UPDATE board SET
 		BOARD_VIEWS = BOARD_VIEWS + 1 WHERE BOARD_ID = #{boardId}
-
 	</update>
 
 	<!-- 댓글 저장시 commentId 뽑아오기 -->
@@ -104,11 +104,14 @@
 	<!-- 해당 게시글에 작성한 댓글 리스트 가져오기 -->
 	<select id="commentList" parameterType="Integer"
 		resultType="CommentVO">
-		select c.*, m.*
+		select c.*, m.*, mui.MEMBER_UPLOAD_IMAGE_NAME 
 		from comment c INNER JOIN member m
 		ON c.MEMBER_INDEX = m.MEMBER_INDEX
+		join member_upload_image mui
+		on mui.MEMBER_INDEX = m.MEMBER_INDEX 
 		WHERE
-		c.BOARD_ID = #{boardId}
+		c.BOARD_ID = #{boardId} and mui.MEMBER_UPLOAD_IMAGE_PATH ="images/profile"
+		order by c.COMMENT_ID asc
 	</select>
 
 	<!-- 신고된 정보 저장 -->
@@ -129,7 +132,8 @@
 		WHERE BOARD_ID = #{boardId}
 		limit 1
 	</select>
-
+	
+	<!-- 댓글 신고자 리스트 -->
 	<select id="reportList" parameterType="Integer" resultType="BoardAndCommentReportVO">
 		select *
 		from board_comment_report
@@ -148,6 +152,7 @@
 		</selectKey>
 	</insert>
 
+	
 	<select id="getScheduleShareList" resultType="BoardVO">
 		select
 		b.*,st.*,l.*,li.*,m.*
@@ -187,14 +192,15 @@
 		#{boardId})
 	</insert>
 
-	<!-- 스케줄 상세 댓글 목록 -->
-	<select id="scheduleCommentList" parameterType="CommentVO"
-		resultType="CommentVO">
-		select c.*, m.*
-		from comment c INNER JOIN member m
-		ON c.MEMBER_INDEX = m.MEMBER_INDEX
-		WHERE
-		c.BOARD_ID = #{boardId}
+	<!-- 스케줄 상세 댓글 목록 및 프로필 사진 출력 -->
+	<select id="scheduleCommentList" parameterType="CommentVO" resultType="CommentVO">
+	  select c.*, m.*, mui.MEMBER_UPLOAD_IMAGE_NAME 
+	  from comment c INNER JOIN member m
+	  ON c.MEMBER_INDEX = m.MEMBER_INDEX
+	  join member_upload_image mui 
+	  on mui.MEMBER_INDEX = m.MEMBER_INDEX 
+	  WHERE
+	  c.BOARD_ID = #{boardId} and mui.MEMBER_UPLOAD_IMAGE_TYPE ="profile";
 	</select>
 
 	<!-- 스케줄 공유 게시판 수정 -->
@@ -271,5 +277,21 @@
 		select count(*) as count
         from comment
         where board_id = #{boardId}
+	</select>
+	
+	<!-- 게시판 상세 프로필사진 -->
+	<select id="findProfileByBoardId" parameterType="BoardVO" resultType="BoardVO">
+		select MEMBER_UPLOAD_IMAGE_NAME  
+		from member_upload_image
+		where MEMBER_INDEX = #{memberIndex}
+		AND MEMBER_UPLOAD_IMAGE_PATH = "images/profile"
+	</select>
+	
+	<!-- 자유게시판 댓글 회원정보 가져오기 -->
+	<select id="getMemberImageByMemberIndex" parameterType="Integer" resultType="MemberUploadImagesVO">
+		select *
+		from member_upload_image
+		where member_index = #{memberIndex}
+		AND MEMBER_UPLOAD_IMAGE_PATH = "images/profile"
 	</select>
 </mapper>

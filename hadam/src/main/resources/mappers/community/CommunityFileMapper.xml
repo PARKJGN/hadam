@@ -20,9 +20,9 @@
 <update id="updateFile" parameterType="MemberUploadImagesVO">
     UPDATE member_upload_image
     SET 
-        MEMBER_UPLOAD_IMAGE_PATH = #{memberUploadImagePath},
-        MEMBER_UPLOAD_IMAGE_NAME = #{memberUploadImageName},
-        MEMBER_UPLOAD_IMAGE_ORIGINALNAME = #{memberUploadImageOriginalname}
+    MEMBER_UPLOAD_IMAGE_PATH = #{memberUploadImagePath},
+    MEMBER_UPLOAD_IMAGE_NAME = #{memberUploadImageName},
+    MEMBER_UPLOAD_IMAGE_ORIGINALNAME = #{memberUploadImageOriginalname}
     WHERE BOARD_ID = #{boardId}
 </update>
 

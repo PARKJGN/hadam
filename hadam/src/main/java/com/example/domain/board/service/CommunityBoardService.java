@@ -110,4 +110,10 @@ public interface CommunityBoardService {
 	// 해당게시글 댓글 개수
 	CommentVO commentCount(int boardId);
 	
+	// 해당게시글 포사 출력
+	BoardVO findProfileByBoardId(BoardVO vo);
+	
+	// 각 댓글의 회원정보 이미지 가져오기
+	MemberUploadImagesVO getMemberImageByMemberIndex(Integer memberIndex);
+	
 }

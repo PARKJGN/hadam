@@ -110,5 +110,11 @@ public interface CommunityBoardDAO {
 	
 	// 해당 게시글 댓글 개수
 	public CommentVO commentCount(int boardId);
+	
+	// 해당 게시글 프로필 사진 출력
+	public BoardVO findProfileByBoardId(BoardVO vo);
+	
+	// 각 댓글의 회원정보 이미지 가져오기
+	public MemberUploadImagesVO getMemberImageByMemberIndex(Integer memberIndex);
 
 }

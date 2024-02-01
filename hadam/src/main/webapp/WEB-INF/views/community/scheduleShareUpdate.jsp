@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
 <!--  header end -->
 <!--  wrapper  -->
@@ -10,7 +11,7 @@
 <link type="text/css" rel="stylesheet"
 	href="/css/bootstrap/bootstrap.css">
 <link type="text/css" rel="stylesheet"
-	href="/css/board/scheduleShareWrite.css">
+	href="/css/board/scheduleShareUpdate.css">
 </head>
 <div id="wrapper">
 	<!-- content-->
@@ -19,10 +20,6 @@
 		<div class="map-view-wrap">
 			<div class="container"></div>
 		</div>
-		<!--map-view-wrap end -->
-		<!-- Map -->
-
-		<!-- Map end -->
 		<div class="breadcrumbs-fs fl-wrap">
 			<div class="container">
 				<div class="breadcrumbs fl-wrap">
@@ -101,29 +98,19 @@
 						<a class="btn btn-primary" href="/community/scheduleShareList"
 							role="button" id="backBtn">취소</a>
 						<!-- 자유게시판목록으로 이동-->
-
 					</div>
 					<!-- 버튼 클릭시 내가 작성한 스케줄 리스트들 출력 -->
 					<button type="button" class="btn btn-primary"
 						data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 						id="shareBtn">스케줄 불러오기</button>
 				</div>
-
 			</div>
-
-
-
 		</section>
 		</div>
 		<!-- section end -->
 	</div>
 	<!-- content end-->
 </div>
-<!--wrapper end -->
-<!--footer -->
-
-
-
 <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
 
 <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static"
@@ -137,8 +124,7 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-
-
+				<!-- 스케줄 공유 게시판 수정시 불러올 나의 스케줄표 리스트 -->
 				<c:forEach items="${scheduleTableList}" var="scheduleTableList"
 					varStatus="loop">
 					<div class="list-main-wrap-opt fl-wrap" id="modalpadding">
@@ -149,46 +135,31 @@
 								</span>
 							</h2>
 						</div>
-
-						<div class="geodir-category-content fl-wrap title-sin_item">
-
+						<div class="geodir-category-content fl-wrap title-sin_item">							
 							<div class="geodir-category-content-title-item">
 								<h3 class="title-sin_map" id="modalScheduleTime">
-									<%
-									// boardRegisterDate를 받아오는 부분, 예시로 현재 시간을 사용
-									Date scheduleTableRegisteDate = new Date();
-									// SimpleDateFormat을 사용하여 날짜를 원하는 형식으로 포맷
-									SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-									String formattedDate = sdf.format(scheduleTableRegisteDate);
-									%>
-
-									<%=formattedDate%>
+									<fmt:formatDate value="${scheduleTableList.scheduleTableRegisteDate}" pattern="yyyy/MM/dd" />
 								</h3>
-							</div>
-				
+							</div>							
+							<!-- 리스트로 출력된 각각의 id를 부여, 버튼 클릭시 scheduleShareUpdate.js에서 ajax처리 -->
+							<div class="scheudleBtnBox">
 							<button type="button"
 								class="btn btn-primary btn-sm scheduleSelectBtn"
 								id="scheduleSelect${loop.index}"
 								data-schedule-id="${scheduleTableList.scheduleTableId}"
 								data-bs-dismiss="modal">선택</button>
-
+							</div>
 						</div>
 					</div>
 				</c:forEach>
-
-
-
-
 			</div>
+			<!-- 모달창 닫기 버튼 -->
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
 					data-bs-dismiss="modal">닫기</button>
-
 			</div>
 		</div>
 	</div>
 </div>
-
-
 <script type="text/javascript" src="/js/board/scheduleUpdate.js"></script>
 <script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>

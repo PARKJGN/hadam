@@ -214,8 +214,7 @@
                                             <div class="catelist-single-main-item-title fl-wrap">
                                                 <h3> 주소 </h3>
                                             </div>
-                                            <p> ${locationDetail.locationPlace } </p>
-                                           
+                                            <p> ${locationDetail.locationPlace } </p>                                         
                                         </div>
                                         <!-- 주소 end -->
                                         <!-- 지도 -->

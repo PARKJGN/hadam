@@ -20,7 +20,6 @@
 		<div class="map-view-wrap">
 			<div class="container"></div>
 		</div>
-
 		<div class="breadcrumbs-fs fl-wrap">
 			<div class="container">
 				<div class="breadcrumbs fl-wrap">
@@ -37,14 +36,12 @@
 					</div>
 					<div id="asd">
 						<!-- 게시글 작성 폼 시작 -->
-						<form class="custom-form" action="scheduleTableSave" id="contactform" method="post">
-							
+						<form class="custom-form" action="scheduleTableSave" id="contactform" method="post">						
 							<!-- 내가 불러온 스케줄을 ajax를 통해 아래 태그에 넣음  -->
 							<div id="modalScheduleTableList">
 
 								<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox"></div>
-							</div>
-							
+							</div>							
 							<!-- 희망 성별 선택 -->
 							<label for="validationTextarea" class="form-label">희망 성별</label>
 							<fieldset>
@@ -69,8 +66,7 @@
 							    <option value="50~59">50~59</option>
 							  </select>
 							  <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
-							</div>
-													
+							</div>												
 							<!-- 참가인원수 선택 -->
 							<div class="selectBox">
 							  <select name="chatRoomMax" class="select">
@@ -83,48 +79,28 @@
 							  <span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
 							</div>
 							<!-- 제목 입력 -->
-							<label for="validationCustom01" class="form-label">제목</label> <input
-								type="text" name="boardTitle" id="boardTitle"
-								placeholder="제목을 입력해주세요" required />
-							
+							<label for="validationCustom01" class="form-label">제목</label> 
+							<input type="text" name="boardTitle" id="boardTitle" placeholder="제목을 입력해주세요" required />							
 							<!-- 내용 작성 -->
 							<label for="validationTextarea" class="form-label">글 내용</label>
-							<textarea name="boardContent" id="boardContent" cols="40"
-								rows="3" placeholder="메시지를 입력해주세요" required></textarea>
+							<textarea name="boardContent" id="boardContent" cols="40" rows="3" placeholder="메시지를 입력해주세요" required></textarea>
 							<!-- 스케줄 공유  -->
-							<input type="submit" class="btn btn-primary" id="comment"
-								value="공유" />
-
+							<input type="submit" class="btn btn-primary" id="comment" value="공유" />
 						</form>
 						<!-- 게시글 작성 폼 끝 -->
-						<a class="btn btn-primary" href="/community/scheduleShareList/1"
-							role="button" id="backBtn">취소</a>
-						<!-- 자유게시판목록으로 이동-->
-
+						<a class="btn btn-primary" href="/community/scheduleShareList/1" role="button" id="backBtn">취소</a>
 					</div>
 					<!-- 불러오기 클릭시 내가 작성한 스케줄 리스트 출력 -->
-					<button type="button" class="btn btn-primary"
-						data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-						id="shareBtn">스케줄 불러오기</button>
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="shareBtn">스케줄 불러오기</button>
 				</div>
-
 			</div>
-
-
-
 		</section>
 		</div>
 		<!-- section end -->
 	</div>
 	<!-- content end-->
 </div>
-<!--wrapper end -->
-<!--footer -->
-
-
-
 <jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
-
 <!-- 스케줄 불러오기 클릭시 모달창 -->
 <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static"
 	data-bs-keyboard="false" tabindex="-1"
