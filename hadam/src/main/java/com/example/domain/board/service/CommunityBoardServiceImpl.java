@@ -286,6 +286,15 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 	public CommentVO commentCount(int boardId) {
 		
 		return communityBoardDAO.commentCount(boardId);
+	}
+
+	
+	
+	//건일 그냥 게시물 정보 따오는
+	@Override
+	public BoardVO getBoardTitle(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return communityBoardDAO.getBoardTitle(vo);
 	};
 
 

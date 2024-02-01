@@ -110,5 +110,8 @@ public interface CommunityBoardDAO {
 	
 	// 해당 게시글 댓글 개수
 	public CommentVO commentCount(int boardId);
+	
+	public BoardVO getBoardTitle(BoardVO vo);
+	
 
 }

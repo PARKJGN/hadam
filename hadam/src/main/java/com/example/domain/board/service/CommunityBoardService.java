@@ -110,4 +110,6 @@ public interface CommunityBoardService {
 	// 해당게시글 댓글 개수
 	CommentVO commentCount(int boardId);
 	
+	BoardVO getBoardTitle(BoardVO vo);
+	
 }

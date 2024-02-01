@@ -34,7 +34,7 @@
 						<div class="widget-posts fl-wrap">
 							<ul>
 								<li class="clearfix"><a href="https://ictedu.co.kr/index.php?main_page=home" class="widget-posts-img"><img
-										src="/images/all/news1.jpg" class="respimg" alt="" style="width:100%; height:100%;"></a>
+										src="/images/all/news1.jpg" class="respimg" alt="" style="width:100px; height:100px;"></a>
 									<div class="widget-posts-descr">
 										<a href="#" title="">Ict 최종프로젝트 발표</a> <span
 											class="widget-posts-date"> 02 Feb 09:30 </span>

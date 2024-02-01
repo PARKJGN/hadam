@@ -1,8 +1,6 @@
 package com.example.domain.mypage.controller;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,8 +29,11 @@ import com.example.domain.favorites.vo.FavoritesVO;
 import com.example.domain.images.vo.MemberUploadImagesVO;
 import com.example.domain.location.service.LocationService;
 import com.example.domain.location.vo.LocationVO;
+import com.example.domain.mainpage.service.NotificationService;
 import com.example.domain.member.service.MemberService;
 import com.example.domain.member.vo.MemberVO;
+import com.example.domain.mongodb.repository.AlarmMongoDB;
+import com.example.domain.mongodb.repository.MessageService;
 import com.example.domain.mypage.service.MypageService;
 import com.example.domain.preference.service.PreferenceService;
 import com.example.domain.schedule.service.ScheduleService;
@@ -72,13 +73,22 @@ public class MypageController {
 
 	@Autowired
 	private MemberService memberService;
+	/* 게시물 작성자에게 알림을 보내기위한 service -건일 */
+	@Autowired
+	private NotificationService notificationService;
 	
 	@Autowired
 	private CategoryService categoryService;
+	//몽고디비에 알림데이터를 저장하기위해 필요한 service-건일 
+	private final MessageService messageservice;
 	
 	@Autowired
 	private PreferenceService preferenceService;
 
+	public MypageController(MessageService messageservice) {
+		this.messageservice = messageservice;
+	}
+	
 	@RequestMapping("/{step}")
 	public String viewPage(@PathVariable String step) {
 
@@ -306,8 +316,20 @@ public class MypageController {
 	@RequestMapping("/entryAccept")
 	public String entryAccept(@RequestParam("boardId") Integer boardId,
 			@RequestParam("guestMemberIndex") Integer guestMemberIndex, HttpSession session, Model model) {
-		Integer hostMemberIndex = (Integer) session.getAttribute("memberIndex");
-
+		
+		//참가신청이 수락됬을때 알림보내기 -건일
+		long id = (long)guestMemberIndex;
+		BoardVO bvo = new BoardVO();
+		bvo.setBoardId(boardId);
+		BoardVO prabvo=communityBoardService.getBoardTitle(bvo);
+		AlarmMongoDB alvo = new AlarmMongoDB();
+		alvo.setAlarmContent("참가신청이 수락되었습니다.");
+		alvo.setMemberIndex(guestMemberIndex);
+		alvo.setBoardName(prabvo.getBoardTitle());
+		messageservice.saveAlarm(alvo);
+		notificationService.notify(id, prabvo.getBoardTitle()+"/"+"참가신청이 수락되었습니다.");
+		//end of 건일
+		
 		String result = chatService.entryAcceptCheck(boardId, guestMemberIndex);
 
 		if (result.equals("수락 되었습니다")) {
@@ -322,8 +344,21 @@ public class MypageController {
 	@RequestMapping("/entryRejection")
 	public String entryRejection(@RequestParam("boardId") Integer boardId,
 			@RequestParam("guestMemberIndex") Integer guestMemberIndex, HttpSession session, Model model) {
-		Integer hostMemberIndex = (Integer) session.getAttribute("memberIndex");
+		
+		//알림
+		long id = (long)guestMemberIndex;
 
+		BoardVO bvo = new BoardVO();
+		bvo.setBoardId(boardId);
+		BoardVO prabvo=communityBoardService.getBoardTitle(bvo);
+		AlarmMongoDB alvo = new AlarmMongoDB();
+		alvo.setAlarmContent("참가신청이 거절되었습니다.");
+		alvo.setMemberIndex(guestMemberIndex);
+		alvo.setBoardName(prabvo.getBoardTitle());
+		messageservice.saveAlarm(alvo);
+		notificationService.notify(id, prabvo.getBoardTitle()+"/"+"참가신청이 거절되었습니다.");
+		//end of 건일
+		
 		entryService.entryRejection(boardId, guestMemberIndex);
 
 		model.addAttribute("msg", "거절 되었습니다");

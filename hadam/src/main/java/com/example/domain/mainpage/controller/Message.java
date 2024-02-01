@@ -7,4 +7,5 @@ public class Message {
 	   private String userMessage;
 	   private String memberNickname;
 	   private String sendTime;
+	   private String memberUploadImageName;
 }

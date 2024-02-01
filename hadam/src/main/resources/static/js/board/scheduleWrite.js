@@ -5,7 +5,7 @@
 // 스케줄 불러오기 클릭시
  $('.scheduleSelectBtn').on('click', function() {
 			    var scheduleTableId = $(this).data('schedule-id');
-			    
+	    
 			    scheduleSelect(scheduleTableId);
 			});
 			
@@ -21,7 +21,6 @@
 			        success: function(result) {
 						
 			            console.log("작성 성공");
-	
 			            let output = "<div/>"
 				             
 							output += "<div class=;listing-item-container init-grid-items fl-wrap three-columns-grid' id='listBox'>";
@@ -57,6 +56,8 @@
 				            
 				            // 스케줄 수정시 form태그안 scheduleTableId 놓기
 			            	output += `<input name ='scheduleTableId' type='hidden' value=${scheduleTableId}>`
+			            	output += `<input name ='scheduleTableName' type='hidden' value=${result[0].scheduleTableName}>`
+
 				            output += "</div>";
 
 				            document.getElementById('modalScheduleTableList').innerHTML = output;

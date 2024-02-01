@@ -13,7 +13,9 @@ public class AlarmMongoDB {
 	private String id;
 	private Integer memberIndex;
 	private Integer boardId;
+	private String boardName;
 	private String alarmContent;
+	
 
 	
 }

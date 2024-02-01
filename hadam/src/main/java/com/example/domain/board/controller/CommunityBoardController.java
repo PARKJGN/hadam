@@ -383,7 +383,7 @@ public class CommunityBoardController {
 		long id = (long) vo.getMemberIndex();
 
 		// 댓글을 달았을 때 댓글 주인에게 알림이 가게하는 함수. - 건일
-		notificationService.notify(id, "새로운 댓글이 달렸습니다."+vo.getBoardId());
+		notificationService.notify(id, vo.getBoardId()+"/"+"새로운 댓글이 달렸습니다.");
 				
 		vo.setMemberIndex((Integer) session.getAttribute("memberIndex"));
 		communityBoardService.commentSave(vo);
@@ -426,11 +426,15 @@ public class CommunityBoardController {
 	@RequestMapping("/scheduleTableSave")
 	public String scheduleTableSave(BoardVO vo, ScheduleTableVO svo, HttpSession session, ChatRoomVO cvo,
 			ChatRoomJoinVO cjvo) {
-
+		
+ 
+		
 		// memberIndex session값 저장
 		vo.setMemberIndex((Integer) session.getAttribute("memberIndex"));
 		cjvo.setMemberIndex((Integer) session.getAttribute("memberIndex"));
-
+		//채팅창 이름을 스케줄 이름울 주기위해서 set해줌 -건일
+		cjvo.setChatRoomName(svo.getScheduleTableName());
+		
 		// chat_room_join 테이블의 chat_room_id 지정하기
 		// 스케줄 작성시 chat_room 최대인원수, insert 스케줄상태 공유중으로 update
 		communityBoardService.scheduleTableSave(vo, cvo, svo, cjvo);
@@ -664,7 +668,7 @@ public class CommunityBoardController {
 		// 댓글을 달았을 때 댓글 주인memberindex를 Long으로 바꿔주는 코드. - 건일
 		long id = (long) vo.getMemberIndex();
 		// 참가신청을 했을 때 게시글 주인에게 알림이 가게하는 함수. - 건일
-		notificationService.notify(id, "새로운 참가 신청이 들어왔습니다.");
+		notificationService.notify(id, "스케줄 공유 게시판에/새로운 참가 신청이 들어왔습니다.");
 		//end of [알림] - 건일
 		
 		// EntryApplicationVO에 memberIndex값 session으로 설정

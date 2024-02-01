@@ -260,6 +260,7 @@
 	</select>
 	
 	
+	
 	<!-- 관리자 -->
 	<!-- 게시글 삭제 -->
 	<delete id="boardD">
@@ -272,5 +273,13 @@
 		select count(*) as count
         from comment
         where board_id = #{boardId}
+	</select>
+	
+	
+		<!-- 해당 게시글 정보 불러오기 -->
+	<select id="getBoardTitle" parameterType="BoardVO" resultType="BoardVO">
+		SELECT *
+		FROM board 
+		WHERE board_id = #{boardId}
 	</select>
 </mapper>

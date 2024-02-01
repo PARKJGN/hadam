@@ -18,4 +18,5 @@ public class MessageMongoDB {
 	private String memberNickname;
 	private String chatContent;
 	private Date sendTime;
+	private String memberUploadImageName;
 }

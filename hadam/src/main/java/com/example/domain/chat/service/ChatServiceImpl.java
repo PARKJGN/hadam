@@ -102,6 +102,12 @@ public class ChatServiceImpl implements ChatService{
 		}
 	}
 
+	// 마지막채팅내용/ 마지막 전달시간 update함수 -정건일
+	public void lastChatLastSendTimeUpdate(ChatRoomVO vo) {
+		chatDAO.lastChatLastSendTimeUpdate(vo);
+		
+	}
+
 	
 	
 }
