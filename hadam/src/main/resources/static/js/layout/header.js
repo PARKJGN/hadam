@@ -1,11 +1,11 @@
 //header.js
 
 
+
 //세션값 : 닉네임, 멤버인덱스
 const memberNickname=$("#hidden_session_nicknamevalue").val();
 //click_evt에서 이미 선언해서 지워놨삼
 //const memberIndex= $("#hidden_session_idxvalue").val();
-
 
 let getChatRoomListLoading = false; //채팅방 목록이 추가되면 false로 바꿔줘야할것만 같은 그런 기분..
  var stompClient = null;
@@ -24,7 +24,7 @@ function getChatRoomList() {
         success: function (response) {
 			//채팅 목록 div
             var chatRoomListDiv = $('#chatRoomList');
-            
+            console.log("날짜 체크용 콘솔 "+response[0].chatRoomLastSendTime);
             //[채팅방 목록 출력]
             // 채팅방 목록을 돌면서 동적으로 목록 생성
             $.each(response, function (index, ChatRoomList) {
@@ -34,14 +34,15 @@ function getChatRoomList() {
                 chatRoomItem.attr('data-chatRoomId', ChatRoomList.chatRoomId);
                 chatRoomItem.attr('onclick', 'addmodal(' + ChatRoomList.chatRoomId + ', \'' + ChatRoomList.chatRoomName + '\')');
                 // 생성된 목록을 chatRoomListDiv에 추가 */
-                var avatarSrc = "images/avatar/1.jpg";
-				var messageCounter = 2;
+                 
+                var avatarSrc = "images/chattingroom.jpg";
 				var titleText = ChatRoomList.chatRoomName;
-				var lastChatDate = "27 Dec 2018";
-				var lastChatContent = "마지막 채팅 내용";
-                
+				var lastChatDate = ChatRoomList.chatRoomLastSendTime
+				var lastChatContent = ChatRoomList.chatRoomLastMsg
+                //memberUploadImageName
                 var chatItem = $('<a class="chat-contacts-item"></a>');
-                chatItem.attr('onclick', 'addmodal(' + ChatRoomList.chatRoomId + ', \'' + ChatRoomList.chatRoomName + '\')');
+                //chatItem.attr('onclick', 'addmodal(' + ChatRoomList.chatRoomId + ', \'' + ChatRoomList.chatRoomName + '\')');
+                chatItem.attr('onclick', 'addmodal(' + ChatRoomList.chatRoomId + ', \'' + ChatRoomList.chatRoomName + '\', \'' + memberUploadImageName + '\')');
 				var avatarContainer = $('<div class="dashboard-message-avatar"></div>');
 				var avatarImage = $('<img class="프사" src="' + avatarSrc + '" alt="">');
 				var textContainer = $('<div class="chat-contacts-item-text"></div>');
@@ -51,7 +52,7 @@ function getChatRoomList() {
  				
 				avatarContainer.append(avatarImage);
 				textContainer.append(titleHeader);
-				textContainer.append(lastChatDateSpan);
+				textContainer.append(lastChatDateSpan);	
 				textContainer.append(lastChatContentP);
 				chatItem.append(avatarContainer);
 				chatItem.append(textContainer);
@@ -72,12 +73,12 @@ function getChatRoomList() {
 }
 
 //[채팅방생성]
-function addmodal(chatRoomId,chatRoomName) {
+function addmodal(chatRoomId,chatRoomName,UploadImageName) {
 	 if ($('#chattingroomId' + chatRoomId).length ===0){
 		//채팅방 헤더 생성
 		var header = $('<div class="chat-room-header"></div>')
 		var headerH=$('<h3>' + chatRoomName + '</h3>')
-		var closeBtn=$('<button>x</button>');
+		var closeBtn=$('<button>X</button>');
 		closeBtn.attr('id','closeBtn'+chatRoomId);
 	    // 채팅방 모달 생성
 	    var RoomId = chatRoomId
@@ -85,6 +86,8 @@ function addmodal(chatRoomId,chatRoomName) {
 	     form.attr('id','chatingForm'+chatRoomId);
 	    var modalContent = $('<div class="chattingroommodal"></div>');
 	    var hiddenRoomId = $('<input type="hidden" id="modalChatRoomId">').val(chatRoomId);
+	    /*24-02-01 유저 프로필사진 uploadName-정건일*/
+	    var hiddenMemberUploadImageName = $('<input type="hidden" id="hiddenMemberUploadImageName">').val(UploadImageName);
 		modalContent.attr('id', 'chattingroomId'+chatRoomId);
 	    // chat-box 생성
 	    var chatBox = $('<div class="chat-box fl-wrap grey-blue-bg" style="height:500px;overflow-y: auto;max-height: 500px;"></div>');
@@ -104,6 +107,7 @@ function addmodal(chatRoomId,chatRoomName) {
 	    form.append(textarea);
 	    form.append(button);
 	    form.append(hiddenRoomId);
+	    form.append(hiddenMemberUploadImageName)
 	    messageInput.append(form);
 	
 	    // modalContent에 chat-box와 message-nput 추가
@@ -114,7 +118,7 @@ function addmodal(chatRoomId,chatRoomName) {
 	    // 생성된 모달 창을 body에 추가
 	    $('.chattingmodalplace').append(modalContent);
 	
-	//기존의 채팅 내용을 불러오는 함수가 필요할듯?
+	//기존의 채팅 내용을 불러오는 코드
 	 $.ajax({
 		    type: "GET",
 		    url: "http://localhost:8080/mongodb/" + chatRoomId,  // 수정된 엔드포인트로 변경
@@ -123,7 +127,7 @@ function addmodal(chatRoomId,chatRoomName) {
 		        console.log("채팅 내용을 가져왔습니다.", data);
 		
 		      data.forEach(function (message) {
-            showGreeting(message.memberNickname, message.chatRoomId, message.chatContent,message.sendTime);
+            showGreeting(message.memberNickname, message.chatRoomId, message.chatContent,message.sendTime,message.memberUploadImageName);
         });
 		    },
 		    error: function (error) {
@@ -155,9 +159,10 @@ function addmodal(chatRoomId,chatRoomName) {
 			
 			
 	 $("#chatingForm"+chatRoomId).on('submit', function (e) {
-		 	 
+		 	 /*24-02-01 프로필사진 각자적용 시키기 -건일*/
 	        e.preventDefault();
 	        var userMessage = $("#userMessage"+RoomId).val();
+	        var UploadImageName=$("#hiddenMemberUploadImageName").val();
 	        var sendTime=moment().format("YYYY-MM-DDTHH:mm");
 	        /*mongoDB에 데이터 전송 성공시 웹소캣 서버에 채팅을 뿌려주는 함수 -정건일*/
 	        if(userMessage != ""){
@@ -170,10 +175,11 @@ function addmodal(chatRoomId,chatRoomName) {
 			    "memberIndex": memberIndex,
 			    "memberNickname": memberNickname,
 			    "chatContent": userMessage,
-			    "sendTime": sendTime
+			    "sendTime": sendTime,
+			    "memberUploadImageName":UploadImageName
             }),
 			success: function (data) {
-	        	stompClient.send("/app/chat/"+RoomId, {}, JSON.stringify({ 'userMessage': userMessage,'memberNickname':memberNickname, 'sendTime':sendTime }));
+	        	stompClient.send("/app/chat/"+RoomId, {}, JSON.stringify({ 'userMessage': userMessage,'memberNickname':memberNickname, 'sendTime':sendTime, "memberUploadImageName":UploadImageName }));
                 console.log("POST 요청 성공");
                 $("#userMessage"+RoomId).val('');
             },error: function (error) {
@@ -203,7 +209,7 @@ function connect(nickname,RoomId) {
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/greetings/'+ RoomId , function (greeting) {
 			console.log("greeting info 잘받아지나 확인");
-            showGreeting(JSON.parse(greeting.body).memberNickname,RoomId,JSON.parse(greeting.body).content,JSON.parse(greeting.body).sendTime);
+            showGreeting(JSON.parse(greeting.body).memberNickname,RoomId,JSON.parse(greeting.body).content,JSON.parse(greeting.body).sendTime ,JSON.parse(greeting.body).memberUploadImageName);
         });
     });
 }
@@ -214,21 +220,21 @@ function connect(nickname,RoomId) {
 let latestChatNickname = "";
 let latesChatSendTime="";
 let latesChatRoomId;
-function showGreeting(memberNickname1,RoomId,message,sendTime) {
+function showGreeting(memberNickname1,RoomId,message,sendTime,UploadImageName) {
 	const formattedDate = moment(sendTime).format("MM-DD"); // "01-27"
 	const formattedTime = moment(sendTime).format("HH:mm");    // "19:47"
-	
+	console.log("정건일의 대모험 성공 ㅋㅋ "+UploadImageName);
 
 	//내가 보낸 메세지가 아니라면 guest에 맞다면 user에 텍스트를 출력해주는 함수
 	if(memberNickname1!=memberNickname){
 		
-		
+
 		 // 최근에 추가된 채팅의 닉네임과 현재 닉네임이 동일한지 확인
         
 	
 	console.log("게스트 채팅칸");
 	//게스트 채팅칸 틀만들기
-	var guestavatarSrc = "images/avatar/1.jpg";
+	var guestavatarSrc = "images/profile/"+UploadImageName+".jpg";	
 	var guestmessageDate = formattedDate;
 	var guestmessageTime = formattedTime;
 	// 새로운 채팅 메시지 생성
@@ -237,7 +243,8 @@ function showGreeting(memberNickname1,RoomId,message,sendTime) {
 		if (memberNickname1 === latestChatNickname&&latesChatSendTime===formattedTime&&latesChatRoomId===RoomId) {
             guestavatarContainer.attr("style", "display: none;");
         }
-	var guestavatarImage = $('<img src="' + guestavatarSrc + '" alt="">');
+	//var guestavatarImage = $('<img src="' + guestavatarSrc + '" alt="">');
+	var guestavatarImage = $('<img src="' + guestavatarSrc + '" onerror="this.onerror=null; this.src=\'/images/gal/no_image2.jpg\';">');
 	var guestNameSpan = $('<span></span>');
 	var guestmessageDateSpan = $('<span class="massage-date">' + guestmessageDate + ' <span>' + guestmessageTime + '</span></span>');
 	if (memberNickname1 === latestChatNickname&&latesChatSendTime===formattedTime&&latesChatRoomId===RoomId) {
@@ -261,13 +268,18 @@ function showGreeting(memberNickname1,RoomId,message,sendTime) {
 
     }else{
 	//작성자 채팅칸 틀만들기
-	
+
 	 // 최근에 추가된 채팅의 닉네임과 현재 닉네임이 동일한지 확인
         if (memberNickname1 === latestChatNickname) {
             console.log("!");
         }
-	var useravatarSrc = "images/avatar/1.jpg";
-	//src="/images/profile/${sessionScope.memberUploadImageName}.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';"
+
+	//var useravatarSrc = "images/avatar/1.jpg";
+	
+	
+	//user 프로필사진 uploadname
+	var useravatarSrc = "images/profile/"+UploadImageName+".jpg";
+	//src="/images/profile/memberUploadImageName.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';"
 	var usermessageDate = formattedDate;
 	var usermessageTime =formattedTime;
 	
@@ -277,7 +289,7 @@ function showGreeting(memberNickname1,RoomId,message,sendTime) {
 	if (memberNickname1 === latestChatNickname && latesChatSendTime===formattedTime&&latesChatRoomId===RoomId) {
             useravatarContainer.attr("style"," display: none;");
         }
-	var useravatarImage = $('<img src="' + useravatarSrc + '" alt="">');
+	var useravatarImage = $('<img src="' + useravatarSrc + '" onerror="this.onerror=null; this.src=\'/images/gal/no_image2.jpg\';">');
 	var userNameSpan = $('<span></span>');
 	var usermessageDateSpan = $('<span class="massage-date">' + usermessageDate + ' <span>' + usermessageTime + '</span></span>');
 	if (memberNickname1 === latestChatNickname && latesChatSendTime===formattedTime&&latesChatRoomId===RoomId) {

@@ -7,8 +7,8 @@
 	<!-- 자유게시판 목록 출력 -->
 	<insert id="insertChatRoom" parameterType="com.example.domain.chat.vo.ChatRoomVO" >
 		
-	INSERT INTO chat_room (BOARD_ID, CHAT_ROOM_MAX) 
-	VALUES(#{boardId},#{chatRoomMax});
+	INSERT INTO chat_room (BOARD_ID, CHAT_ROOM_MAX,CHAT_ROOM_LAST_MSG) 
+	VALUES(#{boardId},#{chatRoomMax},"아직 메세지가 없습니다.");
 		
 	</insert>
 	
@@ -21,8 +21,13 @@
 	
 	
 	<select id="getChatRoomList" parameterType="com.example.domain.chat.vo.ChatRoomVO" resultType="com.example.domain.chat.vo.ChatRoomVO">
-		SELECT chat_room_id ,chat_room_name FROM chat_room_join 
-		WHERE MEMBER_INDEX = #{memberIndex}
+			SELECT crj.chat_room_id,
+			       crj.chat_room_name,
+			       cr.chat_room_last_msg,
+			       cr.chat_room_last_sned_time
+			FROM chat_room_join crj
+			JOIN chat_room cr ON crj.chat_room_id = cr.chat_room_id
+			WHERE crj.MEMBER_INDEX = #{memberIndex};
 	</select>
 	
 	<!-- 스케줄 작성시 최대인원수 저장 -->
@@ -88,8 +93,8 @@
 	
 	<!-- chat_room_join 테이블 insert -->
 	<insert id="chatRoomJoinSave" parameterType="ChatRoomJoinVO">
-		INSERT INTO chat_room_join (CHAT_ROOM_ID, MEMBER_INDEX)
-		VALUES (#{chatRoomId},#{memberIndex})
+		INSERT INTO chat_room_join (CHAT_ROOM_ID, MEMBER_INDEX, CHAT_ROOM_NAME)
+		VALUES (#{chatRoomId},#{memberIndex}, #{chatRoomName})
 	</insert>
 	
 	
@@ -106,6 +111,15 @@
 		INSERT INTO CHAT_ROOM_JOIN (CHAT_ROOM_ID, MEMBER_INDEX, CHAT_ROOM_NAME)
 		VALUES(#{chatRoomId}, #{guestMemberIndex}, (SELECT BOARD_TITLE FROM BOARD WHERE BOARD_ID = #{boardId}))
 	</insert>
+	
+	
+		<update id="lastChatLastSendTimeUpdate" parameterType="ChatRoomVO">
+		UPDATE chat_room
+			SET
+			    chat_room_last_msg = #{chatRoomLastMsg},
+			    chat_room_last_sned_time = CURRENT_TIMESTAMP
+			WHERE chat_room_id = #{chatRoomId};
+	</update>
 	
 	
 </mapper>

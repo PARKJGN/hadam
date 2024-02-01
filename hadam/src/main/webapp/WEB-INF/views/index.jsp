@@ -229,51 +229,38 @@
                                 <!--slick-item -->
                                 <div class="slick-item">
                                     <div class="text-carousel-item">
-                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
+                                        <div class="popup-avatar"><img src="images/avatar/정진호.jpg" alt=""></div>
                                         <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
-                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
+                                        <div class="review-owner fl-wrap">정*호  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
                                         <p  style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
-                                        <a href="#" class="testim-link">Via Facebook</a>
                                     </div>
                                 </div> 
                                 
                                                                 <div class="slick-item">
                                     <div class="text-carousel-item">
-                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
-                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
-                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
-                                        <p style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
-                                        <a href="#" class="testim-link">Via Facebook</a>
+                                        <div class="popup-avatar"><img src="images/avatar/이다훈.jpg" alt=""></div>
+                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="3"> </div>
+                                        <div class="review-owner fl-wrap">이*훈  - <span>같이노실분, 스케줄 참여리뷰</span></div>
+                                        <p style="font-family: initial;"> 안녕하세요, 저는 "같이노실분"이라는 모임에 참여하게 되었습니다. "같이노실분"의 모임은 정말 즐거웠어요. 다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
                                     </div>
                                 </div> 
                                                                 <div class="slick-item">
                                     <div class="text-carousel-item">
-                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
-                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
-                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
-                                        <p style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
-                                        <a  href="#" class="testim-link">Via Facebook</a>
+                                        <div class="popup-avatar"><img src="images/avatar/박종건.jpg" alt=""></div>
+                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="4"> </div>
+                                        <div class="review-owner fl-wrap">박*건  - <span>공덕맛집탐방, 너무재밌었어요!</span></div>
+                                        <p style="font-family: initial;"> 안녕하세요, 저는 "공덕맛집탐방"이라는 모임에 참여하게되었습니다."공덕맛집탐방"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
                                     </div>
                                 </div> 
                                                                 <div class="slick-item">
                                     <div class="text-carousel-item">
-                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
+                                        <div class="popup-avatar"><img src="images/avatar/최성익.jpg" alt=""></div>
                                         <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
-                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
-                                        <p style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
-                                        <a href="#" class="testim-link">Via Facebook</a>
+                                        <div class="review-owner fl-wrap">최*익  - <span>아리랑소울, 리뷰</span></div>
+                                        <p style="font-family: initial;"> 안녕하세요, 저는 "아리랑소울"이라는 모임에 참여하게되었습니다."아리랑소울"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
                                     </div>
                                 </div> 
-                                                                <div class="slick-item">
-                                    <div class="text-carousel-item">
-                                        <div class="popup-avatar"><img src="images/avatar/1.jpg" alt=""></div>
-                                        <div class="listing-rating card-popup-rainingvis" data-starrating2="2"> </div>
-                                        <div class="review-owner fl-wrap">마당을 나온 암탉  - <span>신촌방랑식객, 그곳에서 만났던 환상적인 순간들</span></div>
-                                        <p style="font-family: initial;"> 안녕하세요, 저는 "신촌방랑식객"이라는 모임에 참여하게되었습니다."신촌방랑식객"의 모임은 정말 즐거웠어요.다양한 음식, 예술, 문화를 경험하며 새로운 친구들과 소중한 추억을 만들었던 이 날, 정말 특별한 경험이었습니다. 모임을 통해 새로운 사람들을 만나고 다양한 경험을 나누다 보니, 이 도시가 더욱 따뜻하고 아름다워 보였어요. 앞으로도 이런 모임이 더 많이 열렸으면 좋겠다는 소망을 담아 이 만남의 소중함을 기억하며 글을 마치겠습니다. 모두 함께 행복한 순간을 만들어 가자고요!</p>
-                                        <a href="#" class="testim-link">Via Facebook</a>
-                                    </div>
-                                </div> 
-                                <!--slick-item end -->
+                                                               
                             </div>
                       </div>                   
                         <!--slider-carousel-wrap end-->
@@ -378,8 +365,6 @@
                                                 <div class="single-slider-wrapper fl-wrap">
                                                     <div class="single-slider fl-wrap"  >
                                                         <div class="slick-slide-item"><img src="images/location/${twentyThirtyPop[1].locationName}.jpg" alt="" style="width:100%; height:270px" onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/no_image.jpg'"></div>
-                                                        <div class="slick-slide-item"><img src="images/all/1.jpg" alt=""></div>
-                                                        <div class="slick-slide-item"><img src="images/all/1.jpg" alt=""></div>
                                                     </div>
                                                     <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left"></i></div>
                                                     <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right"></i></div>

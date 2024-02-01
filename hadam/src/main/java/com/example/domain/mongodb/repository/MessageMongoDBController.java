@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.domain.member.service.MemberService;
+
 @RestController
 @RequestMapping("/mongodb")
 public class MessageMongoDBController {
 	
 	private final MessageService messageservice;
-	
+	//private final MemberService memberService;
     @Autowired
 	public MessageMongoDBController(MessageService messageservice) {
 		this.messageservice = messageservice;
@@ -31,7 +33,9 @@ public class MessageMongoDBController {
     
     @GetMapping("/{chatRoomId}")
 	public List<MessageMongoDB> getAllMessage(@PathVariable Integer chatRoomId) {
+    	
 		return messageservice.getChatMessagesByRoomId(chatRoomId);
+		
 	}
     @DeleteMapping("/{Roomid}")
 	public void deleteMessage(MessageMongoDB message) {		

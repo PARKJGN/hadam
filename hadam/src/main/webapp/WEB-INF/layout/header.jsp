@@ -81,7 +81,6 @@
                         <!--1.12 채팅창아이콘 자리입니다. -정건일-->
                         <div class="alarm-link" id="chatlist" onclick="getChatRoomList()">
                         <i class="fa-regular fa-comment-dots"></i>
-                        <span class="fa-regular fa-circle" id="chattingCountPointer" style="margin-top: 26px;font-size:10px;right:+36px;position: absolute; z-index: 0;"></span>
                         </div>
                 		<!--1.12 채팅창아이콘 자리입니다. -정건일-->
              
@@ -269,6 +268,7 @@
                 </div>
                 <input type="hidden" id="hidden_session_idxvalue" value="${sessionScope.memberIndex}"/>
                 <input type="hidden" id="hidden_session_nicknamevalue" value="${sessionScope.memberNickname}"/>
+                <input type="hidden" id="hidden_session_memberUploadImageNamevalue" value="${sessionScope.memberUploadImageName}"/>
                 
                 <!-- header-search  end -->
                 <!-- 채팅방 모달창 입니다. -정건일 -->

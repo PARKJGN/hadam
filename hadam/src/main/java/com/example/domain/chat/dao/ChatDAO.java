@@ -22,6 +22,10 @@ public interface ChatDAO {
 	
 	// 내가속한 채팅방을 불러오는 함수 -정건일
 	public List<ChatRoomVO> getChatRoomList(ChatRoomVO vo);
+	
+	// 마지막채팅내용/ 마지막 전달시간 update함수 -정건일
+	void lastChatLastSendTimeUpdate(ChatRoomVO vo);
+
 
 	// 스케줄 작성시 최대인원수 저장
 	public void chatRoomSave(ChatRoomVO vo);

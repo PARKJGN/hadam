@@ -19,6 +19,9 @@ public interface ChatService {
 	// 내가속한 채팅방 목록을 불러오는 함수 - 정건일
 	List<ChatRoomVO> getChatRoomList(ChatRoomVO vo);
 	
+	// 마지막채팅내용/ 마지막 전달시간 update함수 -정건일
+	void lastChatLastSendTimeUpdate(ChatRoomVO vo);
+	
 	// 스케줄작성시 최대인원수 저장
 	void chatRoomSave(ChatRoomVO cvo);
 	

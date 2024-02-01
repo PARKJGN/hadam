@@ -239,7 +239,7 @@
       			})
       			
       			
-      			let notifyComment="새로운 댓글이 달렸습니다";
+      			let notifyComment="새로운 댓글이 달렸습니다.";
       			//몽고DB에 알림내용 추가하는 ajaxs >_ㅇ -괴도건일
       			$.ajax({
 		            type: "POST",
