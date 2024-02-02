@@ -1,30 +1,8 @@
 $(() => {
-
-
-	/*// 스케줄추가할떄 전역 변수
-	var td;
-
-	// 드래그 시작지점 전역 변수
-	var startdrag;
-
-	// 드래그 시작하는 td 의 index
-	var startindex;
-	
-	// 리사이즈 할때 클릭 막는 변수
-	var clickprevent = 0;
-
-	// 리사이즈 할때 시작 td
-	var startresize;
-
-	// 드래그 한 img 사이즈
-	var startdragsize;*/
-
 	// 타임테이블의 thead의 th생성
 	// 30분 단위로 끊으려고 colspan2
 	for (i = 0; i < 24; i++) {
-
 		$('.bg-light-gray').append(`<th colspan = "2" >${i}:30</th>`)
-
 	}
 
 	// 타임테이블의 tbody의 td생성
@@ -42,7 +20,7 @@ $(() => {
 		// 드랍했을때
 		drop: function(event, ui) {
 
-			// 드랍한 칸에 자식이 없을때
+			// 드랍한 td칸에 자식이 없을때
 			if (!$(event.target).children().length) {
 				console.log(startdrag)
 				// 인벤토리에 있는 이미지를 드랍했들때

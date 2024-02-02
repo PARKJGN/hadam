@@ -303,12 +303,12 @@ function  initEasybook() {
     // modal ------------------
     var modal = {};
     modal.hide = function () {
-        $('.modal , .reg-overlay').fadeOut(200);
+        $('.modal2 , .reg-overlay').fadeOut(200);
         $("html, body").removeClass("hid-body");
     };
     $('.modal-open').on("click", function (e) {
         e.preventDefault();
-        $('.modal , .reg-overlay').fadeIn(200);
+        $('.modal2 , .reg-overlay').fadeIn(200);
         $("html, body").addClass("hid-body");
     });
     $('.close-reg , .reg-overlay').on("click", function () {

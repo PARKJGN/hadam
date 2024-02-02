@@ -130,7 +130,7 @@
 </div>
 <!--map-modal end -->
 <!--register form -->
-<div class="main-register-wrap modal">
+<div class="main-register-wrap modal2">
 	<div class="reg-overlay"></div>
 	<div class="main-register-holder">
 		<div class="main-register fl-wrap">

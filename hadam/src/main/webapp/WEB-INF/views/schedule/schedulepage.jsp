@@ -17,7 +17,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <!-- header-->
-<jsp:include page="../../layout/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
 <!--  header end -->
 
 <!--  wrapper  -->
@@ -98,7 +98,7 @@
 
 <!--wrapper end -->
 <!--footer -->
-<jsp:include page="../../layout/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/layout/footer.jsp"></jsp:include>
 
 <div class="modal fade" data-bs-backdrop="static" id="schedulemodal"
 	tabindex="-1" aria-labelledby="schedulemodalLabel" aria-hidden="true"
