@@ -26,13 +26,6 @@
 <div id="wrapper">
 	<!-- content-->
 	<div class="content">
-		<div class="breadcrumbs-fs fl-wrap">
-			<div class="container">
-				<div class="breadcrumbs fl-wrap">
-					<a href="#">Home</a><a href="#">Pages</a><span>Booking Page</span>
-				</div>
-			</div>
-		</div>
 		<section class="middle-padding gre y-blue-bg">
 			<div class="container">
 				<div class="list-main-wrap-title single-main-wrap-title fl-wrap">
@@ -605,7 +598,7 @@
 														<h4>회원가입이 완료되었습니다</h4>
 														<div class="clearfix"></div>
 														<p>Hadam은 당신의 하루가 궁금합니다 Hadam에서 행복한 하루를 만드세요</p>
-														<a href="/index" target="_blank" class="color-bg">메인
+														<a href="/index" class="color-bg">메인
 															페이지로 이동</a>
 													</div>
 												</div>

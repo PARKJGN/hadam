@@ -84,41 +84,6 @@
 	bottom:-35px;
 }
 
-.whatTime {
-	
-}
-
-#scheduleTitle {
-	text-align: left;
-	position: relative;
-	bottom: -20px;
-}
-
-#scheduleTitle>h5 a {
-	text-decoration: none;
-	color: #64A0FF;
-}
-
-#timeBox h3 {
-	font-size: 13px;
-	white-space: nowrap;
-}
-
-#moveTab {
-	position: relative;
-	left: -90px;
-}
-
-#realArrow {
-	padding-top: 80px;
-
-	/* 
-               text-decoration:none;
-               font-size:1px;
-               position: relative;
-               display:inline-block; */
-}
-
 #realArrow span {
 	position: absolute;
 	top: 0;
@@ -146,10 +111,6 @@
 	font-size: 14px;
 	margin-left: -60px;
 	margin-top: 240px;
-}
-
-#userInfo1 {
-	
 }
 
 #replydateBox {
@@ -186,7 +147,7 @@
 	width: 1200px;
 	text-align: center;
 	position: relative;
-	right: -900px;
+	right: -750px;
 	margin-top: 30px;
 	border-radius: 10px;
 	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
@@ -311,10 +272,7 @@
 
 .shareBtnBox {
 	text-align: right;
-}
-
-.whatTime {
-	
+	margin-bottom: 50px;
 }
 
 #scheduleTitle {
@@ -346,39 +304,6 @@
             font-size:1px;
             position: relative;
             display:inline-block; */
-}
-
-#realArrow span {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 24px;
-	height: 24px;
-	margin-left: -12px;
-	border-left: 1px solid black;
-	border-bottom: 1px solid black;
-	-webkit-transform: rotate(-45deg);
-	transform: rotate(-135deg);
-	-webkit-animation: sdb 2s infinite;
-	animation: sdb 2s infinite;
-	opacity: 0;
-	box-sizing: border-box;
-}
-
-#contactform {
-	position: relative;
-	bottom: -30px;
-}
-
-#comment1 {
-	height: 30px;
-	font-size: 14px;
-	margin-left: -60px;
-	margin-top: 240px;
-}
-
-#userInfo1 {
-	
 }
 
 .search {
@@ -417,10 +342,6 @@
 	margin-top: 40px;
 	text-decoration: none;
 	font-size: 15px;
-}
-
-#tabTab {
-	
 }
 
 .modalBoxshadow {

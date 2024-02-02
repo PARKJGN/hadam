@@ -58,6 +58,9 @@ public class SigninController {
 
 //		관리자			
 		} else if (vo != null && vo.getAdminStatus() == true) {
+			session.setAttribute("memberId", vo.getMemberId());
+			session.setAttribute("memberNickname", vo.getMemberNickname());
+			session.setAttribute("memberIndex", vo.getMemberIndex());
 			return 2;
 //		회원정보 없음
 		} else {

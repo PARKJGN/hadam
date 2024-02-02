@@ -89,7 +89,7 @@ $(function() {
 				data: { "phone": member_phone },
 				success: function(result) {
 					/*문자보내기 성공!*/
-					if (result != "0") {
+					if (result != "0" && result != "1") {
 						/*인증번호 받는 모달 창 띄우기*/
 						$('.reg-modal , .reg-overlay2').fadeIn(200);
 						$("html, body").addClass("hid-body");
@@ -124,6 +124,7 @@ $(function() {
 				error: function(err) {
 					alert("오류");
 					console.log("오류 : " + err);
+					console.log(err)
 				}
 			})
 		}
@@ -318,6 +319,16 @@ $(function() {
 		})
 		/*console.log(checkedcCtegory);*/
 
+		var eating = $(".eating input:checked").length
+		var drinking = $(".drinking input:checked").length
+		var playing = $(".playing input:checked").length
+		var watching = $(".watching input:checked").length
+		var walking = $(".walking input:checked").length
+
+		if (eating == 0 || drinking == 0 || playing == 0 || watching == 0 || walking == 0) {
+			alert('먹기, 마시기, 놀기, 보기, 걷기의 카테고리는 각각 최소 1개이상 선택하셔야 합니다')
+			return false;
+		}
 
 		$.ajax({
 			url: '/signup/signupCompletion',

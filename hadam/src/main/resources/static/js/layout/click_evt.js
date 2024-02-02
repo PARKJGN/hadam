@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		if(!getalarmlistpandan){
 		$.ajax({
 		    type: "GET",
-		    url: `http://localhost:8080/mongodb/getalarm/${memberIndex}`,  // 수정된 엔드포인트로 변경
+		    url: `/mongodb/getalarm/${memberIndex}`,  // 수정된 엔드포인트로 변경
 		    success: function (data) {
 		        // 성공적으로 서버에서 응답을 받았을 때 수행할 동작
 		        console.log("알림 내용을 가져왔습니다.", data);
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //userid session값 적용 시켜서 구독하기
 if(memberIndex){
 	console.log("sse구독 시작");
-const eventSource = new EventSource(`http://localhost:8080/notifications/subscribe/${memberIndex}`);
+const eventSource = new EventSource(`/notifications/subscribe/${memberIndex}`);
 
 
 //[알림내용 실시간 등록-건일]
@@ -238,7 +238,7 @@ document.getElementById('chatlist').addEventListener('click', function() {
 function alramDelete(id){
 		$.ajax({
 		    type: "DELETE",
-		    url: `http://localhost:8080/mongodb/deleteAlarm/`+id,  // 수정된 엔드포인트로 변경
+		    url: `/mongodb/deleteAlarm/`+id,  // 수정된 엔드포인트로 변경
 		    success: function (data) {
 		   
         },error: function (error) {

@@ -40,7 +40,6 @@ public class SignupServiceImpl implements SignupService{
 
 //	회원가입시 인증번호 보내기
 	public String phoneCheckSMS(String phone, String randomSum) {
-		
 		String phoneCheck = signDAO.memberCheckSMS(phone);
 //		존재하는 전화번호인지 확인
 //		존재하지 않을때
@@ -55,7 +54,7 @@ public class SignupServiceImpl implements SignupService{
 //		coolsms 라이브러리사용시 to from type text 필수입력
 			HashMap<String, String> sendContent = new HashMap<String, String>();
 			sendContent.put("to", phone);					// 입력 받은 사용자 번호 
-			sendContent.put("from", from);					// 보내는 (내)번호...ㅠㅜ
+			sendContent.put("from", from);					// 보내는 번호
 			sendContent.put("type", "SMS");					// 문자 타입
 			sendContent.put("text", text);					// 문자 내용
 			sendContent.put("app_version", "하루를 담다(Hadam)");			// app_version은 해도되고 안해도 되는건데 뭔가해서 해봄

@@ -82,14 +82,21 @@ public class SignupController {
 			randomNum = random.nextInt(9);
 			randomSum += Integer.toString(randomNum);
 		}
-//		String result = signupService.phoneCheckSMS(phone, randomSum);
-
-//		return result;
+		String result = signupService.phoneCheckSMS(phone, randomSum);
+		System.out.println(result);
+		return result;
 		
-		return "1234";
+//		return "1234";
 	}
 	
-	
+	@RequestMapping("/signup")
+	public String signup(HttpSession session) {
+		String memberIndex = (String) session.getAttribute("memberIndex");
+		if(memberIndex!=null) {
+			return "redirect:/index";
+		}
+		return "/signup/signup";
+	}
 
 	/* 회원가입 정보입력 */
 	@RequestMapping(value = "/signupCompletion", method = RequestMethod.POST)
@@ -110,7 +117,9 @@ public class SignupController {
 
 //		회원가입 성공하면 
 		if (result == 1) {
-			if (vo.getMemberType() == 1 || vo.getMemberType() == 2) {
+			if(vo.getMemberType()==null) {
+				vo.setMemberType(0);
+			}else if (vo.getMemberType() == 1 || vo.getMemberType() == 2) {
 //				로그인 세션 저장
 				session.setAttribute("memberId", vo.getMemberId());
 				session.setAttribute("memberNickname", vo.getMemberNickname());

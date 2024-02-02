@@ -23,7 +23,7 @@ $(function() {
 					$('.login_comment').text("아이디와 비밀번호를 확인해주세요");
 				} else if (result == 2) {
 					console.log('관리자 로그인')
-					/*location.href(""); 나중에 관리자 페이지 새기면*/
+					location.href = "/admin/adminDashboard"; 
 				} else {
 					console.log('오류');
 				}

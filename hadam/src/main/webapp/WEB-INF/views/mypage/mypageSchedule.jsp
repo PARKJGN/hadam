@@ -41,7 +41,7 @@
 							<div class="dashboard-list">
 							<div class="scheduleName">
 								<span>${scheduleTableMap[scheduleId][0].scheduleTableName}</span>
-								<div class="scheduleDeleteBtn"><a href="/mypage/scheduleUpdate?scheduleTableId=${scheduleTableMap[scheduleId][0].scheduleTableId}">수정</a></div>
+								<%-- <div class="scheduleDeleteBtn"><a href="/mypage/scheduleUpdate?scheduleTableId=${scheduleTableMap[scheduleId][0].scheduleTableId}">수정</a></div> --%>
 								<div class="scheduleDeleteBtn"><a href="/mypage/scheduleDelete?scheduleTableId=${scheduleTableMap[scheduleId][0].scheduleTableId}">삭제</a></div>
 								<span class="scheduleTableStartDate">${scheduleTableMap[scheduleId][0].scheduleTableStartDate}</span>
 							</div>

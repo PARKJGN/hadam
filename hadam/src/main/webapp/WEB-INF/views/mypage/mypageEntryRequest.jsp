@@ -73,7 +73,7 @@
 												</div>
 												<div class="booking-details fl-wrap">
 													<span class="booking-title">동행 신청 스케줄</span> <span
-														class="booking-text"><a href="#">${entry.boardId}</a></span>
+														class="booking-text"><a href="/community/scheduleShareList/1">${entry.boardId}</a></span>
 												</div>
 											</div>
 											<span class="fw-separator"></span> <span class="p_inline">${entry.entryApplicationContent}</span>

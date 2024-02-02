@@ -122,7 +122,7 @@ function addmodal(chatRoomId,chatRoomName,UploadImageName) {
 	//기존의 채팅 내용을 불러오는 코드
 	 $.ajax({
 		    type: "GET",
-		    url: "http://localhost:8080/mongodb/" + chatRoomId,  // 수정된 엔드포인트로 변경
+		    url: "/mongodb/" + chatRoomId,  // 수정된 엔드포인트로 변경
 		    success: function (data) {
 		        // 성공적으로 서버에서 응답을 받았을 때 수행할 동작
 		        console.log("채팅 내용을 가져왔습니다.", data);
@@ -169,7 +169,7 @@ function addmodal(chatRoomId,chatRoomName,UploadImageName) {
 	        if(userMessage != ""){
 			$.ajax({
             type: "POST",
-            url: "http://localhost:8080/mongodb",
+            url: "/mongodb",
             contentType: "application/json",
             data: JSON.stringify({
                 "chatRoomId": RoomId,

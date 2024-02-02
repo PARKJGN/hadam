@@ -75,8 +75,7 @@
 												</div>
 												<div class="booking-details fl-wrap">
 													<span class="booking-title">동행 신청 스케줄</span> <span
-														class="booking-text"><a href="#">링크 걸어줘야
-															함${entry.scheduleTableId}</a></span>
+														class="booking-text"><a href="/community/scheduleShareList/1">${entry.scheduleTableId}</a></span>
 												</div>
 											</div>
 											<span class="fw-separator"></span> <span class="p_inline">${entry.entryApplicationContent}</span>
