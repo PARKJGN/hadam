@@ -82,11 +82,10 @@ public class SignupController {
 			randomNum = random.nextInt(9);
 			randomSum += Integer.toString(randomNum);
 		}
-		String result = signupService.phoneCheckSMS(phone, randomSum);
-		System.out.println(result);
-		return result;
+//		String result = signupService.phoneCheckSMS(phone, randomSum);
+//		return result;
 		
-//		return "1234";
+		return "1234";
 	}
 	
 	@RequestMapping("/signup")

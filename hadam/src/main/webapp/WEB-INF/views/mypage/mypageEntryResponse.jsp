@@ -48,7 +48,7 @@
 										<!-- <span class="new-dashboard-item">New</span> -->
 										<div class="dashboard-message-avatar">
 											<!-- 프로필 사진 경로 -->
-											<img src="/images/profile/${entry.memberUploadImageName}" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';">
+											<img src="/images/profile/${entry.memberUploadImageName}.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';">
 										</div>
 										<div class="dashboard-message-text entryContents">
 											<!-- 닉네임, 신청일 -->
