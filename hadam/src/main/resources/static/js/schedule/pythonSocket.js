@@ -24,7 +24,6 @@ $(() => {
 			return false
 		}
 
-
 		// 시작 위치
 		const startAddr = $("#autocompleteid1").val()
 		// 시작 시간  $('#aistarttime').val()
@@ -40,7 +39,6 @@ $(() => {
 
 		$.each(categories, function(idx, element) {
 			categoryList.push($(element).attr('name'))
-			console.log($(element).attr('name'))
 			data.push($(element).attr('name'))
 		})
 
@@ -66,22 +64,20 @@ $(() => {
 				location.reload();
 				break
 		}
-
-		console.log("Received message from server: " + receivedData);
-
+		
+		// 파이선에서 받은 데이터를 JSON형식으로 받는다/
 		const memberIndexList = JSON.parse(receivedData)
 
 		let lng = memberIndexList.pop()
 		let lat = memberIndexList.pop()
-
-		console.log(memberIndexList)
 
 		const startDate = $('#aistarttime').val()
 
 		const form = $('<form></form>')
 
 		form.attr("method", "post")
-
+		
+		// 파이썬에서 받은 멤버 리스트로 장소를 구하는 API
 		form.attr("action", "/schedule/createaischeduletable")
 
 		let memberInput = $('<input type="hidden"/>')
@@ -112,9 +108,6 @@ $(() => {
 		form.appendTo('body')
 
 		form.submit()
-
-
-
 	};
 
 	// 에러 핸들링

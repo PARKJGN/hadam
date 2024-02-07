@@ -1,8 +1,6 @@
 package com.example.domain.member.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.annotation.RequestScope;
 
 import com.example.domain.category.service.CategoryService;
 import com.example.domain.images.vo.MemberUploadImagesVO;
@@ -82,11 +79,11 @@ public class SignupController {
 			randomNum = random.nextInt(9);
 			randomSum += Integer.toString(randomNum);
 		}
-		String result = signupService.phoneCheckSMS(phone, randomSum);
-		System.out.println(result);
-		return result;
+//		String result = signupService.phoneCheckSMS(phone, randomSum);
+//		System.out.println(result);
+//		return result;
 		
-//		return "1234";
+		return "21235";
 	}
 	
 	@RequestMapping("/signup")

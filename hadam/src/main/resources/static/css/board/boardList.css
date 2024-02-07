@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.nav-holder nav li a {
+	text-decoration-line: none;	
+}
+
 .reviews-comments-item {
     padding:0 0 30px 0px;
 }

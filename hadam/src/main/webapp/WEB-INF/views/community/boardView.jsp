@@ -72,7 +72,7 @@
                                                         <div class="slick-slide-item">
   														<!-- 첨부사진 출력 -->                                                      
                                                         <img src="${pageContext.request.contextPath}/communityBoardFile/${board.memberUploadImageName}?" alt="파일첨부"
-                                                        onerror="this.onerror=null;this.src='${pageContext.request.contextPath}/images/gal/girlfriend.jpg'">
+                                                        onerror="this.onerror=null;this.src='/images/profile/aba7a9ec31a9ba8f3db3e9f5bff887bf.jpg'">
                                                         </div>                                      
                                                     </div>
                                                 </div>                                                       

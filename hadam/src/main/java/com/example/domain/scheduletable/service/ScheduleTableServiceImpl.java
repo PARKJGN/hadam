@@ -129,7 +129,6 @@ public class ScheduleTableServiceImpl implements ScheduleTableService {
 	}
 
 	@Override
-	@Transactional
 	// 추천 알고리즘으로 스케줄 생성하기
 	public List<LocationVO> aiCreateScheduleTable(AiCreateVO aivo, Integer memberIndex) {
 

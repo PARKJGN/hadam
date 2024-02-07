@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+
+.nav-holder nav li a {
+	text-decoration-line: none;	
+}
+
 #box {
 	margin-left: 300px;
 }

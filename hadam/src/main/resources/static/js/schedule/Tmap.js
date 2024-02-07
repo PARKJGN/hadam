@@ -1,4 +1,5 @@
 $(() => {
+	
 	let maps = new Tmapv2.Map("map-main", { // 지도가 생성될 div
 		center: new Tmapv2.LatLng(37.731636, 127.051142),
 		zoom: 17
@@ -7,21 +8,16 @@ $(() => {
 })
 
 // 이동시간 구하는 함수
-const DurationOfTime = async (imgcount) => {
-
+const durationOfTime = async (imgcount) => {
 	// 이동시간 리스트
 	let totalTimelist = [];
-
 	let imgc = Object.entries(imgcount)
-	console.log(imgc)
 	// entries하면 lenghth와 prevObject가 존재해서 그걸 빼는 작업
 	imgc.pop()
 	imgc.pop()
 	for (const [idx, element] of imgc) {
-
 		// 마커와 마커에 해당하는 장소 정보를 보여주는 창 생성 함수
 		drawLocationMarkerAndInfoWindow(element, idx)
-
 		// 지도의 추가된 스케줄의 -1개만큼 이동시간 구하기		
 		if (idx > 0) {
 			let prevlati = $(imgcount[idx - 1]).attr('name').split(",")[0]
@@ -29,18 +25,16 @@ const DurationOfTime = async (imgcount) => {
 			let lati = $(element).attr('name').split(",")[0]
 			let logi = $(element).attr('name').split(",")[1]
 			// 지도불러온 후 계산해서 나온 이동시간 리스트에 넣기
-			const transitData = await Tmaptransit(prevlati, prevlogi, lati, logi)
+			const transitData = await tmapTransit(prevlati, prevlogi, lati, logi)
 			// 대중교통을 이용해서 이동을 하는 경우
 			if (transitData.hasOwnProperty('metaData')) {
 				totalTimelist.push(Math.round(transitData.metaData.plan.itineraries[0].totalTime / 60))
-				console.log(transitData)
 				drawTmapTransitPolyLine(transitData)
-
 			} else {
 				switch (transitData.result.status) {
 					// 거리가 너무 가까워서 대중교통을 이용할 필요가 없는 경우
 					//보행자 API
-					case 11: const pedestrianData = await TmapPedestrian(prevlati, prevlogi, lati, logi)
+					case 11: const pedestrianData = await tmapPedestrian(prevlati, prevlogi, lati, logi)
 						totalTimelist.push(Math.round(pedestrianData.features[0].properties.totalTime / 60))
 						drawTmapPedestrianPolyLine(pedestrianData)
 						break
@@ -49,17 +43,16 @@ const DurationOfTime = async (imgcount) => {
 					// 응답시간이 길때 처리
 					case 31: break
 					// 12 : 출발지 정류장 매핑 실패, 13: 도착지 정류장 매핑 실패, 21: 필수 입력 값 형식 및 범위 오류, 22: 필수 입력 값 누락 오류, 23: 서비스 지역 아님, 24: 타임머신 시각 오류, 32: 기타 오류
-					// 나머지 처리
 				}
 			}
 		}
 	}
 	// 총시간을 가지고 요약표를 만들기
-	changesummary(totalTimelist)
+	changeSummary(totalTimelist)
 }
 
 // TMAP 보행자 API 호출
-const TmapPedestrian = async (startY, startX, endY, endX) => {
+const tmapPedestrian = async (startY, startX, endY, endX) => {
 	const data = {
 		startX: startX,		// 출발지 정보
 		startY: startY,
@@ -92,7 +85,7 @@ const TmapPedestrian = async (startY, startX, endY, endX) => {
 }
 
 // TMAP 대중교통 API 호출
-const Tmaptransit = async (startY, startX, endY, endX) => {
+const tmapTransit = async (startY, startX, endY, endX) => {
 	const data = {
 		startX: startX,		// 출발지 정보
 		startY: startY,
@@ -223,7 +216,7 @@ const drawTmapTransitPolyLine = (data) => {
 }
 
 // 스케줄이 바뀔때마다 맵을 바꿔주는 함수
-const changemap = async () => {
+const changeMap = () => {
 
 	$('#map-main').empty()
 	let imgcount = $(".scheduleTable").find('img')
@@ -248,7 +241,7 @@ const changemap = async () => {
 	if (imgcount.length == 1) {
 		
 		drawLocationMarkerAndInfoWindow(imgcount, 0)
-		changesummary()
+		changeSummary()
 	}
 	// 스케줄이 2개 이상일때
 	else if (imgcount.length > 1) {
@@ -256,29 +249,34 @@ const changemap = async () => {
 		$(".loader-wrap").fadeIn(200)
 
 		// 이동시간 구하는 함수 호출
-		DurationOfTime(imgcount)
+		durationOfTime(imgcount)
 	}
 }
 
 // 장소 마커, 정보 생성 함수
 const drawLocationMarkerAndInfoWindow = (element, idx) => {
-
+	// 장소의 위도 경도
 	let [lat, lng] = $(element).attr('name').split(",")
-	console.log(idx)
 
 	// 마커안와 매핑되는 인포윈도우의 내용들
-	let content = "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px; box-shadow: 5px 5px 5px #00000040; border-radius: 10px; width : 400px; height:100px; background-color: #FFFFFF; align-items: center; padding: 5px;'>" +
-		`<div class='img-box' style='width: 110px; height: 90px;'>` +
-		`<img onerror = "this.src=/images/gal/no_image2.jpg" src="${$(element).attr('src')}" style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";></div>` +
-		"<div class='info-box' style='margin-left : 10px'>" +
-		"<p style='margin-bottom: 7px;'>" +
-		`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${$(element).attr('alt')}</span>` +
-		"<p>" +
-		`<span class='new-addr'>${$(element).attr('name').split(",")[2]}</span>` +
-		"</p>" +
-		"</div>" +
-		`<a href='javascript:void(0)' onclick=$(this).parent().parent().css("visibility","hidden") class='btn-close' style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'></a>` +
-		"</div>";
+	let content = "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px;"+
+					"box-shadow: 5px 5px 5px #00000040; border-radius: 10px; width : 400px;"+
+					"height:100px; background-color: #FFFFFF; align-items: center; padding: 5px;'>" +
+						`<div class='img-box' style='width: 110px; height: 90px;'>` +
+							`<img onerror = "this.src=/images/gal/no_image2.jpg" src="${$(element).attr('src')}"
+							style = "width:110px; height:90px; background-size: cover; border-radius: 10px; background: #f5f5f5 no-repeat center;";>
+						</div>`+
+						"<div class='info-box' style='margin-left : 10px'>" +
+							"<p style='margin-bottom: 7px;'>" +
+								`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${$(element).attr('alt')}</span>
+							</p>` +
+							"<p>" +
+								`<span class='new-addr'>${$(element).attr('name').split(",")[2]}</span>` +
+							"</p>" +
+						"</div>" +
+						`<a href='javascript:void(0)' onclick=$(this).parent().parent().css("visibility","hidden") class='btn-close'
+						style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'></a>` +
+					"</div>";
 
 	// 인포윈도우생성
 	const infoWindow = new Tmapv2.InfoWindow({
@@ -310,17 +308,21 @@ const drawLocationMarkerAndInfoWindow = (element, idx) => {
 // 마커, 해당 장소 정보 생성 함수
 const drawTransitMarkerAndInfoWindow = (startStation) => {
 
-	let content = "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px; box-shadow: 5px 5px 5px #00000040; border-radius: 10px; width : 250px; height:auto; background-color: #FFFFFF; align-items: center; padding: 5px;'>" +
-		"<div class='info-box' style='margin-left : 10px'>" +
-		"<p style=' text-align: left; margin-bottom: 7px;'>" +
-		`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${startStation.route}</span>` +
-		"<p style='text-align: left; display: block;'>" +
-		`<span style="display: block;" class='new-addr'>승차 : ${startStation.start.name}</span>` +
-		`<span style="display: block;" class='new-addr'>하차 : ${startStation.end.name}</span>` +
-		"</p>" +
-		"</div>" +
-		"<a href='javascript:void(0)' onclick = $(this).parent().parent().css('visibility','hidden') class='btn-close' style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'></a>" +
-		"</div>";
+	let content = "<div class='m-pop' style='position: static; top: 180px; left : 320px; display: flex; font-size: 14px; box-shadow: 5px 5px 5px #00000040;"+
+					"border-radius: 10px; width : 250px; height:auto; background-color: #FFFFFF; align-items: center; padding: 5px;'>" +
+						"<div class='info-box' style='margin-left : 10px'>" +
+							"<p style=' text-align: left; margin-bottom: 7px;'>" +
+								`<span class='tit' style=' font-size: 16px; font-weight: bold;'>${startStation.route}</span>` +
+							"</p>"+
+							"<p style='text-align: left; display: block;'>" +
+								`<span style="display: block;" class='new-addr'>승차 : ${startStation.start.name}</span>` +
+								`<span style="display: block;" class='new-addr'>하차 : ${startStation.end.name}</span>` +
+							"</p>" +
+						"</div>" +
+						"<a href='javascript:void(0)' onclick = $(this).parent().parent().css('visibility','hidden')"+
+						"class='btn-close' style='position: absolute; top: 10px; right: 10px; display: block; width: 15px; height: 15px;'>"+
+						"</a>" +
+					"</div>";
 
 	// 인포윈도우생성
 	const infoWindow = new Tmapv2.InfoWindow({

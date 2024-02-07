@@ -15,8 +15,8 @@
   <body>
   	<div hidden>
   	<form action='/signup/naverSignup' method='post' id="naver">
-  		<input id='memberId' name='memberId' value=''>
-  		<input id='memberPassword' name='memberPassword' value=''>
+  		<input id='imsimemberId' name='memberId' value=''>
+  		<input id='imsimemberPassword' name='memberPassword' value=''>
   		<input id='memberPhoneNumber' name='memberPhoneNumber' value=''>
   		<input id='memberNickname' name='memberNickname' value=''>
   		<input id='memberBirth' name='memberBirth' value=''>

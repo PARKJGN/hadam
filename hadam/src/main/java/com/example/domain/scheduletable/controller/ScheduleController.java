@@ -85,7 +85,7 @@ public class ScheduleController {
 	
 	@PostMapping("createaischeduletable")
 	public String createScheduleTable(AiCreateVO aivo, HttpSession session, RedirectAttributes rttr) {
-		System.out.println(aivo);
+		
 		ArrayList<String> categories = (ArrayList<String>) (aivo.getCategoryList());
 		ArrayList<String> orginalCategories = (ArrayList<String>) categories.clone();
 		

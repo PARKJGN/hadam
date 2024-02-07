@@ -76,8 +76,8 @@ $(function() {
 
 				const accesstoken = naverLogin.accessToken.accessToken
 
-				$('#memberId').val(id)
-				$('#memberPassword').val(id)
+				$('#imsimemberId').val(id)
+				$('#imsimemberPassword').val(id)
 				$('#memberPhoneNumber').val(phonenumber)
 				$('#memberNickname').val(nickName)
 				$('#memberBirth').val(birth)

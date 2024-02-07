@@ -348,7 +348,7 @@
 															<li><input type="checkbox" class="small" id="샌드위치" /><label
 																for="샌드위치">샌드위치</label></li>
 															<li><input type="checkbox" class="small" id="레스토랑" /><label
-																for="레스토랑">"레스토랑"</label></li>
+																for="레스토랑">레스토랑</label></li>
 														</ul>
 													</div>
 													<div class="col-sm-6 hadam_category eating small 일식">

@@ -75,7 +75,6 @@ $(() => {
 			locationIdInput.attr("name", `scheduleList[${idx}].locationId`)
 			locationIdInput.attr("value", `${scheduleId}`)
 
-
 			scheduleform.append(scheduleStartTimeInput)
 			scheduleform.append(scheduleEndTimeInput)
 			scheduleform.append(locationIdInput)
@@ -88,7 +87,6 @@ $(() => {
 		let scheduleTableStartDateInput = $('<input type="hidden"/>')
 		scheduleTableStartDateInput.attr("name", 'scheduleTableStartDate')
 		scheduleTableStartDateInput.attr("value", `${scheduleTableStartDate}`)
-
 
 		scheduleform.append(scheduleTitleInput)
 		scheduleform.append(scheduleTableStartDateInput)

@@ -6,14 +6,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
-<head>
 <link type="text/css" rel="stylesheet"
 	href="/css/bootstrap/bootstrap.css">
 <link type="text/css" rel="stylesheet"
 	href="/css/bootstrap/bootstrap.min.css">
 <link type="text/css" rel="stylesheet"
 	href="/css/board/scheduleShareList.css">
-</head>
 <!--  header end -->
 <!--  wrapper  -->
 <div id="wrapper">

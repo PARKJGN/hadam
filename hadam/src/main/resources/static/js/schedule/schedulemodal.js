@@ -10,9 +10,8 @@ let play = ['전체', '이색', '실내활동', '실외활동']
 
 let walk = ['전체', '시장', '공원', '산책', '명소']
 
-let category = [{ id: 'eat', text: '먹기' }, { id: 'drink', text: '마시기' }, { id: 'see', text: '보기' }, { id: 'play', text: '놀기' }, { id: 'walk', text: '걷기' }]
-
-let pageNum;
+let category = [{ id: 'eat', text: '먹기' }, { id: 'drink', text: '마시기' },
+{ id: 'see', text: '보기' }, { id: 'play', text: '놀기' }, { id: 'walk', text: '걷기' }]
 
 // 대분류 카테고리 바꿀때마다 중분류 카테고리 바뀌는 함수
 let catechange = (middlecategory) => {
@@ -58,31 +57,25 @@ $(() => {
 
 		catechange(middlecategory)
 	})
-
+	
+	// 검색버튼 눌렀을때 or 페이징 눌렀을때
 	$(document).on("click", '.searchbtn', function() {
-
 		// 유저가 선택한 구
 		let addrname = $('.addr').select2('data')[0].text
-
 		// 유저가 입력한 장소이름
 		let locationname = $('.searchinput').val()
-
 		// 유저가 선택한 대분류
 		let largecate = $('.cate').select2('data')[0].text
-
 		//유저가 선택한 중분류
 		let middlecate = $('.middlecate').val()
-
 		// 유저가 선택한 index를 알기위한 id		
 		let pageNum = $(this).attr('id')
-
 
 		$.ajax({
 			url: "locationsearch",
 			type: "post",
 			datatype: "json",
 			data: {
-
 				addrName: addrname,
 				locationName: locationname,
 				middleCate: middlecate,
@@ -90,18 +83,13 @@ $(() => {
 				largeCate: largecate
 			},
 			success: function(res) {
-
-				console.log(res)
-
+				
 				// 가져온 결과가 0개일때 처리
 				if (res.list.length == 0) {
-
 					// 결과가 0개인데 화면에 검색을 시작하세요 or 해당정보가 없습니다 일때는 span지우고 추가
 					if ($('.locationlist').children('span').length) {
-						console.log(1)
 						return false
 					} else {
-						console.log(2)
 						$('.locationlist').empty()
 						$('.locationlist').append("<span class = 'baisc'>해당 정보가 없습니다.</span>")
 					}
@@ -110,14 +98,14 @@ $(() => {
 					$('.locationlist').empty()
 					$('.modal-footer').empty()
 					$.each(res.list, function(i, item) {
-
 						$('.locationlist').append(`
-						<div style="width: 50%;" class="dashboard-list">
-							<div class="dashboard-message">
-								<div class="dashboard-listing-table-image">
-									<a target="_blank" href="/location/locationDetail?locationId=${item.locationId}">
-									<img class src="/images/location/${item.locationImageOriginalname}"  onerror=this.src="/images/gal/no_image2.jpg" 
-										alt=""></a>
+							<div style="width: 50%;" class="dashboard-list">
+								<div class="dashboard-message">
+									<div class="dashboard-listing-table-image">
+										<a target="_blank" href="/location/locationDetail?locationId=${item.locationId}">
+										<img class src="/images/location/${item.locationImageOriginalname}"  
+										onerror=this.src="/images/gal/no_image2.jpg" alt="">
+										</a>
 								</div>
 								<div style = "height:75px;"class="dashboard-listing-table-text">
 									<h4 style="padding-bottom : 0">
@@ -145,12 +133,10 @@ $(() => {
 
 					// 모달 푸터에 달 페이징 번호
 					var paging = '';
-					console.log(res.paging.endpage)
-					console.log(res.paging.startpage)
-					console.log(res.paging.lastPage)
 					paging += '<div class="page_wrap">'
 					paging += '<div class="page_nation">'
-					paging += `<a id=1 class="arrow pprev searchbtn" ></a> <a id=${pageprevNum} class="arrow prev searchbtn"></a>`
+					paging += `<a id=1 class="arrow pprev searchbtn" ></a>
+								<a id=${pageprevNum} class="arrow prev searchbtn"></a>`
 
 					for (i = res.paging.startpage; i <= res.paging.endpage; i++) {
 						if (i == pageNum) {
@@ -160,7 +146,8 @@ $(() => {
 						}
 					}
 
-					paging += `<a id=${pagenextNum} class="searchbtn arrow next"></a> <a id = ${res.paging.lastPage} class="searchbtn arrow nnext"></a>`
+					paging += `<a id=${pagenextNum} class="searchbtn arrow next"></a>
+								<a id = ${res.paging.lastPage} class="searchbtn arrow nnext"></a>`
 					paging += '</div></div>'
 
 

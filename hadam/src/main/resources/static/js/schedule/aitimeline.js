@@ -1,4 +1,5 @@
 $(() => {
+	// 내부스크립트에서 서버에서 modal로 넘긴 데이터를 변수에 담고 외부 스크립트에서 사용
 	if(strLocationList=="") return false
 	
 	let locationList = JSON.parse(strLocationList)
@@ -7,12 +8,7 @@ $(() => {
 	
 	$('.hasDatepicker').val(startDay)
 	
-	console.log(locationList)
-	console.log(aiInformation)
-	// 받아온 장소리스트의 순서는 뒤죽박죽이여서 유저가 설정한 대분류 태그의 순서로 맞춰줘야한다.
-	// 대분류순으로 정리할 장소리스트를 선언
 	
-	// 유저가 선택한 대분류 카테고리의에서 추천알고리즘으로 뽑아낸 장소의 태그들을 비교하면서 맞으면 새로운 리스트에 넣고 기존의 리스트에서 제거
 	
 	/*
 	* aiInformation.categoryList  =  ["가","다" ,"나"]
@@ -21,16 +17,23 @@ $(() => {
 	  locationList = [ {lc:"가"}, {lc:"나"}, {lc:"다"}]
 	  locationListForCategories = [{location: {lc:"가"}, idx:0}, {location: {lc:"다"}, idx:1}, {location: {lc:"나"}, idx:2}]
 	*/
+	
+	// 받아온 장소리스트의 순서는 뒤죽박죽이여서 유저가 설정한 대분류 태그의 순서로 맞춰줘야한다.
+	// 유저가 설정한 대분류 태그에 인덱스를 부여하고 이름순으로 정렬을 한다.
 	const sortedCat = aiInformation.categoryList
 		.map((cat, idx)=>({category:cat, idx}))
 		.sort((a,b) => a.cat - b.cat);
-	
+	// 받아온 장소리스트를 이름순으로 정렬한다.
 	locationList.sort((a,b) => a.largeCategory - b.largeCategory);
-	
+	// 정렬한 대분류 태그에 정렬한 장소리스트를 대분류 태그로 매핑을 하고 인덱스 순으로 정렬한다.
 	const locationListForCategories = sortedCat
 		.map(({idx:catIdx}, idx) => ({location:locationList[idx], idx:catIdx}))
 		.sort((a, b) => a.idx - b.idx);	
 	
+	
+	
+	// 대분류순으로 정리할 장소리스트를 선언
+	// 유저가 선택한 대분류 카테고리의에서 추천알고리즘으로 뽑아낸 장소의 태그들을 비교하면서 맞으면 새로운 리스트에 넣고 기존의 리스트에서 제거
 	/*aiInformation.categoryList.forEach((category,index) => {
 		const selectedCategory = locationList.find(category);
 		locationListForCategories.push(selectedCategory)
@@ -45,9 +48,10 @@ $(() => {
 		}
 	})*/
 	
-	console.log(locationListForCategories)
 	let totalMinute = hourToMinute(startTime)
 	let startTd = $('.scheduleTable').find('td').eq(totalMinute/30)
+	
+	// 장소마다 평균시간이 달라서 2번째 스케줄이 넓이가 270이고 3번째 스케줄이 넓이가 180인데 2번째가 안들어갔는데 3번째가 들어가는 것을 방지하기 위한 변수
 	let checkOverTimeline = 0
 	// 장소 개수만큼 이미지 생성 후 updatefortimeline함수 호출
 	for(var i = 0; i<locationListForCategories.length; i++){
@@ -65,24 +69,19 @@ $(() => {
 			
 			// 전의 스케줄의 시작 td
 			let startIndex = tdIndex + indexByImgWidth
-			console.log(startIndex)
 			
 			// 넣으려는 스케줄의 끝나는 td
 			let endIndex = startIndex+1 + Number(locationListForCategories[i].location.averageTime)/30
-			console.log(endIndex)
 			
 			// 만약 넣으려는 스케줄이 타임테이블의 24시를 벗어나게 된다면 스케줄 인벤토리에 추가
 			if(endIndex > 48 || checkOverTimeline == 1){
-				console.log("여기 오기는 오나?")
 				checkOverTimeline = 1
 				let invenImg = createImage(locationListForCategories[i].location)
-				console.log(invenImg)
 				// 인벤토리에 들어가는 사진의 width는 주어지면 안되므로 초기화
 				updateToImageForInventory(invenImg)
 				
 			} else{
 			let scheduletd = $('.scheduleTable').find('td').eq(startIndex+1)
-			console.log(scheduletd)
 			scheduletd.append(createImage(locationListForCategories[i].location))
 			updateToImageForTimeline(scheduletd.children())
 			}
@@ -90,7 +89,7 @@ $(() => {
 		}
 	}
 	
-	changemap()
+	changeMap()
 	
 })
 

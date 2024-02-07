@@ -71,7 +71,7 @@
                                         <!--second level -->
                                         <ul class="alram-user-menu">
                                         <li id="nonealram">
-                                        <a>새로운 알림이 없습니다.</a>
+                                        <a class ="nonealram">새로운 알림이 없습니다.</a>
                                         </li>
                                         <!-- 알림 메세지가 출력될 공간 -->
                                        </ul>

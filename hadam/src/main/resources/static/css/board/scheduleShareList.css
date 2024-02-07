@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.nav-holder nav li a {
+	text-decoration-line: none;	
+}
+
 #listBox {
 	display: flex;
 	justify-content: space-between;
