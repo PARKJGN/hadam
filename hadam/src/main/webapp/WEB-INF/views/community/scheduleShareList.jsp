@@ -53,19 +53,7 @@
 			</div>
 			</c:if>
 			<!-- 최신순,오래된순으로 게시판 조회 -->
-		    <form action="/community/searchScheduleBoards/1" name="searchForm" method="get" style="text-align:left;">
-                <div class="fields">
-                    <div class="field">
-                        <div id="searchWarp">
-                            <select name="searchType" class="searchType" onchange="boardSubmitForm()">
-                                <option value="">날짜별</option>
-                                <option value="P">오래된순</option>
-                                <option value="T">최신순</option>	                                    
-                            </select>
-                        </div>
-                    </div>
-                </div>	
-			</form> 
+		    
 			<!-- 공유게시판 목록 출력 시작 스케줄테이블에 대한 리스트-->
 			<c:forEach items="${map}" var="map" varStatus="outerIndex">
 				<div class="scheduleTitle" id="scheduleTitle">

@@ -92,9 +92,11 @@ public class CommunityBoardController {
 		BoardVO data = communityBoardService.findByboardId(boardId);
 
 		// 해당게시글을 올린 사용자의 프로필사진 출력
+		if (data !=null) {
 		vo.setMemberIndex(data.getMemberIndex());
 		BoardVO profile = communityBoardService.findProfileByBoardId(vo);
-
+		m.addAttribute("profile", profile);
+		}
 		// 상세페이지 댓글 목록 출력
 		List<CommentVO> list = communityBoardService.commentList(boardId);
 
@@ -114,8 +116,7 @@ public class CommunityBoardController {
 		m.addAttribute("board", data);
 		// 알림때문에 추가됬습니다. -건일
 		m.addAttribute("boardMemberIndex", mvo);
-		m.addAttribute("commentCount", count);
-		m.addAttribute("profile", profile);
+		m.addAttribute("commentCount", count);		
 		m.addAttribute("memberImages", memberImages);
 
 	}
@@ -208,7 +209,6 @@ public class CommunityBoardController {
 				if (!new File(savePath).exists()) {
 					new File(savePath).mkdir();
 				}
-
 				String filepath = savePath + "\\" + filename;
 				file.transferTo(new File(filepath)); // 파일저장
 
@@ -308,28 +308,22 @@ public class CommunityBoardController {
 
 	// boardList 검색
 	@RequestMapping("/searchBoards")
-	public String searchBoards(Model m, @RequestParam("searchType") String searchType,
-			@RequestParam("keyword") String keyword,
+	public String searchBoards(Model m, @RequestParam("searchType") String searchType,@RequestParam("keyword") String keyword,
 			@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
-
 		List<BoardVO> list;
-
 		// 검색 조건이 존재하면 검색 결과를 가져옴
 		if (searchType != null && keyword != null) {
 			// BoardVO에 검색어, 검색유형 set
 			BoardVO vo = new BoardVO();
 			vo.setSearchType(searchType);
 			vo.setKeyword(keyword);
-
 			// 자유게시판 검색
 			list = communityBoardService.searchBoards(vo);
 		}
-
 		// 검색 조건이 없으면 전체 목록을 가져옴
 		else {
 			list = communityBoardService.getBoardList();
 		}
-
 		// 자유게시판 5개씩 페이징 처리
 		int pagingSize = 10;
 
@@ -351,20 +345,16 @@ public class CommunityBoardController {
 		// 현재 블럭의 끝나는 페이지 수가 전체 페이지수보다 클때 끝나는 페이지 수 전체 페이지 수로 바꾸기
 		if (endpage > totalpage)
 			endpage = totalpage;
-
 		List<Integer> numList = new ArrayList<Integer>();
 		List<BoardVO> pagingList = new ArrayList<BoardVO>();
-
 		int length = (page * pagingSize > list.size()) ? list.size() : page * pagingSize;
 
 		for (int i = (page - 1) * pagingSize; i < length; i++) {
 			pagingList.add(list.get(i));
 		}
 		if (pagingList.size() != 0) {
-
 		} else {
 		}
-
 		int lastPage = list.size() % pagingSize > 0 ? list.size() / pagingSize + 1 : list.size() / pagingSize;
 
 		for (int i = startpage; i <= endpage; i++) {
@@ -431,8 +421,6 @@ public class CommunityBoardController {
 	@RequestMapping("/scheduleTableSave")
 	public String scheduleTableSave(BoardVO vo, ScheduleTableVO svo, HttpSession session, ChatRoomVO cvo,
 			ChatRoomJoinVO cjvo) {
-		
- 
 		
 		// memberIndex session값 저장
 		vo.setMemberIndex((Integer) session.getAttribute("memberIndex"));

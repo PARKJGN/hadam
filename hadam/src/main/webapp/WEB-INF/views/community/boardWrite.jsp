@@ -35,7 +35,7 @@
                                                 	<label for="validationCustom01" class="form-label">제목</label>
                                                     <input type="text" name="boardTitle" id="boardTitle" placeholder="Your Title *" required/>   
                                                     <!-- 로그인한 사용자 memberIndex 받기 -->                                        	
-                                                    <input type="hidden" name="memberIndex" value="${sessionScope.memberIndex }"/>
+                                                    <input type="hidden" name="memberIndex" value="${sessionScope.memberIndex}"/>
                                                     <!-- 게시글 내용 작성 -->
                                                     <label for="validationTextarea" class="form-label">글 내용</label>
                                                     <textarea name="boardContent"  id="boardContent" cols="40" rows="3" placeholder="Your Message:" required></textarea><!-- 내용 작성 -->
@@ -43,7 +43,7 @@
                                          			<div class="filebox">
 													    <input class="upload-name" value="첨부파일" placeholder="첨부파일">
 													    <label for="file">파일찾기</label> 
-													    <input type="file" id="file" name="file" required>
+													    <input type="file" id="file" name="file" >
 													</div>
                                          			<!-- 등록버튼 -->
     												<input type="submit" class="btn btn-primary" id="updateBtn" value="등록" />		 

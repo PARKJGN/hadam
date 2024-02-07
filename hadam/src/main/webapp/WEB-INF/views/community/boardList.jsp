@@ -1,14 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+S<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <!-- 작성일 문자형식으로 포맷팅하려고 import 했습니다 -->
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
 <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="/css/board/boardList.css">
+<jsp:include page="/WEB-INF/layout/header.jsp"></jsp:include>
+
     <!-- 자유게시판 커뮤니티 페이지 -->   
             <div id="wrapper">
                 <!-- content-->

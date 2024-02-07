@@ -28,6 +28,10 @@ public class NotificationController {
 	        return notificationService.subscribe(id);
 	    }
 
+	 
+	 
+	 
+	 
 	    @GetMapping("/send-data/{id}")
 	    public void sendData(@PathVariable Long id) {
 	        notificationService.notify(id, "새로운알림이 도착했습니다.");
