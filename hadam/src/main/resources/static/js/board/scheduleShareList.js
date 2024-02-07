@@ -4,8 +4,7 @@
 // 모달창 스케줄 공유 게시판 상세페이지 
 // 함수호출하며 session의 memberIndex, 해당 게시글 boardId 들고옴          
 function openDetailModal(boardId,memberIndex) {
-	 $.ajax({
-		   
+	 $.ajax({		   
 		 type:"GET",
 		 url : '/community/scheduleShareDetail',
 		 data: { 
@@ -22,9 +21,7 @@ function openDetailModal(boardId,memberIndex) {
 			    const options = { year: 'numeric', month: '2-digit', day: '2-digit'};
 			    const formattedDate = new Date(dateString).toLocaleDateString('ko-KR', options);
 			    return formattedDate;
-			}
-			 
-			 
+			}		 
 			let output  = "</div>";
 				output += '<div class="container" id="full">';
 			    output += '<div class="list-main-wrap fl-wrap card-listing" id="box1">';
@@ -45,8 +42,7 @@ function openDetailModal(boardId,memberIndex) {
 			    																					// 삭제 클릭시 해당게시글 삭제
 			    output += '<a style="text-decoration:none; color:black;" id="deleteBtn" href="/community/scheduleShareDelete?boardId='+ boardId+'"><i  style="color:#DC6089"class="fa-solid fa-xmark">삭제</i></a>'
 			    output += '</div>';
-			    }
-			    	
+			    }			    	
 			    output += '<div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listBox1">';
 			    // 스케줄표안에 스케줄 리스트 출력
 			    for ( let i in data ) {
@@ -73,8 +69,7 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '</div>';
 		        output += '</div>';
 		        output += '</article>';		       
-		        output += '</div>';
-		        
+		        output += '</div>';		        
 		        // 마지막 화살표는 안보이게
 		         if( i< data.length -1){
 		        output += '<div class="arrowBox1">';
@@ -90,19 +85,18 @@ function openDetailModal(boardId,memberIndex) {
 		         // 참가인원 수 가 최대인원 수 보다 작을 때 -> ex)참가인원 : 2/5
 		         if (data[0].chatRoomCount < data[0].chatRoomMax){
 					output += '<div><strong style="font-size:14px;">참가인원 :'+data[0].chatRoomCount+'/'+data[0].chatRoomMax+'<strong/></div>'
-				}
-				
+				}			
 				// 참가인원수가 다차면 참가인원: max로 바뀜
 				 if (data[0].chatRoomCount >= data[0].chatRoomMax){
 					output += '<div><strong style="font-size:14px;">참가인원 : max<strong/> </div>' 
-				 }
-				 
+				 }			 
 		        output += '</div>';
 		        output += '</div>';
 		        	// 게시글을 올린 사용자와 로그인한 사용자가 다르고 로그인한 사용자가 없을 때 스케줄 참가하기 버튼이 보임
 		           if (data[0].memberIndex !== memberIndex && memberIndex !== undefined) {
 			    output += '<div class="shareBtnBox1">';																														   // 스케줄 참가하기 버튼클릭시 scheduleAttend함수 호출, 함수 호출시 해당 게시글 boardId,memberIndex,scheduleTableId 들고감
-			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" role="button" id="shareBtn1" onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + data[0].memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
+			    output += '<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" role="button" id="shareBtn1"'; 
+			    output += 'onclick="scheduleAttend(\'' + data[0].boardId + '\', \'' + data[0].memberIndex + '\',\''+data[0].scheduleTableId +'\')">스케줄 참가하기</button>';
 			    output += '</div>';
 				}
 		        output += '<div class="list-single-main-item fl-wrap modalBoxshadow" id="writeForm">';
@@ -135,12 +129,10 @@ function openDetailModal(boardId,memberIndex) {
 		        // 댓글 입력
 		        output += '<textarea cols="40" rows="3" id="commentContent" name="commentContent" placeholder="댓글을 입력해주세요"></textarea>';
 		        output += '</fieldset>';
-		        output += '<div class="commentBtn">';
-		        
+		        output += '<div class="commentBtn">';		        
 		        // 댓글 등록 버튼 클릭시 함수 호출, 호출시 해당게시글 boardId, 로그인한 사용자 memberIndex가 들고감
 		        output += '<button class="btn btn-primary" id="comment" onclick="scheduleCommentWrite(\'' + boardId + '\', \'' + memberIndex + '\')">등록</button>';
 		        output += '</div>';
-
 		        output += '</div>';
 		        output += '</div>';
 		        }
@@ -150,21 +142,18 @@ function openDetailModal(boardId,memberIndex) {
 		        output += '</div>';
 		 		output += '</div>';
 		 		// modalScheduleDetail태그로 위 내용 삽입
-		 		document.getElementById('modalScheduleDetail').innerHTML = output;
-		 		
+		 		document.getElementById('modalScheduleDetail').innerHTML = output;	
 		 		// 스케줄 참가 최대인원이 다 찼을경우 스케줄마감으로 버튼변경
 		 		if(data[0].chatRoomCount >= data[0].chatRoomMax){
-					 document.getElementById('shareBtn1').innerHTML = '스케줄 마감';
+					document.getElementById('shareBtn1').innerHTML = '스케줄 마감';
 					document.getElementById('shareBtn1').disabled = true;
-				 }
-		 		
+				}	 		
 		 		// entry 확인
 		 		$.ajax({
 					 type:"post",
 					 url:'/community/checkEntry',
 					 data : {boardId : boardId},
 					 success : function(data){
-					 	 
 					 	 console.log("checkEntry성공", data); 
 					 	 console.log("data.memberIndex확인",data.memberIndex);
 					 	 console.log(boardId);
@@ -177,15 +166,12 @@ function openDetailModal(boardId,memberIndex) {
 					 	 else if(data.memberIndex == null){
 					 		 document.getElementById('shareBtn1').innerHTML = '스케줄 참가하기';
 					 	 }
-					 	 
-					 
 					 },
 					 error : function(error){
 					 	 console.error("checkEntry실패",error);
 					 }
-				 })   
-				
-		 		// 모달상세페이지 댓글 목록 띄우기 (댓글 작성 후 리스트 출력)
+				 })   				
+				// 모달상세페이지 댓글 목록 띄우기 (댓글 작성 후 리스트 출력)
 		 		$.ajax({				
 					 type:'get',
 					 url :'/community/getScheduleCommentList',

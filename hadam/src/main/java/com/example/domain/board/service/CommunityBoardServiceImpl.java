@@ -77,10 +77,10 @@ public class CommunityBoardServiceImpl implements CommunityBoardService {
 
 		return communityBoardDAO.selectId();
 	}
-
+	
 	// 해당 boardId에 있는 정보 가져오기
+	@Transactional
 	public BoardVO findByboardId(int boardId) {
-
 		return communityBoardDAO.findByboardId(boardId);
 	}
 

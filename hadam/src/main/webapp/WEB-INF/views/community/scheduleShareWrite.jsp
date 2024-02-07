@@ -109,8 +109,7 @@
 		<div class="modal-content asdf">
 			<div class="modal-header">
 				<h1 class="modal-title fs-5" id="staticBackdropLabel">내 스케줄</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"
-					aria-label="Close"></button>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
 				<!-- 나의 스케줄 목록 출력 시작 -->

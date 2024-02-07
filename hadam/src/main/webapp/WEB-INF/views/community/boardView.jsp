@@ -174,7 +174,6 @@
       				success : function(commentList){
       					console.log("작성 성공");
       					console.log(commentList);
-
       					// 날짜 문자형으로 변환
       					function formatDate(dateString) {
       					    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };

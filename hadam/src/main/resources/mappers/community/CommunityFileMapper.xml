@@ -13,7 +13,8 @@
 	, BOARD_ID
 	, MEMBER_INDEX)
 	VALUES 
-	( #{memberUploadImagePath}, #{memberUploadImageName}, #{memberUploadImageOriginalname}, #{boardId}, #{memberIndex})
+	( #{memberUploadImagePath}, #{memberUploadImageName}, 
+	#{memberUploadImageOriginalname}, #{boardId}, #{memberIndex})
 </insert>
 
 <!-- 파일 수정 -->
