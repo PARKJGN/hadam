@@ -132,7 +132,7 @@ public class SignupServiceImpl implements SignupService{
 //	        필수 쿼리 파라미터 세팅
 	        sb.append("grant_type=authorization_code");
 	        sb.append("&client_id=").append("1bce4a6cad3104a2d5cc6134e1af3958");
-	        sb.append("&redirect_uri=").append("http://localhost:8080/signup/kakaoCallback");
+	        sb.append("&redirect_uri=").append("http://118.217.203.41:8080/signup/kakaoCallback");
 	        sb.append("&code=").append(code);
 	        
 //	        BufferedWriter로 파라미터 읽고, 보냄 (아직 안닫음)

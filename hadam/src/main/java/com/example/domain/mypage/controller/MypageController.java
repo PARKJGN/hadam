@@ -109,7 +109,7 @@ public class MypageController {
 		
 		if(findMemberId != null) {
 			Integer findResult = mypageService.passwordChange(findMemberId, newPassword);
-			System.out.println("날 죽여줘"+newPassword);
+//			System.out.println("날 죽여줘"+newPassword);
 //			비밀번호변경 성공 했을 때
 			if(findResult != null){
 				model.addAttribute("msg", "비밀번호 변경이 완료되었습니다.");  
@@ -125,7 +125,7 @@ public class MypageController {
 	//		현재 비밀번호가 맞을 때
 			if(result1 != null) {
 				Integer result2 = mypageService.passwordChange(memberId, newPassword);
-				System.out.println("비밀번호 변경하는 컨드롤러 : "+result2);
+//				System.out.println("비밀번호 변경하는 컨드롤러 : "+result2);
 	//			비밀번호변경 성공 했을 때
 				if(result2 != null){
 					model.addAttribute("msg", "비밀번호 변경이 완료되었습니다.");  
@@ -214,7 +214,7 @@ public class MypageController {
 	/*찜목록 삭제하기*/
 	@GetMapping("/favoritesDelete/{locationId}")
 	public String favoritesDelete(@PathVariable("locationId") Integer locationId, HttpSession session) {
-		System.out.println("delete controller : " + locationId);
+//		System.out.println("delete controller : " + locationId);
 		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
 		favoritesService.favoritesDelete(locationId, memberIndex);
 		return "redirect:/mypage/mypageFavorites";
@@ -254,7 +254,7 @@ public class MypageController {
 	@RequestMapping("/mypageSchedule")
 	public void mypageSchedule(HttpSession session, Model model, @RequestParam(value="pageNum", 
 		    required = false, defaultValue="1")Integer pageNum) {
-		System.out.println(pageNum);
+//		System.out.println(pageNum);
 		PagingVO pvo = new PagingVO();
 		pvo.setPageNum(0);
 		Integer memberIndex = (Integer) session.getAttribute("memberIndex");
@@ -290,7 +290,7 @@ public class MypageController {
 
 		//		키값이 들어갈 list 선언
 		List<Integer> keyList = new ArrayList<Integer>(scheduleTable.keySet());
-		System.out.println(scheduleTable);
+//		System.out.println(scheduleTable);
 		model.addAttribute("scheduleTableMap", scheduleTable);
 		model.addAttribute("keyList", keyList);
 	}

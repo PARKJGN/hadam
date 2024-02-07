@@ -28,7 +28,7 @@ public class NotificationServiceImpl implements NotificationService{
     	//userId를 key값으로 emitter를 map에 저장하고 해당 emitter를 반환하는 함수
 	       SseEmitter emitter = createEmitter(userId);
 	    //emitter만들어 놓고 아무것도 안보내면 에러나서 보내주는 것
-	        sendToClient(userId, "EventStream Created. [userId=" + userId + "]");
+	        sendToClient(userId, "EventStream Created.");
 	        return emitter;
 	}
 

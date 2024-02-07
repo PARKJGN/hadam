@@ -48,7 +48,7 @@
 										<!-- <span class="new-dashboard-item">New</span> -->
 										<div class="dashboard-message-avatar">
 											<!-- 프로필 사진 경로 -->
-											<img src="/images/profile/${entry.memberUploadImageName}" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';">
+											<img src="/images/profile/${entry.memberUploadImageName}.jpg" onerror="this.onerror=null; this.src='/images/gal/no_image2.jpg';">
 										</div>
 										<div class="dashboard-message-text entryContents">
 											<!-- 닉네임, 신청일 -->
@@ -88,12 +88,12 @@
 
 						</div>
 						<!-- pagination-->
-						<div class="pagination">
+						<!-- <div class="pagination">
 							<a href="#" class="prevposts-link"><i
 								class="fa fa-caret-left"></i></a> <a href="#" class="current-page">1</a>
 							<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#"
 								class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-						</div>
+						</div> -->
 					</div>
 					<!-- dashboard-list-box end-->
 				</div>

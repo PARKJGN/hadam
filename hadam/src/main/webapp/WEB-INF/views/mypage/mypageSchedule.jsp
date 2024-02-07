@@ -35,7 +35,13 @@
 								<h3>내 스케줄</h3>
 							</div>
 
-							
+							<c:if test="${keyList == null}">
+								<div class="dashboard-message" style='min-height: 200px;'>
+									<div class="favoritesNull">
+										스케줄이 없습니다
+									</div>
+								</div>
+							</c:if>
 							<c:forEach var="scheduleId" items="${keyList}">
 							<!-- dashboard-list end-->
 							<div class="dashboard-list">
@@ -146,12 +152,12 @@
 
 						</div>
 						<!-- pagination-->
-						<div class="pagination">
+						<!-- <div class="pagination">
 							<a href="#" class="prevposts-link"><i
 								class="fa fa-caret-left"></i></a> <a href="#" class="current-page">1</a>
 							<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#"
 								class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-						</div>
+						</div> -->
 					</div>
 					<!-- dashboard-list-box end-->
 				</div>

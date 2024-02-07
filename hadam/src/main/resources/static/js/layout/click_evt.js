@@ -109,14 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		//event.data에 알림내용/href에 추가해야할 데이터값을 한번에 보내기 때문에 정제해줘야한다.
 		
 		//console.log("q23ytg2yg34onjtg34iujbnti34jhkbnt"+event.data);
-		let splittedData1 = event.data.split('/');
 
-		// 게시물 제목or게시물 넘버
-		let splitFirst = splittedData1[0];
-		// 진짜 내용
-		let splitSecond=splittedData1[1];
+
 		
-		if(splitSecond!=="EventStream Created"){
+		if(event.data!=="EventStream Created."){
 		$("#nonealram").remove();
 		//알림이 도착했을 때 도착표시로 바꿔주는 코드
 		$("#alarmCountPointer").removeClass("fa-regular").addClass("fa-solid");

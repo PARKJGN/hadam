@@ -637,7 +637,7 @@
 				<div class="tab">
 					<!--tab -->
 					<div id="tab-1" class="tab-content">
-						<h3 id="check_phone_coment">인증번호를 입력해주세요</h3>
+						<h3 id="check_phone_coment">인증번호를 입력해주세요 - 테스트버전으로 문자가 가지 않습니다 임시인증번호 : 123456</h3>
 						<div class="custom-form">
 							<span id="check_phone_count"></span> <input type="text"
 								id="input_check_phone"> <input type="button"

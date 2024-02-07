@@ -30,10 +30,12 @@
 					<!-- dashboard-content-->
 					<div class="dashboard-content fl-wrap">
 						<div class="dashboard-list-box fl-wrap">
-
+							<div class="dashboard-header fl-wrap" style="display:none;">
+									
+							</div>
 							<div id="table">
 								<!--자유게시판 컬럼명  -->
-
+						
 								<table border="1" id="tableTh">
 									<thead>
 										<tr>
@@ -46,11 +48,24 @@
 
 								<hr style="opacity: 0.1;" />
 
-
 								<!-- 게시판 목록출력 -->
 								<div class="" id="boardTd">
 									<table border="1" id="tableList">
 										<tbody>
+										<c:if test="${boardList == null}">
+												<tr class="boardList">
+													<td class="boardTitle">
+														<div class="boardTitle">등록된 게시물이 없습니다</div></td>
+													<td class="boardDate">   </td>
+													<td class="boardCount">   </td>
+												</tr>
+												<tr>
+													<td><hr style="opacity: 0.1;" /></td>
+													<td><hr style="opacity: 0.1;" /></td>
+													<td><hr style="opacity: 0.1;" /></td>
+												</tr>
+										</c:if>
+										<c:if test="${boardList != null}">
 										<c:forEach items="${boardList}" var="board">
 											
 												<tr class="boardList">
@@ -67,8 +82,10 @@
 												</tr>
 											
 										</c:forEach>
+										</c:if>
 									</tbody>
 									</table>
+									
 									<hr style="opacity: 0.1;" />
 
 								</div>
@@ -77,12 +94,12 @@
 
 						</div>
 						<!-- pagination-->
-						<div class="pagination">
+						<!-- <div class="pagination">
 							<a href="#" class="prevposts-link"><i
 								class="fa fa-caret-left"></i></a> <a href="#" class="current-page">1</a>
 							<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#"
 								class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-						</div>
+						</div> -->
 					</div>
 					<!-- dashboard-list-box end-->
 				</div>

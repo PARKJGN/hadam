@@ -200,7 +200,7 @@
 					href="https://kauth.kakao.com/oauth/authorize?
 					response_type=code&
 					client_id=1bce4a6cad3104a2d5cc6134e1af3958&
-					redirect_uri=http://localhost:8080/signup/kakaoCallback"><button
+					redirect_uri=http://118.217.203.41:8080/signup/kakaoCallback"><button
 						class='loginbtn'>
 						<img src="/images/sign/kakaologinbtn.png" class='kakaologinbtn'>
 					</button></a>
