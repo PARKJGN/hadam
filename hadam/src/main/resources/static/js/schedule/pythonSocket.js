@@ -1,5 +1,5 @@
 $(() => {
-	const socket = new WebSocket("ws://114.207.167.125:8765/socket");
+	const socket = new WebSocket("ws://52.79.151.179:8765/socket");
 
 	//카테고리리스트
 	let categoryList = []
