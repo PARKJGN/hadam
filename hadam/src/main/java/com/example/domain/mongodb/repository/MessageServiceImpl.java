@@ -2,14 +2,17 @@ package com.example.domain.mongodb.repository;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MessageServiceImpl implements MessageService{
 
+	
 	private final MessageMongoDBRepository messageRepository;
 	private final AlarmMongoDBRepository alarmRepository;
 
+	@Autowired
 	public MessageServiceImpl(MessageMongoDBRepository messageRepository, AlarmMongoDBRepository alarmRepository){
 		this.messageRepository = messageRepository;
 		this.alarmRepository = alarmRepository;
